@@ -1,0 +1,14 @@
+/* TEAM */
+Author: Stephen Coogan
+Site: http://coog.ie
+Twitter: https://www.twitter.com/coog_ie
+Github: https://www.github.com/coogie
+
+/* COLOPHON */
+Components:
+    -- Navigataur (https://github.com/micjamking/Navigataur/)
+    -- Font Awesome (https://fortawesome.github.com/Font-Awesome/)
+Powered by:
+    -- Jekyll
+    -- Octopress
+    -- Github Pages
