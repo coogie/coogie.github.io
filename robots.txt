@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: http://coogie.github.io/sitemap.xml
+Sitemap: http://coog.ie/sitemap.xml

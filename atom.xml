@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
     <title><![CDATA[Stephen Coogan]]></title>
-    <link href="http://coogie.github.io/atom.xml" rel="self"/>
-    <link href="http://coogie.github.io/"/>
-    <updated>2015-01-02T21:31:49+00:00</updated>
-    <id>http://coogie.github.io/</id>
+    <link href="http://coog.ie/atom.xml" rel="self"/>
+    <link href="http://coog.ie/"/>
+    <updated>2015-01-02T21:40:33+00:00</updated>
+    <id>http://coog.ie/</id>
     <author>
         <name><![CDATA[Stephen Coogan]]></name>
         <email><![CDATA[hello@coog.ie]]></email>
@@ -15,9 +15,9 @@
     
     <entry>
         <title type="html"><![CDATA[The sorry state of Videogame Journalism in Ireland]]></title>
-        <link href="http://coogie.github.io/blog/2013/11/27/the-sorry-state-of-videogame-journalism-in-ireland/"/>
+        <link href="http://coog.ie/blog/2013/11/27/the-sorry-state-of-videogame-journalism-in-ireland/"/>
         <updated>2013-11-27T00:57:00+00:00</updated>
-        <id>http://coogie.github.io/blog/2013/11/27/the-sorry-state-of-videogame-journalism-in-ireland</id>
+        <id>http://coog.ie/blog/2013/11/27/the-sorry-state-of-videogame-journalism-in-ireland</id>
         <content type="html"><![CDATA[<p>Spare me ten minutes or so while I rant at you about &ldquo;Videogame Journalism&rdquo; in Ireland and its sorry state. It&rsquo;s something that has been bothering me for a time now and it&rsquo;s not getting any better anytime soon.</p>
 
 <!--more-->
@@ -45,9 +45,9 @@
     
     <entry>
         <title type="html"><![CDATA[Performance on the Front-end]]></title>
-        <link href="http://coogie.github.io/blog/2013/09/15/performance-on-the-front-end/"/>
+        <link href="http://coog.ie/blog/2013/09/15/performance-on-the-front-end/"/>
         <updated>2013-09-15T23:58:00+01:00</updated>
-        <id>http://coogie.github.io/blog/2013/09/15/performance-on-the-front-end</id>
+        <id>http://coog.ie/blog/2013/09/15/performance-on-the-front-end</id>
         <content type="html"><![CDATA[<p>The web, by its very nature and design, is synchronous. Things are parsed and executed as soon as they are reached, and there are some <em>very</em> important things to note about how CSS and JavaScript work in front-end web development:</p>
 
 <ul>
@@ -117,9 +117,9 @@
     
     <entry>
         <title type="html"><![CDATA[A new Octopress theme]]></title>
-        <link href="http://coogie.github.io/blog/2013/08/18/a-new-octopress-theme/"/>
+        <link href="http://coog.ie/blog/2013/08/18/a-new-octopress-theme/"/>
         <updated>2013-08-18T23:59:00+01:00</updated>
-        <id>http://coogie.github.io/blog/2013/08/18/a-new-octopress-theme</id>
+        <id>http://coog.ie/blog/2013/08/18/a-new-octopress-theme</id>
         <content type="html"><![CDATA[<p>Allow me to introduce to you a new Octopress theme, called Oscailte!</p>
 
 <p>Oscailte is an important milestone for me for many reasons. First of all, it&rsquo;s my first step into creating a theme usable by anybody, not just by me on my own sites! Yay! Secondly, it&rsquo;s the first open-source project that I&rsquo;ve put out into the great wild web, free for all to download and scrutinise through <a href="https://github.com/coogie/oscailte/">Github</a>!</p>

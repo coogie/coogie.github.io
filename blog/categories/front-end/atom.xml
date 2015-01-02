@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
     <title><![CDATA[Category: front-end | Stephen Coogan]]></title>
-    <link href="http://coogie.github.io/blog/categories/front-end/atom.xml" rel="self"/>
-    <link href="http://coogie.github.io/"/>
-    <updated>2015-01-02T21:31:49+00:00</updated>
-    <id>http://coogie.github.io/</id>
+    <link href="http://coog.ie/blog/categories/front-end/atom.xml" rel="self"/>
+    <link href="http://coog.ie/"/>
+    <updated>2015-01-02T21:40:33+00:00</updated>
+    <id>http://coog.ie/</id>
     <author>
         <name><![CDATA[Stephen Coogan]]></name>
         <email><![CDATA[hello@coog.ie]]></email>
@@ -15,9 +15,9 @@
     
     <entry>
         <title type="html"><![CDATA[Performance on the Front-end]]></title>
-        <link href="http://coogie.github.io/blog/2013/09/15/performance-on-the-front-end/"/>
+        <link href="http://coog.ie/blog/2013/09/15/performance-on-the-front-end/"/>
         <updated>2013-09-15T23:58:00+01:00</updated>
-        <id>http://coogie.github.io/blog/2013/09/15/performance-on-the-front-end</id>
+        <id>http://coog.ie/blog/2013/09/15/performance-on-the-front-end</id>
         <content type="html"><![CDATA[<p>The web, by its very nature and design, is synchronous. Things are parsed and executed as soon as they are reached, and there are some <em>very</em> important things to note about how CSS and JavaScript work in front-end web development:</p>
 
 <ul>

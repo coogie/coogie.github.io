@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
     <title><![CDATA[Category: ireland | Stephen Coogan]]></title>
-    <link href="http://coogie.github.io/blog/categories/ireland/atom.xml" rel="self"/>
-    <link href="http://coogie.github.io/"/>
-    <updated>2015-01-02T21:31:49+00:00</updated>
-    <id>http://coogie.github.io/</id>
+    <link href="http://coog.ie/blog/categories/ireland/atom.xml" rel="self"/>
+    <link href="http://coog.ie/"/>
+    <updated>2015-01-02T21:40:33+00:00</updated>
+    <id>http://coog.ie/</id>
     <author>
         <name><![CDATA[Stephen Coogan]]></name>
         <email><![CDATA[hello@coog.ie]]></email>
@@ -15,9 +15,9 @@
     
     <entry>
         <title type="html"><![CDATA[The sorry state of Videogame Journalism in Ireland]]></title>
-        <link href="http://coogie.github.io/blog/2013/11/27/the-sorry-state-of-videogame-journalism-in-ireland/"/>
+        <link href="http://coog.ie/blog/2013/11/27/the-sorry-state-of-videogame-journalism-in-ireland/"/>
         <updated>2013-11-27T00:57:00+00:00</updated>
-        <id>http://coogie.github.io/blog/2013/11/27/the-sorry-state-of-videogame-journalism-in-ireland</id>
+        <id>http://coog.ie/blog/2013/11/27/the-sorry-state-of-videogame-journalism-in-ireland</id>
         <content type="html"><![CDATA[<p>Spare me ten minutes or so while I rant at you about &ldquo;Videogame Journalism&rdquo; in Ireland and its sorry state. It&rsquo;s something that has been bothering me for a time now and it&rsquo;s not getting any better anytime soon.</p>
 
 <!--more-->
