@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-    <title><![CDATA[Category: octopress | Stephen Coogan]]></title>
-    <link href="http://coog.ie/blog/categories/octopress/atom.xml" rel="self"/>
+    <title><![CDATA[Category: open source | Stephen Coogan]]></title>
+    <link href="http://coog.ie/blog/categories/open-source/atom.xml" rel="self"/>
     <link href="http://coog.ie/"/>
     <updated>2015-01-04T13:33:25+00:00</updated>
     <id>http://coog.ie/</id>
@@ -87,87 +87,6 @@ Oscailte over to support it. I have no idea how much work is involced in doing
 so, I haven&rsquo;t even had the time to sit down and check out Octopress 3 for myself,
 but it will happen. If there&rsquo;s one thing that this project has done for me, it&rsquo;s
 help bolster my love for Open Source and make me want to keep giving back!</p>
-]]></content>
-    </entry>
-    
-    <entry>
-        <title type="html"><![CDATA[A new Octopress theme]]></title>
-        <link href="http://coog.ie/blog/2013/08/18/a-new-octopress-theme/"/>
-        <updated>2013-08-18T23:59:00+01:00</updated>
-        <id>http://coog.ie/blog/2013/08/18/a-new-octopress-theme</id>
-        <content type="html"><![CDATA[<p>Allow me to introduce to you a new Octopress theme, called Oscailte!</p>
-
-<p>Oscailte is an important milestone for me for many reasons. First of all, it&rsquo;s my first step into creating a theme usable by anybody, not just by me on my own sites! Yay! Secondly, it&rsquo;s the first open-source project that I&rsquo;ve put out into the great wild web, free for all to download and scrutinise through <a href="https://github.com/coogie/oscailte/">Github</a>!</p>
-
-<p>But enough about all of this, let&rsquo;s move on to getting the theme up and running. These installation instructions are available in the <a href="https://github.com/coogie/oscailte/blob/master/README.md">theme&rsquo;s README file</a> which will have the most up-to-date instructions.</p>
-
-<!-- more -->
-
-
-<p><img class="<a" src="href="http://i.imgur.com/0GlIXHW.jpg">http://i.imgur.com/0GlIXHW.jpg</a>&#8221; title=&#8221;Oscailte Preview&#8221; ></p>
-
-<h2>Installation</h2>
-
-<p>Oscailte requires that your system be running Sass 3.2.9 (Media Mark) or greater, so you may need to run a <code>bundle update</code> before you run your initial <code>rake generate</code> after installing the theme. You can check your current gem version by running <code>gem list sass</code>.</p>
-
-<p>Because Oscailte also uses git submodules to pull in <a href="http://inuitcss.com">inuitcss</a>, when you run <code>git clone</code> you must add in the <code>--recursive</code> option in order to get it working.</p>
-
-<p>You can install Oscailte like so:</p>
-
-<pre><code>$ cd your_octopress_directory
-$ git clone --recursive https://github.com/coogie/oscailte.git .themes/oscailte
-$ rake install['oscailte']
-$ rake generate
-</code></pre>
-
-<h2>Features</h2>
-
-<h3>Homepage</h3>
-
-<p>Oscailte includes a clean page, separated from the blogging capabilities of Octopress. The theme can be modified to instead use just the blog index as the homepage.</p>
-
-<h3>Gravatar</h3>
-
-<p>Oscailte makes use of the <code>site.email</code> used in <code>_config.yml</code> (if present) to grab and display your Gravatar if you use one. Otherwise, the theme will instead display the default Gravatar logo, which can be changed by replacing the file locally.</p>
-
-<p>If you wish to make use of the Gravatar feature, please ensure you use an email address that you do not mind being publicly crawlable by bots/spiders.</p>
-
-<h3>Social Sidebar</h3>
-
-<p>Oscailte allows you to display links to your other online profiles in a quick and easy fashion. To display the sidebar links to your other profiles, you must add the following to your <code>_config.yml</code> file.</p>
-
-<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>social:
-</span><span class='line'>  title: # Defaults to &ldquo;Follow me!&rdquo; if not present
-</span><span class='line'>  adn: # App.net
-</span><span class='line'>  dribbble:
-</span><span class='line'>  facebook:
-</span><span class='line'>  github:
-</span><span class='line'>  googleplus:
-</span><span class='line'>  linkedin:
-</span><span class='line'>  pinterest:
-</span><span class='line'>  stackoverflow:
-</span><span class='line'>  twitter:
-</span><span class='line'>  youtube:</span></code></pre></td></tr></table></div></figure></p>
-
-<p>Oscailte only supports the above sites, but more may be added as the user sees fit.</p>
-
-<h2>Collaboration</h2>
-
-<p><a href="https://github.com/coogie/oscailte">Oscailte is available on Github</a> under the <a href="https://github.com/coogie/oscailte/blob/master/LICENCE.md">MIT Licence</a>! I would greatly appreciate any help in both optimising the theme and improving the customisation available to users, so if you want to help out then feel free to <a href="https://github.com/coogie/oscailte/issues">submit issues or pull requests</a>!</p>
-
-<p>So that&rsquo;s Oscailte, my first Octopress theme! I learned a lot about both Octopress and theme development from this project. And if <em>you</em> would like to learn anything or just have questions about Oscailte, the feel free to get in touch with me or leave a comment below!</p>
 ]]></content>
     </entry>
     
