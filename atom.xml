@@ -4,7 +4,7 @@
     <title><![CDATA[Stephen Coogan]]></title>
     <link href="http://coog.ie/atom.xml" rel="self"/>
     <link href="http://coog.ie/"/>
-    <updated>2015-01-04T13:33:25+00:00</updated>
+    <updated>2015-01-04T13:38:24+00:00</updated>
     <id>http://coog.ie/</id>
     <author>
         <name><![CDATA[Stephen Coogan]]></name>
@@ -40,7 +40,7 @@ aestehtics of it intact. There are some slight changes here and there that do ch
 the overall style of it, but only very slightly, and I&rsquo;d like to just quickly go over
 some of the changes here.</p>
 
-<h2 class="title--indent">Goodbye Inuit.css</h2>
+<h2 class="h3 title--indent">Goodbye Inuit.css</h2>
 
 
 <p>While I absolutely love Harry Roberts and everything he&rsquo;s done for the industry, I
@@ -49,7 +49,7 @@ used throughout it than the actual project itself. The project isn&rsquo;t bad, 
 just that I didn&rsquo;t use enough of it throughout Oscailte to warrant having it as a
 dependency.</p>
 
-<h2 class="title--indent">Architecture</h2>
+<h2 class="h3 title--indent">Architecture</h2>
 
 
 <p>The original architecture of Oscailte was a mess. It was hastily cobbled together and
@@ -57,7 +57,7 @@ didn&rsquo;t really make much sense looking back at it. It was also a bit of a n
 maintain! That&rsquo;s all changed now that I have started applying the <a href="https://github.com/coogie/oscailte/blob/master/sass/oscailte/_oscailte.scss">concept of SMACSS into
 it</a>. Structure makes a lot more sense now, and things are so much easier to find and modify.</p>
 
-<h2 class="title--indent">Block-Element-Modifier (BEM)</h2>
+<h2 class="h3 title--indent">Block-Element-Modifier (BEM)</h2>
 
 
 <p>BEM is something that has interested me for quite some time now, and it&rsquo;s a methodology
@@ -67,7 +67,7 @@ other benefits to this as well, such as reduced specificity issues, which makes
 BEM a win-win for me. If you&rsquo;d like to learn more, check out <a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/">&ldquo;MindBEMding – getting your head ’round BEM syntax&rdquo;</a>
 over on CSS Wizardy.</p>
 
-<h2 class="title--indent">Variables and customisation</h2>
+<h2 class="h3 title--indent">Variables and customisation</h2>
 
 
 <p>Customisation is a huge thing for me. I&rsquo;m working really hard to make Oscailte
@@ -79,10 +79,10 @@ sure they were broken in one or two places. Now there are a <a href="https://git
 variables available in Oscailte 2.0</a>, and they are all broken out into their
 respective components and sections.</p>
 
-<h2 class="title--indent">Octopress 3 and Open Source</h2>
+<h2 class="h3 title--indent">Octopress 3 and Open Source</h2>
 
 
-<p>So, with <a href="">Octopress 3</a> just around the corner, I do have plans to migrate
+<p>So, with [Octopress 3][10] just around the corner, I do have plans to migrate
 Oscailte over to support it. I have no idea how much work is involced in doing
 so, I haven&rsquo;t even had the time to sit down and check out Octopress 3 for myself,
 but it will happen. If there&rsquo;s one thing that this project has done for me, it&rsquo;s
