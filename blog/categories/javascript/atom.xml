@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+    <title><![CDATA[Category: javascript | Stephen Coogan]]></title>
+    <link href="https://coog.ie/blog/categories/javascript/atom.xml" rel="self"/>
+    <link href="https://coog.ie/"/>
+    <updated>2015-11-24T19:49:29+00:00</updated>
+    <id>https://coog.ie/</id>
+    <author>
+        <name><![CDATA[Stephen Coogan]]></name>
+        <email><![CDATA[hello@coog.ie]]></email>
+      </author>
+    <generator uri="http://octopress.org/">Octopress</generator>
+
+    
+    <entry>
+        <title type="html"><![CDATA[Performance on the Front-end]]></title>
+        <link href="https://coog.ie/blog/2013/09/15/performance-on-the-front-end/"/>
+        <updated>2013-09-15T23:58:00+01:00</updated>
+        <id>https://coog.ie/blog/2013/09/15/performance-on-the-front-end</id>
+        <content type="html"><![CDATA[<p>The web, by its very nature and design, is synchronous. Things are parsed and executed as soon as they are reached, and there are some <em>very</em> important things to note about how CSS and JavaScript work in front-end web development:</p>
+
+<ul>
+<li>CSS blocks rendering</li>
+<li>Assets download in parallel, except Javascript</li>
+<li>JavaScript blocks downloads</li>
+</ul>
+
+
+<p>Now, while this might instill a sense of &ldquo;wat&rdquo; in you, it&rsquo;s all done for good (and smart) reasons, and it&rsquo;s also be something that all front-end devs should be aware of.</p>
+
+<!-- more -->
+
+
+
+
+<h2 class="gamma">Styles</h2>
+
+
+<p>CSS blocks page rendering because browsers want to render things as they get to them and in the correct order. Browsers won&rsquo;t render pages until they know all the styles available, meaning they don&rsquo;t have to go back and apply new styles to already-rendered elements, causing an expensive (and jarring) redraw.</p>
+
+<h2 class="gamma">Assets</h2>
+
+
+<p>The HTTP/1.1 spec makes the suggestions that browsers should use a maximum of two connections at a time to each domain.</p>
+
+<p><blockquote><p>Clients that use persistent connections SHOULD limit the number of simultaneous connections that they maintain to a given server. A single-user client SHOULD NOT maintain more than 2 connections with any server or proxy. A proxy SHOULD use up to 2*N connections to another server or proxy, where N is the number of simultaneously active users. These guidelines are intended to improve HTTP response times and avoid congestion.</p><footer><strong><a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1.4</strong> <cite>&#8220;>http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1.4</cite></footer></blockquote></p>
+
+<p>On the assumption that browsers download a max of two assets from one domain, we can crank up the amount of assets we can download at once by using a Content Delivery Network. If we&rsquo;re downloading a stylesheet and an image at the same time from <code>http://www.coog.ie/</code>, we can download a stylesheet and <em>three</em> images at the same time by using <code>http://static1.coog.ie/</code> and <code>http://static2.coog.ie/</code>, with each serving two files, alternating between the two domains.</p>
+
+<p>But things get a little troublesome when it comes to JavaScript.</p>
+
+<h2 class="gamma">Scripts</h2>
+
+
+<p>So, know we know that downloads happen in parallel, and having more domains to pull from means downloading more assets faster. However, JavaScript prevents this. Yep&hellip; It blocks it entirely.</p>
+
+<p>It does this for two reasons:</p>
+
+<ul>
+<li>The script being called could alter the DOM which means the browser will have to handle the changes before it can proceed with anything else.</li>
+<li>Typically, scripts need to be loaded, and executed, in a specific order.</li>
+</ul>
+
+
+<p>Browsers block parallel downloads with JavaScript because your 10KB jQuery plugin will most definitely download and execute before the 80KB GZipped jQuery library does.</p>
+
+<p>This is awesome, in terms of making your JavaScript work well, but it means bad news for evrything else on our page because while a script is downloading, it will prevent the browser downloading any other assets, regardless of which domain it&rsquo;s on. So, based on this, JavaScript should be moved to the end of the HTML, typically just before the <code>&lt;/body&gt;</code> tag.</p>
+
+<p>Unfortunately, not all scripts can be moved to the end of the document. If a script uses <code>document.write</code> to insert part of the page&rsquo;s content, then we can&rsquo;t move it lower in the page. In situations like this, we need to split our JavaScript files into those that we can move lower in the page, and those we can keep in the <code>&lt;head&gt;</code>, but in order to make this situation less painful for us, we should make sure that any JavaScript we load in the <code>&lt;head&gt;</code> is loaded <em>after</em> any CSS we have.</p>
+
+<h2 class="gamma">tl;dr &#8211; Putting the knowledge to use</h2>
+
+
+<p>So, using the things we&rsquo;ve learned, we now know that to improve performance on the front-end we should do the following:</p>
+
+<ul>
+<li>Place CSS at the top, in the <code>&lt;head&gt;</code></li>
+<li>Use a CDN to increase the number of parallel downloads</li>
+<li>Place JavaScript at the bottom, before <code>&lt;/body&gt;</code></li>
+<li>If placing the JavaScript at the bottom is not an option, then another performance gain can be had from placing it in the head, after the CSS.</li>
+</ul>
+
+]]></content>
+    </entry>
+    
+</feed>

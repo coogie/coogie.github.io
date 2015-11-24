@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+    <title><![CDATA[Category: web development | Stephen Coogan]]></title>
+    <link href="https://coog.ie/blog/categories/web-development/atom.xml" rel="self"/>
+    <link href="https://coog.ie/"/>
+    <updated>2015-11-24T19:49:29+00:00</updated>
+    <id>https://coog.ie/</id>
+    <author>
+        <name><![CDATA[Stephen Coogan]]></name>
+        <email><![CDATA[hello@coog.ie]]></email>
+      </author>
+    <generator uri="http://octopress.org/">Octopress</generator>
+
+    
+    <entry>
+        <title type="html"><![CDATA[Oscailte 2.0 and Open Source]]></title>
+        <link href="https://coog.ie/blog/2015/01/04/oscailte-2-dot-0-and-open-source/"/>
+        <updated>2015-01-04T10:35:17+00:00</updated>
+        <id>https://coog.ie/blog/2015/01/04/oscailte-2-dot-0-and-open-source</id>
+        <content type="html"><![CDATA[<p>It&rsquo;s been just over a year since <a href="http://coog.ie/blog/2013/08/18/a-new-octopress-theme/">I first released Oscailte</a> into the wild.
+And since then, I&rsquo;ve not only learned a few things about working with Octopress
+and creating themes for it, but I&rsquo;ve also learned a lot about managing my code,
+its structure, and in general how to make my life easier when creating projects.</p>
+
+<!-- more -->
+
+
+<p>When I first created Oscailte, I had planned to create a personal theme for myself
+and never really intended (or expected) for it to be used by anybody else. Yet here
+we are 103 stars and 24 forks later, and Oscailte is being used by people such as
+<a href="http://fusion94.org/">Tony Guntharp</a> (co-founder of SourceForge.net), the <a href="http://www.nokogiri.org/">Nokogiri parsing gem</a>,
+and even The University of Virginia&rsquo;s <a href="http://cs1110.cs.virginia.edu/">Intro to Programming course portal</a>. So
+it&rsquo;s been a little humbling, to say the least, that these people (among others) are
+happily using Oscailte for their Octopress installations! :D</p>
+
+<p>And with that, I&rsquo;d like to <a href="https://github.com/coogie/oscailte/releases">re-release Oscailte as v2.0</a>, which contains a great
+deal of changes to the theme and how it&rsquo;s structured, while keeping the original
+aestehtics of it intact. There are some slight changes here and there that do change
+the overall style of it, but only very slightly, and I&rsquo;d like to just quickly go over
+some of the changes here.</p>
+
+<h2 class="title--indent">Goodbye Inuit.css</h2>
+
+
+<p>While I absolutely love Harry Roberts and everything he&rsquo;s done for the industry, I
+have decided to remove inutcss from Oscailte. I feel as though I liked the concepts
+used throughout it than the actual project itself. The project isn&rsquo;t bad, at all, it&rsquo;s
+just that I didn&rsquo;t use enough of it throughout Oscailte to warrant having it as a
+dependency.</p>
+
+<h2 class="title--indent">Architecture</h2>
+
+
+<p>The original architecture of Oscailte was a mess. It was hastily cobbled together and
+didn&rsquo;t really make much sense looking back at it. It was also a bit of a nightmare to
+maintain! That&rsquo;s all changed now that I have started applying the <a href="https://github.com/coogie/oscailte/blob/master/sass/oscailte/_oscailte.scss">concept of SMACSS into
+it</a>. Structure makes a lot more sense now, and things are so much easier to find and modify.</p>
+
+<h2 class="title--indent">Block-Element-Modifier (BEM)</h2>
+
+
+<p>BEM is something that has interested me for quite some time now, and it&rsquo;s a methodology
+that I have even started applying to my own code in work. It&rsquo;s an amazing naming
+convention that, put simply, makes your code easier to understand. There are
+other benefits to this as well, such as reduced specificity issues, which makes
+BEM a win-win for me. If you&rsquo;d like to learn more, check out <a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/">&ldquo;MindBEMding – getting your head ’round BEM syntax&rdquo;</a>
+over on CSS Wizardy.</p>
+
+<h2 class="title--indent">Variables and customisation</h2>
+
+
+<p>Customisation is a huge thing for me. I&rsquo;m working really hard to make Oscailte
+incredibly simple to customise with as little work as possible. As such, I&rsquo;ve
+extracted as many of the styles as possible out into SCSS variables - so much
+more than before! Sure, <a href="https://github.com/coogie/oscailte/blob/fb04062e3099d9d901bf848d6eafefb300d73b8e/sass/oscailte/_variables.scss">older versions of Oscailte had SCSS variables</a>, but
+there wasn&rsquo;t a great deal of them, they could be somewhat confusing, and I&rsquo;m pretty
+sure they were broken in one or two places. Now there are a <a href="https://github.com/coogie/oscailte/blob/master/sass/oscailte/_variables.scss">huge amount of SCSS
+variables available in Oscailte 2.0</a>, and they are all broken out into their
+respective components and sections.</p>
+
+<h2 class="title--indent">Octopress 3 and Open Source</h2>
+
+
+<p>So, with <a href="">Octopress 3</a> just around the corner, I do have plans to migrate
+Oscailte over to support it. I have no idea how much work is involced in doing
+so, I haven&rsquo;t even had the time to sit down and check out Octopress 3 for myself,
+but it will happen. If there&rsquo;s one thing that this project has done for me, it&rsquo;s
+help bolster my love for Open Source and make me want to keep giving back!</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[Performance on the Front-end]]></title>
+        <link href="https://coog.ie/blog/2013/09/15/performance-on-the-front-end/"/>
+        <updated>2013-09-15T23:58:00+01:00</updated>
+        <id>https://coog.ie/blog/2013/09/15/performance-on-the-front-end</id>
+        <content type="html"><![CDATA[<p>The web, by its very nature and design, is synchronous. Things are parsed and executed as soon as they are reached, and there are some <em>very</em> important things to note about how CSS and JavaScript work in front-end web development:</p>
+
+<ul>
+<li>CSS blocks rendering</li>
+<li>Assets download in parallel, except Javascript</li>
+<li>JavaScript blocks downloads</li>
+</ul>
+
+
+<p>Now, while this might instill a sense of &ldquo;wat&rdquo; in you, it&rsquo;s all done for good (and smart) reasons, and it&rsquo;s also be something that all front-end devs should be aware of.</p>
+
+<!-- more -->
+
+
+
+
+<h2 class="gamma">Styles</h2>
+
+
+<p>CSS blocks page rendering because browsers want to render things as they get to them and in the correct order. Browsers won&rsquo;t render pages until they know all the styles available, meaning they don&rsquo;t have to go back and apply new styles to already-rendered elements, causing an expensive (and jarring) redraw.</p>
+
+<h2 class="gamma">Assets</h2>
+
+
+<p>The HTTP/1.1 spec makes the suggestions that browsers should use a maximum of two connections at a time to each domain.</p>
+
+<p><blockquote><p>Clients that use persistent connections SHOULD limit the number of simultaneous connections that they maintain to a given server. A single-user client SHOULD NOT maintain more than 2 connections with any server or proxy. A proxy SHOULD use up to 2*N connections to another server or proxy, where N is the number of simultaneously active users. These guidelines are intended to improve HTTP response times and avoid congestion.</p><footer><strong><a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1.4</strong> <cite>&#8220;>http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1.4</cite></footer></blockquote></p>
+
+<p>On the assumption that browsers download a max of two assets from one domain, we can crank up the amount of assets we can download at once by using a Content Delivery Network. If we&rsquo;re downloading a stylesheet and an image at the same time from <code>http://www.coog.ie/</code>, we can download a stylesheet and <em>three</em> images at the same time by using <code>http://static1.coog.ie/</code> and <code>http://static2.coog.ie/</code>, with each serving two files, alternating between the two domains.</p>
+
+<p>But things get a little troublesome when it comes to JavaScript.</p>
+
+<h2 class="gamma">Scripts</h2>
+
+
+<p>So, know we know that downloads happen in parallel, and having more domains to pull from means downloading more assets faster. However, JavaScript prevents this. Yep&hellip; It blocks it entirely.</p>
+
+<p>It does this for two reasons:</p>
+
+<ul>
+<li>The script being called could alter the DOM which means the browser will have to handle the changes before it can proceed with anything else.</li>
+<li>Typically, scripts need to be loaded, and executed, in a specific order.</li>
+</ul>
+
+
+<p>Browsers block parallel downloads with JavaScript because your 10KB jQuery plugin will most definitely download and execute before the 80KB GZipped jQuery library does.</p>
+
+<p>This is awesome, in terms of making your JavaScript work well, but it means bad news for evrything else on our page because while a script is downloading, it will prevent the browser downloading any other assets, regardless of which domain it&rsquo;s on. So, based on this, JavaScript should be moved to the end of the HTML, typically just before the <code>&lt;/body&gt;</code> tag.</p>
+
+<p>Unfortunately, not all scripts can be moved to the end of the document. If a script uses <code>document.write</code> to insert part of the page&rsquo;s content, then we can&rsquo;t move it lower in the page. In situations like this, we need to split our JavaScript files into those that we can move lower in the page, and those we can keep in the <code>&lt;head&gt;</code>, but in order to make this situation less painful for us, we should make sure that any JavaScript we load in the <code>&lt;head&gt;</code> is loaded <em>after</em> any CSS we have.</p>
+
+<h2 class="gamma">tl;dr &#8211; Putting the knowledge to use</h2>
+
+
+<p>So, using the things we&rsquo;ve learned, we now know that to improve performance on the front-end we should do the following:</p>
+
+<ul>
+<li>Place CSS at the top, in the <code>&lt;head&gt;</code></li>
+<li>Use a CDN to increase the number of parallel downloads</li>
+<li>Place JavaScript at the bottom, before <code>&lt;/body&gt;</code></li>
+<li>If placing the JavaScript at the bottom is not an option, then another performance gain can be had from placing it in the head, after the CSS.</li>
+</ul>
+
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[A new Octopress theme]]></title>
+        <link href="https://coog.ie/blog/2013/08/18/a-new-octopress-theme/"/>
+        <updated>2013-08-18T23:59:00+01:00</updated>
+        <id>https://coog.ie/blog/2013/08/18/a-new-octopress-theme</id>
+        <content type="html"><![CDATA[<p>Allow me to introduce to you a new Octopress theme, called Oscailte!</p>
+
+<p>Oscailte is an important milestone for me for many reasons. First of all, it&rsquo;s my first step into creating a theme usable by anybody, not just by me on my own sites! Yay! Secondly, it&rsquo;s the first open-source project that I&rsquo;ve put out into the great wild web, free for all to download and scrutinise through <a href="https://github.com/coogie/oscailte/">Github</a>!</p>
+
+<p>But enough about all of this, let&rsquo;s move on to getting the theme up and running. These installation instructions are available in the <a href="https://github.com/coogie/oscailte/blob/master/README.md">theme&rsquo;s README file</a> which will have the most up-to-date instructions.</p>
+
+<!-- more -->
+
+
+<p><img class="<a" src="href="http://i.imgur.com/0GlIXHW.jpg">http://i.imgur.com/0GlIXHW.jpg</a>&#8221; title=&#8221;Oscailte Preview&#8221; ></p>
+
+<h2>Installation</h2>
+
+<p>Oscailte requires that your system be running Sass 3.2.9 (Media Mark) or greater, so you may need to run a <code>bundle update</code> before you run your initial <code>rake generate</code> after installing the theme. You can check your current gem version by running <code>gem list sass</code>.</p>
+
+<p>Because Oscailte also uses git submodules to pull in <a href="http://inuitcss.com">inuitcss</a>, when you run <code>git clone</code> you must add in the <code>--recursive</code> option in order to get it working.</p>
+
+<p>You can install Oscailte like so:</p>
+
+<pre><code>$ cd your_octopress_directory
+$ git clone --recursive https://github.com/coogie/oscailte.git .themes/oscailte
+$ rake install['oscailte']
+$ rake generate
+</code></pre>
+
+<h2>Features</h2>
+
+<h3>Homepage</h3>
+
+<p>Oscailte includes a clean page, separated from the blogging capabilities of Octopress. The theme can be modified to instead use just the blog index as the homepage.</p>
+
+<h3>Gravatar</h3>
+
+<p>Oscailte makes use of the <code>site.email</code> used in <code>_config.yml</code> (if present) to grab and display your Gravatar if you use one. Otherwise, the theme will instead display the default Gravatar logo, which can be changed by replacing the file locally.</p>
+
+<p>If you wish to make use of the Gravatar feature, please ensure you use an email address that you do not mind being publicly crawlable by bots/spiders.</p>
+
+<h3>Social Sidebar</h3>
+
+<p>Oscailte allows you to display links to your other online profiles in a quick and easy fashion. To display the sidebar links to your other profiles, you must add the following to your <code>_config.yml</code> file.</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>social:
+</span><span class='line'>  title: # Defaults to &ldquo;Follow me!&rdquo; if not present
+</span><span class='line'>  adn: # App.net
+</span><span class='line'>  dribbble:
+</span><span class='line'>  facebook:
+</span><span class='line'>  github:
+</span><span class='line'>  googleplus:
+</span><span class='line'>  linkedin:
+</span><span class='line'>  pinterest:
+</span><span class='line'>  stackoverflow:
+</span><span class='line'>  twitter:
+</span><span class='line'>  youtube:</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Oscailte only supports the above sites, but more may be added as the user sees fit.</p>
+
+<h2>Collaboration</h2>
+
+<p><a href="https://github.com/coogie/oscailte">Oscailte is available on Github</a> under the <a href="https://github.com/coogie/oscailte/blob/master/LICENCE.md">MIT Licence</a>! I would greatly appreciate any help in both optimising the theme and improving the customisation available to users, so if you want to help out then feel free to <a href="https://github.com/coogie/oscailte/issues">submit issues or pull requests</a>!</p>
+
+<p>So that&rsquo;s Oscailte, my first Octopress theme! I learned a lot about both Octopress and theme development from this project. And if <em>you</em> would like to learn anything or just have questions about Oscailte, the feel free to get in touch with me or leave a comment below!</p>
+]]></content>
+    </entry>
+    
+</feed>

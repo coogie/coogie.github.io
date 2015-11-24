@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+    <title><![CDATA[Category: open source | Stephen Coogan]]></title>
+    <link href="https://coog.ie/blog/categories/open-source/atom.xml" rel="self"/>
+    <link href="https://coog.ie/"/>
+    <updated>2015-11-24T19:49:29+00:00</updated>
+    <id>https://coog.ie/</id>
+    <author>
+        <name><![CDATA[Stephen Coogan]]></name>
+        <email><![CDATA[hello@coog.ie]]></email>
+      </author>
+    <generator uri="http://octopress.org/">Octopress</generator>
+
+    
+    <entry>
+        <title type="html"><![CDATA[Oscailte 2.0 and Open Source]]></title>
+        <link href="https://coog.ie/blog/2015/01/04/oscailte-2-dot-0-and-open-source/"/>
+        <updated>2015-01-04T10:35:17+00:00</updated>
+        <id>https://coog.ie/blog/2015/01/04/oscailte-2-dot-0-and-open-source</id>
+        <content type="html"><![CDATA[<p>It&rsquo;s been just over a year since <a href="http://coog.ie/blog/2013/08/18/a-new-octopress-theme/">I first released Oscailte</a> into the wild.
+And since then, I&rsquo;ve not only learned a few things about working with Octopress
+and creating themes for it, but I&rsquo;ve also learned a lot about managing my code,
+its structure, and in general how to make my life easier when creating projects.</p>
+
+<!-- more -->
+
+
+<p>When I first created Oscailte, I had planned to create a personal theme for myself
+and never really intended (or expected) for it to be used by anybody else. Yet here
+we are 103 stars and 24 forks later, and Oscailte is being used by people such as
+<a href="http://fusion94.org/">Tony Guntharp</a> (co-founder of SourceForge.net), the <a href="http://www.nokogiri.org/">Nokogiri parsing gem</a>,
+and even The University of Virginia&rsquo;s <a href="http://cs1110.cs.virginia.edu/">Intro to Programming course portal</a>. So
+it&rsquo;s been a little humbling, to say the least, that these people (among others) are
+happily using Oscailte for their Octopress installations! :D</p>
+
+<p>And with that, I&rsquo;d like to <a href="https://github.com/coogie/oscailte/releases">re-release Oscailte as v2.0</a>, which contains a great
+deal of changes to the theme and how it&rsquo;s structured, while keeping the original
+aestehtics of it intact. There are some slight changes here and there that do change
+the overall style of it, but only very slightly, and I&rsquo;d like to just quickly go over
+some of the changes here.</p>
+
+<h2 class="title--indent">Goodbye Inuit.css</h2>
+
+
+<p>While I absolutely love Harry Roberts and everything he&rsquo;s done for the industry, I
+have decided to remove inutcss from Oscailte. I feel as though I liked the concepts
+used throughout it than the actual project itself. The project isn&rsquo;t bad, at all, it&rsquo;s
+just that I didn&rsquo;t use enough of it throughout Oscailte to warrant having it as a
+dependency.</p>
+
+<h2 class="title--indent">Architecture</h2>
+
+
+<p>The original architecture of Oscailte was a mess. It was hastily cobbled together and
+didn&rsquo;t really make much sense looking back at it. It was also a bit of a nightmare to
+maintain! That&rsquo;s all changed now that I have started applying the <a href="https://github.com/coogie/oscailte/blob/master/sass/oscailte/_oscailte.scss">concept of SMACSS into
+it</a>. Structure makes a lot more sense now, and things are so much easier to find and modify.</p>
+
+<h2 class="title--indent">Block-Element-Modifier (BEM)</h2>
+
+
+<p>BEM is something that has interested me for quite some time now, and it&rsquo;s a methodology
+that I have even started applying to my own code in work. It&rsquo;s an amazing naming
+convention that, put simply, makes your code easier to understand. There are
+other benefits to this as well, such as reduced specificity issues, which makes
+BEM a win-win for me. If you&rsquo;d like to learn more, check out <a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/">&ldquo;MindBEMding – getting your head ’round BEM syntax&rdquo;</a>
+over on CSS Wizardy.</p>
+
+<h2 class="title--indent">Variables and customisation</h2>
+
+
+<p>Customisation is a huge thing for me. I&rsquo;m working really hard to make Oscailte
+incredibly simple to customise with as little work as possible. As such, I&rsquo;ve
+extracted as many of the styles as possible out into SCSS variables - so much
+more than before! Sure, <a href="https://github.com/coogie/oscailte/blob/fb04062e3099d9d901bf848d6eafefb300d73b8e/sass/oscailte/_variables.scss">older versions of Oscailte had SCSS variables</a>, but
+there wasn&rsquo;t a great deal of them, they could be somewhat confusing, and I&rsquo;m pretty
+sure they were broken in one or two places. Now there are a <a href="https://github.com/coogie/oscailte/blob/master/sass/oscailte/_variables.scss">huge amount of SCSS
+variables available in Oscailte 2.0</a>, and they are all broken out into their
+respective components and sections.</p>
+
+<h2 class="title--indent">Octopress 3 and Open Source</h2>
+
+
+<p>So, with <a href="">Octopress 3</a> just around the corner, I do have plans to migrate
+Oscailte over to support it. I have no idea how much work is involced in doing
+so, I haven&rsquo;t even had the time to sit down and check out Octopress 3 for myself,
+but it will happen. If there&rsquo;s one thing that this project has done for me, it&rsquo;s
+help bolster my love for Open Source and make me want to keep giving back!</p>
+]]></content>
+    </entry>
+    
+</feed>
