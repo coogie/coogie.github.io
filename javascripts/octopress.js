@@ -11,6 +11,6 @@ jQuery(function(){
     var gravatarImage = jQuery('img.hero__gravatar'),
         email         = jQuery(gravatarImage).data('gravatar');
     if (email) {
-        jQuery(gravatarImage).attr({src: 'http://www.gravatar.com/avatar/' + CryptoJS.MD5(email) + '?s=250'}).removeAttr('data-gravatar');
+        jQuery(gravatarImage).attr({src: '//www.gravatar.com/avatar/' + CryptoJS.MD5(email) + '?s=250'}).removeAttr('data-gravatar');
     }
 });

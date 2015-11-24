@@ -1,6 +1,6 @@
 /* TEAM */
 Author: Stephen Coogan
-Site: http://coog.ie
+Site: https://coog.ie
 Twitter: https://www.twitter.com/coog_ie
 Github: https://www.github.com/coogie
 
