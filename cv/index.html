@@ -78,56 +78,13 @@
                 
                 <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
                 
-                    <article class="page">
+                    <article class="page page--cv">
 
     
 
-    <style>
-    hr {
-        margin: 2rem 0;
-    }
-    #skills {
-        -webkit-column-count: 3;
-           -moz-column-count: 3;
-            -ms-column-count: 3;
-                column-count: 3;
-        -webkit-column-gap: 20px;
-           -moz-column-gap: 20px;
-            -ms-column-gap: 20px;
-                column-gap: 20px;
-    }
-    .page li {
-        margin-bottom: 0.5em;
-    }
-    @media (max-width: 650px) {
-        #skills {
-            -webkit-column-count: 2;
-               -moz-column-count: 2;
-                -ms-column-count: 2;
-                    column-count: 2;
-            -webkit-column-gap: 20px;
-               -moz-column-gap: 20px;
-                -ms-column-gap: 20px;
-                    column-gap: 20px;
-        }
-    }
-    @media (max-width: 360px) {
-        #skills {
-            -webkit-column-count: 1;
-               -moz-column-count: 1;
-                -ms-column-count: 1;
-                    column-count: 1;
-            -webkit-column-gap: 20px;
-               -moz-column-gap: 20px;
-                -ms-column-gap: 20px;
-                    column-gap: 20px;
-        }
-    }
-</style>
-
-<h1 style="display: block; text-align: center;">
+    <h1 style="display: block; text-align: center;">
     Stephen Coogan
-    <small class="muted">Front-End Web Developer</small>
+    <small class="muted">Front-end Web Developer</small>
 </h1>
 
 <hr class="divider">
@@ -143,31 +100,75 @@
 <section>
     <h1 class="h2 title--indent">Experience</h1>
 
-    <article>
+    <article class="era">
         <h1 class="h4">
-            <a href="http://www.paddypower.com">Paddy Power</a> <small class="muted">Front-End Web Developer | Aug. 2013 - present</small>
+            <a href="http://www.paddypower.com">Paddy Power</a> <small class="muted">Front-end Web Developer | Aug. 2013 - present</small>
         </h1>
+
         <p>
-            Working as part of the Paddy Power Sportsbook team, helping deliver a consistent and easy-to-use experience to millions of users per month by improving page performance and usabliity. Improving the lives and mental stability of in-house developers by refactoring HTML and CSS.
+            Working as part of the Paddy Power Sportsbook team, helping deliver a consistent and easy-to-use experience to millions of users per month by improving page performance and usability. Improving the lives and mental stability of in-house developers by refactoring HTML and CSS.
         </p>
+
+        <h2 class="h6 title--indent">Notable tasks and projects</h2>
+
+        <h3 class="h6">In-play Betting Pages <small class="muted"><a href="http://live.paddypower.com">http://live.paddypower.com/</a> | <time datetime="2015-12-01">Dec. 2014</time></small></h3>
+        <p>
+            Paddy Power&#8217;s newest In-play Betting Pages were created as part of an initiative to create more in-house, best-in-class, products that would provide value to the company while simultaneously reducing depenencies on third-party clients. These pages use a number of new technologies such as AngularJS and WebSockets for realtime price updates.
+        </p>
+        <p>
+            As part of working on the core functionality of the site, I also developed the initial project structure to allow the project to scale painlessly, as well as created an extensive Gruntfile that would handle a large number of tasks that were responsible for building the source files, committing the newly-built files to Git, and automatically versioning the project according to <a href="http://semver.org">Semantic Versioning</a>. These Grunt tasks were also responsible for various other tasks such as compiling Sass files to CSS and the minification &amp; optimisation of all JavaScript.
+        </p>
+        <ul class="list--columned">
+            <li>Agile/Kanban</li>
+            <li>AngularJS</li>
+            <li>Git</li>
+            <li>Grunt</li>
+            <li>Realtime Data</li>
+            <li>Responsive Design</li>  
+            <li>Sass/SCSS</li>
+            <li>Semantic Versioning</li>
+            <li>WebSockets</li>
+        </ul>
+
+        <h3 class="h6">Abacus CSS Framework <small class="muted">2015</small></h3>
+        <p>
+            The Abacus CSS Framework is a powerful, modular, and lightweight CSS component library built using <abbr title="Object-oriented CSS">OOCSS</abbr> and <abbr title="Block, Element, Modifier">BEM</abbr> notation, for use across all Paddy Power sites and products. It features a powerful mobile-first grid system, incredibly flexible components and is capable of delivering the entirety of Paddy Power&#8217;s online branding and style, as well as full structure and layout support for mobile-first development in <strong>just 9KiB</strong>.
+        </p>
+        <p>
+            The project is a slacktime project that I created to help intertwine the Web Development and Product Design teams to get them to communicate more, and help bring consistency to Paddy Power&#8217;s branding and design across our entire online portfolio.
+        </p>
+        <p>
+            It has given designers the ability to easily update the look and feel of all Paddy Power&#8217;s online products, allowing them to confidently make changes while reducing the dependency on developers to make said changes on their behalf - freeing up valuable time for other projects.
+        </p>
+        <ul class="list--columned">
+            <li>Agile/Kanban</li>
+            <li><abbr title="Block, Element, Modifier">BEM</abbr> Notation</li>
+            <li>Git</li>
+            <li>Grunt</li>
+            <li>Gulp</li>
+            <li>Mobile-first Design</li>  
+            <li>Object-oriented CSS</li>
+            <li>Responsive Design</li>  
+            <li>Sass/SCSS</li>
+            <li>Semantic Versioning</li>
+        </ul>
     </article>
 
-    <hr class="muted">
 
-    <article>
+    <article class="era">
         <h1 class="h4">
-            <a href="http://www.centralreservations.com">CentralReservations.com</a> <small class="muted">Front-End Web Developer | Sep. 2011 - May 2013</small>
+            <a href="http://www.centralreservations.com">CentralReservations.com</a> <small class="muted">Front-end Web Developer | Sep. 2011 - May 2013</small>
         </h1>
 
         <p>
-            Responsible for maintaining the look and feel of both the main reservation website, and the company&#8217;s own <a href="http://www.centralreservations.biz">corporate site</a>. Also responsible for maintenance of imaging and color schemes of over 1,500 microsites created and hosted on behalf of hoteliers.
+            Responsible for maintaining the look and feel of both the <a href="http://www.centralreservations.com">primary reservation website</a>, and the company&#8217;s own <a href="http://www.centralreservations.biz">corporate site</a>. Also responsible for maintenance of imaging and colour schemes of over 1,500 microsites created and hosted on behalf of hoteliers.
         </p>
 
-        <strong>Notable tasks</strong>
+        <h2 class="h6">Notable tasks</h2>
 
         <ul>
             <li>
-                Successfully advocated for the use of <a href="https://www.pyrocms.com/">PyroCMS</a> on several of our microsites to allow hoteliers a friendly and easy interface to update their sites. The decision to use PyroCMS was based on our needs for a CMS that was not only extremely lightweight and easy to use, but was quick and easy to theme for.
+                Successfully advocated for the use of <a href="https://www.pyrocms.com/">PyroCMS</a> on several of our microsites to allow hoteliers a friendly and easy interface to update their sites. The decision to use PyroCMS was based on the need for a CMS that was not only extremely lightweight and easy for customers to use, but was quick and easy to theme for.
             </li>
             <li>
                 Completely redesigned and redeveloped the company&#8217;s booking engine, offered to hoteliers for use on their own websites, and drastically improved UX resulting in increased conversion across many existing sites.
@@ -176,17 +177,16 @@
                 Lead the implementation of front-end frameworks and technology such as <a href="http://getbootstrap.com/">Twitter&#8217;s Bootstrap</a> which allowed allocating extra resources to back-end development.
             </li>
             <li>
-                Introduced the use of the <a href="http://www.lesscss.org/">LESS CSS preprocessor</a> which decreased development time and enabled us to keep third-party libraries and code up-to-date with great ease.
+                Introduced the use of the <a href="http://www.lesscss.org/">LESS CSS pre-processor</a> which decreased development time and enabled us to keep third-party libraries and code up-to-date with great ease.
             </li>
             <li>
-                Currently spearheading the development of mobile-friendly themes for use on over 1,500 microsites which would enable customers to book rooms with incredible ease across many mobile devices. Examples of these can be shown on request, but unfortunately copies cannot be provided.
+                Spearheaded the development of mobile-friendly themes for use on over 1,500 microsites which would enable customers to book rooms with incredible ease across a vast array of mobile devices.
             </li>
         </ul>
     </article>
 
-    <hr class="muted">
 
-    <article>
+    <article class="era">
         <h1 class="h4">
             <a href="http://www.centralr.com/">CentralR.com</a> <small class="muted">Web Developer | May 2008 &ndash; Mar. 2009</small>
         </h1>
@@ -195,7 +195,7 @@
             A direct competitor to CentralReservations.com, CentralR.com operates in a similar fashion and is responsible for over 1,000 external sites created and maintained on behalf of hoteliers.
         </p>
 
-        <strong>Notable tasks</strong>
+        <h2 class="h6">Notable tasks</h2>
 
         <ul>
             <li>Worked as part of a small team for the complete redesign and redevelopment of the company&#8217;s main reservation site under a very tight deadline.</li>
@@ -204,9 +204,8 @@
         </ul>
     </article>
 
-    <hr class="muted">
 
-    <article>
+    <article class="era hide">
         <h1 class="h4">
             <a href="http://www.inkwelltattoo.net">Inkwell Tattoo</a> <small class="muted">2008</small>
         </h1>
@@ -224,7 +223,7 @@
 <section>
     <h1 class="h2 title--indent">Side Projects</h1>
 
-    <article class="hide">
+    <article class="era hide">
         <!--
             I have decided to officially retire Promethean Gaming
             as an active project.
@@ -238,9 +237,8 @@
         </p>
     </article>
 
-    <hr class="muted hide">
 
-    <article>
+    <article class="era">
         <h1 class="h4">
             <a href="https://github.com/coogie/oscailte/">Oscailte</a> <small class="muted">2013 - present</small>
         </h1>
@@ -250,21 +248,19 @@
         </p>
     </article>
 
-    <hr class="muted">
 
-    <article>
+    <article class="era">
         <h1 class="h4">
             DesktopVersion <small class="muted">2013</small>
         </h1>
 
         <p>
-            DesktopVersion is a Reddit bot written entirely in Ruby that scans Reddit submissions linking to <a href="http://en.m.wikipedia.org">en.m.wikipedia.org</a> and then leaves a comment to that same submission with a standard link to the Wikipedia article (a common complaint in the Reddit ecosystem).
+            DesktopVersion was a <a href="https://www.reddit.com/">Reddit</a> bot written entirely in Ruby that could scan recent Reddit submissions linking to <a href="http://en.m.wikipedia.org">en.m.wikipedia.org</a> and then left a comment to that same submission with a standard link to the Wikipedia article.
         </p>
     </article>
 
-    <hr class="muted">
 
-    <article>
+    <article class="era hide">
         <h1 class="h4">
             Gazebo <small class="muted">2013</small>
         </h1>
@@ -285,7 +281,7 @@
         I&#8217;m largely self-taught when it comes to front-end web development and have acquired these skills over the past few years by following blogs and tutorials by some of the most respected individuals in the industry such as <a href="//paulirish.com/">Paul Irish</a>, <a href="//css-tricks.com/">Chris Coyier</a>, <a href="//davidwalsh.name/">David Walsh</a>, and <a href="//csswizardry.com/">Harry Roberts</a> - to name but a few.
     </p>
 
-    <p>That being said, I have recently finished the following course:</p>
+    <p>That being said, I <em>have</em> finished the following course:</p>
 
     <article>
         <h1 class="h4">
@@ -301,7 +297,7 @@
 
 <section>
     <h1 class="h2 title--indent">Skills</h1>
-    <ul id="skills" class="unstyled">
+    <ul class="unstyled list--columned">
         <li>xHTML, HTML, CSS, JavaScript</li>
         <li>LESS, SASS/SCSS</li>
         <li>OOCSS, BEM</li>
@@ -320,7 +316,7 @@
     </p>
 
     <p>
-        More recently, I have begun working woth Responsive Web Design and have created some site themes that use this technique to deliver a rich experience across all devices.
+        More recently, I have been working with Responsive Web Design and have created some site themes that use this technique to deliver a rich experience across all devices.
     </p>
 </section>
 
