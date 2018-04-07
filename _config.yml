@@ -29,9 +29,8 @@ social:
   Keybase: https://keybase.io/coogie
 title: Stephen Coogan
 subtitle: Front-end Web Developer
-url: http://localhost:4000 # the base hostname & protocol for your site, e.g. http://example.com
+url: https://coog.ie # the base hostname & protocol for your site, e.g. http://example.com
 permalink: /blog/:year/:month/:day/:title/
-primaryColor: '#900'
 show_excerpts: true
 
 analytics_id: UA-36133007-1
@@ -40,8 +39,8 @@ analytics_id: UA-36133007-1
 markdown: kramdown
 
 sass:
-  style: expanded
-  # style: compressed
+  # style: expanded
+  style: compressed
 
 plugins:
  - jekyll-avatar
