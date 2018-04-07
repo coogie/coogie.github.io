@@ -1,0 +1,368 @@
+---
+title: C.V.
+permalink: /cv/
+group: navigation
+sort_order: 4
+body_modifier: cv
+
+objective: >
+  <p>To evangelise best practices for both large and small scale websites and
+  applications, encourage building forward-compatible websites, componentisation, cross-team
+  mindshare of concepts, and trying to avoid supporting as much Internet Explorer as user
+  statistics allow &ndash; for the sake of everone's sanity&hellip;</p>
+
+experience:
+  - company: CarTrawler
+    url: https://www.cartrawler.com/
+    role: Front-end Web Developer
+    period: Aug. 2016 - present
+    description: >-
+      <p>Currently working as part of the Front-end Architecture team at CarTrawler
+      &ndash; a team responsible for the implementation of best practices and performance
+      increases &amp; optimisations throughout a number of products. As well as
+      implementing these changes, our team also strives to increase developer mindshare
+      and knowledge of such best practices in all other teams.</p>
+    projects:
+      - title: "Prism - Styling Framework & Design System "
+        type: "Proprietary Project"
+        period: "Ongoing"
+        description: >-
+          <p>The Prism Styling Framework & Design System is an initiative
+          to provide a best-in-class system to help synergise design and development
+          functions, aiming to blur the line between when design stops and development
+          starts and easing transition between the two, reducing friction between teams.
+          This is accomplished by working very closely with design teams to create a
+          standard library of known components and styles that can be called upon, at a
+          whim, to create almost any visual representation of CarTrawler products with
+          full confidence in their accurate representation in-browser.</p>
+          <p>In addition to this, the Framework & Design System is helping lay the
+          groundwork for a greater push towards a wholly componentised approach
+          providing all teams in the company with complete access to a shared component
+          library, allowing them to mix and match from a predefined list of on-brand,
+          fully-tested components. This approach will eventually provide incredible
+          stability and identical core functionality, regardless of tech stack, device,
+          or screen size.</p>
+        colophon:
+          - <abbr title="Block, Element, Modifier">BEM</abbr> Notation
+          - Git
+          - Gulp
+          - <abbr title="Inverted Triangle CSS ">ITCSS</abbr>
+          - Mobile-first Design
+          - Object-oriented CSS
+          - Responsive Design
+          - Sass
+          - Semantic Versioning
+  - company: Paddy Power
+    url: https://www.paddypower.com/
+    role: Front-end Web Developer
+    period: Aug. 2013 - Aug. 2016
+    description: >-
+      <p>Worked as part of the Paddy Power Sportsbook team, helping deliver a consistent
+      and easy-to-use experience to millions of users per month by improving page
+      performance and usability. Also helped in improving the lives and mental stability
+      of in-house developers by refactoring HTML and CSS, as well as implementing
+      best-practices and standards.</p>
+    projects:
+      - title: "In-play Betting Pages"
+        url: "https://live.paddypower.com/"
+        period: "Dec. 2014"
+        description: >-
+          <p>Paddy Power's newest In-play Betting Pages were developed as part of an
+          initiative to create more in-house, best-in-class, products that would provide
+          value to the company while simultaneously reducing dependencies on third-party
+          clients. These pages use a number of new technologies such as AngularJS and
+          WebSockets for realtime price updates.</p>
+
+          <p>As part of working on the core functionality of the site, I also developed
+          the initial project structure to allow the project to scale painlessly, as well
+          as created an extensive Gruntfile that would handle a large number of tasks that
+          were responsible for building the source files, committing the newly-built files
+          to Git, and automatically versioning the project according to Semantic
+          Versioning.</p>
+        colophon:
+          - Agile/Kanban
+          - AngularJS
+          - Git
+          - Grunt
+          - Realtime Data
+          - Responsive Design
+          - Sass/SCSS
+          - Semantic Versioning
+          - WebSockets
+      - title: "Abacus CSS Framework"
+        period: "2016"
+        description: >-
+          <p>The Abacus CSS Framework is a powerful, modular, and lightweight CSS
+          component library built using OOCSS and BEM notation, for use across all Paddy
+          Power sites and products. It features a powerful mobile-first grid system,
+          incredibly flexible components and is capable of delivering the entirety of
+          Paddy Power's online branding and style, as well as full structure and layout
+          support for mobile-first development in just 9KiB.</p>
+
+          <p>The project is a slacktime project that I created to help intertwine the Web
+          Development and Product Design teams to get them to communicate more, and help
+          bring consistency to Paddy Power's branding and design across our entire online
+          portfolio.</p>
+
+          <p>It has given designers the ability to easily update the look and feel of all
+          Paddy Power's online products, allowing them to confidently make changes while
+          reducing the dependency on developers to make said changes on their behalf -
+          freeing up valuable time for other projects.</p>
+        colophon:
+          - Agile/Kanban
+          - <abbr title="Block, Element, Modifier">BEM</abbr> Notation
+          - Git
+          - Grunt
+          - Gulp
+          - Mobile-first Design
+          - Object-oriented CSS
+          - Responsive Design
+          - Sass/SCSS
+          - Semantic Versioning
+  - company: CentralReservations.com
+    url: https://www.centralreservations.com/
+    role: Front-end Web Developer
+    period: Sep. 2011 - Aug. 2013
+    description: >-
+      <p>Responsible for maintaining the look and feel of both the primary reservation
+      website, and the company's own corporate site. Also responsible for maintenance of
+      imaging and colour schemes of over 1,500 microsites created and hosted on behalf of
+      hoteliers.</p>
+
+      <h3>Notable tasks</h3>
+      <ul>
+        <li>
+          Successfully advocated for the use of <a href="https://www.pyrocms.com/">PyroCMS</a>
+          on several of our microsites to allow hoteliers a friendly and easy interface
+          to update their sites. The decision to use PyroCMS was based on the need for a
+          CMS that was not only extremely lightweight and easy for customers to use, but
+          was quick and easy to theme for.
+        </li>
+        <li>
+          Completely redesigned and redeveloped the company's booking engine, offered to
+          hoteliers for use on their own websites, and drastically improved UX resulting
+          in increased conversion across many existing sites.
+        </li>
+        <li>
+          Lead the implementation of front-end frameworks and technology such as
+          <a href="http://getbootstrap.com/">Twitter's Bootstrap</a> which allowed
+          allocating extra resources to back-end development.
+        </li>
+        <li>
+          Introduced the use of the <a href="http://www.lesscss.org/">LESS CSS
+          pre-processor</a> which decreased development time and enabled us to keep
+          third-party libraries and code up-to-date with great ease.
+        </li>
+        <li>
+          Spearheaded the development of mobile-friendly themes for use on over 1,500
+          microsites which would enable customers to book rooms with incredible ease
+          across a vast array of mobile devices.
+        </li>
+      </ul>
+  - company: CentralR.com
+    url: https://www.centralr.com/
+    role: Web Developer
+    period: May 2008 – Mar. 2009
+    description: >-
+      <p>A direct competitor to CentralReservations.com, CentralR.com operates in a
+      similar fashion and is responsible for over 1,000 external sites created and
+      maintained on behalf of hoteliers.</p>
+
+      <h3>Notable tasks</h3>
+      <ul>
+        <li>
+          Worked as part of a small team for the complete redesign and redevelopment of
+          the company's main reservation site under a very tight deadline.
+        </li>
+        <li>
+          Responsible for the imaging and copy on several of the company's external hotel
+          websites.
+        </li>
+        <li>
+          Designed and created the company's advertising for use across the UK & Ireland
+          with Sky Active.
+        </li>
+      </ul>
+
+projects:
+  - title: Oscailte (Octopress Theme)
+    url: https://github.com/coogie/oscailte/
+    period: 2013
+    description: >-
+      Oscailte is a free (as in beer) and open-source theme, built for use with the
+      Octopress blogging framework. Designed to be highly customisable by simply setting 
+      flags and changing config variables, it has proven to be a somewhat popular theme
+      &mdash; allowing users to spend less time fighting with the theme and more time
+      writing.
+  - title: DesktopVersion
+    period: 2013
+    description: >-
+      DesktopVersion was a Reddit bot written entirely in Ruby that could scan recent
+      Reddit submissions linking to en.m.wikipedia.org and then left a comment to that
+      same submission with a standard link to the Wikipedia article. 
+
+education:
+  description: >-
+    <p>I'm largely self-taught when it comes to front-end web development and have
+    acquired these skills over the past few years by following blogs and tutorials by some
+    of the most respected individuals in the industry such as
+    <a href="https//paulirish.com/">Paul Irish</a>,
+    <a href="https//css-tricks.com/">Chris Coyier</a>,
+    <a href="https//davidwalsh.name/">David Walsh</a>,
+    and <a href="https//csswizardry.com/">Harry Roberts</a> - to name but a few.</p>
+    
+    <p>That being said, I <em>have</em> finished the following course:</p>
+  courses:
+    - degree: Certificate in Web Technologies 
+      institute: NCI, Dublin
+      year: 2013
+      description: >-
+        <ul>
+          <li>Completed course with First Class Honours.</li>
+          <li>
+            Was elected class representative. During my tyranny, I encouraged fellow
+            classmates to collaborate and share course notes with each other via Github
+            repositories - inspired by the theory of <a href="http://en.wikipedia.org/wiki/Collective_intelligence">Collective Intelligence</a>.
+          </li>
+        </ul>
+
+skills:
+  # before: >-
+  items:
+    - xHTML, HTML, CSS, JavaScript
+    - LESS, SASS/SCSS
+    - OOCSS, BEM
+    - jQuery, AngularJS
+    - Ruby, PHP
+    - Ruby on Rails
+    - MVC Architecture
+    - Photoshop, Illustrator
+    - Git
+    - WordPress, PyroCMS
+    - Linux (Ubuntu)
+  after: >-
+    <p>I also have my fair share of cross-browser design and testing experience, having
+    developed websites to play nice with browsers as far back as IE 6.</p>
+
+    <p>More recently, I have been working with Responsive Web Design and have created some
+    site themes that use this technique to deliver a rich experience across all devices.</p>
+
+interests: >-
+  <p>There are a lot of things that I enjoy, but out of all of them, I enjoy these the
+  most: reading about the latest advancements in web technologies &amp; reading in general,
+  typography, music, fixing things most people would deem broken, playing games &ndash;
+  board &amp; video, and taking myself seriously at times.</p>
+  <p>I also have a strong passion for open-source technology
+  (<a href="https://github.com/coogie/coogie.github.io/commits/source/source/cv/index.html">this CV is open-source!</a>)
+  and a free and open Internet, and regularly donate to the
+  <a href="https://donate.mozilla.org/en-GB/?currency=eur&amp;presets=20,10,5,3&amp;amount=10">Mozilla Foundation</a> and the <a href="https://supporters.eff.org/">
+  <abbr title="Electronic Frontier Foundation">EFF</abbr></a>.</p>
+---
+
+<article class="CV">
+  <h1 class="CV__title">
+    Stephen Coogan
+    <small class="Muted">Front-end Web Developer</small>
+  </h1>
+
+  {% if page.objective %}
+    <section class="CV__section CV__section--objective">
+      <h1 class="SectionTitle h2">Objective</h1>
+      {{- page.objective -}}
+    </section>
+  {% endif %}
+
+  {% if page.experience %}
+    <section class="CV__section CV__section--experience">
+      <h1 class="SectionTitle h2">Experience</h1>
+      {% for role in page.experience %}
+        <article class="Era CV__article">
+          <h1 class="Era__title h3">
+            {{ role.company }}<br>
+            <small class="Muted">{{ role.role }} | {{ role.period }}</small>
+          </h1>
+
+          {{ role.description }}
+
+          {% if role.projects %}
+            <section class="Era__section">
+              <h2 class="h4">Notable tasks and projects</h2>
+              {% for project in role.projects %}
+                <article class="Project">
+                  <h3 class="h5 Project__title">
+                    {{ project.title }}
+                    <small class="Muted">{{project.type }} | {{ project.period }}</small>
+                  </h3>
+                  {{ project.description }}
+                  
+                  {% if project.colophon %}
+                  <ul class="Project__colophon">
+                    {% for item in project.colophon %}<li>{{ item }}</li>{% endfor %}
+                  </ul>
+                  {% endif %}
+                </article>
+              {% endfor %}
+            </section>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </section>
+  {% endif page.experience %}
+
+  {% if page.projects %}
+    <section class="CV__section CV__section--projects">
+      <h1 class="SectionTitle h2">Side Projects</h1>
+      {% for project in page.projects %}
+        <article class="Project">
+          <h1 class="Project__title h3">
+            {% if project.url %}
+              <a href="{{ project.url }}">{{ project.title }}</a>
+            {% else %}
+              {{ project.title }}
+            {% endif %}
+            <small class="Muted">{{ project.period }}</small>
+          </h1>
+          {{ project.description }}
+        </article>
+      {% endfor %}
+    </section>
+  {% endif %}
+
+  {% if page.education %}
+    <section class="CV__section CV__section--education">
+      <h1 class="SectionTitle h2">Education</h1>
+      {{ page.education.description }}
+
+      {% for course in page.education.courses %}
+        <article>
+          <h1 class="h3">
+            {{ course.degree }}<br>
+            <small class="Muted">{{ course.institute }} | {{ course.year }}</small>
+          </h1>
+          {{ course.description }}
+        </article>
+      {% endfor %}
+    </section>
+  {% endif %}
+
+  {% if page.skills %}
+    <section class="CV__section CV__section--skills">
+      <h1 class="SectionTitle h2">Skills</h1>
+      {{- page.skills.before -}}
+
+      <ul>
+        {% for skill in page.skills.items %}
+          <li>{{ skill }}</li>
+        {% endfor %}
+      </ul>
+
+      {{- page.skills.after -}}
+    </section>
+  {% endif %}
+
+  {% if page.interests %}
+    <section class="CV__section CV__section--interests">
+      <h1 class="SectionTitle h2">Interests</h1>
+      {{- page.interests -}}
+    </section>
+  {% endif %}

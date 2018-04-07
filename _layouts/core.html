@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+{%- include site/core/head.html -%}
+
+{%- capture body_modifier -%}
+  {%- if page.body_modifier -%}
+    {{ page.body_modifier }}
+  {%- else -%}
+    {{ page.layout }}
+  {%- endif -%}
+{%- endcapture -%}
+
+<body class="Site {% if body_modifier != '' %}Site--{{ body_modifier }}{% endif %}">
+  {%- include site/core/svg.html -%}
+
+  {%- include site/core/header.html -%}
+
+  <main class="Site__main">
+    {{ content }}
+  </main>
+
+  {%- include site/core/footer.html -%}
+  {%- include site/core/analytics.html -%}
+</body>
+</html> 

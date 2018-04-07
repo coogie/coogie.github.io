@@ -1,0 +1,20 @@
+:root {
+  --license-height: 1rem;
+  --license-ratio: 5.333;
+  --license-width: calc(var(--license-height) * var(--license-ratio));
+}
+
+@include breakpoint("medium") {
+  :root {
+    --license-height: 2rem;
+  }
+}
+
+.License {
+  &__link {}
+
+  &__image {
+    height: var(--license-height);
+    width: var(--license-width);
+  }
+}

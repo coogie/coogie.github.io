@@ -1,0 +1,8 @@
+{% assign date_iso = include.date | date: "%Y-%m-%d" %}
+{% assign date_formatted = include.date | date_to_string %}
+
+{% if include.date %}
+  <time class="Date" datetime="{{ date_iso }}">
+    {{ date_formatted }}
+  </time>
+{% endif %}

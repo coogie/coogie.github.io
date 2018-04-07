@@ -1,0 +1,13 @@
+@include breakpoint("medium") {
+  .Site--posts {
+    .Site__main > .container {
+      display: flex;
+    }
+    
+    .Sidebar {
+      flex-basis: 30%;
+      margin-top: 0;
+      margin-left: calc(var(--site-owl-spacing) * 2);
+    }
+  }
+}

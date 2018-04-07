@@ -1,0 +1,19 @@
+---
+layout: core
+---
+
+{% assign minutes = page.content | number_of_words | divided_by: 200 %}
+{% capture ttr %}
+  {%- if minutes == 0 -%}
+    <1 minute read
+  {%- else -%}
+    ~{{ minutes | append: " minute read" }}
+  {%- endif -%}
+{% endcapture %}
+
+<header>
+  {% include site/hero.html title=page.title posted=page.date ttr=ttr %}
+</header>
+<article class="container">
+  {{ page.content }} 
+</article>

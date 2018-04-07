@@ -1,0 +1,17 @@
+{% assign title = include.title | default: "Hi there!<br> I'm Stephen, a Front-end Web Developer from Dublin, Ireland." %}
+
+<section class="Hero {% if include.title %}o-circuited{% endif %}">
+  <div class="Hero__content container">
+    {% unless include.title %}
+      {% avatar coogie size=400 %}
+    {% endunless %}
+    <h1 class="Hero__title">
+      {{ title }}
+    </h1>
+    {% if include.posted or include.ttr %}
+      <div class="Hero__meta">
+        {% include blog/date.html date=include.posted %} &mdash; {{ ttr }}
+      </div>
+    {% endif %}
+  </div>
+</section>

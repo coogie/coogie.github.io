@@ -1,0 +1,62 @@
+:root {
+  --project-colophon-colcount: 2;
+  --project-colophon-colgap: 20px;
+}
+
+@include breakpoint("medium") {
+  :root {
+    --project-colophon-colcount: 3;  
+  }
+}
+
+.CV {
+  &__title {
+    border-bottom: 3px solid var(--color-primary);
+    padding: var(--site-owl-spacing) 0;
+    text-align: center;
+  }
+
+  &__section--experience {
+    .Project {
+      margin-inline-start: var(--site-owl-spacing);
+    }
+  }
+
+  &__section--skills ul {
+    column-count: var(--project-colophon-colcount);
+    column-gap: var(--project-colophon-colgap);  
+  }
+}
+
+.Project {
+  &__colophon {
+    column-count: var(--project-colophon-colcount);
+    column-gap: var(--project-colophon-colgap);
+  }
+}
+
+.Muted {
+  opacity: 0.5;
+}
+
+.Era {
+  border-left: 3px solid var(--color-primary);
+  margin-bottom: 3rem;
+  padding-left: 1em;
+  position: relative;
+
+  &::after {
+    background-color: #fff;
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 1em;
+    margin-top: -5px;
+    position: absolute;
+      top: 1em;
+      left: 0;
+    transform: translate(calc(-50% - 1px), -50%);
+    width: 1em;
+  }
+}

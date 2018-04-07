@@ -1,0 +1,13 @@
+{% assign items = include.items | sort %}
+<ul class="Tags o-list-bare o-list-inline">
+  {% for item in items %}
+    {% assign abbrSplit = item | split: '|' %}
+    <li class="Tags__item">
+      {% if abbrSplit.size == 2 %}
+        <abbr title="{{ abbrSplit[1] }}">{{ abbrSplit[0] }}</abbr>
+      {% else %}
+        {{ item }}
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

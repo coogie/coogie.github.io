@@ -1,0 +1,117 @@
+---
+# // Don't mind me, just some front matter for Jekyll
+---
+
+// Tools
+@import "tools/functions.scss";
+@import "tools/mixins.scss";
+
+$typography-config: (
+  'small': (
+    'base': (100%,    1.42),
+    'h1':   (2em,     1.25),
+    'h2':   (1.625em, 1.15384615),
+    'h3':   (1.375em, 1.13636364),
+    'h4':   (1.125em, 1.11),
+    'h5':   (1.125em, 1.11),
+    'h6':   (1.125em, 1.11)
+  ),
+  'medium': (
+    'base': (150%, 1.62),
+  ),
+);
+
+@include generate-typography-properties($typography-config);
+
+:root {
+  /**
+   * Root properties, typically colour declarations, but contains other things too.
+   */
+  --color-primary:          #00a6ed;
+  --color-secondary:        #bf1ca9;
+  --color-positive:         #5ad42f;
+  --color-negative:         #d4372f;
+  --color-background:       #f5f6fa;
+  --site-container-width:   90%;
+  --site-content-max-width: 81.25em;
+  --site-owl-spacing:       1rem;
+  --site-clip: polygon(
+    calc(100% - var(--clip-notch)) 0,
+    100% var(--clip-notch),
+    100% 100%,
+    var(--clip-notch) 100%,
+    0 calc(100% - var(--clip-notch)),
+    0 0
+  );
+
+  /**
+  * Base typography settings.
+  * Other typography settings will inherit/extend upon these.
+  */
+  --typography-body-family: "Merriweather", serif;
+  --typography-heading-family: "Lato", serif;
+  --typography-link-text-shadow-color: var(--color-background);
+  
+  /**
+  * General shared properties.
+  */
+  --box-shadow: 0 0 7px rgba(0, 0, 0, 0.05);
+  --box-shadow_hover: 0 0 15px rgba(0, 0, 0, 0.15);
+  
+  /**
+  * Component declarations
+  */
+  --header-background: #fff;
+  --hero-image-url: url({{ "/assets/theme/hero_bg.jpg" | absolute_url }});
+  --hero-matrix-url: url({{ "/assets/theme/hero_matrix.png" | absolute_url }});
+
+  --clip-notch: 10%;
+}
+
+@include breakpoint("medium") {
+  :root {
+    --site-container-width: 85%;
+  }
+}
+
+// Generic
+@import "generic/modern-normalize.scss";
+@import "generic/lobotomised-owl.scss";
+
+// Elements
+@import "elements/html.scss";
+@import "elements/body.scss";
+@import "elements/blockquote.scss";
+@import "elements/code.scss";
+@import "elements/headings.scss";
+@import "elements/hr.scss";
+@import "elements/img.scss";
+@import "elements/links.scss";
+
+// Objects
+@import "objects/circuited.scss";
+@import "objects/lists.scss";
+@import "objects/sliding-gradient.scss";
+
+// Components
+@import "components/block.scss";
+@import "components/button.scss";
+@import "components/footer.scss";
+@import "components/header.scss";
+@import "components/hero.scss";
+@import "components/icon.scss";
+@import "components/license.scss";
+@import "components/navigation.scss";
+@import "components/sectiontitle.scss";
+@import "components/social.scss";
+@import "components/syntax.scss";
+@import "components/preview.scss";
+@import "components/tags.scss";
+
+// Layout
+@import "layout/cv.scss";
+@import "layout/post.scss";
+@import "layout/posts.scss";
+@import "layout/site.scss";
+
+// Trumps 
