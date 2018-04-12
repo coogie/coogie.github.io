@@ -16,12 +16,21 @@ body_modifier: 404
   }
 </style>
 
-<div class="container con">
-  <h1>
-    404<br>
-    <small>¯\_(ツ)_/¯</small>
-  </h1>
+<h1>
+  404<br>
+  <small>¯\_(ツ)_/¯</small>
+</h1>
 
-  <p><strong>Page not found!</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+<p><strong>Page not found!</strong></p>
+<p>The requested page could not be found.</p>
+<p>
+  Maybe I'm just stupid and accidentally deleted it?<br>
+  You could try find it on the <a id="ialink" href="https://web.archive.org/web/*/">Internet Archive</a>.
+</p>
+
+<script>
+  (() => {
+    const link = document.getElementById('ialink');
+    link.href = `https://web.archive.org/web/*/${window.location.href}`;
+  })();
+</script>
