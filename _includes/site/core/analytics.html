@@ -1,9 +1,13 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-36133007-1"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', '{{ site.analytics_id }}');
+  if (!navigator.doNotTrack) {
+    const d = document
+    const s = d.createElement('script');
+    s.src = 'https://www.googletagmanager.com/gtag/js?id={{ site.analytics_id }}'
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.analytics_id }}');
+    (d.head || d.body).appendChild(s);    
+  }
 </script>
