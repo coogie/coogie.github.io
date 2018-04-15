@@ -3,7 +3,7 @@ title: Dynamic Mapping of URLs to Filesystem Locations with Apache
 comments: true
 ---
 
-We've recently jumped into the world of Jenkins Multibranch Pipelines for one if the
+We've recently jumped into the world of Jenkins Multibranch Pipelines for one of the
 products we build in CarTrawler, and we couldn't be much happier with the speed and
 flexibility it provides - allowing us to test, build, and deploy branches asynchronously
 and at scale without having to rely on a particular "build" branch, enabling us to test
@@ -18,7 +18,7 @@ directory dynamically.
 Ultimately, the flow of it all goes like so:
 
   1. Deploy app to `/home/jenkins/projectname/[JIRA-ID]`.
-  2. Access app from `http://projectname.internal.test/JIRA-ID/projectname`.
+  2. Access app from `http://projectname.internal.test/[JIRA-ID]/projectname`.
   3. Serve app from `/home/jenkins/projectname/[JIRA-ID]`, based on what the URL was.
 
 If you're wondering why the URL is structured so, this particular project runs in a
@@ -39,8 +39,8 @@ configs, then feel free to [skip to the end](#end) for the full config.
   DocumentRoot /home/jenkins/projectname
 </Virtualhost>
 ```
-First off, we need to set the core of our Virtual Host by establishing the `ServerName`
-`DocumentRoot` directives. This sets us up so that a request to
+First off, we need to write the core of our Virtual Host by establishing the `ServerName`
+and `DocumentRoot` directives. This sets us up so that a request to
 `http://projectname.internal.test/index.html` trigger our Virtualhost and resolves to
 `/home/jenkins/projectname/index.html`
 
@@ -95,8 +95,8 @@ conditions for whether our `RewriteRule` actually triggers. So, in order, these 
 
 Finally, our `RewriteRule` will trigger only if its own rule is matched (`^(.*)$`) **and**
 all preceding `RewriteCond` directives are true. Note the use of `%1` in our rule - this
-is a backreference exposed by the last `RewriteCond` regex used, allowing us to use regex
-capture groups from that rule.
+is a backreference exposed by the last `RewriteCond` regex used, allowing us to use the 
+values of the regex capture groups from that rule.
 
 ### The flow
 
