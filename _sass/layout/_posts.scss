@@ -4,8 +4,12 @@
       display: flex;
     }
     
+    .RecentPosts {
+      flex: 1;
+    }
+
     .Sidebar {
-      flex-basis: 30%;
+      flex: 0 1 25%;
       margin-top: 0;
       margin-left: calc(var(--site-owl-spacing) * 2);
     }
