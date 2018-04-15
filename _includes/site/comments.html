@@ -1,0 +1,24 @@
+{%- capture canonical_url -%}{{ site.url }}{{ page.url | replace:'index.html',''}}{%- endcapture -%}
+
+<div class="container">
+  <div id="disqus_thread"></div>
+</div>
+<script>
+  if (!navigator.doNotTrack) {
+    const disqus_config = () => {
+      this.page.url = "{{ canonical_url }}";
+      this.page.identifier = "{{ page.id }}";
+    };
+    (() => {
+      const d = document;
+      const s = d.createElement('script');
+      s.src = 'https://coogie.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+</script>
+<noscript>
+  Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>

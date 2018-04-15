@@ -14,6 +14,11 @@ layout: core
 <header>
   {% include site/hero.html title=page.title posted=page.date ttr=ttr %}
 </header>
+
 <article class="container">
   {{ page.content }} 
 </article>
+
+{% if page.comments %}
+  {% include site/comments.html %}
+{% endif %}
