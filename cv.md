@@ -253,7 +253,7 @@ interests: >-
   typography, music, fixing things most people would deem broken, playing games &ndash;
   board &amp; video, and taking myself seriously at times.</p>
   <p>I also have a strong passion for open-source technology
-  (<a href="https://github.com/coogie/coogie.github.io/commits/source/source/cv/index.html">this CV is open-source!</a>)
+  (<a href="https://github.com/coogie/coogie.github.io/commits/master/cv.md">this CV is open-source!</a>)
   and a free and open Internet, and regularly donate to the
   <a href="https://donate.mozilla.org/en-GB/?currency=eur&amp;presets=20,10,5,3&amp;amount=10">Mozilla Foundation</a> and the <a href="https://supporters.eff.org/">
   <abbr title="Electronic Frontier Foundation">EFF</abbr></a>.</p>
