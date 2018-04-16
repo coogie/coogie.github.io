@@ -12,6 +12,7 @@ skills:
  - BEM Notation|Block-Element-Modifier
  - CSS Methodologies
  - Front-end Best Practices
+ - NodeJS
  - Mobile-first Development
  - OOCSS|Object-oriented CSS
  - PWAs|Progressive Web Apps
