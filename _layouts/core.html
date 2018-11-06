@@ -12,11 +12,12 @@
 {%- endcapture -%}
 
 <body class="Site {% if body_modifier != '' %}Site--{{ body_modifier }}{% endif %}">
+  <a href="#main-content" class="SkipNav">Skip to main content</a>
   {%- include site/core/svg.html -%}
 
   {%- include site/core/header.html -%}
 
-  <main class="Site__main">
+  <main class="Site__main" id="main-content">
     {{ content }}
   </main>
 
