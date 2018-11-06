@@ -1,5 +1,5 @@
 .Preview {
-  background-color: #fff;
+  background-color: var(--post-preview-background, #fff);
   box-shadow: var(--box-shadow);
   padding: 1em;
 

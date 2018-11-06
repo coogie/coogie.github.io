@@ -24,6 +24,9 @@ $typography-config: (
 @include generate-typography-properties($typography-config);
 
 :root {
+  --theme-background: #f5f6fa;
+  --theme-color: #282828;
+
   /**
    * Root properties, typically colour declarations, but contains other things too.
    */
@@ -31,7 +34,6 @@ $typography-config: (
   --color-secondary:        #bf1ca9;
   --color-positive:         #5ad42f;
   --color-negative:         #d4372f;
-  --color-background:       #f5f6fa;
   --site-container-width:   90%;
   --site-content-max-width: 81.25em;
   --site-owl-spacing:       1rem;
@@ -50,7 +52,7 @@ $typography-config: (
   */
   --typography-body-family: "Merriweather", serif;
   --typography-heading-family: "Lato", serif;
-  --typography-link-text-shadow-color: var(--color-background);
+  --typography-link-text-shadow-color: var(--theme-background);
   
   /**
   * General shared properties.
@@ -61,11 +63,20 @@ $typography-config: (
   /**
   * Component declarations
   */
-  --header-background: #fff;
   --hero-image-url: url({{ "/assets/theme/hero_bg.jpg" | absolute_url }});
   --hero-matrix-url: url({{ "/assets/theme/hero_matrix.png" | absolute_url }});
 
   --clip-notch: 10%;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --theme-background: #282828;
+    --theme-color: #e5e5e5;
+    --header-background: var(--theme-background);
+    --header-link-color: var(--theme-color);
+    --post-preview-background: rgba(255, 255, 255, 0.035);
+  }
 }
 
 @include breakpoint("medium") {
