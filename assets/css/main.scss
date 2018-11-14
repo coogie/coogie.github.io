@@ -17,6 +17,9 @@ $typography-config: (
     'h6':   (1.125em, 1.11)
   ),
   'medium': (
+    'base': (125%, 1.5),
+  ),
+  'large': (
     'base': (150%, 1.62),
   ),
 );
