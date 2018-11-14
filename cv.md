@@ -11,19 +11,87 @@ objective: >
   mindshare of concepts, and trying to avoid supporting as much Internet Explorer as user
   statistics allow &ndash; for the sake of everone's sanity&hellip;</p>
 
+skills:
+  - HTML|HyperText Markup Language
+  - CSS|Cascading Stylesheets
+  - Sass/Scss
+  - BEM Methodology|Block-Element-Modifier Methodology
+  - OOCSS|Object-oriented CSS
+  - JavaScript/ES6|Ecmascript 6
+  - React
+  - Redux
+  - Webpack
+  - Git
+  - Apache
+  - Express
+  - Linux
+  - Docker
+
 experience:
   - company: CarTrawler
     url: https://www.cartrawler.com/
-    role: Front-end Web Developer
+    role: Engineering Manager
     period: Aug. 2016 - present
     description: >-
-      <p>Currently working as part of the Front-end Architecture team at CarTrawler
-      &ndash; a team responsible for the implementation of best practices and performance
-      increases &amp; optimisations throughout a number of products. As well as
-      implementing these changes, our team also strives to increase developer mindshare
-      and knowledge of such best practices in all other teams.</p>
+      <p>Striving to increase developer mindshare and knowledge of componentisation
+      methodologies and best-practices. Encouraging cross-departmental communication to
+      enable higher-quality deliverables and a smoother development process, while
+      mentoring developers in code-quality and testing standards.</p>
     projects:
-      - title: "Prism - Styling Framework & Design System "
+      - name: "Next-gen Landing Pages"
+        type: "Infrastructure, Microsite"
+        role: "Engineering Manager"
+        period: "Oct. 2018 &mdash; present"
+        description: >-
+          <p>Next-gen Landing Pages is an initiative to provide partner management with
+          best-in-class tools for rapid onboarding of new partners. While the existing
+          project requires a bespoke build per site, next-gen would instead allow for
+          construction and content management of each page via a headless CMS and modular
+          components.</p>
+        colophon:
+          - JavaScript/ES6|Ecmascript 6
+          - React w/ server-side render
+          - Jest (100% coverage)
+          - Express
+          - Contentful
+          - Docker
+          - Kanban
+          - Jenkins
+          - CI/CD|Continuous Integration/Delivery
+          - Storybook
+          - Acceptance Tests (Protractor)
+          - Visual Regression Tests
+          - Sass
+          - OOCSS|Object-oriented CSS
+          - BEM Methodology|Block-Element-Modifier Methodology
+          - Monorepo Architecture
+      - name: "Travel Buddy"
+        type: "Progressive Web App"
+        role: "Core Team Member"
+        period: ""
+        description: >-
+          <p>A post-booking companion with the goal of easing the stress of the car rental
+          pick-up process. Makes use of the latest technologies to allow users to store
+          booking vouchers offline, as well as Add to Home Screen to give a native app
+          look and feel, all while running in the device’s browser.</p>
+        colophon:
+          - JavaScript/ES6|Ecmascript 6
+          - React
+          - Redux
+          - Jest (100% coverage)
+          - Docker
+          - Kanban
+          - Jenkins
+          - CI/CD|Continuous Integration/Delivery
+          - Storybook
+          - Service Worker (Pre-cache, Offline, Push Notifications)
+          - Acceptance Tests (Protractor)
+          - Sass
+          - OOCSS|Object-oriented CSS
+          - BEM Methodology|Block-Element-Modifier Methodology
+          - Monorepo Architecture
+          - Webpack
+      - name: "Prism - Styling Framework & Design System "
         type: "Proprietary Project"
         period: "Ongoing"
         description: >-
@@ -35,6 +103,7 @@ experience:
           standard library of known components and styles that can be called upon, at a
           whim, to create almost any visual representation of CarTrawler products with
           full confidence in their accurate representation in-browser.</p>
+          
           <p>In addition to this, the Framework & Design System is helping lay the
           groundwork for a greater push towards a wholly componentised approach
           providing all teams in the company with complete access to a shared component
@@ -43,15 +112,19 @@ experience:
           stability and identical core functionality, regardless of tech stack, device,
           or screen size.</p>
         colophon:
-          - <abbr title="Block, Element, Modifier">BEM</abbr> Notation
+          - Advanced Sass Techniques
+          - OOCSS|Object-oriented CSS
+          - SMACSS|Scalable and Modular Architecture for CSS
+          - ITCSS|Inverted Triangle CSS
+          - BEM Methodology|Block-Element-Modifier Methodology
+          - Dynamic Living Documentation
+          - Kanban
+          - Visual Regression Testing
           - Git
           - Gulp
-          - <abbr title="Inverted Triangle CSS ">ITCSS</abbr>
           - Mobile-first Design
-          - Object-oriented CSS
-          - Responsive Design
-          - Sass
           - Semantic Versioning
+
   - company: Paddy Power
     url: https://www.paddypower.com/
     role: Front-end Web Developer
@@ -63,7 +136,7 @@ experience:
       of in-house developers by refactoring HTML and CSS, as well as implementing
       best-practices and standards.</p>
     projects:
-      - title: "In-play Betting Pages"
+      - name: "In-play Betting Pages"
         url: "https://live.paddypower.com/"
         period: "Dec. 2014"
         description: >-
@@ -89,7 +162,7 @@ experience:
           - Sass/SCSS
           - Semantic Versioning
           - WebSockets
-      - title: "Abacus CSS Framework"
+      - name: "Abacus CSS Framework"
         period: "2016"
         description: >-
           <p>The Abacus CSS Framework is a powerful, modular, and lightweight CSS
@@ -119,6 +192,7 @@ experience:
           - Responsive Design
           - Sass/SCSS
           - Semantic Versioning
+
   - company: CentralReservations.com
     url: https://www.centralreservations.com/
     role: Front-end Web Developer
@@ -129,7 +203,7 @@ experience:
       imaging and colour schemes of over 1,500 microsites created and hosted on behalf of
       hoteliers.</p>
 
-      <h3>Notable tasks</h3>
+      <h2 class="h4">Notable tasks</h2>
       <ul>
         <li>
           Successfully advocated for the use of <a href="https://www.pyrocms.com/">PyroCMS</a>
@@ -159,6 +233,7 @@ experience:
           across a vast array of mobile devices.
         </li>
       </ul>
+
   - company: CentralR.com
     url: https://www.centralr.com/
     role: Web Developer
@@ -168,7 +243,7 @@ experience:
       similar fashion and is responsible for over 1,000 external sites created and
       maintained on behalf of hoteliers.</p>
 
-      <h3>Notable tasks</h3>
+      <h2 class="h4">Notable tasks</h2>
       <ul>
         <li>
           Worked as part of a small team for the complete redesign and redevelopment of
@@ -226,27 +301,6 @@ education:
           </li>
         </ul>
 
-skills:
-  # before: >-
-  items:
-    - xHTML, HTML, CSS, JavaScript
-    - LESS, SASS/SCSS
-    - OOCSS, BEM
-    - jQuery, AngularJS
-    - Ruby, PHP
-    - Ruby on Rails
-    - MVC Architecture
-    - Photoshop, Illustrator
-    - Git
-    - WordPress, PyroCMS
-    - Linux (Ubuntu)
-  after: >-
-    <p>I also have my fair share of cross-browser design and testing experience, having
-    developed websites to play nice with browsers as far back as IE 6.</p>
-
-    <p>More recently, I have been working with Responsive Web Design and have created some
-    site themes that use this technique to deliver a rich experience across all devices.</p>
-
 interests: >-
   <p>There are a lot of things that I enjoy, but out of all of them, I enjoy these the
   most: reading about the latest advancements in web technologies &amp; reading in general,
@@ -272,39 +326,62 @@ interests: >-
     </section>
   {% endif %}
 
+  {% if page.skills %}
+    <section class="CV__section CV__section--skills">
+      <h1 class="SectionTitle h2">Skills</h1>
+      <ul>
+        {% for skill in page.skills %}
+          <li>{% include site/core/abbr.html item=skill %}</li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+
   {% if page.experience %}
     <section class="CV__section CV__section--experience">
       <h1 class="SectionTitle h2">Experience</h1>
       {% for role in page.experience %}
         <article class="Era CV__article">
           <h1 class="Era__title h3">
-            {{ role.company }}<br>
-            <small class="Muted">{{ role.role }} | {{ role.period }}</small>
+            <span class="Era__company">{{ role.company }}</span>
+            <small class="Era__meta Muted o-no-owl">
+              <span class="Era__role">{{ role.role }}</span>
+              <span class="Era__period o-no-owl">{{ role.period }}</span>
+            </small>
           </h1>
 
           {{ role.description }}
 
           {% if role.projects %}
             <section class="Era__section">
-              <h2 class="h4">Notable tasks and projects</h2>
               {% for project in role.projects %}
                 <article class="Project">
-                  <h3 class="h5 Project__title">
-                    {{ project.title }}
-                    <small class="Muted">{{project.type }} | {{ project.period }}</small>
-                  </h3>
+                  <h2 class="Project__title h5">
+                    <span class="Project__name">{{ project.name }}</span>
+                    <small class="Project__meta Muted o-no-owl">
+                      <span class="Project__role">{{ project.type }}</span>
+                      <span class="Project__period o-no-owl">{{ project.period }}</span>
+                    </small>
+                  </h2>
                   {{ project.description }}
                   
                   {% if project.colophon %}
-                  <ul class="Project__colophon">
-                    {% for item in project.colophon %}<li>{{ item }}</li>{% endfor %}
-                  </ul>
+                  <aside class="Project__colophon">
+                    <h3 class="Project__colophon-title h6">Methods, techniques, and tech:</h3>
+                    <ul class="Project__colophon-list">
+                      {% for item in project.colophon %}
+                      <li class="Project__colophon-item">{% include site/core/abbr.html item=item %}</li>
+                      {% endfor %}
+                    </ul>
+                  </aside>
                   {% endif %}
                 </article>
               {% endfor %}
             </section>
           {% endif %}
         </article>
+
+        <hr />
       {% endfor %}
     </section>
   {% endif page.experience %}
@@ -314,7 +391,7 @@ interests: >-
       <h1 class="SectionTitle h2">Side Projects</h1>
       {% for project in page.projects %}
         <article class="Project">
-          <h1 class="Project__title h3">
+          <h1 class="Project__title h4">
             {% if project.url %}
               <a href="{{ project.url }}">{{ project.title }}</a>
             {% else %}
@@ -342,21 +419,6 @@ interests: >-
           {{ course.description }}
         </article>
       {% endfor %}
-    </section>
-  {% endif %}
-
-  {% if page.skills %}
-    <section class="CV__section CV__section--skills">
-      <h1 class="SectionTitle h2">Skills</h1>
-      {{- page.skills.before -}}
-
-      <ul>
-        {% for skill in page.skills.items %}
-          <li>{{ skill }}</li>
-        {% endfor %}
-      </ul>
-
-      {{- page.skills.after -}}
     </section>
   {% endif %}
 
