@@ -16,7 +16,7 @@ skills:
  - OOCSS|Object-oriented CSS
  - PWAs|Progressive Web Apps
  - Sass
- - ReactJS
+ - React
  - Redux
 ---
 
