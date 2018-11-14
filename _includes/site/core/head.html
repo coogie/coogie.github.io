@@ -1,10 +1,14 @@
 <head>
+  <link rel="preload" as="image" href={{ "/assets/theme/hero_bg.jpg" | absolute_url }}>
+  <link rel="preload" as="image" href="https://avatars2.githubusercontent.com/coogie?v=3&s=1200">
+  <link rel="preload" as="style" href={{ "/assets/css/main.css" | absolute_url }}>
+  <link rel="preload" as="style" href={{ "https://fonts.googleapis.com/css?family=Lato|Merriweather:400,400i,700" | absolute_url }}>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   {% seo %}
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href={{ "/assets/css/main.css" | absolute_url }}>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato|Merriweather:400,400i,700" async>
   <script>
     const dnt_isIe10or11 = (navigator.appVersion.indexOf("MSIE 10") !== -1) || (navigator.userAgent.indexOf("Trident") !== -1 && navigator.userAgent.indexOf("rv:11") !== -1);
