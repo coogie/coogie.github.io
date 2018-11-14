@@ -1,0 +1,6 @@
+{% assign abbrSplit = include.item | split: '|' %}
+{% if abbrSplit.size == 2 %}
+  <abbr title="{{ abbrSplit[1] }}">{{ abbrSplit[0] }}</abbr>
+{% else %}
+  {{ include.item }}
+{% endif %}
