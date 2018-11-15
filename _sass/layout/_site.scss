@@ -54,7 +54,8 @@
   .Site--cv,
   .Site--post {
     .Site__main > .container { 
-      --site-container-width: 50%;
+      --site-container-width: auto;
+      --site-content-max-width: 60rem;
     }
   }
 }
