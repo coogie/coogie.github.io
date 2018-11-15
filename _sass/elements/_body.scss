@@ -1,7 +1,9 @@
 body {
   background: var(--theme-background);
   color: var(--theme-color);
-  font-display: swap;
-  font-family: var(--typography-body-family);
   font-size: var(--typography-base-fz);
+
+  .has-fonts & {
+    font-family: var(--typography-body-family);
+  }
 }

@@ -22,6 +22,21 @@
   </main>
 
   {%- include site/core/footer.html -%}
+
+  <script src="{{ "/assets/scripts/fontface-observer.min.js" | absolute_url }}"></script>
+  <script>
+    const dnt_isIe10or11 = (navigator.appVersion.indexOf("MSIE 10") !== -1) || (navigator.userAgent.indexOf("Trident") !== -1 && navigator.userAgent.indexOf("rv:11") !== -1);
+    let DNT = (navigator.doNotTrack || navigator.msDoNotTrack || window.doNotTrack);
+    DNT = ((!DNT || DNT == "unspecified" || DNT == "0" ? false : true) || dnt_isIe10or11);
+    
+    const Lato = new FontFaceObserver('Lato');
+    const Merriweather = new FontFaceObserver('Merriweather');
+    
+    Promise.all([Lato.load(), Merriweather.load()]).then(function () {
+      document.documentElement.classList.add('has-fonts');
+    });
+  </script>
+
   {%- include site/core/analytics.html -%}
 </body>
 </html> 
