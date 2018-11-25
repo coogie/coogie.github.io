@@ -29,12 +29,20 @@
     let DNT = (navigator.doNotTrack || navigator.msDoNotTrack || window.doNotTrack);
     DNT = ((!DNT || DNT == "unspecified" || DNT == "0" ? false : true) || dnt_isIe10or11);
     
-    const Lato = new FontFaceObserver('Lato');
-    const Merriweather = new FontFaceObserver('Merriweather');
-    
-    Promise.all([Lato.load(), Merriweather.load()]).then(function () {
-      document.documentElement.classList.add('has-fonts');
+    const fontFamilies = {
+      'Lato': { family: 'Lato', },
+      'Merriweather400':  { family: 'Merriweather', weight: 400 },
+      'Merriweather400i': { family: 'Merriweather', weight: 400, style: 'italic' },
+      'Merriweather700':  { family: 'Merriweather', weight: 700 },
+    };
+    const observers = [];
+    Object.keys(fontFamilies).forEach(entry => {
+      const { family, ...data } = fontFamilies[entry];
+      const obs = new FontFaceObserver(family, data);
+      observers.push(obs.load());
     });
+
+    Promise.all(observers).then(fonts => document.documentElement.classList.add('has-fonts'));
   </script>
 
   {%- include site/core/analytics.html -%}
