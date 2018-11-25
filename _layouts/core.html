@@ -28,6 +28,11 @@
     const dnt_isIe10or11 = (navigator.appVersion.indexOf("MSIE 10") !== -1) || (navigator.userAgent.indexOf("Trident") !== -1 && navigator.userAgent.indexOf("rv:11") !== -1);
     let DNT = (navigator.doNotTrack || navigator.msDoNotTrack || window.doNotTrack);
     DNT = ((!DNT || DNT == "unspecified" || DNT == "0" ? false : true) || dnt_isIe10or11);
+    const fontsLoadedPrior = document.cookie.split(';').filter((item) => item.includes('fonts=1')).length;
+    const setFontsClassname = () => document.documentElement.classList.add('has-fonts');
+    if (fontsLoadedPrior) {
+      setFontsClassname();
+    }
     
     const fontFamilies = {
       'Lato': { family: 'Lato', },
@@ -36,13 +41,18 @@
       'Merriweather700':  { family: 'Merriweather', weight: 700 },
     };
     const observers = [];
-    Object.keys(fontFamilies).forEach(entry => {
-      const { family, ...data } = fontFamilies[entry];
-      const obs = new FontFaceObserver(family, data);
-      observers.push(obs.load());
-    });
+    window.addEventListener('load', () => {
+      Object.keys(fontFamilies).forEach(entry => {
+        const { family, ...data } = fontFamilies[entry];
+        const obs = new FontFaceObserver(family, data);
+        observers.push(obs.load());
+      });
 
-    Promise.all(observers).then(fonts => document.documentElement.classList.add('has-fonts'));
+      Promise.all(observers).then(fonts => {
+        setFontsClassname();
+        document.cookie = 'fonts=1';
+      });
+    });
   </script>
 
   {%- include site/core/analytics.html -%}
