@@ -2,12 +2,16 @@
 layout: core
 ---
 
-{% assign minutes = page.content | number_of_words | divided_by: 200 %}
+{% assign upper_minutes = page.content | number_of_words | divided_by: 160  %}
+{% assign lower_minutes = page.content | number_of_words | divided_by: 180  %}
+
 {% capture ttr %}
-  {%- if minutes == 0 -%}
+  {%- if upper_minutes == 0 -%}
     <1 minute read
+  {%- elsif upper_minutes == lower_minutes -%}
+    ~{{ upper_minutes }} minute read
   {%- else -%}
-    ~{{ minutes | append: " minute read" }}
+    {{ lower_minutes }}-{{ upper_minutes | append: " minute read" }}
   {%- endif -%}
 {% endcapture %}
 
