@@ -20,7 +20,26 @@ layout: core
 </header>
 
 <article class="container">
+  {%- if page.lab -%}
+  <div class="LabLinksJumper">
+    <a class="LabLinksJumper__link" href="#demos">Jump to demos</a>
+  </div>
+  {%- endif -%}
+
   {{ page.content }} 
+
+  {%- if page.lab -%}
+  <h2 id="demos">Links to live demos:</h2>
+  <ul class="LabLinks">
+    {%- for item in page.lab -%}
+      {%- assign link = "/lab/" | append: item.link | absolute_url -%}
+      <li class="LabLinks__item">
+        <a href="{{ link }}">{{ item.label }}</a>
+      </li>
+    {%- endfor -%}
+  </ul>
+  {%- endif -%}
+
 </article>
 
 {% if page.comments %}

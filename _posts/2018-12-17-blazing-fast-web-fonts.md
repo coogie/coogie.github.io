@@ -1,7 +1,11 @@
 ---
 title: Blazing-fast web fonts
 comments: true
-lab: blazing-fast-web-fonts
+lab:
+  - label: Before
+    link: blazing-fast-web-fonts/before.html
+  - label: After
+    link: blazing-fast-web-fonts/after.html
 ---
 
 I occasionally have the same back-and-forth with a colleague in work (let's call him Tim) 
@@ -113,7 +117,7 @@ This can be mitigated to an extent by matching the `line-height` and `letter-spa
 your System and Web Fonts - [Monica Dinculescu has an excellent font-style-matcher][4]
 tool to help you not want to gouge your eyes out.
 
-Another option available is [`font-display`][5] with a value of `swap` or `fallback`. This
+Another option available is [`font-display` with a value of `swap` or `fallback`][5]. This
 is the ideal, pure CSS solution, but doesn't work in IE or Edge (as of writing). It also
 has a caveat in that it must be included inside the `@font-face` at-rule, meaning if you
 decide to use a service like Google Fonts, you can't use it since you don't control those
