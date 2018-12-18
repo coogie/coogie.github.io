@@ -1,0 +1,17 @@
+/* Setup */
+html {
+  background: #f4ecd8;
+  color: #5b4636;
+  font-size: 1.42rem;
+  line-height: 1.42;
+}
+
+.Site {
+  display: flex;
+  justify-content: center;
+}
+
+.Poem {
+  overflow: auto;
+  white-space: nowrap;
+}
