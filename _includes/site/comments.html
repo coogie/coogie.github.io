@@ -16,7 +16,7 @@
 </section>
 
 <script>
-  if (!DNT) {
+  if (!window.DNT) {
     const disqus_config = () => {
       this.page.url = "{{ canonical_url }}";
       this.page.identifier = "{{ page.id }}";
