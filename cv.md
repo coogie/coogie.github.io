@@ -30,7 +30,7 @@ skills:
 experience:
   - company: CarTrawler
     url: https://www.cartrawler.com/
-    role: Engineering Manager
+    role: Senior Software Engineer
     period: Aug. 2016 - present
     description: >-
       <p>Striving to increase developer mindshare and knowledge of componentisation
@@ -40,7 +40,7 @@ experience:
     projects:
       - name: "Next-gen Landing Pages"
         type: "Infrastructure, Microsite"
-        role: "Engineering Manager"
+        role: "Core Member & Achitecture"
         period: "Oct. 2018 &mdash; present"
         description: >-
           <p>Next-gen Landing Pages is an initiative to provide partner management with
@@ -281,10 +281,10 @@ education:
     <p>I'm largely self-taught when it comes to front-end web development and have
     acquired these skills over the past few years by following blogs and tutorials by some
     of the most respected individuals in the industry such as
-    <a href="https//paulirish.com/">Paul Irish</a>,
-    <a href="https//css-tricks.com/">Chris Coyier</a>,
-    <a href="https//davidwalsh.name/">David Walsh</a>,
-    and <a href="https//csswizardry.com/">Harry Roberts</a> - to name but a few.</p>
+    <a href="https://paulirish.com/">Paul Irish</a>,
+    <a href="https://css-tricks.com/">Chris Coyier</a>,
+    <a href="https://davidwalsh.name/">David Walsh</a>,
+    and <a href="https://csswizardry.com/">Harry Roberts</a> - to name but a few.</p>
     
     <p>That being said, I <em>have</em> finished the following course:</p>
   courses:
@@ -297,7 +297,7 @@ education:
           <li>
             Was elected class representative. During my tyranny, I encouraged fellow
             classmates to collaborate and share course notes with each other via Github
-            repositories - inspired by the theory of <a href="http://en.wikipedia.org/wiki/Collective_intelligence">Collective Intelligence</a>.
+            repositories - inspired by the theory of <a href="https://en.wikipedia.org/wiki/Collective_intelligence">Collective Intelligence</a>.
           </li>
         </ul>
 
