@@ -47,6 +47,10 @@ plugins:
  - jekyll-feed
  - jekyll-sitemap
 
+webrick:
+  headers:
+    Cache-Control: public, max-age=15768000
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
