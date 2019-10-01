@@ -22,7 +22,7 @@ plugins:
   - jekyll-remote-theme
 
 # Theme and Theme Configs
-theme: "oscailte"
+remote_theme: "coogie/oscailte"
 header_pages:
   - index.md
   - blog.md
