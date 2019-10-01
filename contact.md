@@ -1,8 +1,6 @@
 ---
 title: Contact
 permalink: /contact/
-group: navigation
-sort_order: 3
 body_modifier: contact
 ---
 

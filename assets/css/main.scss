@@ -1,138 +1,34 @@
 ---
-# // Don't mind me, just some front matter for Jekyll
 ---
 
-// Tools
-@import "tools/functions.scss";
-@import "tools/mixins.scss";
+@import "oscailte";
 
-$typography-config: (
-  'small': (
-    'base': (100%,    1.42),
-    'h1':   (2em,     1.25),
-    'h2':   (1.625em, 1.15384615),
-    'h3':   (1.375em, 1.13636364),
-    'h4':   (1.125em, 1.11),
-    'h5':   (1.075em, 1.11),
-    'h6':   (.925em,  1.11)
-  ),
-  'medium': (
-    'base': (125%, 1.5),
-  ),
-  'large': (
-    'base': (150%, 1.62),
-  ),
-);
+@import "component/preview.scss";
+@import "component/tags.scss";
 
-@include generate-typography-properties($typography-config);
-
-:root {
-  --theme-background: #f5f6fa;
-  --theme-color: #282828;
-
-  /**
-   * Root properties, typically colour declarations, but contains other things too.
-   */
-  --color-primary:          #00a6ed;
-  --color-secondary:        #bf1ca9;
-  --color-positive:         #5ad42f;
-  --color-negative:         #d4372f;
-  --site-container-width:   90%;
-  --site-content-max-width: 81.25em;
-  --site-owl-spacing:       1rem;
-  --site-clip: polygon(
-    calc(100% - var(--clip-notch)) 0,
-    100% var(--clip-notch),
-    100% 100%,
-    var(--clip-notch) 100%,
-    0 calc(100% - var(--clip-notch)),
-    0 0
-  );
-
-  /**
-  * Base typography settings.
-  * Other typography settings will inherit/extend upon these.
-  */
-  --typography-body-family: "Merriweather", serif;
-  --typography-heading-family: "Lato", serif;
-  --typography-link-text-shadow-color: var(--theme-background);
-  
-  /**
-  * General shared properties.
-  */
-  --box-shadow: 0 0 7px rgba(0, 0, 0, 0.05);
-  --box-shadow_hover: 0 0 15px rgba(0, 0, 0, 0.15);
-  
-  /**
-  * Component declarations
-  */
-  --hero-image-url: url({{ "/assets/theme/hero_bg.jpg" | absolute_url }});
-  --hero-matrix-url: url({{ "/assets/theme/hero_matrix.png" | absolute_url }});
-
-  --clip-notch: 10%;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --theme-background: #282828;
-    --theme-color: #e5e5e5;
-    --header-background: var(--theme-background);
-    --header-link-color: var(--theme-color);
-    --post-preview-background: rgba(255, 255, 255, 0.035);
-  }
-}
+@import "pages/blog.scss";
+@import "pages/cv.scss";
+@import "pages/home.scss";
 
 @include breakpoint("medium") {
-  :root {
-    --site-container-width: 85%;
+  .Site--contact,
+  .Site--cv,
+  .Site--blog,
+  .Site--post {
+    .Site__main > .Container  {
+      --site-container-width: 75%
+    }
   }
-}
+ }
 
-// Generic
-@import "generic/modern-normalize.scss";
-@import "generic/lobotomised-owl.scss";
-
-// Elements
-@import "elements/html.scss";
-@import "elements/body.scss";
-@import "elements/blockquote.scss";
-@import "elements/code.scss";
-@import "elements/headings.scss";
-@import "elements/hr.scss";
-@import "elements/img.scss";
-@import "elements/links.scss";
-
-// Objects
-@import "objects/circuited.scss";
-@import "objects/lists.scss";
-@import "objects/no-owl.scss";
-@import "objects/sliding-gradient.scss";
-
-// Components
-@import "components/block.scss";
-@import "components/button.scss";
-@import "components/comments.scss";
-@import "components/footer.scss";
-@import "components/header.scss";
-@import "components/hero.scss";
-@import "components/icon.scss";
-@import "components/license.scss";
-@import "components/lablinks.scss";
-@import "components/navigation.scss";
-@import "components/sectiontitle.scss";
-@import "components/skipnav.scss";
-@import "components/social.scss";
-@import "components/syntax.scss";
-@import "components/preview.scss";
-@import "components/tags.scss";
-
-// Layout
-@import "layout/cv.scss";
-@import "layout/post.scss";
-@import "layout/posts.scss";
-@import "layout/site.scss";
-
-// Keyframes
-@import "keyframes/flash-target";
-
-// Trumps
+ @include breakpoint("large") {
+  .Site--contact,
+  .Site--cv,
+  .Site--blog,
+  .Site--post {
+    .Site__main > .Container  {
+      --site-container-width: auto;
+      --site-content-max-width: 60rem
+    }
+  }
+ }

@@ -1,9 +1,7 @@
 ---
 layout: default
 title: Posts
-group: navigation
-sort_order: 2
-body_modifier: posts
+body_modifier: blog
 ---
 
 <section class="RecentPosts">
@@ -19,8 +17,8 @@ body_modifier: posts
           </h1>
           <div class="Preview__meta">
             <div class="Preview__date">
-              {%- include site/icon.html icon="calendar" -%}
-              {%- include blog/date.html date=post.date -%}
+              {%- include icon.html icon="calendar" -%}
+              {%- include date.html date=post.date -%}
             </div>
           </div>
         </header>
@@ -38,5 +36,3 @@ body_modifier: posts
     {% endif %}
   {% endfor %}
 </section>
-
-{%- include site/sidebar.html -%}

@@ -1,0 +1,27 @@
+.Site--home {
+  .Site__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--site-owl-spacing);
+  }
+
+  h1, .h1 {
+    margin-bottom: 0;
+  }
+
+  .Specialising {
+    flex: 2;
+  }
+  
+  .Skills {
+    flex: 1;
+  }
+}
+
+@include breakpoint("medium") {
+  .Site--home {
+    .Site__content {
+      flex-direction: row;
+    }
+  }
+}

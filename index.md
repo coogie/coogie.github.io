@@ -1,11 +1,5 @@
 ---
-# You don't need to edit this file, it's empty on purpose.
-# Edit theme's home layout instead if you wanna make some changes
-# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-layout: default
 title: Home
-group: navigation
-sort_order: 1
 skills:
  - Agile/Kanban
  - Atomic Design
@@ -20,18 +14,18 @@ skills:
  - Redux
 ---
 
-<aside class="Site__content">
-  {% capture specialise_content %}
+<article class="Site__content">
+  <div class="Specialising">
+    <h1>Specialising in</h1>
     <p>
       Blurring the lines between where design stops and development starts. Establishing
       robust, scalable Design Systems and component libraries to introduce speed, 
       consistency, and reliability in products.
     </p>
-  {% endcapture %}
-  {% include site/block.html class="Specialise" title="Specialising in" content=specialise_content %}
+  </div>
 
-  {% capture skill_content %}
-    {% include site/tag-list.html items=page.skills %}
-  {% endcapture %}
-  {% include site/block.html class="Skills" title="Skills" content=skill_content %}
-</aside>
+  <div class="Skills o-no-owl">
+    <h2 class="h1">Skills</h2>
+    {% include tag-list.html items=page.skills %}
+  </div>
+</article>

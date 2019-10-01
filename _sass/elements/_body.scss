@@ -1,9 +1,0 @@
-body {
-  background: var(--theme-background);
-  color: var(--theme-color);
-  font-size: var(--typography-base-fz);
-
-  .has-fonts & {
-    font-family: var(--typography-body-family);
-  }
-}

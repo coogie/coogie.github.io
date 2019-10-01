@@ -1,6 +1,6 @@
 @include breakpoint("medium") {
-  .Site--posts {
-    .Site__main > .container {
+  .Site--blog {
+    .Site__main > .Container {
       display: flex;
     }
     
