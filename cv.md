@@ -1,8 +1,7 @@
 ---
 title: C.V.
 permalink: /cv/
-group: navigation
-sort_order: 4
+layout: page
 body_modifier: cv
 
 objective: >
@@ -331,7 +330,7 @@ interests: >-
       <h1 class="SectionTitle h2">Skills</h1>
       <ul>
         {% for skill in page.skills %}
-          <li>{% include site/core/abbr.html item=skill %}</li>
+          <li>{% include abbr.html item=skill %}</li>
         {% endfor %}
       </ul>
     </section>
@@ -370,7 +369,7 @@ interests: >-
                     <h3 class="Project__colophon-title h6">Methods, techniques, and tech:</h3>
                     <ul class="Project__colophon-list">
                       {% for item in project.colophon %}
-                      <li class="Project__colophon-item">{% include site/core/abbr.html item=item %}</li>
+                      <li class="Project__colophon-item">{% include abbr.html item=item %}</li>
                       {% endfor %}
                     </ul>
                   </aside>

@@ -1,64 +1,49 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
 author: Stephen Coogan
-baseurl: "" # the subpath of your site, e.g. /blog
-description: >- # this means to ignore newlines until next key
+email: hello@coog.ie
+description: >-
   Stephen Coogan is a Front-end Web Developer currently living in Dublin, Ireland.
   He loves code, games, and coffee.
   Is occasionally serious.
-email: hello@coog.ie
 lang: en_GB
-logo:
-social:
-  GitHub: https://github.com/coogie
-  LinkedIn: https://linkedin.com/in/coogie
-  Twitter: https://twitter.com/coog_ie
-  Keybase: https://keybase.io/coogie
 title: Stephen Coogan
 subtitle: Front-end Web Developer
-url: https://coog.ie # the base hostname & protocol for your site, e.g. http://example.com
+url: https://coog.ie
 permalink: /blog/:year/:month/:day/:title/
 show_excerpts: true
 
+# Integrations
 analytics_id: UA-36133007-1
+disqus:
+  shortname: coogie
 
 # Build settings
 markdown: kramdown
+plugins:
+  - jekyll-remote-theme
+
+# Theme and Theme Configs
+theme: "oscailte"
+header_pages:
+  - index.md
+  - blog.md
+  - contact.md
+  - cv.md
+oscailte:
+  analytics:
+    google: UA-36133007-1
+  strings:
+    hero_title: Hi there!<br> I'm Stephen, a Front-end Web Developer from Dublin, Ireland.
+  social:
+    github: coogie
+    keybase: coogie
+    linkedin: coogie
+    twitter: coog_ie
+    rss: rss
 
 sass:
   # style: expanded
   style: compressed
 
-plugins:
- - jekyll-avatar
- - jekyll-feed
- - jekyll-sitemap
-
 webrick:
   headers:
     Cache-Control: public, max-age=15768000
-
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/

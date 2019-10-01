@@ -1,9 +1,0 @@
-.SkipNav {
-  position: absolute;
-    top: 0;
-  transform: translateY(-100vh);
-  
-  &:focus {
-    transform: translateY(0);
-  }
-}
