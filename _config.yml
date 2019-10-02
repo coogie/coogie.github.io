@@ -12,7 +12,6 @@ permalink: /blog/:year/:month/:day/:title/
 show_excerpts: true
 
 # Integrations
-analytics_id: UA-36133007-1
 disqus:
   shortname: coogie
 
@@ -29,8 +28,7 @@ header_pages:
   - contact.md
   - cv.md
 oscailte:
-  analytics:
-    google: UA-36133007-1
+  google_analytics: UA-36133007-1
   strings:
     hero_title: Hi there!<br> I'm Stephen, a Front-end Web Developer from Dublin, Ireland.
   social:
