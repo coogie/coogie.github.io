@@ -27,10 +27,20 @@ skills:
   - Docker
 
 experience:
+  - company: Walmart Global Tech
+    role: Senior Software Engineer
+    period: Aug. 2019 - present
+    description: >-
+      <p>Currently working as part of the User-Generated Content (UGC) team
+      responsible for the operation of the Ratings & Reviews ecosystem for
+      Walmart.com. Striving for a community-driven, high-engagement product
+      review experience. Dealing with 200 million customers across 27 countries,
+      hundreds of millions of daily page views.</p>
+
   - company: CarTrawler
     url: https://www.cartrawler.com/
     role: Senior Software Engineer
-    period: Aug. 2016 - present
+    period: Aug. 2016 - Aug. 2019
     description: >-
       <p>Striving to increase developer mindshare and knowledge of componentisation
       methodologies and best-practices. Encouraging cross-departmental communication to
@@ -102,7 +112,7 @@ experience:
           standard library of known components and styles that can be called upon, at a
           whim, to create almost any visual representation of CarTrawler products with
           full confidence in their accurate representation in-browser.</p>
-          
+
           <p>In addition to this, the Framework & Design System is helping lay the
           groundwork for a greater push towards a wholly componentised approach
           providing all teams in the company with complete access to a shared component
@@ -273,7 +283,7 @@ projects:
     description: >-
       DesktopVersion was a Reddit bot written entirely in Ruby that could scan recent
       Reddit submissions linking to en.m.wikipedia.org and then left a comment to that
-      same submission with a standard link to the Wikipedia article. 
+      same submission with a standard link to the Wikipedia article.
 
 education:
   description: >-
@@ -284,10 +294,10 @@ education:
     <a href="https://css-tricks.com/">Chris Coyier</a>,
     <a href="https://davidwalsh.name/">David Walsh</a>,
     and <a href="https://csswizardry.com/">Harry Roberts</a> - to name but a few.</p>
-    
+
     <p>That being said, I <em>have</em> finished the following course:</p>
   courses:
-    - degree: Certificate in Web Technologies 
+    - degree: Certificate in Web Technologies
       institute: NCI, Dublin
       year: 2013
       description: >-
@@ -363,7 +373,7 @@ interests: >-
                     </small>
                   </h2>
                   {{ project.description }}
-                  
+
                   {% if project.colophon %}
                   <aside class="Project__colophon">
                     <h3 class="Project__colophon-title h6">Methods, techniques, and tech:</h3>
