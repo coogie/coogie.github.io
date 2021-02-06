@@ -1,0 +1,212 @@
+// styleguide:ignore:start
+$component-name: 'modal';
+// styleguide:ignore:end
+
+
+// Plugins::Modal
+//
+// Modals are components that draws user attention and forces interaction with
+// it before the user can continue using the parent page.
+//
+// The modal plugin toggles your hidden content on demand, via data attributes
+// or JavaScript. It also adds `.modal-open` to the <body> to override default
+// scrolling behavior and generates a `.modal__backdrop` to provide a click area
+// for dismissing shown modals when clicking outside the modal.
+//
+// markup:
+// <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+//     <div class="modal__dialog">
+//         <div class="modal__content">
+//             <div class="modal__header">
+//                 <button type="button" class="modal__close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+//                 <h4 class="modal__title" id="myModalLabel">Modal title</h4>
+//             </div>
+//             <div class="modal__body">
+//                 ...
+//             </div>
+//             <div class="modal__footer">
+//                 <button type="button" class="btn btn--secondary" data-dismiss="modal">Close</button>
+//                 <button type="button" class="btn">Save changes</button>
+//             </div>
+//         </div>
+//     </div>
+// </div>
+//
+// Styleguide 3.3
+
+
+/**
+    [1.1] - We want to prevent the user from scrolling when a modal is open.
+*/
+// We only want this rule to apply if it's on the body
+// scss-lint:disable QualifyingElement
+body.modal-open {
+    overflow-y: hidden; // [1.1]
+}
+// scss-lint:enable QualifyingElement
+
+
+/**
+    [2.1] - We want the entire modal component to fill the full size of the viewport
+            which will make it easy peasy for us to centre the actual modal dialog.
+    [2.2] - We'll hide the entire modal component by default and, using the JS
+            plugin, we'll apply display: block; to it when it's triggered.
+*/
+.#{$component-name} {
+    @include z-index(modal, 1);
+    bottom: 0;       // [2.1]
+    display: none;   // [2.2]
+    left: 0;         // [2.1]
+    outline: 0 none;
+    overflow: hidden;
+    position: fixed; // [2.1]
+    right: 0;        // [2.1]
+    top: 0;          // [2.1]
+}
+
+
+/**
+    The .modal__backdrop element is created when a modal is triggered, and it is
+    injected just before </body>
+        [3.1] - We want it to fill 100% of the viewport and to scroll with the user.
+*/
+.#{$component-name}__backdrop {
+    @include z-index(modal);
+    background-color: rgba(#000, .65);
+    bottom: 0;       // [3.1]
+    left: 0;         // [3.1]
+    opacity: 0;
+    position: fixed; // [3.1]
+    right: 0;        // [3.1]
+    top: 0;          // [3.1]
+    transition: opacity 150ms linear;
+
+    &.is-visible {
+        opacity: 1;
+    }
+}
+
+
+/**
+    [4.1] - We'll force the top left corner of the dialog to appear at the centre
+            of the screen, and then use CSS transform to pull it back 50% of its
+            width - making it truly centred on the screen at all times.
+    [4.2] - We want the modal's dialog to be flexible, and to not look broken.
+            By allowing it to be 80% screen width, we can make it appear well on
+            mobile devices, but restrict it to being a maximum of 600px wide to
+            prevent it stretching on desktop.
+*/
+.#{$component-name}__dialog {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(#000, .15);
+    left: 50%;                         // [4.1]
+    max-width: $modal-max-width;       // [4.2]
+    opacity: 0;
+    position: absolute;                // [4.1]
+    top: 50%;                          // [4.1]
+    transform: translate(-50%, -100%); // [4.1]
+    transition: opacity 150ms linear, transform 150ms linear;
+    width: 80%;                        // [4.2]
+
+    .is-visible & {
+        opacity: 1;
+        transform: translate(-50%, -50%); // [4.1]
+    }
+}
+
+
+/**
+    [5.1] - We need to apply a clearfix here because both the .modal__title and
+            .modal__close elements (the two elements in the header) are floated,
+            causing the header to collapse.
+    [5.2] - We apply 3em padding-right here to force long titles to break onto
+            the next line, and then use negative margin in [6.1] to pull the
+            Modal Close element into the padding so that any text up until the
+            break appears alongside the Modal Close.
+*/
+.#{$component-name}__header {
+    @include background--stipe($modal__header-background, 40px 40px, 5%, true);
+    @include clearfix;            // [5.1]
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.75;
+    padding: .5em 3em .5em 1em; // [5.2]
+    text-shadow: 1px 1px 0 rgba(#000, .25);
+}
+
+
+.#{$component-name}__title {
+    float: left;
+    margin: 0;
+}
+
+
+/**
+    [6.1] - We use this negative margin to pull the Modal Close button into the
+            large padding-right we set in [5.2].
+*/
+.#{$component-name}__close {
+    background: linear-gradient(to bottom, #f40000 0%, #c00 100%);
+    border: 1px solid darken(#c00, 10);
+    border-radius: 3px;
+    box-shadow: inset 0 1px 0 rgba(#fff, .35);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f40000', endColorstr='#c00', GradientType=0 );
+    float: right;
+    height: 2em;
+    margin-right: -2.5em; // [6.1]
+    width: 2em;
+}
+
+
+.#{$component-name}__body {
+    padding: 1.5rem 1rem;
+}
+
+
+.#{$component-name}__footer {
+    border-top: 1px solid get-color('brand', 'grey-light');
+    padding: 1rem;
+}
+
+
+// Triggering Modals
+//
+// **Via data-* attributes**<br>
+// Activate a modal without writing JavaScript! Set `data-toggle="modal"` on a
+// controlling element, like a button, along with a `data-target="#foo"` or
+// `href="#foo"` to target a specific modal ID to toggle.
+//
+// **Via JavaScript**<br>
+// <pre>
+//     $('#myButton').on('click', function () {
+//         $('#myModal').modal()
+//     });
+// </pre>
+//
+// markup:
+// <a href="#" class="btn" data-toggle="modal" data-target="#demoModal">Click to launch modal!</a>
+// <div class="modal" id="demoModal" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
+//     <div class="modal__dialog">
+//         <div class="modal__content">
+//             <div class="modal__header">
+//                 <button type="button" class="modal__close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+//                 <h4 class="modal__title" id="demoModalLabel">Bam! Demo modal!</h4>
+//             </div>
+//             <div class="modal__body">
+//                 <p>
+//                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+//                     Accusantium cumque corrupti illo sint, alias eaque, quisquam
+//                     eum quidem eveniet esse delectus. Incidunt temporibus vel
+//                     veritatis! Doloribus aliquid quibusdam quasi architecto?
+//                 </p>
+//             </div>
+//             <div class="modal__footer">
+//                 <button type="button" class="btn btn--secondary" data-dismiss="modal">Close</button>
+//                 <button type="button" class="btn">Save changes</button>
+//             </div>
+//         </div>
+//     </div>
+// </div>
+//
+// Styleguide 3.3.1

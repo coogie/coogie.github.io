@@ -1,0 +1,89 @@
+@font-face {
+  font-family: "pp-icon";
+  src: url('assets/fonts/pp-icon.eot');
+  src: url('assets/fonts/pp-icon.eot?#iefix') format('embedded-opentype'), url('assets/fonts/pp-icon.woff') format('woff'), url('assets/fonts/pp-icon.ttf') format('truetype'), url('assets/fonts/pp-icon.svg') format('svg');
+}
+
+@-webkit-keyframes spinner__rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner__rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spinner__dash {
+  0% {
+    stroke-dasharray: 1,200;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -35px;
+  }
+
+  100% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -124px;
+  }
+}
+
+@keyframes spinner__dash {
+  0% {
+    stroke-dasharray: 1,200;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -35px;
+  }
+
+  100% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -124px;
+  }
+}
+
+@-webkit-keyframes spinner__cycle {
+  100%, 0% {
+    color: #4285F4;
+  }
+
+  40% {
+    color: #EA4335;
+  }
+
+  66% {
+    color: #34A853;
+  }
+
+  80%, 90% {
+    color: #FBBC05;
+  }
+}
+
+@keyframes spinner__cycle {
+  100%, 0% {
+    color: #4285F4;
+  }
+
+  40% {
+    color: #EA4335;
+  }
+
+  66% {
+    color: #34A853;
+  }
+
+  80%, 90% {
+    color: #FBBC05;
+  }
+}

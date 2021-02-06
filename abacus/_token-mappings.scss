@@ -1,0 +1,12 @@
+// We need to explicitly import each file from the Design Tokens library.
+// This is a pain because `gulp-compass` doesn't support globbing @import.
+// However, this also protects us from any crazy additions to the Design
+// Tokens repo, and gives us full control of what's added to Abacus.
+
+@import 'design-tokens/dist/web/candystripe.map';
+@import 'design-tokens/dist/web/color.map';
+
+$token-map: (
+    'color': $color-map,
+    'candystripe': $candystripe-map
+);

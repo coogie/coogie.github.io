@@ -1,0 +1,74 @@
+// styleguide:ignore:start
+
+$component-name: 'flash';
+
+.#{$component-name} {
+    background-color: $flash-background;
+    border: 1px solid get-color('brand', 'grey-light');
+    border-left: 5px solid $flash-highlight;
+    border-radius: 3px;
+    color: $flash-color;
+    display: block;
+    font-size: 1rem;
+    line-height: 1.4;
+    margin: 2rem auto;
+    padding: 1.25em 1em;
+}
+
+
+.#{$component-name}__title {
+    color: $flash-highlight;
+    display: block;
+    font-weight: bold;
+    margin-bottom: .5em;
+    margin-top: 0;
+
+    .icon {
+        font-size: 1em;
+        vertical-align: middle;
+    }
+}
+
+
+.#{$component_name}__content {
+    p {
+        margin: 0;
+    }
+}
+
+
+// CHANNEL-SPECIFIC \\
+// ================ \\
+@each $name, $color in $flash--loop {
+    .#{$component-name}--#{$name} {
+        border-left-color: $color;
+
+        .#{$component-name}__title {
+            color: $color;
+        }
+    }
+}
+
+
+// CONTEXTUAL STYLES \\
+// ================= \\
+.#{$component-name}--positive,
+.#{$component-name}--success {
+    border-left-color: get-color('brand', 'positive');
+
+    .#{$component-name}__title {
+        color: get-color('brand', 'positive');
+    }
+}
+
+
+.#{$component-name}--negative,
+.#{$component-name}--error {
+    border-left-color: get-color('brand', 'negative');
+
+    .#{$component-name}__title {
+        color: get-color('brand', 'negative');
+    }
+}
+
+// styleguide:ignore:end

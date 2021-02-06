@@ -1,0 +1,79 @@
+// Returns a lightened version of the input color by applying a percentage of
+// white to that color.
+//
+// @param $color  [Color]  - The target color to be lightened.
+// @param $amount [Number] - The percentage by which to lighten $color.
+@function tint($color, $amount: 0%) {
+    @if $color == transparent { $color: rgba(#fff, 0); }
+    @return mix(#fff, $color, $amount);
+}
+
+
+// Returns the colour value of either a brand or channel color.
+//
+// @param $location [String] - The location the function should grab the colour value from.
+// @param $color    [String] - The name of the colour to be returned.
+@function get-color($location: 'brand', $color: 'primary') {
+    @if $location == brand {
+        @return map-get($brand, $color);
+    }
+    @else {
+        @return map-get(map-get($map--channels, $location), $color);
+    }
+}
+
+
+// Returns the value of a token from the PP UI Design Token repository
+//
+// @param $location [String] - The design token map from wich to search.
+// @param $token    [String] - The specific design token value to be returned.
+@function design-token($location, $token) {
+    @if $location == null or $token == null {
+        @error "`design-token` parameters but not be undefined."
+             + "`$location`: #{$location}. `$token`: #{$token}.";
+    }
+    @return map-get(map-get($token-map, $location), $token);
+}
+
+
+// Computes the "brightness" of a color
+//
+// Brightness is similiar to lightness in HSL but more closely approximates
+// how humans perceive the intensity of the different RGB components of
+// a color. Brightness is sometimes called luminance.
+//
+// Returns a number between 0% and 100%, where 100% is fully bright
+// (white) and 0% is fully dark (black) for color values.
+
+//
+// @param $color [Color] - The colour you wish to find the brightness of.
+@function brightness($color) {
+    @if type-of($color) == color {
+        @return ((red($color) * .299) + (green($color) * .587) + (blue($color) * .114)) / 255 * 100%;
+    }
+    @else {
+        @return unquote("brightness(#{$color})");
+    }
+}
+
+
+// Returns either the `$light` or `$dark` color
+// by deciding which contrasts more with `$color`.
+//
+// E.g. This can be used to select the more readable foreground color
+// for a given background color.
+//
+// @param $color [Color] - The color that you wish to contrast with.
+// @param $dark  [Color] - The colour of the "dark" result.
+// @param $light [Color] - The colour of the "light" result.
+@function contrast-color($color, $dark: #000, $light: #fff) {
+    @if $color == null {
+        @return null;
+    }
+    @else {
+        $color-brightness:      brightness($color);
+        $dark-text-brightness:  brightness($dark);
+        $light-text-brightness: brightness($light);
+        @return if(abs($color-brightness - $light-text-brightness) > abs($color-brightness - $dark-text-brightness), $light, $dark);
+    }
+}

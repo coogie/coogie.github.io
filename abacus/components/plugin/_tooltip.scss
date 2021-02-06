@@ -1,0 +1,155 @@
+// styleguide:ignore:start
+$component-name: 'tooltip';
+// styleguide:ignore:end
+
+
+// Plugins::Tooltips
+//
+// Tooltips are an easy and convenient way to display additional information on
+// elements. They also allow for the displaying of the full data if truncation
+// is in place.
+//
+// Tooltips are opt-in, and must be triggered on any element you wish them to
+// appear on. As with all JavaScript components, we recommend using a class
+// prepended with `js-` with which you can target multiple instances of tooltips.
+//
+// Tooltips can be enabled like so:
+// <pre>
+//     $('js-tooltip').tooltip();
+// </pre>
+//
+// markup:
+// <script>
+//     $('.js-tooltip').tooltip();
+// </script>
+// <a href="#" class="js-tooltip" title="Atletico Madrid v Bayer Leverkusen">Atletico Madrid v Baye&hellip;</a>
+//
+// sg-wrapper:
+// <div class="sg tooltip-wrapper">
+//     <sg-wrapper-content/>
+// </div>
+//
+// Styleguide 3.5
+
+/**
+    [1.1] - We'll set an absolute position here on the base class, and then
+            apply the actual positions with modifying classes (tooltip--left)
+    [1.2] - Set our properties so that our CSS transitions have values to
+            transition to/from.
+*/
+.#{$component-name} {
+    @include z-index(tooltip);
+    color: $tooltip-color;
+    display: block;
+    font-size: .85rem;
+    font-weight: normal;
+    line-height: 1.2;
+    opacity: 0;
+    position: absolute; // [1.1]
+    transition: opacity 100ms linear, transform 100ms linear;
+
+    &.is-visible {
+        opacity: 1;               // [1.2]
+        transform: translateY(0); // [1.2]
+    }
+}
+
+
+.#{$component-name}__inner {
+    background-color: $tooltip-background;
+    box-shadow: 0 0 5px rgba(#000, .15);
+    display: inline-block;
+    max-width: $tooltip-max-width;
+    padding: .35em .65em;
+}
+
+
+/**
+    The Tooltip Arrow is an empty element used to create exactly what you think
+    it does.
+        [2.1] - We set its position to absolute, and will position it according
+                to the tooltip's modifying class.
+*/
+.#{$component-name}__arrow {
+    border-color: transparent;
+    border-style: solid;
+    height: 0;
+    position: absolute; // [2.1]
+    width: 0;
+}
+
+
+// Positional modifiers
+//
+// Although the default behaviour of tooltips is be positioned above the element
+// which called it, this can be easily changed by simply adding data attribute
+// `data-placement` to the element with the direction you want the tooltip to
+// appear.
+//
+// top    - Top
+// right  - Right
+// bottom - Bottom
+// left   - Left
+//
+// markup:
+// <script>
+//     $('.js-tooltip').tooltip();
+// </script>
+// <a href="#" class="js-tooltip" data-placement="{$modifiers}" title="Atletico Madrid v Bayer Leverkusen">Atletico Madrid v Baye&hellip;</a>
+//
+// Styleguide 3.5.1
+
+.#{$component-name}--top {
+    padding: $tooltip__arrow-size 0;
+    transform: translateY(5px);
+
+    .#{$component-name}__arrow {
+        border-top-color: $tooltip-background;
+        border-width: $tooltip__arrow-size $tooltip__arrow-size 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -$tooltip__arrow-size;
+    }
+}
+
+
+.#{$component-name}--right {
+    padding: 0 $tooltip__arrow-size;
+    transform: translateX(-5px);
+
+    .#{$component-name}__arrow {
+        border-right-color: $tooltip-background;
+        border-width: $tooltip__arrow-size $tooltip__arrow-size $tooltip__arrow-size 0;
+        left: 0;
+        margin-top: -$tooltip__arrow-size;
+        top: 50%;
+    }
+}
+
+
+.#{$component-name}--bottom {
+    padding: $tooltip__arrow-size 0;
+    transform: translateY(-5px);
+
+    .#{$component-name}__arrow {
+        border-bottom-color: $tooltip-background;
+        border-width: 0 $tooltip__arrow-size $tooltip__arrow-size;
+        left: 50%;
+        margin-left: -$tooltip__arrow-size;
+        top: 0;
+    }
+}
+
+
+.#{$component-name}--left {
+    padding: 0 $tooltip__arrow-size;
+    transform: translateX(5px);
+
+    .#{$component-name}__arrow {
+        border-left-color: $tooltip-background;
+        border-width: $tooltip__arrow-size 0 $tooltip__arrow-size $tooltip__arrow-size;
+        margin-top: -$tooltip__arrow-size;
+        right: 0;
+        top: 50%;
+    }
+}

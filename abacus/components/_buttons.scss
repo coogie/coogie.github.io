@@ -1,0 +1,330 @@
+// styleguide:ignore:start
+$component-name: 'btn';
+// styleguide:ignore:end
+
+
+// Components::Button
+//
+// This is the Primary Button, and contains all the default style rules that
+// all our buttons will inherit from.
+//
+// This includes all styles that apply to the `:active`, `:focus`, and `:hover`
+// pseudo-selectors.
+//
+// markup:
+// <a class="btn">Primary Button</a>
+//
+// Styleguide 2.2.
+
+/**
+    Standard button styles
+        [1.1] - We'll remove the border from any button element, most notable is
+                when the class is applied to an *actual* <button> tag.
+        [1.2] - Buttons should appear clickable regardless of whether they're a
+                click element (<a>), that's kinda the point.
+        [1.3] - Make buttons inline-block so we can properly manipulate their
+                box-model.
+        [1.4] - In order to try meet UX guideline minimum heights in a reasonable
+                fashion, we set our vertical padding as a calculation of our base
+                font-size (assumed 14px). This is how we calculate the padding:
+                ( (desiredHeight - fontSize) ÷ 2 ) ÷ fontSize
+        [1.5] - Prevent the User from being able to select text in the button.
+        [1.6] - Better alignment for buttons with differing sizes when used
+                beside each other.
+        [1.7] - Stop text in buttons breaking on to a newline halfway through.
+        [1.8] - The disabled button shouldn't show any visual feedback when it's
+                pressed. Otherwise, it wouldn't really be disabled.
+*/
+.#{$component-name} {
+    background-color: $btn--primary-bg;
+    border: 0;              // [1.1]
+    border-radius: $btn--border-radius;
+    box-shadow: $btn--box-shadow;
+    color: $btn--primary-text;
+    cursor: pointer;        // [1.2]
+    display: inline-block;  // [1.3]
+    font-size: 1rem;        // [1.4]
+    font-weight: bold;
+    line-height: 1;         // [1.4]
+    margin: $btn--margin;
+    padding: .785em 1em;   // [1.4]
+    text-align: center;
+    user-select: none;      // [1.5]
+    vertical-align: middle; // [1.6]
+    white-space: nowrap;    // [1.7]
+
+    @media only screen and (min-resolution: 2dppx) {
+        border-radius: $btn--border-radius_2x;
+        box-shadow: $btn--box-shadow_2x;
+    }
+
+    @media only screen and (min-resolution: 3dppx) {
+        border-radius: $btn--border-radius_3x;
+        box-shadow: $btn--box-shadow_3x;
+    }
+
+    &:focus,
+    &:hover {
+        color: $btn--primary-text;
+        text-decoration: none;
+    }
+
+    &:active {
+        &:not(.btn--disabled) { // [1.8]
+            background-image: linear-gradient(to bottom, $btn--pressed-overlay 0%, $btn--pressed-overlay 100%);
+            box-shadow: none;
+            color: rgba(#000, .2);
+            text-decoration: none;
+        }
+    }
+
+    &:focus {
+        outline: 1px dotted #000;
+    }
+}
+
+
+// Components::Button - Odds
+//
+//
+//
+// .btn--odds         - Default odds button. This button lacks padding on the x-axis to allow larger odds to fit correctly without breaking the width of the button.
+// .btn--odds-short   - This style is used to indicate that the odds have shortened and are more in the customer's favour.
+// .btn--odds-drift   - This style is used to indicate that the odds have drifted and are less in the customer's favour.
+//
+// markup:
+// <a class="btn {$modifiers}">5/2</a>
+//
+// Styleguide 2.2.2.
+
+[class*="#{$component-name}--odds"] {
+    min-width: 3.5em;
+}
+
+.#{$component-name}--odds {
+    background-color: $btn--odds-bg;
+    color: $btn--odds-text;
+    padding-left: 0;
+    padding-right: 0;
+
+    &:hover {
+        color: $btn--odds-text;
+    }
+}
+
+.#{$component-name}--odds-short,
+.#{$component-name}--odds-up {
+    background-color: $btn--odds-short-bg;
+    color: $btn--odds-short-text;
+}
+
+.#{$component-name}--odds-drift,
+.#{$component-name}--odds-down {
+    background-color: $btn--odds-drift-bg;
+    color: $btn--odds-drift-text;
+}
+
+
+// Components::Button - Channel
+//
+// Channel buttons are the pretty much the same as the Base Buttons in all but
+// their colours. They inherit all the layout styles by using the base button
+// class, and then modify the colours with their own class.
+//
+// Channel Buttons also come with an alternative styling for use in locations
+// where their standard styling would provide poor contrast.
+//
+// .btn--accounts   - Styling used to represent the Accounts area.
+// .btn--bingo      - The Bingo button styling.
+// .btn--casino     - The Casino button styling.
+// .btn--games      - The Games button styling.
+// .btn--livecasino - The Live Casino button styling.
+// .btn--poker      - The Poker button styling.
+// .btn--sports     - The Sports button styling.
+// .btn--vegas      - The Vegas button styling.
+//
+// markup:
+// <a class="btn {$modifiers}">Button</a>
+//
+// Styleguide 2.2.3.
+
+/**
+    Channel modifiers
+*/
+@each $name, $color in $button--loop {
+    .#{$component-name}--#{$name} {
+        background-color: $color;
+    }
+
+    .#{$component-name}--#{$name}-alt {
+        background-color: #fff;
+        color: $color;
+
+        &:hover {
+            color: $color;
+        }
+    }
+
+    .#{$component-name}--#{$name}-outline {
+        background-color: transparent;
+        border: 1px solid;
+        box-shadow: inset 0 -2px 0 #fff;
+
+        &:active {
+            border-color: transparent;
+            color: #fff;
+        }
+    }
+}
+
+// Components::Button - Channel Alternative
+//
+// Channel Buttons also come with an alternative styling for use in locations
+// where their standard styling would provide poor contrast. This styling
+// should serve in place of the channel's primary style in this curcumstance.
+//
+// The classnames for these buttons is the same as the standard channel button
+// classnames, just with `-alt` appended.
+//
+// .btn--accounts-alt   - Styling used to represent the Accounts area.
+// .btn--bingo-alt      - The Bingo button styling.
+// .btn--casino-alt     - The Casino button styling.
+// .btn--games-alt      - The Games button styling.
+// .btn--livecasino-alt - The Live Casino button styling.
+// .btn--poker-alt      - The Poker button styling.
+// .btn--sports-alt     - The Sports button styling.
+// .btn--vegas-alt      - The Vegas button styling.
+//
+// markup:
+// <div class="contrast {$modifiers}"> <!-- only for demoing contrast background -->
+//   <a class="btn {$modifiers}">Button</a>
+// </div>
+//
+// Styleguide 2.2.4.
+
+
+// Components::Button - Channel Outline
+//
+// Channel Outline buttons can also be used in locations where the standard
+// channel buttons would provide poor contrast with their background. They
+// serve almost as a secondary to the Channel Alternative styling.
+//
+// The classnames for these buttons is the same as the standard channel button
+// classnames, just with `-outline` appended.
+//
+// .btn--accounts-outline   - Styling used to represent the Accounts area.
+// .btn--bingo-outline      - The Bingo button styling.
+// .btn--casino-outline     - The Casino button styling.
+// .btn--games-outline      - The Games button styling.
+// .btn--livecasino-outline - The Live Casino button styling.
+// .btn--poker-outline      - The Poker button styling.
+// .btn--sports-outline     - The Sports button styling.
+// .btn--vegas-outline      - The Vegas button styling.
+//
+// markup:
+// <div class="contrast {$modifiers}"> <!-- only for demoing contrast background -->
+//   <a class="btn {$modifiers}">Button</a>
+// </div>
+//
+// Styleguide 2.2.5.
+
+
+// ========================================================================= \\
+
+
+// Components::Button - Contextual
+//
+// Contextual buttons are great for when you need a user to perform an action, but want to make it clear what type of action that is.
+//
+// .btn--positive - Represents positive action. (Yes | Confirm | Continue)
+// .btn--negative - Represents negative actions. (No | Cancel | Delete)
+//
+// markup:
+// <a class="btn {$modifiers}">Button</a>
+//
+// Styleguide 2.2.6.
+
+.#{$component-name}--positive {
+    background-color: get-color('brand', 'positive');
+}
+
+.#{$component-name}--negative {
+    background-color: get-color('brand', 'negative');
+}
+
+
+// Components::Button - Size-modifiers
+//
+// Buttons just wouldn't be buttons if they didn't come in all shapes and sizes,
+// though. The following modifier classes will allow you to increase, or decrease,
+// the overall size of your buttons.
+//
+// Thanks to the <abbr title="Object-oriented CSS">OOCSS</abbr> nature of Abacus,
+// these classes can be combined with any of the other Button classes outside of
+// this sub-category.
+//
+// .btn--small - A smaller-sized button, .8em of parent's `font-size`.
+// .btn--large - A larger-sized button, 1.5em of parent's `font-size`.
+// .btn--block - These buttons will take up 100% of their parent's width.
+//
+// markup:
+// <a class="btn {$modifiers}">Button</a> <a class="btn btn--bingo {$modifiers}">Channel Button</a>
+//
+// Styleguide 2.2.7.
+
+/**
+    [1.1] - We're able to use em units here because the base .btn elements use
+            100% font-size of their parent elements for scalability.
+*/
+.#{$component-name}--small {
+    font-size: .8em; // [1.1]
+    padding: .5em;   // [1.1]
+}
+
+.#{$component-name}--large {
+    font-size: 1.5em;   // [1.1]
+    padding: .5em 1em; // [1.1]
+}
+
+.#{$component-name}--block {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+}
+
+
+// Components::Button - Hierarchy
+//
+// Buttons also have a hierarchy that dictates how they should be used, what
+// they should be used for, and what they represent.
+//
+// .btn--secondary - Secondary tier alternate button styling
+// .btn--tertiary  - Tertiary tier button styling
+// .btn--disabled  - Disabled button styling. This modifier also has `pointer-events: none;` applied to its `:active` state, so you should not expect any JavaScript click events to work correctly this button in [browsers that support it](http://caniuse.com/#search=pointer-events).
+//
+// markup:
+// <a class="btn {$modifiers}">Button</a>
+//
+// Styleguide 2.2.1.
+
+.#{$component-name}--secondary {
+    background-color: design-token('color', 'brand-blue-dark');
+}
+
+.#{$component-name}--tertiary {
+    background-color: design-token('color', 'brand-grey');
+}
+
+.#{$component-name}--disabled {
+    background-color: $btn--disabled-bg;
+    color: $btn--disabled-text;
+    cursor: not-allowed;
+
+    &:hover {
+        color: $btn--disabled-text;
+    }
+
+    &:active {
+        pointer-events: none;
+    }
+}

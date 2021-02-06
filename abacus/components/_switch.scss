@@ -1,0 +1,161 @@
+// styleguide:ignore:start
+$switch-dimension: 1em;
+// styleguide:ignore:end
+
+
+// Components::Switch
+//
+// Switches are toggle element that switch between an Off and On state on tap
+// or click. They make use of checkbox inputs (or radio buttons) and require
+// no JavaScript.
+//
+// The default Switch type is the Checkbox, and required very little markup
+// to get up and running.
+//
+// It's important to not, however, that the styling for Switches require the
+// markup to be in a specific order, otherwise they won't work or display as
+// expected. That is: an `input.switch__item` with an adjacent sibling of
+// `label.switch__label`, all inside a `.switch` element.
+//
+// .switch          - Default Switch
+// .switch--inside  - Switch element with "inside" styling
+// .switch--outline - Switch element with "outline" styling
+//
+// markup:
+// <div class="switch {$modifiers}">
+//     <input class="switch__toggle" id="switch-{$modifiers}" type="checkbox">
+//     <label class="switch__label" for="switch-{$modifiers}"></label>
+// </div>
+//
+// Styleguide 2.11
+
+.switch {
+    border: 0;
+    font-size: 2rem;
+    outline: 0;
+    padding: 0;
+    position: relative;
+    user-select: none;
+}
+
+
+.switch__label {
+    background: get-color('brand', 'negative');
+    border-radius: $switch-dimension;
+    color: transparent;
+    cursor: pointer;
+    display: block;
+    height: $switch-dimension;
+    margin-bottom: 1em;
+    position: relative;
+    text-indent: 100%;
+    transition: background-color 150ms, margin-left 150ms;
+    width: ($switch-dimension * 2);
+
+    &::after {
+        background: #fff;
+        border-radius: $switch-dimension;
+        bottom: 1px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+        content: '';
+        display: block;
+        left: 1px;
+        margin-left: 0;
+        position: absolute;
+        top: 1px;
+        transform: translate3d(0, 0, 0);
+        transition: background-color 150ms, margin-left 150ms;
+        width: $switch-dimension;
+    }
+}
+
+
+.switch__toggle {
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+
+    &:checked + .switch__label {
+        background: get-color('brand', 'positive');
+
+        &::after {
+            margin-left: $switch-dimension;
+        }
+    }
+}
+
+
+
+// BLOCK MODIFIERS \\
+// =============== \\
+.switch--inside {
+    .switch__label {
+        &::after {
+            height: ($switch-dimension * .8);
+            left:   ($switch-dimension * .1);
+            top:    ($switch-dimension * .1);
+            width:  ($switch-dimension * .8);
+        }
+    }
+
+    .switch__toggle {
+        &:checked + .switch__label {
+            background: get-color('brand', 'positive');
+        }
+    }
+}
+
+
+.switch--outline {
+    z-index: 1;
+
+    .switch__label {
+        background-color: #fff;
+
+        &::before {
+            background-color: get-color('brand', 'negative');
+            border-radius: $switch-dimension;
+            bottom: -.075em;
+            content: '';
+            display: block;
+            left:   -.075em;
+            position: absolute;
+            right:  -.075em;
+            top:    -.075em;
+            z-index: -1;
+        }
+
+        &::after {
+            background-color: get-color('brand', 'negative');
+            box-shadow: none;
+            height: ($switch-dimension * .8);
+            left:   ($switch-dimension * .1);
+            top:    ($switch-dimension * .1);
+            width:  ($switch-dimension * .8);
+        }
+    }
+
+    .switch__toggle {
+        &:checked + .switch__label {
+            background: #fff;
+            border-color: get-color('brand', 'positive');
+
+            // Is ok to nest this deep for psuedo elements
+            // scss-lint:disable NestingDepth
+            &::before,
+            &::after {
+                background-color: get-color('brand', 'positive');
+            }
+            // scss-lint:enable NestingDepth
+        }
+    }
+}
+
+
+.switch--small {
+    font-size: 1.25rem;
+}
+
+.switch--large {
+    font-size: 2.75rem;
+}

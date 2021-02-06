@@ -1,0 +1,248 @@
+// styleguide:ignore:start
+$component-name: 'channelnav';
+// styleguide:ignore:end
+
+
+// Components::Channel Nav
+//
+// The channel navigation is the black bar at the top of all PaddyPower sites. It's a primary navigation that's used to link all the channels in a consistent and familiar way.
+//
+// markup:
+// <nav class="channelnav">
+//     <div class="row">
+//         <div class="small-12 columns">
+//             <a href="#" class="btn btn--accounts btn--small">Open an account</a>
+//             <a href="#" class="channelnav__trigger hide-for-large">Menu</a>
+//             <ul class="channelnav__list">
+//                 <li class="channelnav__item"><a href="#">Sports</a></li>
+//                 <li class="channelnav__item"><a href="#">In-Play Betting</a></li>
+//                 <li class="channelnav__item"><a href="#">Virtuals</a></li>
+//                 <li class="channelnav__item active"><a href="#">Active Link</a></li>
+//                 <li class="channelnav__item"><a href="#">Poker</a></li>
+//                 <li class="channelnav__item"><a href="#">Casino</a></li>
+//                 <li class="channelnav__item"><a href="#">Live Casino</a></li>
+//                 <li class="channelnav__item"><a href="#">Games</a></li>
+//                 <li class="channelnav__item"><a href="#">Bingo</a></li>
+//             </ul>
+//         </div>
+//     </div>
+// </nav>
+//
+// Styleguide 2.3.
+
+
+/**
+    [1.1] - This is to targt any buttons that are placed in the Channelnav.
+            There should really only be one button in there, though. The
+            "Open An Account" button.
+*/
+.#{$component-name} {
+    background: linear-gradient(to bottom, $channelnav-gradient--top, $channelnav-gradient--bottom);
+    border-bottom: 3px solid $channelnav--default;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$channelnav-gradient--top}', endColorstr='#{$channelnav-gradient--bottom}', GradientType=0 );
+    font-size: $font-size--small;
+    line-height: 2.5;
+
+    .#{$component-name}__item.active a {
+        color: $channelnav--default;
+    }
+
+    // [1.1]
+    [class*="btn"] {
+        font-weight: bold;
+        margin-right: 1em;
+        text-transform: uppercase;
+        vertical-align: baseline;
+    }
+}
+
+
+/**
+    The Channelnav Trigger is an element that is only visible on medium-sized
+    screens and down. It's responsible for displaying the Channelnav List on
+    smaller screens via hover and focus.
+        [2.1] - This is the CSS responsible for displaying the Channlenav List.
+*/
+.#{$component-name}__trigger {
+    color: #fff;
+    float: right;
+    margin-right: 1em;
+
+    &:hover,
+    &:focus {
+        color: #fff;
+        + .#{$component-name}__list { // [2.1]
+            display: block;           // [2.1]
+        }
+    }
+}
+
+
+// The Channel Time element is exactly that. A small element that displays the
+// time in the Channel Nav
+.#{$component-name}__time {
+    color: #fff;
+    font-size: .75rem;
+}
+
+
+/**
+    [3.1] - We don't want a background color on the Channelnav List because it
+            will appear above the page on small screens. Instead, we'll set
+            gradient on the individual items later on, and then further change
+            them using media queries.
+    [3.2] - Because these are mobile-first styles, the Channelnav List is hidden
+            by default, and will display when the appropriate conditions are met
+            on the Channelnav Trigger in [2.1].
+*/
+.#{$component-name}__list {
+    @include list--unstyled;
+    @include z-index(menu);
+    background-color: transparent; // [3.1]
+    display: none;                 // [3.2]
+    margin: 0;
+    min-width: 50%;
+    padding-top: 3em;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    &:hover {
+        display: block;
+    }
+
+    // A small, invisible shim so that we're always "hovering" over the
+    // Channelnav List at the top of the screen.
+    &::after {
+        border: solid transparent;
+        // These need to be in this order for the "arrow" to display
+        // scss-lint:disable PropertySortOrder
+        border-color: rgba($channelnav-gradient--top, 0);
+        border-bottom-color: $channelnav-gradient--top;
+        // scss-lint:ensable PropertySortOrder
+        border-width: 10px;
+        content: ' ';
+        height: 0;
+        margin-top: -19px;
+        pointer-events: none;
+        position: absolute;
+        right: 2.5em;
+        top: 3em;
+        width: 0;
+    }
+}
+
+
+.#{$component-name}__item {
+    background: linear-gradient(to bottom, $channelnav-gradient--top, $channelnav-gradient--bottom);
+    border-top: 1px solid rgba(#fff, .35);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$channelnav-gradient--top}', endColorstr='#{$channelnav-gradient--bottom}', GradientType=0 );
+
+    a {
+        color: #fff;
+        display: block;
+        font-weight: bold;
+        padding-left: .8em;
+        padding-right: .8em;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+
+// Channel-themed Channel Navigation
+//
+// The channel navigation can also easily adapt to whichever channel it's used on.<br>
+// All that's required is the addition of a block modifier class to the `<nav>` element.
+// Abacus will take care of the rest.
+//
+// The Sports channel is the default style for the channel navigation.
+//
+// .channelnav--bingo      - The Bingo channel navigation design.
+// .channelnav--casino     - The Casino channel navigation design.
+// .channelnav--games      - The Games channel navigation design.
+// .channelnav--livecasino - The Live Casino channel navigation design.
+// .channelnav--poker      - The Poker channel navigation design.
+// .channelnav--vegas      - The Vegas channel navigation design.
+//
+// markup:
+// <nav class="channelnav {$modifiers}">
+//     <div class="row">
+//         <div class="small-12 columns">
+//             <a href="#" class="btn btn--accounts btn--small">Open an account</a>
+//             <a href="#" class="channelnav__trigger hide-for-large">Menu</a>
+//             <ul class="channelnav__list">
+//                 <li class="channelnav__item"><a href="#">Sports</a></li>
+//                 <li class="channelnav__item"><a href="#">In-Play Betting</a></li>
+//                 <li class="channelnav__item"><a href="#">Virtuals</a></li>
+//                 <li class="channelnav__item active"><a href="#">Active Link</a></li>
+//                 <li class="channelnav__item"><a href="#">Poker</a></li>
+//                 <li class="channelnav__item"><a href="#">Casino</a></li>
+//                 <li class="channelnav__item"><a href="#">Live Casino</a></li>
+//                 <li class="channelnav__item"><a href="#">Games</a></li>
+//                 <li class="channelnav__item"><a href="#">Bingo</a></li>
+//             </ul>
+//         </div>
+//     </div>
+// </nav>
+//
+// Styleguide 2.3.1.
+
+@each $name, $color in $channelnav--loop {
+
+    .#{$component-name}--#{$name} {
+        border-bottom-color: $color;
+
+        .#{$component-name}__item.active a {
+            color: $color;
+        }
+    }
+
+}
+
+
+// styleguide:ignore:start
+
+// RESPONSIVE STYLES \\
+// ================= \\
+//
+//    [4.1] - We want the Channelnav List to be inline when we're on a large
+//            screen. And it also displays on the right-hand side of the
+//            Channelnav, so let's do that too.
+//    [4.2] - We'll remove the min-width: 50%; we set above, as that's only
+//            for smaller displays where its display gets triggered.
+@include breakpoint('large') {
+    .#{$component-name}__list {
+        display: inline-block; // [4.1]
+        float: right;          // [4.1]
+        min-width: auto;       // [4.2]
+        padding: 0;
+        position: relative;
+
+        &::after {
+            display: none;
+        }
+    }
+
+
+    .#{$component-name}__item {
+        background-color: transparent;
+        border-left: 1px solid rgba(#000, .25);
+        border-right: 1px solid rgba(#fff, .25);
+        border-top: 0;
+        float: left;
+
+        &:first-child {
+            border-left: 0;
+        }
+
+        &:last-child {
+            border-right: 0;
+        }
+    }
+}
+
+// styleguide:ignore:end

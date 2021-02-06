@@ -1,0 +1,51 @@
+@import 'compass/utilities/sprites/base';
+$logos: sprite-map('logos/*.png');
+
+
+// Components::Logos
+//
+// The Logo consists of a sprite and class names that are generated at build time.
+// If you need a new logo, just add it to the logo directory! Sweet as.
+//
+// The logo component can also take a text node as its content. Using CSS, we'll
+// hide this text from the majority of users. This makes the component display as
+// we want to, while making it entirely accessible to users with screen-reading
+// software.
+//
+// .logo--primary    - Logo
+// .logo--bingo      - Logo
+// .logo--casino     - Logo
+// .logo--games      - Logo
+// .logo--livecasino - Logo
+// .logo--poker      - Logo
+// .logo--sport      - Logo
+//
+// markup:
+// <a href="#" class="logo {$modifiers}">Paddy Power</a>
+//
+// sg-wrapper:
+// <div style="background: linear-gradient(45deg, #004833 0%, #31953E 100%); padding: 1em;">
+//     <sg-wrapper-content/>
+// </div>
+//
+// Styleguide 2.6
+
+/**
+    [1.1] - This lets us use actual content in the Logo elements, and thus,
+            have better SEO and semantics. Screen readers will read the
+            element as normal, but regular users will only see the Logo.
+            Brill.
+*/
+.logo {
+    @include hide-text;  // [1.1]
+    background: $logos;
+    border: 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+// We'll loop through each of the sprites in the logos sprite-map() and use the
+// values to create BEM-ified classes with the awesomely sexy BEM-sprite mixin.
+@each $i in sprite_names($logos) {
+    @include BEM-sprite(logo, $logos, $i);
+}

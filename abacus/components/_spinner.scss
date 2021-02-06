@@ -1,0 +1,141 @@
+// styleguide:ignore:start
+$component-name: 'spinner';
+
+@keyframes spinner__rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spinner__dash {
+    0% {
+        stroke-dasharray: 1,200;
+        stroke-dashoffset: 0;
+    }
+
+    50% {
+        stroke-dasharray: 89,200;
+        stroke-dashoffset: -35px;
+    }
+
+    100% {
+        stroke-dasharray: 89,200;
+        stroke-dashoffset: -124px;
+    }
+}
+
+@keyframes spinner__cycle {
+    100%, 0% {
+        color: map-get($spinner--cycle, '1');
+    }
+
+    40% {
+        color: map-get($spinner--cycle, '2');
+    }
+
+    66% {
+        color: map-get($spinner--cycle, '3');
+    }
+
+    80%, 90% {
+        color: map-get($spinner--cycle, '4');
+    }
+}
+// styleguide:ignore:end
+
+
+// Components::Spinner
+//
+// The Spinner is modeled after the Spinner from Google's Material Design and,
+// thus, is best suited for use on the Android platform. However, that's not to
+// say that it can't be used for Desktop.
+//
+// It's important to note the usage of an SVG in the demo. This is a hard
+// requirement of using the Spinner.
+//
+// The colour and dimensions of the Spinner can be modified to suit your
+// project by overwriting the `color` and `font-size` properties.
+//
+// markup:
+// <div class="spinner">
+//     <svg class="spinner__svg" viewBox="25 25 50 50">
+//         <circle class="spinner__path" cx="50" cy="50" r="20" fill="none" stroke-width="6" stroke-miterlimit="10"/>
+//     </svg>
+// </div>
+//
+// Styleguide 2.10
+
+.#{$component-name} {
+    color: $spinner--color;
+    display: inline-block;
+    font-size: 1.5rem;
+    height: 1em;
+    width: 1em;
+}
+
+.spinner__svg {
+    animation: spinner__rotate 2s linear infinite;
+}
+
+.spinner__path {
+    animation: spinner__dash 1.5s ease-in-out infinite;
+    stroke: currentColor;
+    stroke-dasharray: 1,200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+}
+
+
+// Components::Spinner - Modifiers
+//
+// The Spinner also comes with styling to suit each channel, should that be
+// needed. The SVG used in the examples below is the *exact same* as the SVG
+// in the default Spinner above.
+//
+// .spinner--accounts   - Accounts Spinner styling.
+// .spinner--bingo      - Bingo Spinner styling.
+// .spinner--casino     - Casino Spinner styling.
+// .spinner--games      - Games Spinner styling.
+// .spinner--livecasino - Live Casino Spinner styling.
+// .spinner--poker      - Poker Spinner styling.
+// .spinner--sports     - Sports Spinner styling.
+// .spinner--vegas      - Vegas Spinner styling.
+//
+// markup:
+// <div class="spinner {$modifiers}">
+//     <svg class="spinner__svg" viewBox="25 25 50 50">
+//         <circle class="spinner__path" cx="50" cy="50" r="20" fill="none" stroke-width="6" stroke-miterlimit="10"/>
+//     </svg>
+// </div>
+//
+// Styleguide 2.10.1
+
+@each $name, $color in $spinner--loop {
+    .#{$component-name}--#{$name} {
+        color: $color;
+    }
+}
+
+
+// Components::Spinner - Cycle
+//
+// The Cycle modifier makes the spinner cycle through colours as part of its
+// animation. This makes it on-par with the standard Google Material Design
+// Spinner, and also uses the same colours from it - for a more native feel.
+//
+// Again, it uses the same SVG as the previous examples, the only difference
+// being the addition of the `.spinner--cycle` modifier class on the `.spinner`
+// element.
+//
+// markup:
+// <div class="spinner spinner--cycle">
+//     <svg class="spinner__svg" viewBox="25 25 50 50">
+//         <circle class="spinner__path" cx="50" cy="50" r="20" fill="none" stroke-width="6" stroke-miterlimit="10"/>
+//     </svg>
+// </div>
+//
+// Styleguide 2.10.2
+
+.spinner--cycle {
+    animation: spinner__cycle 6s ease-in-out infinite;
+}

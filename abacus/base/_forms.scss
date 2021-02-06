@@ -1,0 +1,488 @@
+// styleguide:ignore:start
+$component-name: 'form';
+// styleguide:ignore:end
+
+// Base::Forms
+//
+// Forms are some of the fiddliest parts when developing sites. Thankfully,
+// Abacus provides a lot of default styling to help you get everything you
+// need up and running.
+//
+// Abacus provides styling for forms and their form elements.<br>
+// This forms shows you the very basics of forms and how they will appear on
+// your page.
+//
+// Each item is considered a `.form__group`.<br>
+// Each form group contains a label and a corrosponding `.form__control` — typically
+// an input. Form groups can also contain a `.form__message`, which is inserted
+// after the form control.
+//
+// It's important to note, though, that checkbox and radio elements exist within
+// their respective `label`, unlike the `.form__control` elements.
+//
+// You can even (and are encouraged to) use the Grid system within your forms.
+// All `.form__control` elements will fill 100% of their container, making them
+// much easier to use inside the grid.
+//
+// markup:
+// <form class="form">
+//     <div class="row">
+//         <div class="small-12 columns">
+//             <div class="form__group">
+//                 <label for="basicEmail">Email address</label>
+//                 <input required name="email" id="basicEmail" type="email" class="form__control" placeholder="jane.doe@example.com">
+//             </div>
+//         </div>
+//     </div>
+//     <div class="row">
+//         <div class="small-12 columns">
+//             <div class="form__group">
+//                 <label for="basicPassword">Password</label>
+//                 <input required name="password" id="basicPassword" type="password" class="form__control" placeholder="The stronger the better!">
+//                 <span class="form__message"><strong>Note:</strong> Must be awesome.</span>
+//             </div>
+//         </div>
+//     </div>
+//     <div class="row">
+//         <div class="small-12 columns">
+//             <div class="form__group">
+//                 <strong>Send me updates:</strong><br>
+//                 <label class="form__radio">
+//                     <input required value="daily" name="update" type="radio"> Daily
+//                 </label><br>
+//                 <label class="form__radio">
+//                     <input required value="weekly" name="update" type="radio"> Weekly
+//                 </label><br>
+//                 <label class="form__radio">
+//                     <input required value="monthly" name="update" type="radio"> Monthly
+//                 </label>
+//             </div>
+//         </div>
+//     </div>
+//     <div class="row">
+//         <div class="small-12 columns">
+//             <div class="form__group">
+//                 <label class="form__checkbox">
+//                     <input required type="checkbox"> I have read and agree to the <a href="#">Terms &amp; Conditions</a>.
+//                 </label>
+//             </div>
+//         </div>
+//     </div>
+//     <div class="row">
+//         <div class="small-12 columns">
+//             <button type="submit" class="btn btn--accounts btn--full">Create Account</button>
+//         </div>
+//     </div>
+// </form>
+//
+// Styleguide 1.4
+
+
+// Inline Form
+//
+// Abacus also supports Inline Forms.
+//
+// Inline Forms display exactly as their name suggests: Inline.
+// They can be used either with `label` elements, or without. They have also been
+// carefully crafted to stay as perfectly-centred on the Y-axis as possible,
+// assuming you use the elements correctly!
+//
+// markup:
+// <!-- Inline with labels -->
+// <form class="form form--inline">
+//     <div class="form__group">
+//         <label for="inlineUsername">Username</label>
+//         <input required name="inlineUsername" id="inlineUsername" type="text" class="form__control" placeholder="Username">
+//     </div>
+//     <div class="form__group">
+//         <label for="inlinePassword">Password</label>
+//         <input required name="inlinePassword" id="inlinePassword" type="password" class="form__control" placeholder="Password">
+//     </div>
+//     <button type="submit" class="btn btn--accounts">Login</button>
+// </form>
+// <hr>
+// <!-- Inline without labels -->
+// <form class="form form--inline">
+//     <div class="form__group">
+//         <input required name="inlineUsername2" type="email" class="form__control" placeholder="Username">
+//     </div>
+//     <div class="form__group">
+//         <input required name="inlinePassword2" type="password" class="form__control" placeholder="Password">
+//     </div>
+//     <div class="form__group">
+//         <label class="form__checkbox">
+//             <input type="checkbox"> Remember me
+//         </label>
+//     </div>
+//     <button type="submit" class="btn btn--accounts">Login</button>
+// </form>
+//
+// Styleguide 1.4.1.
+
+
+// Fieldsets
+//
+// The `fieldset` element is used to group several controls as well as their
+// `label` elements within a web form.
+//
+// There's nothing special required to get them up and running with Abacus, no
+// additional classnames required. Just punch in the tag name, along with its
+// `legend` and you're away.
+//
+// markup:
+// <form class="form">
+//     <div class="row">
+//         <div class="small-12 columns">
+//             <fieldset>
+//                 <legend>All about you</legend>
+//                 <div class="form__group">
+//                     <label for="fieldsetForename">First name</label>
+//                     <input id="fieldsetForename" type="text" class="form__control" placeholder="Jane">
+//                 </div>
+//                 <div class="form__group">
+//                     <label for="fieldsetSurname">Last name</label>
+//                     <input id="fieldsetSurname" type="text" class="form__control" placeholder="Doe">
+//                 </div>
+//                 <div class="form__group">
+//                     <label for="fieldsetHairColor">Hair colour</label>
+//                     <input id="fieldsetHairColor" type="email" class="form__control" placeholder="Brown">
+//                 </div>
+//             </fieldset>
+//         </div>
+//     </div>
+//     <div class="row">
+//         <div class="small-12 columns">
+//             <fieldset disabled>
+//                 <legend>All about your dog (disabled)</legend>
+//                 <div class="form__group">
+//                     <label for="fieldsetDogBreed">Breed</label>
+//                     <input id="fieldsetDogBreed" type="text" class="form__control" placeholder="Dachshund">
+//                 </div>
+//                 <div class="row">
+//                     <div class="small-6 columns">
+//                         <div class="form__group">
+//                             <label for="fieldsetDogHeight">Height (cm)</label>
+//                             <input id="fieldsetDogHeight" type="number" class="form__control" placeholder="23">
+//                         </div>
+//                     </div>
+//                     <div class="small-6 columns">
+//                         <div class="form__group">
+//                             <label for="fieldsetDogWeight">Weight (kg)</label>
+//                             <input id="fieldsetDogWeight" type="number" class="form__control" placeholder="10">
+//                         </div>
+//                     </div>
+//                 </div>
+//             </fieldset>
+//         </div>
+//     </div>
+//     <div class="row">
+//         <div class="small-12 columns">
+//             <button type="submit" class="btn btn--accounts btn--block">Create Account</button>
+//         </div>
+//     </div>
+// </form>
+//
+// Styleguide 1.4.2.
+
+
+// Validation
+//
+// Abacus even has classes to support visual feedback for form validation.
+// These validation classes (`.is-valid` and `.is-invalid`) can be applied to
+// the items below, and Abacus will take care of the styling for you.
+//   * `.form__group`
+//   * `.form__control`
+//   * `fieldset`
+//
+// markup:
+// <form class="form">
+//     <h2 class="h6">Form Controls</h2>
+//     <div class="row">
+//         <div class="small-12 columns">
+//             <div class="form__group">
+//                 <label for="validationEmail">Email address</label>
+//                 <input required class="form__control is-valid" name="email" id="validationEmail" type="email" placeholder=".form__control.is-valid">
+//             </div>
+//         </div>
+//     </div>
+//     <div class="row">
+//         <div class="small-12 columns">
+//             <div class="form__group">
+//                 <label for="validationPassword">Password</label>
+//                 <input required class="form__control is-invalid" name="password" id="validationPassword" type="password" placeholder=".form__control.is-invalid">
+//             </div>
+//         </div>
+//     </div>
+//     <hr>
+//     <h2 class="h6">Form Groups</h2>
+//     <div class="row">
+//         <div class="small-12 columns">
+//             <div class="form__group is-valid">
+//                 <label for="validationEmail2">Email address</label>
+//                 <input required class="form__control" name="email" id="validationEmail2" type="email" placeholder="jane.doe@example.com">
+//             </div>
+//             <div class="form__group is-invalid">
+//                 <label for="validationPassword2">Password</label>
+//                 <input required class="form__control" name="password" id="validationPassword2" type="password" placeholder="The stronger the better!">
+//             </div>
+//         </div>
+//     </div>
+//     <hr>
+//     <h2 class="h6">Fieldsets</h2>
+//     <div class="row">
+//         <div class="small-12 columns">
+//             <fieldset class="is-valid">
+//                 <legend>All about you</legend>
+//                 <div class="form__group">
+//                     <label for="validationFieldsetForename">First name</label>
+//                     <input id="validationFieldsetForename" type="text" class="form__control" placeholder="Jane">
+//                 </div>
+//                 <div class="form__group">
+//                     <label for="validationFieldsetSurname">Last name</label>
+//                     <input id="validationFieldsetSurname" type="text" class="form__control" placeholder="Doe">
+//                 </div>
+//                 <div class="form__group">
+//                     <label for="validationFieldsetHairColor">Hair colour</label>
+//                     <input id="validationFieldsetHairColor" type="email" class="form__control" placeholder="Brown">
+//                 </div>
+//             </fieldset>
+//         </div>
+//     </div>
+//     <div class="row">
+//         <div class="small-12 columns">
+//             <fieldset class="is-invalid">
+//                 <legend>All about you</legend>
+//                 <div class="form__group">
+//                     <label for="validationFieldsetForename2">First name</label>
+//                     <input id="validationFieldsetForename2" type="text" class="form__control" placeholder="Jane">
+//                 </div>
+//                 <div class="form__group">
+//                     <label for="validationFieldsetSurname2">Last name</label>
+//                     <input id="validationFieldsetSurname2" type="text" class="form__control" placeholder="Doe">
+//                 </div>
+//                 <div class="form__group">
+//                     <label for="validationFieldsetHairColor2">Hair colour</label>
+//                     <input id="validationFieldsetHairColor2" type="email" class="form__control" placeholder="Brown">
+//                 </div>
+//             </fieldset>
+//         </div>
+//     </div>
+// </form>
+//
+// Styleguide 1.4.3.
+
+fieldset {
+    margin-bottom: 1rem;
+}
+
+label {
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: .2em;
+    max-width: 100%;
+}
+
+legend {
+    font-style: italic;
+    padding: 0 .75em;
+}
+
+input {
+    &[type="file"] {
+        display: block;
+    }
+
+    &[type="search"] {
+        box-sizing: border-box;
+    }
+
+    &[type="file"]:focus,
+    &[type="checkbox"]:focus,
+    &[type="radio"]:focus {
+        outline: thin dotted;
+        outline-offset: -2px;
+    }
+}
+
+textarea {
+    max-width: 100%;
+}
+
+
+
+.#{$component-name}__group {
+    margin-bottom: 1rem;
+}
+
+
+.#{$component-name}__control {
+    background-image: none;
+    border: 1px solid $form__control-border;
+    border-radius: 3px;
+    box-shadow: inset 1px 1px 3px rgba(#000, .075);
+    display: block;
+    padding: .45em .65em;
+    // For ease of reading.
+    // scss-lint:disable SpaceAfterPropertyColon
+    transition:
+        border-color 250ms ease-in-out,
+        box-shadow 250ms ease-in-out;
+    // scss-lint:enable SpaceAfterPropertyColon
+    width: 100%;
+
+    &:focus {
+        // For ease of reading
+        // scss-lint:disable SpaceAfterPropertyColon
+        box-shadow:
+            inset 0 1px 1px rgba(#000, .075),
+            0 0 3px rgba($form--aura, .35);
+        // scss-lint:enable SpaceAfterPropertyColon
+    }
+
+    &:not(input):not(select):not(textarea) {
+        border: 0;
+        box-shadow: none;
+    }
+
+    label > & {
+        margin-top: .25em;
+    }
+}
+
+
+.#{$component-name}__message {
+    background: #fff;
+    border: 1px solid;
+    border-radius: 3px;
+    color: $form__message-color;
+    display: block;
+    font-size: .85rem;
+    // font-weight: bold;
+    margin-top: 1em;
+    padding: .25em;
+    position: relative;
+
+    &::after,
+    &::before {
+        border: solid transparent;
+        bottom: 100%;
+        content: ' ';
+        height: 0;
+        left: 1rem;
+        pointer-events: none;
+        position: absolute;
+        width: 0;
+    }
+
+    &::after {
+        border-bottom-color: #fff;
+        border-width: .8em;
+        margin-left:  0;
+    }
+
+    &::before {
+        border-bottom-color: inherit;
+        border-width: .9em;
+        margin-left:  -.1em;
+    }
+}
+
+
+.#{$component-name}__radio,
+.#{$component-name}__checkbox {
+    font-weight: normal;
+    padding-left: 20px;
+    position: relative;
+
+    // We only want to target radio/checkbox input
+    // scss-lint:disable QualifyingElement
+    input[type="radio"],
+    input[type="checkbox"] {
+        left: 0;
+        position: absolute;
+        top: .25em;
+    }
+    // scss-lint:enable QualifyingElement
+
+    & + & {
+        margin-left: 1rem;
+    }
+}
+
+
+// CONTEXTUAL \\
+// ========== \\
+.#{$component-name} {
+    .is-valid {
+        &.#{$component-name}__group,
+        &.#{$component-name}__message,
+        &.#{$component-name}__radio,
+        &.#{$component-name}__checkbox,
+        .#{$component-name}__group,
+        .#{$component-name}__message,
+        .#{$component-name}__radio,
+        .#{$component-name}__checkbox {
+            color: $form--success;
+        }
+
+        &.#{$component-name}__control,
+        .#{$component-name}__control {
+            border-color: $form--success;
+            box-shadow: none;
+        }
+    }
+
+    .is-invalid {
+        &.#{$component-name}__group,
+        &.#{$component-name}__message,
+        &.#{$component-name}__radio,
+        &.#{$component-name}__checkbox,
+        .#{$component-name}__group,
+        .#{$component-name}__message,
+        .#{$component-name}__radio,
+        .#{$component-name}__checkbox {
+            color: $form--error;
+        }
+
+        &.#{$component-name}__control,
+        .#{$component-name}__control {
+            border-color: $form--error;
+            box-shadow: none;
+        }
+    }
+}
+
+
+// DISABLED STATE \\
+// ============== \\
+// We need to be a bit specific with the elements we target for [disabled]
+// scss-lint:disable QualifyingElement
+.#{$component-name}__control[disabled],
+fieldset[disabled] .#{$component-name}__control {
+    cursor: not-allowed;
+}
+// scss-lint:enable QualifyingElement
+
+
+// MEDIA QUERIES \\
+// ============= \\
+@include breakpoint('medium') {
+    .#{$component-name}--inline {
+        .#{$component-name}__group {
+            display: inline-block;
+            margin-bottom: 0;
+            vertical-align: middle;
+        }
+
+        .#{$component-name}__control {
+            display: inline-block;
+            vertical-align: middle;
+            width: auto;
+        }
+
+        .#{$component-name}__checkbox {
+            display: inline-block;
+        }
+    }
+}

@@ -1,0 +1,139 @@
+// styleguide:ignore:start
+
+/**
+    Displays lists inline - use case for such would be for horizontal nav
+    bars.
+        [1.1] - We set the font-size of the UL element to 0, this is because we're
+                displaying the LI as inline-block, which causes a single whitespace
+                character to be displayed if we have space between our LI elements
+                in markup.
+*/
+@mixin list--inline() {
+    font-size: 0; // [1.1]
+    margin: 0;
+    padding: 0;
+
+    > li {
+        display: inline-block;
+        font-size: 1rem;
+    }
+}
+
+
+/**
+    Creates an unstyled list, void of any bullets or padding.
+*/
+@mixin list--unstyled() {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+/**
+    The divided list uses box-shadow to create a 3D-like bevel divider between
+    each list item. This is only for vertical lists, though.
+        [2.1] - We only want to apply the effect to immediate children of the
+                UL. We can't assume that nested ULs will want the effect.
+        [2.2] - We use box-shadow instead of border because borders will appear
+                outside the box model and the background color of the UL, not
+                the LI will then bleed through, negating the effect.
+        [2.3] - Remove the top box shadow from the first list item, and remove
+                the bottom box-shadow from the last list item
+*/
+@mixin list--divided() {
+    @include list--unstyled;
+
+    > li { // [2.1]
+        // For ease of reading
+        // scss-lint:disable SpaceAfterPropertyColon
+        box-shadow:
+            inset 0 1px 0 rgba(#fff, .15),  // [2.2]
+            inset 0 -1px 0 rgba(#000, .15); // [2.2]
+        // scss-lint:enable SpaceAfterPropertyColon
+        padding-bottom: .4em;
+        padding-top:    .4em;
+
+        &:first-child {
+            box-shadow: inset 0 -1px 0 rgba(#000, .15); // [2.3]
+        }
+
+        &:last-child {
+            box-shadow: inset 0 1px 0 rgba(#fff, .15);  // [2.3]
+        }
+    }
+}
+
+
+/**
+    This list will have small Chevrons in place of Bullet Points, using PP Icons!
+        [3.1] - Set some left padding, we'll negate this later on to make the Icon
+                fit in. This will also make sure that text doesn't wrap UNDER the
+                Icon.
+        [3.2] - Using the Sass Map set up for the Icons, we can define that the
+                ::before element uses the pp-icon font, and then select any of the
+                icons to use as our bullet point!
+        [3.3] - Now we'll "pull" the bullet to the left equal to the amount of
+                padding we set in [3.1].
+*/
+@mixin list--arrows() {
+    @include list--unstyled;
+
+    > li {
+        padding-bottom: .25em;
+        padding-left:   1.4em; // [3.1]
+        padding-top:    .2em;
+
+        &::before {
+            content: map-get($icons, 'chevron-right'); // [3.2]
+            float: left;
+            font-family: 'pp-icon';                    // [3.2]
+            font-size: .85em;
+            line-height: 1.8;
+            margin-left: -1.4em;                       // [3.3]
+            text-align: center;
+            width: 1.4em;
+        }
+    }
+}
+// styleguide:ignore:end
+
+
+// Base::Typography - Lists
+//
+// Abacus doesn't make any changes to the default User Agent styles for lists.
+// However, it does come with several list type helpers to speed up development
+// and just make everything much easier for you.
+//
+// .list--unstyled - The `list--unstyled` modifier will remove all margin and padding, as well as set `list-style-type: none;` on the list. This class is also extended in the below list variants, so everything you get here you get below.
+// .list--divided  - Divided lists are pretty much the same as their `list--unstyled` varient, but they have a small dividing line between each list item. It's also important to note that there is no dividing line at the top of the first item, or at the bottom of the last item.
+// .list--arrows   - The `arrows` list also inherits all the styles of the `unstyled` list, but inserts right-facing carets in place of standard bullet points. These carets are pulled straight out of the pp-icon font, and is the same one used in `<i class="icon icon--chevron-right"></i>`
+//
+// markup:
+// <ul class="list {$modifiers}">
+//     <li>List item 1</li>
+//     <li>List item 2</li>
+//     <li>List item 3</li>
+//     <li>List item 4</li>
+//     <li>List item 5</li>
+// </ul>
+//
+// Styleguide 1.1.3.
+
+// styleguide:ignore:start
+.list--inline {
+    @include list--inline;
+}
+
+.list--unstyled {
+    @include list--unstyled;
+}
+
+.list--divided {
+    @include list--divided;
+}
+
+.list--arrows {
+    @include list--arrows;
+}
+// styleguide:ignore:end

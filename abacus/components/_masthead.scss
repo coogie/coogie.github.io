@@ -1,0 +1,112 @@
+// styleguide:ignore:start
+$component-name: 'masthead';
+// styleguide:ignore:end
+
+
+// Components::Masthead
+//
+// The Abacus Masthead is the primary building block of Paddy Power site headers.
+// It fills 100% of the screen's width, and comes with several components to help
+// you build a fully-featured site header.
+//
+// markup:
+// <header class="masthead">
+//     <!-- Masthead is empty! :o -->
+// </header>
+//
+// Styleguide 2.7
+
+.#{$component-name} {
+    @include background--stipe($masthead-background, $masthead-stripe-size, $masthead-stripe-darken, false);
+    min-height: 80px;
+    padding: 10px;
+}
+
+
+.#{$component-name} {
+    .logo {
+        float: right;
+    }
+}
+
+
+// Components::Masthead - Full
+//
+// The Masthead can be combined with other components to make it fully-featured.
+//
+// Please note that the login iframe *is not yet* an Abacus component, and is
+// therefore not maintained within the project.
+//
+// markup:
+// <header class="masthead">
+//     <div class="row">
+//         <div class="small-7 columns">
+//             <iframe width="505px" height="101px" src="https://www.paddypower.com/bet?action=login_iframe_livebetting&livebetting=1&contentproto=http" frameborder="0"></iframe>
+//         </div>
+//         <div class="small-5 columns">
+//             <a href="#" class="logo logo--sport">Paddy Power Sport</a>
+//         </div>
+//     </div>
+// </header>
+// <nav class="globalnav">
+//     <div class="row">
+//         <div class="small-12 columns">
+//             <a href="#" class="globalnav__trigger">&#9776; Menu</a>
+//             <ul class="globalnav__list">
+//                 <li class="globalnav__item"><a class="globalnav__link" href="#">Left item 1</a></li>
+//                 <li class="globalnav__item"><a class="globalnav__link" href="#">Left item 2</a></li>
+//                 <li class="globalnav__item"><a class="globalnav__link" href="#">Left item 3</a></li>
+//                 <li class="globalnav__item"><a class="globalnav__link" href="#">Left item 4</a></li>
+//                 <li class="globalnav__item right"><a class="globalnav__link" href="#">Right item 1</a></li>
+//                 <li class="globalnav__item right"><a class="globalnav__link" href="#">Right item 2</a></li>
+//                 <li class="globalnav__item right"><a class="globalnav__link" href="#">Right item 3</a></li>
+//             </ul>
+//         </div>
+//     </div>
+// </nav>
+//
+// Styleguide 2.7.2
+
+
+// Components::Masthead - Mobile
+//
+// The mobile variant of the masthead is generally reserved for mobile-only
+// products. Eventually, we plan to merge all of this directly into the standard
+// masthead, but for now it can be used as shown in the example below.
+//
+// **NOTE**: The `.btn--back` modifier is only available to use within the
+// `.masthead--mobile` element. Its rules aren't applicable outside of this use
+// case.
+//
+// markup:
+// <header class="masthead masthead--mobile">
+//     <div class="btn btn--back">
+//         <i class="icon icon--chevron-left"></i>
+//     </div>
+//     <div class="masthead__title">
+//         My Account
+//     </div>
+// </header>
+//
+// Styleguide 2.7.3
+
+.#{$component-name}--mobile {
+    display: flex;
+    font-size: 1.35em;
+    min-height: 0;
+    padding: .5em;
+
+    .btn--back {
+        background-color: transparent;
+        box-shadow: none;
+        font-size: inherit;
+        margin: auto 0;
+        padding: .25em .35em;
+    }
+
+    .#{$component-name}__title {
+        color: #fff;
+        margin: auto;
+        text-align: center;
+    }
+}

@@ -1,0 +1,60 @@
+// Base::Typography - Headings
+//
+// Heading elements help define the structure of the page by organising content
+// sections in a heirarchical manner. A heading element briefly describes the
+// topic of the section it introduces and may be used by some User Agents to
+// automatically create a Table of Contents for the document.
+//
+// Try to have only one first-level heading (`h1`) on a page.
+//
+// markup:
+// <h1>First-level heading (h1)</h1>
+// <h2>Second-level heading (h2)</h2>
+// <h3>Third-level heading (h3)</h3>
+// <h4>Fourth-level heading (h4)</h4>
+// <h5>Fifth-level heading (h5)</h5>
+// <h6>Sixth-level heading (h6)</h6>
+//
+// Styleguide 1.1.1.
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    letter-spacing: -.005em;
+    margin: .25em 0 .45em;
+    padding: 0;
+}
+
+
+// Base::Typography - Heading classes
+//
+// Sometimes, however, you want lower-level heading tags to appear as higher-level
+// tags while preserving the semantic meaning behind using the lower-level tags.
+// In this case, Abacus exposes some helper classes that you can apply to your
+// heading tags to make them appear however you like.
+//
+// When we define a heading, we also define a corresponding class to go with it.<br>
+// This allows us to apply, say, `class=h1` to a `h3`; a double-stranded heading
+// hierarchy.
+//
+// markup:
+// <h6 class="h1">Very large H6 tag</h6>
+// <h5 class="h2">Large H5 tag</h5>
+// <h4 class="h3">Medium H4 tag</h4>
+// <h3 class="h4">Moderate H3 tag</h3>
+// <h2 class="h5">Small H2 tag</h2>
+// <h1 class="h6">Tiny H1 tag</h1>
+//
+// Styleguide 1.1.2
+
+// scss-lint:disable SingleLinePerSelector
+h1, .h1 { font-size: $heading--h1; }
+h2, .h2 { font-size: $heading--h2; }
+h3, .h3 { font-size: $heading--h3; }
+h4, .h4 { font-size: $heading--h4; }
+h5, .h5 { font-size: $heading--h5; }
+h6, .h6 { font-size: $heading--h6; }
+// scss-lint:enable SingleLinePerSelector

@@ -1,0 +1,383 @@
+// styleguide:ignore:start
+$component-name: 'panel';
+// styleguide:ignore:end
+
+$panel--border-color: #ccc;
+$panel--border-radius: 3px;
+
+
+// Components::Panel
+//
+// Panels are some of the fundamental building blocks of an Abacus UI. Because
+// their styling is used for such a large amount of elements, they need to be
+// as flexible as possible.
+//
+// Abacus Panels are designed to fill 100% of their parent's width, and shouldn't
+// have a width restriction placed on them. It tends to cause more trouble than
+// it solves. If, for whatever reason, you need to restrict the overall width of
+// a panel, then it should be done by placing it in a width-constrained container.
+//
+// A standard Panel component consists of nothing more than a title and a body.
+//
+// Panels work just like any other HTML element and, as such, can be filled with
+// whatever markup you desire -- even an entire grid system. An advanced example
+// is further below on the page but, for now, let's just keep it simple to let
+// you get to grips with it.
+//
+// markup:
+// <section class="panel">
+//     <h1 class="panel__title h5">Panel Title</h1>
+//     <div class="panel__body">
+//         <div class="panel__content">
+//             <p>
+//                 Bacon ipsum dolor sit amet shank pork capicola chuck, meatloaf turducken
+//                 pastrami jerky. Turkey t-bone corned beef tail, andouille sirloin sausage.
+//                 Shoulder boudin jerky meatball brisket, kielbasa pork chop.
+//             </p>
+//         </div>
+//     </div>
+// </section>
+//
+// Styleguide 2.8
+
+.#{$component-name} {
+    display: block;
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+
+/**
+    [1.1] - Force-remove margin, in case a <h[1-6]> tag is used
+*/
+.#{$component-name}__title {
+    @include background--stipe($panel__title-background, 40px 40px, 5%, true);
+    border-radius: $panel--border-radius $panel--border-radius 0 0;
+    border-top: 1px solid $panel__title-background;
+    box-shadow: inset 0 1px 0 rgba(#fff, .25);
+    color: $panel__title-color;
+    line-height: 2;
+    margin: 0; // [1.1]
+    overflow: hidden;
+    padding-left: 1rem;
+    padding-right: 2rem;
+    position: relative;
+    text-shadow: 1px 1px 0 rgba(#000, .25);
+}
+
+
+/**
+    [2.1] - Remove the top border, as we'll have the panel__title sitting on top.
+    [2.2] - The Collapse plugin will apply style="height: n;" (where n is px value)
+            to the element, but doesn't animate the value. This allows us to use
+            CSS animation instead!
+    [2.3] - We apply overflow: hidden; to any panel__body elements that can collapse.
+            This is so all of its contents "clip" and hide as the element is collapsing.
+    [2.4] - If a panel__body can collapse, and is NOT in its open state, then we can
+            go ahead and hide it completely.
+*/
+.#{$component-name}__body {
+    background-color: #fff;
+    border: 1px solid $panel--border-color;   // [2.1]
+    border-radius: 0 0 $panel--border-radius $panel--border-radius;
+    transition: height 250ms;                 // [2.2]
+
+    &.is-collapsing {
+        overflow: hidden; // [2.3]
+    }
+
+    &.can-collapse {
+        &:not(.is-open) {
+            display: none; // [2.4]
+        }
+    }
+}
+
+
+/**
+    [3.1] - If .panel__content isn't the :last-child, we must assume a
+            .panel__footer exists in the .panel element. If so, we need to
+            square off the bottom of the element and remove the bottom border.
+    [3.2] - We'll make the evil assumption that .panel__content will contain
+            <p> elements and, if so, strip their margin and padding.
+*/
+.#{$component-name}__content {
+    padding: 1rem;
+
+    &:not(:last-child) {
+        border-bottom: 0; // [3.1]
+        border-radius: 0; // [3.1]
+    }
+
+    p {
+        margin: 0;        // [3.2]
+        padding: 0;       // [3.2]
+    }
+}
+
+
+// Extended Panels
+//
+// Panels can also be extended to have a header or a footer, or both!
+//
+// These elements are the only extra elements to be natively supported by the
+// panel block. From this point on, anything else added is up to you!
+//
+// markup:
+// <section class="panel">
+//     <h1 class="panel__title h5">Panel Title</h1>
+//     <div class="panel__body">
+//         <div class="panel__header">
+//             <strong>5th November 1955</strong>
+//         </div>
+//         <div class="panel__content">
+//             <p>
+//                 Bacon ipsum dolor sit amet shank pork capicola chuck, meatloaf turducken
+//                 pastrami jerky. Turkey t-bone corned beef tail, andouille sirloin sausage.
+//                 Shoulder boudin jerky meatball brisket, kielbasa pork chop.
+//             </p>
+//         </div>
+//         <div class="panel__footer">
+//             <a class="btn btn--block">Opt-in</a>
+//         </div>
+//     </div>
+// </section>
+//
+// Styleguide 2.8.1
+
+/**
+    [4.1] - .panel__header and .panel__footer elements should, typically, be
+            darker than the background-color of the .panel element, so we use
+            rgba black to let the background-color bleed through and darken.
+*/
+.#{$component-name}__header,
+.#{$component-name}__footer {
+    background-color: rgba(#000, .1); // [4.1]
+}
+
+.#{$component-name}__header {
+    border-bottom: 1px solid $panel--border-color;
+    font-size: .8rem;
+    line-height: 2.5;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.#{$component-name}__footer {
+    border-top: 1px solid #ccc;
+    padding: 1rem;
+}
+
+
+// Advanced Panels
+//
+// Since Panels are basically just fancy `<div>` elements, we're free to insert
+// all sorts of markup in them to get our desired result. This example showcases
+// the use of the grid system in both the body and the footer of the Panel, as
+// well as the use of some other components such as buttons.
+//
+// markup:
+// <section class="panel">
+//     <h1 class="panel__title h5">Advanced Panel</h1>
+//     <div class="panel__body">
+//         <div class="panel__header">
+//             <strong>5th November 1955</strong>
+//         </div>
+//         <div class="panel__content">
+//             <div class="row">
+//                 <div class="small-6 columns">
+//                     <p>
+//                         Bacon ipsum dolor sit amet shank pork capicola chuck, meatloaf turducken
+//                         pastrami jerky. Turkey t-bone corned beef tail, andouille sirloin sausage.
+//                         Shoulder boudin jerky meatball brisket, kielbasa pork chop.
+//                     </p>
+//                 </div>
+//                 <div class="small-6 columns">
+//                     <img src="https://placeholdit.imgix.net/~text?txtsize=42&txt=450%C3%97250&w=450&h=250" alt="Placeholder Image">
+//                 </div>
+//             </div>
+//         </div>
+//         <div class="panel__footer">
+//             <div class="row">
+//                 <div class="small-6 columns"><a class="btn btn--negative btn--block">Cancel</a></div>
+//                 <div class="small-6 columns"><a class="btn btn--positive btn--block">Sign Up</a></div>
+//             </div>
+//         </div>
+//     </div>
+// </section>
+//
+// Styleguide 2.8.2
+
+/**
+    [5.1] - Make the element "clickable" to the user by displaying the correct
+            cursor, regardless of whether an <a> tag is used or not.
+    [5.2] - This value should match whatever the padding-left value of the
+            .panel__title is in order to offset it and place the element to
+            the left-most of the .panel__title.
+    [5.3] - The value of these should be half of whatever the line-height value
+            of .panel__title is (and in em). This is so we have even spacing
+            all around the collapse element regardless of font-size.
+    [5.4] - Set a value for the rotate so that the CSS has a reference value
+            to animate to/from.
+    [5.5] - We don't want to mess around with changing classes and showing/hiding
+            elements. So instead, we'll just take the chevron icons (assuming they're
+            the actual icons being used) and rotate them so that they face the
+            correct direction. We'll use the details from [5.4] to animate them!
+*/
+.#{$component-name}__collapse {
+    background-color: rgba(#000, .35);
+    border-right: 1px solid rgba(#fff, .15);
+    color: get-color('sports', 'primary');
+    cursor: pointer;      // [5.1]
+    display: inline-block;
+    float: left;
+    margin-left: -1rem;   // [5.2]
+    margin-right: .5em;
+    padding-left: .5em;   // [5.3]
+    padding-right: .5em;  // [5.3]
+
+    .icon {
+        cursor: pointer;
+        transform: rotate(0deg);     // [5.4]
+        transition: transform 250ms; // [5.4]
+    }
+
+    &.is-collapsed {
+        .icon--chevron-right {
+            transform: rotate(90deg);  // [5.5]
+        }
+
+        .icon--chevron-down {
+            transform: rotate(-90deg); // [5.5]
+        }
+    }
+}
+
+
+// Flat Panel Modifier
+//
+// Panels also have a _flat_ variant. This will provide the panel with a much
+// flatter visual appearance than others.
+//
+// To use this panel, all that is required is the addition of the `.panel--flat`
+// modifier class.
+//
+// markup:
+// <section class="panel panel--flat">
+//     <h1 class="panel__title h5">Advanced Panel</h1>
+//     <div class="panel__body">
+//         <div class="panel__header">
+//             <strong>5th November 1955</strong>
+//         </div>
+//         <div class="panel__content">
+//             <div class="row">
+//                 <div class="small-6 columns">
+//                     <p>
+//                         Bacon ipsum dolor sit amet shank pork capicola chuck, meatloaf turducken
+//                         pastrami jerky. Turkey t-bone corned beef tail, andouille sirloin sausage.
+//                         Shoulder boudin jerky meatball brisket, kielbasa pork chop.
+//                     </p>
+//                 </div>
+//                 <div class="small-6 columns">
+//                     <img src="https://placeholdit.imgix.net/~text?txtsize=42&txt=450%C3%97250&w=450&h=250" alt="Placeholder Image">
+//                 </div>
+//             </div>
+//         </div>
+//         <div class="panel__footer">
+//             <div class="row">
+//                 <div class="small-6 columns"><a class="btn btn--negative btn--block">Cancel</a></div>
+//                 <div class="small-6 columns"><a class="btn btn--positive btn--block">Sign Up</a></div>
+//             </div>
+//         </div>
+//     </div>
+// </section>
+//
+// Styleguide 2.8.3
+
+.#{$component-name}--flat {
+    .#{$component-name}__title {
+        background-color: $panel__title-background;
+        background-image: none;
+        border-top: 0;
+        box-shadow: none;
+    }
+
+    .#{$component-name}__collapse {
+        background-color: transparent;
+        border-right: 0;
+        color: #fff;
+    }
+}
+
+
+// Colapsible Panel
+//
+// Panels can also be collapsed!
+//
+// In order to make a panel collapsible, all you need to do is add a new
+// `.panel__collapse` element to the `.panel__title` and wire it all up to
+// target the `.panel__body`.
+//
+// To do this, add a `data-toggle="collapse"` attribute to the element triggering
+// the action, as well as a `data-target="#myTargetID"`.
+//
+// If you use the `icon--chevron-down` or the `icon--chevron-right` icons, we'll
+// take care of the animation for you.
+//
+// markup:
+// <section class="panel">
+//     <h1 class="panel__title h5">
+//         <div class="panel__collapse" data-toggle="collapse" data-target="#panelBody">
+//             <i class="icon icon--chevron-down"></i>
+//         </div>
+//         Collapsible Advanced Panel
+//     </h1>
+//     <div class="panel__body can-collapse is-open" id="panelBody">
+//         <div class="panel__header">
+//             <strong>5th November 1955</strong>
+//         </div>
+//         <div class="panel__content">
+//             <div class="row">
+//                 <div class="small-6 columns">
+//                     <p>
+//                         Bacon ipsum dolor sit amet shank pork capicola chuck, meatloaf turducken
+//                         pastrami jerky. Turkey t-bone corned beef tail, andouille sirloin sausage.
+//                         Shoulder boudin jerky meatball brisket, kielbasa pork chop.
+//                     </p>
+//                 </div>
+//                 <div class="small-6 columns">
+//                     <img src="https://placeholdit.imgix.net/~text?txtsize=42&txt=450%C3%97250&w=450&h=250" alt="Placeholder Image">
+//                 </div>
+//             </div>
+//         </div>
+//         <div class="panel__footer">
+//             <div class="row">
+//                 <div class="small-6 columns"><a class="btn btn--negative btn--block">Cancel</a></div>
+//                 <div class="small-6 columns"><a class="btn btn--positive btn--block">Sign Up</a></div>
+//             </div>
+//         </div>
+//     </div>
+// </section>
+//
+// Styleguide 2.8.4
+
+
+// styleguide:ignore:start
+/**
+    [6.1] - In order to align the icon vertically within the Panel Title, we
+            need to override the .icon's default line height with that of its
+            parent.
+    [6.2] - Typically, icons that are immediate children of the Panel Title
+            are positioned to the far right of the element. To save the
+            hassle of developers having to apply their own floats and positionins
+            for this, we just take care of it here.
+*/
+.#{$component-name}__title {
+    > .icon {
+        line-height: inherit; // [6.1]
+        position: absolute;   // [6.2]
+        right: .5em;          // [6.2]
+        top: 0;               // [6.2]
+    }
+}
+// styleguide:ignore:end
