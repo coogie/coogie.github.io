@@ -1,0 +1,365 @@
+// styleguide:ignore:start
+$component-name: 'accordion';
+// styleguide:ignore:end
+
+
+// Plugins::Accordion
+//
+// Accordions are elements used to expand and collapse content that is broken
+// into logical sections, much like tabs.
+//
+// Abacus Accordions will fill 100% of their parent's width. They can have width
+// manually applied to them, too, but generally you'd want the grid system
+// combined with parental restrictions to dictate their widths.
+//
+// Accordions are pretty simple: click a header, and it toggles the body.
+// The steps required to get this working are similar enough to the panel
+// component. Add a `data-toggle="collapse"` and `data-target="#targetID"`
+// to the trigger element, along with the necessary collapse plugin classes
+// and you're ready to rock.
+//
+// markup:
+// <div class="accordion">
+//     <div class="accordion__header" data-toggle="collapse" data-target="#standard-accordion-body-1">
+//         <i class="icon icon--chevron-down"></i>
+//         Accordion Header One
+//     </div>
+//     <div id="standard-accordion-body-1" class="accordion__body can-collapse is-open">
+//         <div class="accordion__content">Accordion One Content</div>
+//     </div>
+//     <div class="accordion__header is-collapsed" data-toggle="collapse" data-target="#standard-accordion-body-2">
+//         <i class="icon icon--chevron-down"></i>
+//         Accordion Header Two
+//     </div>
+//     <div id="standard-accordion-body-2" class="accordion__body can-collapse">
+//         <div class="accordion__content">Accordion Two Content</div>
+//     </div>
+//     <div class="accordion__header is-collapsed" data-toggle="collapse" data-target="#standard-accordion-body-3">
+//         <i class="icon icon--chevron-down"></i>
+//         Accordion Header Three
+//     </div>
+//     <div id="standard-accordion-body-3" class="accordion__body can-collapse">
+//         <div class="accordion__content">Accordion Three Content</div>
+//     </div>
+// </div>
+//
+// Styleguide 3.1
+
+.#{$component-name} {
+    background-color: #fff;
+    box-shadow: 0 0 3px rgba(#000, .25);
+}
+
+
+/**
+    [1.1] - We want the Header to look and feel clickable, even if it's not
+            an anchor tag.
+    [1.2] - Because Icons are a font, they usually get the text-select cursor
+            when they're hovered. Force them to be "clickable"!
+    [1.3] - Let's set a value for our rotate, so that the CSS has a value to
+            transition to/from.
+    [1.4] - When the Accordion Header is collapsed (the plugin will place a
+            class on it for us), rotate the chevron icons so that they point
+            in the appropriate direction.
+            NOTE: This is restrictive, and forces us to target specific icon
+                  classes. :(
+*/
+.#{$component-name}__header {
+    background-color: $accordion__header-background;
+    background-image: linear-gradient(to bottom, tint($accordion__header-background, 15), $accordion__header-background);
+    border-top: 1px solid tint($accordion__header-background, 35);
+    color: #fff;
+    cursor: pointer; // [1.1]
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{tint($accordion__header-background, 15)}', endColorstr='#{$accordion__header-background}', GradientType=0 );
+    font-weight: bold;
+    line-height: 2;
+    padding-left:  .5em;
+    padding-right: .5em;
+    text-shadow: 1px 1px 0 rgba(#000, .25);
+    user-select: none;
+
+    .icon {
+        cursor: pointer;             // [1.2]
+        font-size: .85em;
+        margin-right: .25em;
+        transform: rotate(0deg);     // [1.3]
+        transition: transform 250ms; // [1.3]
+    }
+
+    &.is-collapsed {
+        .icon--chevron-right {
+            transform: rotate(90deg);  // [1.4]
+        }
+
+        .icon--chevron-down {
+            transform: rotate(-90deg); // [1.4]
+        }
+    }
+}
+
+
+/**
+    [2.1] - The collapse plugin will apply a static height value when the
+            element expands and collapses. All we need to do is make CSS
+            transition magic!
+    [2.2] - If we don't apply overflow: hidden; to the element while it's in
+            the process of expanding/collapsing, then its contents will display
+            above it as it's transitioning. Uuuuuuugly.
+    [2.3] - The plugin won't set a 0 height to collpsed panels on page
+            load, so we'll do it here!
+*/
+.#{$component-name}__body {
+    transition: height 250ms; // [2.1]
+
+    &.is-collapsing {
+        overflow: hidden;     // [2.2]
+    }
+
+    &.can-collapse:not(.is-open) {
+        height: 0;            // [2.3]
+        overflow: hidden;
+    }
+}
+
+
+.#{$component-name}__content {
+    padding: .25em .5em;
+}
+
+
+// Nested Accordions
+//
+// Accordions can also be nested inside accordions!
+//
+// And you don't even need to faff about with different markup. Just use the
+// same HTML markup that you use in the Standard Accordion (adjusting the IDs
+// and targets where necessary) and Abacus will take care of the rest.
+//
+// markup:
+// <div class="accordion">
+//     <div class="accordion__header is-collapsed" data-toggle="collapse" data-target="#nested-accordion-body-1">
+//         <i class="icon icon--chevron-down"></i>
+//         Accordion Header One
+//     </div>
+//     <div id="nested-accordion-body-1" class="accordion__body can-collapse">
+//         <div class="accordion__content">Accordion One Content</div>
+//     </div>
+//     <div class="accordion__header" data-toggle="collapse" data-target="#nested-accordion-body-2">
+//         <i class="icon icon--chevron-down"></i>
+//         Accordion Header Two
+//     </div>
+//     <div id="nested-accordion-body-2" class="accordion__body can-collapse is-open">
+//         <div class="accordion__content">
+//             <!-- Nested Accordion -->
+//             <div class="accordion">
+//                 <div class="accordion__header is-collapsed" data-toggle="collapse" data-target="#nested-accordion-body-1-1">
+//                     <i class="icon icon--chevron-down"></i>
+//                     Accordion 2 Subheader 1
+//                 </div>
+//                 <div id="nested-accordion-body-1-1" class="accordion__body can-collapse">
+//                     <div class="accordion__content">Accordion 2 Subcontent 1</div>
+//                 </div>
+//                 <div class="accordion__header is-collapsed" data-toggle="collapse" data-target="#nested-accordion-body-1-2">
+//                     <i class="icon icon--chevron-down"></i>
+//                     Accordion 2 Subheader 2
+//                 </div>
+//                 <div id="nested-accordion-body-1-2" class="accordion__body can-collapse">
+//                     <div class="accordion__content">Accordion 2 Subcontent 2</div>
+//                 </div>
+//             </div>
+//             <!-- End Nested Accordion -->
+//         </div>
+//     </div>
+//     <div class="accordion__header is-collapsed" data-toggle="collapse" data-target="#nested-accordion-body-3">
+//         <i class="icon icon--chevron-down"></i>
+//         Accordion Header Three
+//     </div>
+//     <div id="nested-accordion-body-3" class="accordion__body can-collapse">
+//         <div class="accordion__content">Accordion Three Content</div>
+//     </div>
+// </div>
+//
+// Styleguide 3.1.2
+
+/**
+    [3.1] - We don't want the Primary Color gradient appearing on nested
+            Accordion Headers, so let's remove the gradient and apply the flat
+            color for nested Accordion Headers.
+*/
+.#{$component-name}__content .#{$component-name} {
+    box-shadow: none;
+    margin: -.25em -.5em;
+}
+
+.#{$component-name}__content .#{$component-name}__header {
+    background-color: $accordion__header-nested-background; // [3.1]
+    background-image: none;                                 // [3.1]
+    border-bottom:    1px solid darken($accordion__header-nested-background, 10);
+    border-top-color: tint($accordion__header-nested-background, 25);
+    color: #000;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    text-shadow: none;
+}
+
+
+// Double-Nested Accordions
+//
+// You can even nest Accordions inside nested Accordions. They said we were mad,
+// and they may have been right, but we made it possible.
+//
+// markup:
+// <div class="accordion">
+//     <div class="accordion__header is-collapsed" data-toggle="collapse" data-target="#dub-nested-accordion-body-1">
+//         <i class="icon icon--chevron-down"></i>
+//         Accordion Header One
+//     </div>
+//     <div id="dub-nested-accordion-body-1" class="accordion__body can-collapse">
+//         <div class="accordion__content">Accordion One Content</div>
+//     </div>
+//     <div class="accordion__header" data-toggle="collapse" data-target="#dub-nested-accordion-body-2">
+//         <i class="icon icon--chevron-down"></i>
+//         Accordion Header Two
+//     </div>
+//     <div id="dub-nested-accordion-body-2" class="accordion__body can-collapse is-open">
+//         <div class="accordion__content">
+//             <!-- Nested Accordion -->
+//             <div class="accordion">
+//                 <div class="accordion__header is-collapsed" data-toggle="collapse" data-target="#dub-nested-accordion-body-1-1">
+//                     <i class="icon icon--chevron-down"></i>
+//                     Accordion 2 Subheader 1
+//                 </div>
+//                 <div id="dub-nested-accordion-body-1-1" class="accordion__body can-collapse">
+//                     <div class="accordion__content">Accordion 2 Subcontent 1</div>
+//                 </div>
+//                 <div class="accordion__header" data-toggle="collapse" data-target="#dub-nested-accordion-body-1-2">
+//                     <i class="icon icon--chevron-down"></i>
+//                     Accordion 2 Subheader 2
+//                 </div>
+//                 <div id="dub-nested-accordion-body-1-2" class="accordion__body can-collapse is-open">
+//                     <div class="accordion__content">
+//                         <!-- Nested Accordion -->
+//                         <div class="accordion">
+//                             <div class="accordion__header is-collapsed" data-toggle="collapse" data-target="#dub-nested-accordion-body-1-2-1">
+//                                 <i class="icon icon--chevron-down"></i>
+//                                 Accordion 2 Subheader 2 Subheader 1
+//                             </div>
+//                             <div id="dub-nested-accordion-body-1-2-1" class="accordion__body can-collapse">
+//                                 <div class="accordion__content">Accordion 2 Subconent 2 Subcontent 1</div>
+//                             </div>
+//                             <div class="accordion__header is-collapsed" data-toggle="collapse" data-target="#dub-nested-accordion-body-1-2-2">
+//                                 <i class="icon icon--chevron-down"></i>
+//                                 Accordion 2 Subheader 2 Subheader 2
+//                             </div>
+//                             <div id="dub-nested-accordion-body-1-2-2" class="accordion__body can-collapse">
+//                                 <div class="accordion__content">Accordion 2 Subconent 2 Subcontent 2</div>
+//                             </div>
+//                         </div>
+//                         <!-- End Nested Accordion -->
+//                     </div>
+//                 </div>
+//             </div>
+//             <!-- End Nested Accordion -->
+//         </div>
+//     </div>
+//     <div class="accordion__header is-collapsed" data-toggle="collapse" data-target="#dub-nested-accordion-body-3">
+//         <i class="icon icon--chevron-down"></i>
+//         Accordion Header Three
+//     </div>
+//     <div id="dub-nested-accordion-body-3" class="accordion__body can-collapse">
+//         <div class="accordion__content">Accordion Three Content</div>
+//     </div>
+// </div>
+//
+// Styleguide 3.1.3
+
+.#{$component-name}__content .#{$component-name}__content .#{$component-name}__header {
+    background-color: $accordion__header-double-nested-background;
+    border-bottom:    1px solid darken($accordion__header-double-nested-background, 10);
+    border-top-color: tint($accordion__header-double-nested-background, 25);
+}
+
+
+// Flat Accordions
+//
+// Accordions also come with a flat styled variant.
+// All that's required for this style is the addition of the `.accordion--flat`
+// modifier class.
+//
+// markup:
+// <div class="accordion accordion--flat">
+//     <div class="accordion__header is-collapsed" data-toggle="collapse" data-target="#flat-accordion-body-1">
+//         <i class="icon icon--chevron-down"></i>
+//         Accordion Header One
+//     </div>
+//     <div id="flat-accordion-body-1" class="accordion__body can-collapse">
+//         <div class="accordion__content">Accordion One Content</div>
+//     </div>
+//     <div class="accordion__header" data-toggle="collapse" data-target="#flat-accordion-body-2">
+//         <i class="icon icon--chevron-down"></i>
+//         Accordion Header Two
+//     </div>
+//     <div id="flat-accordion-body-2" class="accordion__body can-collapse is-open">
+//         <div class="accordion__content">
+//             <!-- Nested Accordion -->
+//             <div class="accordion">
+//                 <div class="accordion__header is-collapsed" data-toggle="collapse" data-target="#flat-accordion-body-1-1">
+//                     <i class="icon icon--chevron-down"></i>
+//                     Accordion 2 Subheader 1
+//                 </div>
+//                 <div id="flat-accordion-body-1-1" class="accordion__body can-collapse">
+//                     <div class="accordion__content">Accordion 2 Subcontent 1</div>
+//                 </div>
+//                 <div class="accordion__header" data-toggle="collapse" data-target="#flat-accordion-body-1-2">
+//                     <i class="icon icon--chevron-down"></i>
+//                     Accordion 2 Subheader 2
+//                 </div>
+//                 <div id="flat-accordion-body-1-2" class="accordion__body can-collapse is-open">
+//                     <div class="accordion__content">
+//                         <!-- Nested Accordion -->
+//                         <div class="accordion">
+//                             <div class="accordion__header is-collapsed" data-toggle="collapse" data-target="#flat-accordion-body-1-2-1">
+//                                 <i class="icon icon--chevron-down"></i>
+//                                 Accordion 2 Subheader 2 Subheader 1
+//                             </div>
+//                             <div id="flat-accordion-body-1-2-1" class="accordion__body can-collapse">
+//                                 <div class="accordion__content">Accordion 2 Subconent 2 Subcontent 1</div>
+//                             </div>
+//                             <div class="accordion__header is-collapsed" data-toggle="collapse" data-target="#flat-accordion-body-1-2-2">
+//                                 <i class="icon icon--chevron-down"></i>
+//                                 Accordion 2 Subheader 2 Subheader 2
+//                             </div>
+//                             <div id="flat-accordion-body-1-2-2" class="accordion__body can-collapse">
+//                                 <div class="accordion__content">Accordion 2 Subconent 2 Subcontent 2</div>
+//                             </div>
+//                         </div>
+//                         <!-- End Nested Accordion -->
+//                     </div>
+//                 </div>
+//             </div>
+//             <!-- End Nested Accordion -->
+//         </div>
+//     </div>
+//     <div class="accordion__header is-collapsed" data-toggle="collapse" data-target="#flat-accordion-body-3">
+//         <i class="icon icon--chevron-down"></i>
+//         Accordion Header Three
+//     </div>
+//     <div id="flat-accordion-body-3" class="accordion__body can-collapse">
+//         <div class="accordion__content">Accordion Three Content</div>
+//     </div>
+// </div>
+//
+// Styleguide 3.1.4
+
+.#{$component-name}--flat {
+
+    .#{$component-name}__header {
+        background-image: none;
+        border-top: 1px solid rgba(#000, .25);
+    }
+
+    .#{$component-name}__content .#{$component-name}__header {
+        border-bottom: 0;
+        border-top-color: rgba(#000, .1);
+    }
+
+}

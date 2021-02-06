@@ -1,0 +1,269 @@
+// styleguide:ignore:start
+$slick-font-family:    'pp-icon';
+$slick-prev-character: map-get($icons, chevron-left);
+$slick-next-character: map-get($icons, chevron-right);
+$slick-arrow-color:    get-color('brand', 'primary');
+
+@import 'slick.js/slick/slick';
+@import 'slick.js/slick/slick-theme';
+
+$component-name: 'carousel';
+// styleguide:ignore:end
+
+
+// Plugins::Carousel
+//
+// Carousels in Abacus are powered by Ken Wheeler's extremely flexible Slick.
+// For more in-depth information about Slick, feel free to head on <a href="http://kenwheeler.github.io/slick/">
+// over to their documentation </a>.
+//
+// It's important to note, though, that the styles for Abacus carousels don't
+// just fit any markup. For Abacus-style carousels, check out the example below.
+//
+// The standard carousel will navigate through all the carousel items inside it.<br>
+// Its markup is very simple, and all that is required to get it running is call
+// the Slick plugin on its `.carousel__window` via JavaScript.
+//
+// Any `.carousel__image` will fill 100% of the item's width, and there's no limit
+// to the quantity of items!
+//
+// markup:
+// <script>
+//     $('.js-carousel-simple .carousel__window').slick();
+// </script>
+// <div class="carousel js-carousel-simple">
+//     <div class="carousel__window">
+//         <div class="carousel__item"><img class="carousel__image" src="http://placehold.it/750x300&text=slide+1" alt="Carousel Image"></div>
+//         <div class="carousel__item"><img class="carousel__image" src="http://placehold.it/750x300&text=slide+2" alt="Carousel Image"></div>
+//         <div class="carousel__item"><img class="carousel__image" src="http://placehold.it/750x300&text=slide+3" alt="Carousel Image"></div>
+//         <div class="carousel__item"><img class="carousel__image" src="http://placehold.it/750x300&text=slide+4" alt="Carousel Image"></div>
+//     </div>
+// </div>
+//
+// Styleguide 3.2
+
+/**
+    [1.1] - We set relative position here so we can precisely manipulate any
+            child .carousel__content elements.
+    [1.2] - Let's also strip any margins from paragraphs in our items so we
+            have more reliable spacing.
+*/
+.#{$component-name}__item {
+    position: relative; // [1.1]
+
+    p {
+        margin: 0;      // [1.2]
+    }
+}
+
+
+/**
+    [2.1] - We'll use a lage negative bottom value to "hide" the content below
+            the slide. We'll then set the value to 0 when the slide is active
+            and use CSS transitions to animate it.
+    [2.2] - We delay the CSS transition here by 400ms. This allows the old slide
+            time to disappear, and the new slide time to appear.
+*/
+.#{$component-name}__content {
+    background-color: rgba(#000, .75);
+    bottom: -100%;                  // [2.1]
+    color: #fff;
+    padding: .35em .75em;
+    position: absolute;             // [2.1]
+    text-shadow: 1px 1px 0 rgba(#000, .25);
+    transition: bottom 450ms 400ms; // [2.2]
+    width: 100%;
+
+    .slick-active & {
+        bottom: 0;                  // [2.1]
+    }
+}
+
+
+/**
+    [3.1] - Only the "slide image" should be 100% width of the slide, which is
+            why we bind that to a class here.
+*/
+.#{$component-name}__image {
+    width: 100%; // [3.1]
+}
+
+
+// Advanced Carousel
+//
+// Advanced carousels aren't that much different than the standard one, all you really need to do is add a bit more flair to it.
+// In this example, we'll also include a preview bar as well as auto-play functionality and the ability for the previews to know which slide is active, and also control the slider itself.
+// We'll also remove the arrow controls.
+//
+// markup:
+// <script>
+//     // Enable the carousel on our carousel window.
+//     $('.js-carousel-advanced .carousel__window').slick({
+//         arrows: false,
+//         autoplay: true,
+//         autoplaySpeed: 4500
+//     });
+//     // Now we wire up our own preview items.
+//     // This will make our preview highlight when the slider changes slides.
+//     $('.js-carousel-advanced .carousel__window').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+//         $('.js-carousel-advanced .carousel__preview-item').removeClass('is-active');
+//         $($('.js-carousel-advanced .carousel__preview-item')[nextSlide]).addClass('is-active');
+//     });
+//     // If a user clicks on a preview, make the slider go to that slide.
+//     $('.js-carousel-advanced .carousel__preview-item').on('click', function () {
+//         var targetSlide = $(this).index();
+//         $('.js-carousel-advanced .carousel__window').slick('slickGoTo', targetSlide);
+//     });
+// </script>
+// <div class="carousel js-carousel-advanced">
+//     <!-- The Carousel Window -- where we show our slides -->
+//     <div class="carousel__window">
+//         <div class="carousel__item">
+//             <img class="carousel__image" src="http://placehold.it/750x300&text=slide+1" alt="Carousel Image">
+//             <div class="carousel__content">
+//                 <h1 class="h5 carousel__title">Slide 1</h1>
+//                 <p>Something something.</p>
+//             </div>
+//         </div>
+//         <div class="carousel__item">
+//             <img class="carousel__image" src="http://placehold.it/750x300&text=slide+2" alt="Carousel Image">
+//             <div class="carousel__content">
+//                 <h1 class="h5 carousel__title">Slide 2</h1>
+//                 <p>Something something.</p>
+//             </div>
+//         </div>
+//     </div>
+//     <!-- The Carousel Preview -- We'll use this to control the carousel -->
+//     <div class="carousel__preview">
+//         <div class="carousel__preview-item is-active">
+//             <img src="http://placehold.it/45x45&text=1" class="carousel__image">
+//             <h1 class="h5 carousel__title">Slide 1</h1>
+//             <p>
+//                 Something something.
+//             </p>
+//         </div>
+//         <div class="carousel__preview-item">
+//             <img src="http://placehold.it/45x45&text=2" class="carousel__image">
+//             <h1 class="h5 carousel__title">Slide 2</h1>
+//             <p>
+//                 Something something.
+//             </p>
+//         </div>
+//     </div>
+// </div>
+//
+// Styleguide 3.2.1
+
+
+/**
+    [4.1] - Flexbox, baby! This allows us to have multiple items display inline
+            in our carousel preview, but also have them all be equal width.
+            There are some downfalls to this, and mobile is not supported yet,
+            but it's a good option at the moment.
+    [4.2] - Our carousels have 30px margin-bottom on them. If the carousel preview
+            immediately follows a carousel window, let's pull it up 30px.
+*/
+.#{$component-name}__preview {
+    display: flex; // [4.1]
+
+    .#{$component-name}__window + & {
+        margin-top: -30px; // [4.2]
+    }
+}
+
+
+/**
+    [5.1]   - Using the flex value that we set in [4.1], we can now create a
+              list of items that all have equal width, and scale accordingly!
+    [5.2]   - This is our small little thumbnail! We're not going to restrict
+              its dimensions with CSS. If the dev implementing them wants to
+              use an image greater than 45×45, that's their problem.
+    [5.2.1] - We will, however, undo the width: 100%; we set above.
+*/
+.#{$component-name}__preview-item {
+    background: $carousel__preview-item-background;
+    background-image: linear-gradient(to bottom, darken($carousel__preview-item-background, 10), $carousel__preview-item-background);
+    border: 1px solid darken($carousel__preview-item-background, 15);
+    box-shadow: inset 0 1px 0 rgba(#fff, .25);
+    color: #fff;
+    flex: 1;              // [5.1]
+    font-size: .85rem;
+    padding: .5em .25em;
+    transition: all 300ms;
+
+    &:not(.is-active) {
+        cursor: pointer;
+    }
+
+    &.is-active {
+        background-color: #fff;
+        background-image: none;
+        color: #333;
+    }
+
+    + .#{$component-name}__preview-item {
+        border-left: 0;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .#{$component-name}__title {
+        margin-bottom: 0;
+    }
+
+    // [5.2]
+    .#{$component-name}__image {
+        border: 2px solid #fff;
+        float: left;
+        margin-right: 5px;
+        width: auto; // [5.2.1]
+    }
+}
+
+
+// styleguide:ignore:start
+
+// SLICK ELEMENTS \\
+// ============== \\
+//
+// These elements are added in by the Slick plugin.
+// Unfortunately, they don't abide by BEM awesomeness, so we've just gotta grin
+// and bear it.
+
+.slick-prev,
+.slick-next,
+.slick-prev:hover,
+.slick-next:hover,
+.slick-prev:focus,
+.slick-next:focus {
+    background-color: $carousel__arrow-background;
+    border-radius: 50%;
+    box-shadow: 0 0 3px rgba(#000, .25);
+    color: $carousel__arrow-color;
+    height: 40px;
+    margin-top: -20px;
+    opacity: .5;
+    width: 40px;
+    z-index: 1;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+    opacity: 1;
+}
+
+.slick-prev {
+    left: 25px;
+}
+
+.slick-next {
+    right: 25px;
+}
+
+.slick-dots {
+    display: none;
+}
+
+// styleguide:ignore:end

@@ -1,0 +1,111 @@
+// styleguide:ignore:start
+$component-name: 'breadcrumbs';
+// styleguide:ignore:end
+
+
+// Components::Breadcrumbs
+//
+// Breadcrumbs are a visual representation of where the user currently is in
+// the heirarchy. They also provide users with quick and handy ways to traverse
+// up the parent pages.
+//
+// markup:
+// <ul class="breadcrumbs">
+//     <li class="breadcrumbs__item"><a href="#">Home</a></li>
+//     <li class="breadcrumbs__item"><a href="#">Horse Racing</a></li>
+//     <li class="breadcrumbs__item">Daily Racing</li>
+// </ul>
+//
+// Styleguide 2.1
+
+
+/**
+    [1.1] - Breadcrumbs are always inline, that's just how they roll.
+    [1.2] - We let users choose their own "leading" text with the data-before=""
+            attribute. If it doesn't exist, the text doesn't show.
+    [1.3] - The standard 1rem font-size is a bit large for breadcrumbs, so
+            let's shrink it a little.
+    [1.4] - This is the divider between each of the breadcrumb items. Having
+            it as an ::after pseudo-element cuts down on superfluous markup.
+    [1.5] - Let's do the spacing based on the font-size of the breadcrumb items.
+*/
+.#{$component-name} {
+    @include list--inline;          // [1.1]
+
+    &::before {
+        content: attr(data-before); // [1.2]
+        font-size: .85rem;          // [1.3]
+        margin-right: .25rem;
+    }
+
+    > .#{$component-name}__item {
+        font-size: .85rem;          // [1.3]
+
+        > a {
+            color: get-color('brand', 'primary');
+            font-weight: bold;
+        }
+
+        &:not(:last-child) {
+            // Is ok to nest this deep for psuedo elements
+            // scss-lint:disable NestingDepth
+            &::after {
+                content: '\00BB';   // [1.4]
+                margin: 0 .35em;    // [1.5]
+            }
+            // scss-lint:enable NestingDepth
+        }
+    }
+}
+
+
+// Leading text
+//
+// Breadcrumbs can also be outfitted with leading text to help give the user better
+// context around them. This can be easily added with a data attribute: `data-before`.
+// If present, Abacus will automagically prepend its value to the breadcrumbs.
+//
+// In this example, we use `data-before="Back to:"`.
+//
+// markup:
+// <ul class="breadcrumbs" data-before="Back to:">
+//     <li class="breadcrumbs__item"><a href="#">Home</a></li>
+//     <li class="breadcrumbs__item"><a href="#">Horse Racing</a></li>
+//     <li class="breadcrumbs__item">Daily Racing</li>
+// </ul>
+//
+// Styleguide 2.1.2.
+
+
+// Channel-themed Breadcrumbs
+//
+// As with all Abacus elements that support multi-channel styling, all that is
+// required to get Breadcrumbs to fit the branding of your channel is to add a
+// block-modifying class to the Breadcrumbs block.
+//
+// .breadcrumbs--bingo      - The Bingo breadcrumbs design.
+// .breadcrumbs--casino     - The Casino breadcrumbs design.
+// .breadcrumbs--games      - The Games breadcrumbs design.
+// .breadcrumbs--livecasino - The Live Casino breadcrumbs design.
+// .breadcrumbs--poker      - The Poker breadcrumbs design.
+// .breadcrumbs--vegas      - The Vegas breadcrumbs design.
+//
+// markup:
+// <ul class="breadcrumbs {$modifiers}">
+//     <li class="breadcrumbs__item"><a href="#">Home</a></li>
+//     <li class="breadcrumbs__item"><a href="#">Horse Racing</a></li>
+//     <li class="breadcrumbs__item">Daily Racing</li>
+// </ul>
+//
+// Styleguide 2.1.3.
+@each $name, $color in $breadcrumb--loop {
+
+    .#{$component-name}--#{$name} {
+
+        > .#{$component-name}__item a {
+            color: $color;
+        }
+
+    }
+
+}

@@ -1,0 +1,372 @@
+// Import into this file all the various variables used throughout the project.
+// NEVER INCLUDE A FILE THAT OUTPUTS CSS. EVER.
+// This file should be capable of being used within EVERY single file in the
+// project without unintentionally causing redeclarations and bloat.
+
+//    [1]  - GRID
+//    [2]  - BRAND COLORS
+//    [3]  - CHANNEL COLORS
+//    [4]  - LOOP MAPS
+//    [5]  - TYPOGRAPHY
+//    [6]  - BUTTONS
+//    [7]  - CHANNEL NAV
+//    [8]  - PANELS
+//    [9]  - MASTHEAD
+//    [10] - GLOBAL NAV
+//    [11] - ICON FONT
+//    [12] - Z-INDEX
+//    [13] - TOOLTIPS
+//    [14] - GEMS
+//    [15] - FLASH
+//    [16] - BREADCRUMBS
+//    [17] - MODAL
+//    [18] - CAROUSEL
+//    [19] - ACCORDION
+//    [20] - FORMS
+//    [21] - TABLES
+//    [22] - PIPS
+//    [23] - SPINNERS
+
+
+// [1] - GRID \\
+// ---------- \\
+$grid--flexbox:    false !default;
+$grid--columns:    12 !default;
+$grid--gutter:     1.875rem !default;
+$grid--max-width:  87.5rem !default;
+
+$grid--breakpoints: (
+    'small':   0,
+    'medium':  40em,
+    'large':   64em,
+    'xlarge':  75em,
+    'xxlarge': 90em
+);
+
+$grid--classes: ('small' 'medium' 'large' 'xlarge' 'xxlarge');
+
+
+// [2] - BRAND COLOR VARIABLES \\
+// --------------------------- \\
+// $brand: (
+//     'primary':   #004833,
+//     'secondary': #31953e,
+//     'highlight': #ffff00,
+//     'account':   #389fda,
+//     'positive':  #89dc6c,
+//     'negative':  #db5e58,
+//     'greyDark':  #3b3b30,
+//     'grey':      #7a7b7e,
+//     'greyLight': #d6d6d2
+// );
+$brand: (
+    'primary':    design-token('color', 'brand-primary'),
+    'secondary':  design-token('color', 'brand-secondary'),
+    'highlight':  design-token('color', 'brand-highlight'),
+    'positive':   #89dc6c,
+    'negative':   #db5e58,
+    'grey-dark':  design-token('color', 'brand-grey-dark'),
+    'grey':       design-token('color', 'brand-grey'),
+    'grey-light': design-token('color', 'brand-grey-light')
+);
+
+
+
+// [3] - CHANNEL COLOR VARIABLES \\
+// ----------------------------- \\
+
+//    [3.1] - Let's create our own "Private" Sass Map for storing each channel's
+//            Primary colour. This isn't really Private - there's nothing stopping
+//            anyone using it from anywhere in the Library. It just hopefully shouldn't
+//            be. If you need to grab a channel's primary colour, grab it using the
+//            special get-color() function.
+//                E.g.: color: get-color('bingo', 'primary');
+$map--channels: (
+    accounts: (
+        'primary':  #359cd8
+    ),
+    bingo: (
+        'primary': design-token('color', 'bingo-primary'),
+        'darker':  design-token('color', 'bingo-darker'),
+        'dark':    design-token('color', 'bingo-dark'),
+        'light':   design-token('color', 'bingo-light'),
+        'lighter': design-token('color', 'bingo-lighter')
+    ),
+    casino: (
+        'primary': design-token('color', 'casino-primary'),
+        'darker':  design-token('color', 'casino-darker'),
+        'dark':    design-token('color', 'casino-dark'),
+        'light':   design-token('color', 'casino-light'),
+        'lighter': design-token('color', 'casino-lighter')
+    ),
+    casino-dark: (
+        'primary':  #202020
+    ),
+    games: (
+        'primary': design-token('color', 'games-primary'),
+        'darker':  design-token('color', 'games-darker'),
+        'dark':    design-token('color', 'games-dark'),
+        'light':   design-token('color', 'games-light'),
+        'lighter': design-token('color', 'games-lighter')
+    ),
+    livecasino: (
+        'primary': design-token('color', 'livecasino-primary'),
+        'darker':  design-token('color', 'livecasino-darker'),
+        'dark':    design-token('color', 'livecasino-dark'),
+        'light':   design-token('color', 'livecasino-light'),
+        'lighter': design-token('color', 'livecasino-lighter')
+    ),
+    poker: (
+        'primary': design-token('color', 'poker-primary'),
+        'darker':  design-token('color', 'poker-darker'),
+        'dark':    design-token('color', 'poker-dark'),
+        'light':   design-token('color', 'poker-light'),
+        'lighter': design-token('color', 'poker-lighter')
+    ),
+    sports: (
+        'primary': design-token('color', 'sports-primary'),
+        'darker':  design-token('color', 'sports-darker'),
+        'dark':    design-token('color', 'sports-dark'),
+        'light':   design-token('color', 'sports-light'),
+        'lighter': design-token('color', 'sports-lighter')
+    ),
+    vegas: (
+        'primary': design-token('color', 'vegas-primary'),
+        'darker':  design-token('color', 'vegas-darker'),
+        'dark':    design-token('color', 'vegas-dark'),
+        'light':   design-token('color', 'vegas-light'),
+        'lighter': design-token('color', 'vegas-lighter')
+    )
+);
+
+
+// [4] - LOOP MAPS \\
+// --------------- \\
+//    Maps created here should be used for Sass loops.
+//    For an example of this, check out how the channel-specific channelnavs
+//    are made in /modules/_channelnav.scss
+$loop--channels: (
+    'accounts':   get-color('accounts',   'primary'),
+    'bingo':      get-color('bingo',      'primary'),
+    'casino':     get-color('casino',     'primary'),
+    'games':      get-color('games',      'primary'),
+    'livecasino': get-color('livecasino', 'primary'),
+    'poker':      get-color('poker',      'primary'),
+    'sports':     get-color('sports',     'primary'),
+    'vegas':      get-color('vegas',      'primary')
+);
+
+
+// [5] - TYPOGRAPHY VARIABLES \\
+// -------------------------- \\
+// This contains all the variables necessary for configuring the typography of
+// the project.
+
+// Typography settings are defined as per pre-existing BVI settings.
+//     http://power.tools.paddypower.com/confluence/display/WebDev/Fonts
+
+//    [5.1] All Abacus elements utilise the rem unit for font-size so this should
+//          be taken into account when creating elements. Everything will be calculated
+//          based off the base-font-size set here. E.g.:
+//              $font-size--base: 14px;
+//              p {font-size: 1.6rem;} = ~22px (14 * 1.6);
+$font-size--base:   14px !default;
+$line-height--base: 1.42 !default;
+$font-family--base: "Arial", sans-serif !default;
+
+$font-size--xxxlarge: 1.4285rem !default;
+$font-size--xxlarge:  1.1428rem !default;
+$font-size--large:    1.0714rem !default;
+$font-size--medium:   .8571rem !default;
+$font-size--small:    .7142rem !default;
+$font-size--xsmall:   .6428rem !default;
+
+$heading--h1:           2.6rem  !default;
+$heading--h2:           2.15rem !default;
+$heading--h3:           1.7rem  !default;
+$heading--h4:           1.25rem !default;
+$heading--h5:           1rem    !default;
+$heading--h6:           .85rem !default;
+
+$typography--link-color: #389fda !default;
+$typography--link-hover: #e76a01 !default;
+
+
+// [6] - BUTTON VARIABLES \\
+// ---------------------- \\
+$btn--border-radius:     2px;
+$btn--border-radius_2x:  4px;
+$btn--border-radius_3x:  6px;
+$btn--box-shadow:        inset 0 -2px 0 rgba(#000, .2);
+$btn--box-shadow_2x:     inset 0 -4px 0 rgba(#000, .2);
+$btn--box-shadow_3x:     inset 0 -6px 0 rgba(#000, .2);
+$btn--margin:            4px;
+$btn--margin_2x:         8px;
+$btn--pressed-overlay:   rgba(#000, .2);
+
+$btn--primary-bg:        #31953e;
+$btn--primary-text:      #fff;
+$btn--secondary-bg:      #389fda;
+$btn--secondary-text:    #fff;
+$btn--tertiary-bg:       #aaa;
+$btn--tertiary-text:     #fff;
+$btn--disabled-bg:       #eaeaea;
+$btn--disabled-text:     #cbcbcb;
+
+$btn--odds-bg:           #c9da2a;
+$btn--odds-text:         #4c721d;
+$btn--odds-short-bg:     #47bcff;
+$btn--odds-short-text:   #fff;
+$btn--odds-drift-bg:     #ff4747;
+$btn--odds-drift-text:   #fff;
+$btn--odds-suspend-bg:   #eaeaea;
+$btn--odds-suspend-text: #aaa;
+$btn--odds-pressed-text: rgba(#000, .6);
+
+
+$button--positive: get-color('brand', 'positive') !default;
+$button--negative: get-color('brand', 'negative') !default;
+$button--loop:     $loop--channels;
+
+
+// [7] - CHANNEL NAVIGATION VARIABLES \\
+// ---------------------------------- \\
+$channelnav--default:         get-color('sports', 'primary') !default;
+$channelnav-gradient--top:    #474747 !default;
+$channelnav-gradient--bottom: #151515 !default;
+$channelnav--loop:            $loop--channels;
+
+
+// [8] - PANEL VARIABLES \\
+// --------------------- \\
+$panel__title-background: get-color('brand', 'primary') !default;
+$panel__title-color:      #fff !default;
+
+
+// [9] - MASTHEAD VARIABLES \\
+// ------------------------ \\
+$masthead-background:    get-color('brand', 'primary') !default;
+$masthead-stripe-size:   70px 70px !default;
+$masthead-stripe-darken: 3% !default;
+
+
+// [10] - GLOBALNAV VARIABLES \\
+// -------------------------- \\
+$globalnav-background:  #ededed !default;
+$globalnav-border:      1px solid #aeacac !default;
+$globalnav__link-color: get-color('brand', 'primary') !default;
+
+
+// [11] - ICON FONT \\
+// ---------------- \\
+//
+//    [11.1] - The sheer amount of variables required to build the icon font is so
+//             large that it just makes sense to store them in thier own file, rather
+//             than store them all here.
+@import 'variables_icons'; // [11.1]
+
+
+// [12] - Z-INDEX \\
+// -------------- \\
+$map--z-index: (
+    tooltip: 20,
+    menu:    30,
+    modal:   40
+);
+
+
+// [13] - TOOLTIP \\
+// --------------- \\
+$tooltip-background:  rgba(#fff, 1) !default;
+$tooltip-color:       get-color('brand', 'grey') !default;
+$tooltip-max-width:   230px !default;
+$tooltip__arrow-size: 5px !default;
+
+
+// [14] - GEM \\
+// ----------- \\
+$gem--background: #aaa !default;
+$gem--color:      #fff !default;
+$gem--loop: (
+    'brand': get-color('brand', 'secondary'),
+    'offer': #ea961c,
+    'mbs':   #f00
+);
+$gem--old-background: #ff0;
+$gem--old-color:      get-color('brand', 'primary');
+
+
+// [15] - FLASH \\
+// ------------ \\
+$flash-background:   #fff !default;
+$flash-color:        get-color('brand', 'grey') !default;
+$flash-highlight:    get-color('brand', 'primary') !default;
+$flash__title-color: get-color('brand', 'primary') !default;
+$flash--loop:        $loop--channels;
+
+
+// [16] - BREADCRUMB \\
+// ----------------- \\
+$breadcrumb--loop: $loop--channels;
+
+
+// [17] - MODAL \\
+// ------------ \\
+$modal-max-width: 600px !default;
+$modal__header-background: get-color('brand', 'primary') !default;
+
+
+// [18] - CAROUSEL \\
+// --------------- \\
+$carousel__arrow-background:        #fff !default;
+$carousel__arrow-color:             get-color('brand', 'primary') !default;
+$carousel__preview-item-background: get-color('brand', 'secondary') !default;
+
+
+// [19] - ACCORDION \\
+// ---------------- \\
+$accordion__header-background:               get-color('brand', 'primary') !default;
+$accordion__header-nested-background:        get-color('brand', 'grey-light') !default;
+$accordion__header-double-nested-background: darken(get-color('brand', 'grey-light'), 15) !default;
+
+
+// [20] - FORMS \\
+// ------------ \\
+$form--aura:           get-color('brand', 'secondary') !default;
+$form--success:        get-color('brand', 'positive')  !default;
+$form--error:          get-color('brand', 'negative')  !default;
+$form__control-border: get-color('brand', 'grey-light') !default;
+$form__message-color:  get-color('brand', 'primary')   !default;
+
+
+// [21] - TABLES \\
+// ------------- \\
+$table--background:   #fff !default;
+$table--cellpadding:  .5em !default;
+$table--border-color: #ccc !default;
+$table--stripe:       darken($table--background, 4%) !default;
+$table--hover:        darken($table--background, 5%) !default;
+
+
+// [22] - PIPS \\
+// ----------- \\
+$pip--background: get-color('brand', 'secondary');
+$pip--color: #fff;
+$pip--loop: (
+    'secondary': get-color('accounts', 'primary'),
+    'bright':    get-color('brand', 'highlight'),
+    'positive':  get-color('brand', 'positive'),
+    'negative':  get-color('brand', 'negative')
+);
+
+
+// [23] - SPINNERS \\
+// --------------- \\
+$spinner--color: get-color('brand', 'secondary');
+$spinner--loop:  $loop--channels;
+$spinner--cycle: (
+    '1': #4285F4,
+    '2': #EA4335,
+    '3': #34A853,
+    '4': #FBBC05
+);

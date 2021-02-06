@@ -1,0 +1,241 @@
+// styleguide:ignore:start
+$component-name: 'globalnav';
+// styleguide:ignore:end
+
+
+// Components::Masthead - With Globalnav
+//
+// The Global Nav is a component designed to complement the Masthead.
+//
+// It doesn't necessarily need to be a child component or even part of the
+// Masthead component in any way, but you rarely see our Global Nav without
+// a Masthead!
+//
+// markup:
+// <header class="masthead">
+//     <!-- Empty masthead -->
+// </header>
+// <nav class="globalnav">
+//     <a href="#" class="globalnav__trigger">&#9776; Menu</a>
+//     <!-- List of left items -->
+//     <ul class="globalnav__list">
+//         <li class="globalnav__item"><a class="globalnav__link" href="#">Left item 1</a></li>
+//         <li class="globalnav__item"><a class="globalnav__link" href="#">Left item 2</a></li>
+//         <li class="globalnav__item"><a class="globalnav__link" href="#">Left item 3</a></li>
+//         <li class="globalnav__item"><a class="globalnav__link" href="#">Left item 4</a></li>
+//         <li class="globalnav__item right"><a class="globalnav__link" href="#">Right item 1</a></li>
+//         <li class="globalnav__item right"><a class="globalnav__link" href="#">Right item 2</a></li>
+//         <li class="globalnav__item right"><a class="globalnav__link" href="#">Right item 3</a></li>
+//     </ul>
+// </nav>
+//
+// Styleguide 2.7.1
+
+.#{$component-name} {
+    background-color: $globalnav-background;
+    border-bottom: $globalnav-border;
+    border-top: $globalnav-border;
+    position: relative;
+}
+
+
+// The Trigger element is only shown on small and medium sized screens. Its
+// purpose is to show the Globalnav List when it's hovered over.
+.#{$component-name}__trigger {
+    color: $globalnav__link-color;
+    display: inline-block;
+    font-weight: bold;
+    padding: .35em;
+
+    &:focus + .#{$component-name}__list,
+    &:hover + .#{$component-name}__list {
+        display: block;
+    }
+}
+
+
+/**
+    [1.1] - We'll also use padding-top in conjunction with a transparent
+            background to create a small, invisible "shim" that will give the
+            list a little extra hover space on top, to make mouse movement
+            from the trigger to the list a little better.
+    [1.2] - By default, the list is hidden, and we trigger its display when a
+            user hovers over the trigger element above.
+    [1.3] - We want to "push" the left and right of the list in as much as the
+            gutter size in the grid. This gives the element a little breathing
+            room from the edges of small devices.
+    [1.4] - We also want the list to stay displayed while a user is hovering
+            over it. Otherwise it would disappear when they leave the trigger.
+    [1.5] - If the Globalnav List is (most likely) a child of a Foundation
+            grid column, then let's negate the column padding so it sits flush
+            with the sides.
+*/
+.#{$component-name}__list {
+    @include list--unstyled;
+    @include z-index(menu);
+    background-color: transparent; // [1.1]
+    display: none;                 // [1.2]
+    left:  $grid--gutter;          // [1.3]
+    margin-top: -1em;
+    padding-top: 2em;              // [1.1]
+    position: absolute;            // [1.3]
+    right: $grid--gutter;          // [1.3]
+    top:   100%;                   // [1.3]
+
+    &:hover {
+        display: block;            // [1.4]
+    }
+
+    // Our small little arrow that will appear above the list on small and medium
+    // devices.
+    &::after {
+        border: solid transparent;
+        // These properties need to be specified in this order so that the bottom
+        // border retains its colour so we can see the chevron.
+        // scss-lint:disable PropertySortOrder
+        border-color: rgba($globalnav-background, 0);
+        border-bottom-color: $globalnav-background;
+        // scss-lint:enable PropertySortOrder
+        border-width: 10px;
+        content: ' ';
+        height: 0;
+        left: 1.5em;
+        margin-top: -19px;
+        pointer-events: none;
+        position: absolute;
+        top: 2em;
+        width: 0;
+    }
+
+    .row .columns > & {
+        margin-left:  -($grid--gutter / 2); // [1.5]
+        margin-right: -($grid--gutter / 2); // [1.5]
+    }
+}
+
+
+/**
+    [2.1] - We set the Globalnav's background color on the Items instead.
+            This allows us to use our transparent shim technique in [1.4].
+*/
+.#{$component-name}__item {
+    background-color: $globalnav-background; // [2.1]
+    border-bottom: $globalnav-border;
+
+    &:last-child {
+        border-bottom: 0;
+    }
+}
+
+
+.#{$component-name}__link {
+    color: $globalnav__link-color;
+    display: block;
+    font-size: .8rem;
+    font-weight: bold;
+    line-height: 2.5rem;
+    padding: 0 .5rem;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+
+/**
+    [3.1] - Having the list take up the full width of a medium-sized screen
+            would be a bit too much. So we make it take up 50% instead.
+*/
+@include breakpoint('medium') {
+    .#{$component-name}__list {
+        min-width: 50%; // [3.1]
+        right: auto;
+    }
+}
+
+
+/**
+    [4.1] - On large screens, we don't want the trigger to exist as the list
+            will be displayed in all its glory.
+    [4.2] - FLEXBOX, BABY!
+    [4.3] - We don't want the List to be position absolute any more, as it
+            will display in full on large screens. We also want to reset any
+            positions we set above.
+    [4.4] - We'll also remove the padding we set to create the small shim that
+            we put in place in [1.4].
+    [4.5] - Remove the arrow we created above.
+    [4.6] - We also need to epxlicitly set display:flex; when a user hovers on
+            the list element, otherwise it will apply the display:block; that
+            we set in [1.3].
+    [4.7] - Because all the List Items have a right border by default and no
+            left border, the very first right-aligned looks a bit strange.
+            To target this, we'll apply a left border to any elements that are
+            an immediate sibling of a globalnav item that DOES NOT have a .right
+            class, and it itself DOES have a .right class. This will only target
+            the first .right item in our list.
+    [4.8] - This is our hocus pocus that lets us use Flexbox, and also right-align
+            elements within the flex container.
+    [4.9] - Here, we set the margin-left:auto; to kick in the flexbox spacing for
+            the right-aligned elements, and then we remove the margin-right so
+            the elements fall as far right as possible.
+            Next, we'll remove the margin-left from siblings so that they will
+            all clump together. This leaves is with the first .right element
+            only having margin-left:auto;
+*/
+@include breakpoint('large') {
+    .#{$component-name}__trigger {
+        display: none; // [4.1]
+    }
+
+
+    .#{$component-name}__list {
+        align-content: flex-start;   // [4.2]
+        align-items: flex-start;     // [4.2]
+        background-color: transparent;
+        display: flex;               // [4.2]
+        flex-flow: row nowrap;       // [4.2]
+        height: auto;
+        justify-content: flex-start; // [4.2]
+        left: auto;                  // [4.3]
+        margin-top: 0;               // [4.4]
+        padding-top: 0;              // [4.4]
+        position: relative;          // [4.3]
+        right: auto;                 // [4.3]
+        top: auto;                   // [4.3]
+
+        &::after {
+            display: none;           // [4.5]
+        }
+
+        &:hover {
+            display: flex;           // [4.6]
+        }
+    }
+
+
+    .#{$component-name}__item {
+        align-self: auto;
+        border-bottom: 0;
+        border-right: $globalnav-border;
+        flex: 0 0 auto;
+
+        &:first-child {
+            border-left: $globalnav-border;
+        }
+
+        &:not(.right) + &.right {           // [4.7]
+            border-left: $globalnav-border; // [4.7]
+        }
+
+        // [4.8]
+        &.right {
+            margin-left:  auto; // [4.9]
+            margin-right: 0;    // [4.9]
+
+            & + & {
+                margin-left: 0; // [4.9]
+            }
+        }
+    }
+}

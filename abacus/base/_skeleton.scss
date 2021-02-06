@@ -1,0 +1,109 @@
+html,
+body {
+    box-sizing: border-box;
+    font-size: 100%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+/**
+    [1.1] - Set the default `font-size` and `line-height` for the entire project,
+            sourced from our default variables. The `line-height` value should
+            exist unitlessly in the variables file. You can read more about that
+            here:
+            http://meyerweb.com/eric/thoughts/2006/02/08/unitless-line-heights/
+    [1.2] - Fonts on OSX will look more consistent with other systems that do not
+            render text using sub-pixel anti-aliasing.
+    [1.3] - Ensure the page always fills at least the entire height of the viewport.
+            This also makes it easier for us to do things like `height: 100%` further
+            down the line.
+    [1.4] - Force scrollbars to always be visible to prevent awkward "jumps" when
+            navigating between pages that do/do not have enough content to produce
+            scrollbars naturally.
+    [1.5] - Prevent certain mobile browsers from automatically zooming fonts.
+*/
+// The layout is a bit funky here, but it's a bit easier to read when we use
+// the indentation that we have below.
+// scss-lint:disable Indentation, VendorPrefix
+html {
+    font-family: $font-family--base;
+    font-size: $font-size--base;          // [1.1]
+    -moz-osx-font-smoothing: grayscale;   // [1.2]
+     -webkit-font-smoothing: antialiased; // [1.2]
+    line-height: $line-height--base;      // [1.1]
+    min-height: 100%;                     // [1.3]
+    overflow-y: scroll;                   // [1.4]
+        -ms-text-size-adjust: 100%;       // [1.5]
+    -webkit-text-size-adjust: 100%;       // [1.5]
+}
+// scss-lint:enable Indentation, VendorPrefix
+
+// Redefine html font-size to allow adjusting sizes across screens.
+//    // Tablet and upwards
+//    @include breakpoint('medium') {
+//        html {
+//            font-size: $font-size--base;
+//        }
+//    }
+//
+//    // Desktop and upwards
+//    @include breakpoint('xlarge') {
+//        html {
+//            font-size: $font-size--large;
+//        }
+//    }
+//
+//    // What is this, I don't even... and upwards
+//    @include breakpoint('xxlarge') {
+//        html {
+//            font-size: $font-size--xxlarge;
+//        }
+//    }
+
+
+// Reset font styling for certain elements
+input,
+button,
+select,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+
+// Base styling for links throughout the framework
+//    [2.1] Remove the default border added to images within links.
+a {
+    color: $typography--link-color;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        color: $typography--link-hover;
+        text-decoration: underline;
+    }
+
+    img {
+        border: 0; // [2.1]
+    }
+}
+
+
+hr {
+    border: 0;
+    border-bottom: 1px solid rgba(#fff, .25);
+    border-top: 1px solid rgba(#000, .25);
+    margin: 1rem 0;
+}
+
+
+img {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+}

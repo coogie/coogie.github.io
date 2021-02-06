@@ -1,0 +1,44 @@
+// The most up-to-date implementation of the Micro Clearfix.
+// Note that we use display:block; instead of display:table; See the following
+// post for more information:
+// http://cssmojo.com/the-very-latest-clearfix-reloaded/
+@mixin clearfix() {
+    &::after {
+        clear: both;
+        content: '';
+        display: block;
+    }
+}
+
+.clearfix {
+    @include clearfix;
+}
+
+
+@mixin float($direction: 'left') {
+    float: unquote($direction);
+}
+
+.float-right {
+    @include float('right');
+}
+
+.float-left {
+    @include float('left');
+}
+
+
+// Allows us to use text within the element but hides it visually! This is a
+// massive benefit for us semantically, and for screen readers as they can
+// now understand what the element is.
+@mixin hide-text() {
+    background-color: transparent;
+    color: transparent;
+    font-size: 0;
+    line-height: 0;
+    text-shadow: none;
+}
+
+.hide-text {
+    @include hide-text;
+}

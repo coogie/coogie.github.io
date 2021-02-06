@@ -1,0 +1,89 @@
+<h1 class="sg" name="abacus-component-library-and-framework">Abacus Component Library and Framework</h1>
+<h2 class="sg" name="overview">Overview</h2>
+<p class="sg">Abacus is a powerful, modular, and lightweight CSS component library built using
+OOCSS and BEM, for use across all Paddy Power sites and products. It features a
+powerful mobile-first grid system and incredibly flexible components to accompany.</p>
+<h3 class="sg" name="what&apos;s-new?">What&apos;s New?</h3>
+<p class="sg">Turn and face the strange, <a href="http://power.tools.paddypower.com/stash/projects/WWW/repos/abacus/browse/CHANGELOG.md?at=refs%2Fheads%2Fdevelop" class="sg">ch-ch-changelog</a>.</p>
+<h2 class="sg" name="browser-compatibility">Browser Compatibility</h2>
+<p class="sg">Abacus aims to explicitly support the following browsers.
+Please <a href="http://power.tools.paddypower.com/jira/browse/ABACUS" class="sg">report any issues</a> you encounter.</p>
+<table class="sg">
+<thead class="sg">
+<tr class="sg">
+<th class="sg">Browser</th>
+<th class="sg">Version</th>
+</tr>
+</thead>
+<tbody class="sg">
+<tr class="sg">
+<td class="sg">Chrome</td>
+<td class="sg">Last 2 Versions</td>
+</tr>
+<tr class="sg">
+<td class="sg">Firefox</td>
+<td class="sg">Last 2 Versions</td>
+</tr>
+<tr class="sg">
+<td class="sg">Internet Explorer</td>
+<td class="sg">Version 11+ <sup>1</sup> <br> Version 9+</td>
+</tr>
+<tr class="sg">
+<td class="sg">Android Browser</td>
+<td class="sg">Version 4.4+ <sup>2</sup></td>
+</tr>
+<tr class="sg">
+<td class="sg">iOS Safari</td>
+<td class="sg">Version 7.1</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li class="sg">IE support reduced by usage of <code>flexbox</code>. Fallbacks can be implemented with <code>float</code> or <code>display: table;</code>. <br>Outside of this, IE support is 9+ &#x2014; limited by CSS3 Media Query support.</li>
+<li class="sg">Android Browser support reduced by usage of <code>flexbox</code>. Fallbacks can be implemented with <code>float</code> or <code>display: table;</code>.</li>
+</ol>
+<h2 class="sg" name="using-abacus">Using Abacus</h2>
+<p class="sg">It&apos;s important to note that Abacus <strong>is not</strong> designed to be directly integrated
+into your project&apos;s own CSS/Less/Sass, but instead is designed to exist as a
+separate CSS file to be used within a <code>&lt;link&gt;</code> in your project&apos;s <code>&lt;head&gt;</code>, and
+referenced from CDN.</p>
+<p class="sg">This is to improve performance across all channels by caching commonly-styled
+element and components on the client machine, allowing developers to take more
+control by applying the own CSS afterwards, with correct usage of the Cascade
+and Specificity.</p>
+<p class="sg"><strong>If you want to start using Abacus on your project, you can use this to get
+started:</strong></p>
+<pre class="sg"><code class="language-markup">
+    &lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; src=&quot;//c.ppstatic.com/abacus/0.28.0/abacus.min.css&quot;&gt;
+
+    &lt;script defer src=&quot;//j.ppstatic.com/abacus/0.28.0/abacus.js&quot;&gt;&lt;/script&gt;
+
+</code></pre>
+<h2 class="sg" name="products-currently-using-abacus">Products currently using Abacus</h2>
+<table class="sg">
+<thead class="sg">
+<tr class="sg">
+<th class="sg">Name</th>
+<th class="sg">URL</th>
+<th class="sg">Version</th>
+</tr>
+</thead>
+<tbody class="sg">
+<tr class="sg">
+<td class="sg">Media Player</td>
+<td class="sg">http://mediaplayer.paddypower.com/</td>
+<td class="sg">0.26.8</td>
+</tr>
+<tr class="sg">
+<td class="sg">Augusta Cash Card</td>
+<td class="sg">http://cashcardplus.paddypower.com/</td>
+<td class="sg">0.26.8</td>
+</tr>
+</tbody>
+</table>
+<script>
+    // This is only requred for syntax highlighting of the <code> tag above.
+    Prism.highlightAll();
+    // Make our markdown tables look pretty.
+    $('table').addClass('table');
+</script>

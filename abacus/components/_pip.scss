@@ -1,0 +1,71 @@
+// styleguide:ignore:start
+$component-name: 'pip';
+// styleguide:ignore:end
+
+// Components::Pip
+//
+// Pips are small elements that serve a number of purposes throughout our
+// designs for items such as Current Server (Tennis) and as a Key indicator
+// in Legends.
+//
+// **PLEASE NOTE**: Pips should *never* contain any content. If you put content
+// inside a pip (even just a whitespace character), this will prevent it from
+// showing up. If you need to put content inside a Pip, consider using a
+// [Gem](/section/2.4) instead.
+//
+// markup:
+// <span class="pip"></span>
+//
+// Styleguide 2.9
+
+/**
+    [1.1] - We want a perfect circle (Pip's should be equal in width and height)
+            so we apply a radius of 50% so the browser doesn't need to do any
+            additional calculation for overlap scaling and whatnot.
+    [1.2] - We want Pips to be inline, but also want to manipulate their box
+            model.
+    [1.3] - By using `em` as our padding value, we can scale the size of the
+            Pip by only needing to edit the `font-size` of the element (or its
+            parent).
+    [1.4] - Get better vertical alignment on Pips when used in other elements.
+    [1.5] - Pips shouldn't contain any text, as they're only supposed to be used
+            to provide additional meaning to their surrounding elements. Because
+            we use `em` for scalable padding and sizing, we can't set `font-size`
+            to 0. So, instead, we hide the element entirely to prevent this no-no.
+*/
+
+.#{$component-name} {
+    background-color: $pip--background;
+    border-radius: .5em;    // [1.1]
+    color: $pip--color;
+    display: inline-block;  // [1.2]
+    padding: .25em;         // [1.3]
+    vertical-align: middle; // [1.4]
+
+    &:not(:empty) {
+        display: none;      // [1.5]
+    }
+}
+
+
+// Components::Pip - Variants
+//
+// Pips are small elements that serve a number of purposes throughout our
+// designs for items such as Current Server (Tennis) and as a Key indicator
+// in Legends.
+//
+// .pip--secondary - No description
+// .pip--bright    - No description
+// .pip--positive  - No description
+// .pip--negative  - No description
+//
+// markup:
+// <span class="pip {$modifiers}"></span>
+//
+// Styleguide 2.9.1
+
+@each $name, $color in $pip--loop {
+    .#{$component-name}--#{$name} {
+        background-color: $color;
+    }
+}

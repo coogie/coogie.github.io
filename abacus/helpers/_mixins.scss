@@ -1,0 +1,129 @@
+// Returns a font-size declaration in rem units based on the input.
+//
+// @param $font-size   [Number] The size that is to be applied to the element.
+// @param $line-height [Bool]   If true, will apply line-height based on the Typography variables.
+// @returns A font-size declaration in rem units, with optional line-height.
+@mixin font-size($font-size, $line-height: true) {
+    font-size: ($font-size / $font-size--base) * 1rem;
+    @if $line-height == true {
+        line-height: ceil($font-size / $line-height--base) * ($line-height--base / $font-size);
+    }
+}
+
+
+// Creates a BVI-striped background on any element, allowing users to define
+// both the colour and the size of the stipes, all without background images.
+//
+// @param $bg-color       [Color]  The colour which the element background should be
+// @param $size           [Number] The width and height which the repeating tile should be.
+// @param $lighten-amount [Number] The percentage to which $bg-color should be lightened and is applied to the stripes.
+// @param $fade           [Bool]   If true, the stripes will gradually fade to $bg-colour towards the right of the element.
+// @returns A repeating linear gradient, with optional fade to solid colour on far right.
+@mixin background--stipe($bg-color: get-color('brand', 'primary'), $size: 40px 40px, $lighten-amount: 5%, $fade: true) {
+    $stripe-color: lighten($bg-color, $lighten-amount);
+    background-color: $bg-color;
+
+    @if $fade {
+        // For ease of reading
+        // scss-lint:disable SpaceAfterPropertyColon
+        background-image:
+            linear-gradient(to right, rgba($bg-color, 0), $bg-color 75%),
+            linear-gradient(-45deg, $stripe-color 25%, transparent 25%, transparent 50%, $stripe-color 50%, $stripe-color 75%, transparent 75%, transparent);
+        // scss-lint:enable SpaceAfterPropertyColon
+        background-size: cover, $size;
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$stripe-color}', endColorstr='#{$bg-color}',GradientType=1 );
+    }
+    @else {
+        // For ease of reading
+        // scss-lint:disable SpaceAfterPropertyColon
+        background-image:
+            linear-gradient(-45deg, $stripe-color 25%, transparent 25%, transparent 50%, $stripe-color 50%, $stripe-color 75%, transparent 75%, transparent);
+        // scss-lint:enable SpaceAfterPropertyColon
+        background-size: $size;
+    }
+}
+
+
+// Returns a BEM-ified classname based on the parameters passed in with support
+// for states such as :hover and :active.
+//
+// NOTE: This mixin is intended to be used in a loop, and in conjunction with
+//       Compass's `sprite-map()` AND `sprite_names()` functions.
+//
+// @param $classname [String] The base classname with which the new classname will built with.
+// @param $logos     [Array]  The map of sprites constructed by Compass's sprite-map()
+// @param $item      [String] The name of the sprite, passed in as the value retrieved from sprite_names()
+// @returns A full suite of classnames and X/Y coords for each sprite associated.
+@mixin BEM-sprite($classname, $logos, $item) {
+    // Let's check if the current name being passed in contains an underscore
+    $underscore: str-index($item, _);
+
+    // If it doesn't, then it's just a regular ol' sprite image and our job here
+    // is done!
+    @if ($underscore == null) {
+        .#{$classname}--#{$item} {
+            @include sprite-dimensions($logos, $item);
+            background-position: sprite-position($logos, $item);
+        }
+    }
+
+    // If it DOES contain an underscore, then it must be a state-activated
+    // sprite (e.g.: cart_hover), and we should handle it accordingly.
+    @else {
+        // We use str-slice to get the first part of the name, and we'll use
+        // that to make our identifier.
+        $prefix:  str-slice($item, 0, $underscore - 1);
+
+        // Now we grab the value after the underscore, and use that as our
+        // state psuedo-class.
+        $postfix: str-slice($item, $underscore + 1);
+
+        .#{$classname}--#{$prefix}:#{$postfix} {
+            background-position: sprite-position($logos, $item);
+        }
+    }
+}
+
+
+// Allows us to easily create breakpoint declarations in our Sass that is easy
+// to read.
+//
+// @param [String] The key to look for within the $grid--breakpoint map.
+// @returns A breakpoint declaration with all the contents of the mixin.
+@mixin breakpoint($breakpoint) {
+    $value: map-get($grid--breakpoints, $breakpoint);
+
+    @if $value != null {
+        @media (min-width: $value) {
+            @content;
+        }
+    }
+
+    @else {
+        @error "No value found in $grid--breakpoints for `#{$breakpoint}`."
+             + "Please double-check the value exists in the map.";
+    }
+}
+
+
+// Returns a z-index for an element using the values in the $z-index variable map.
+//
+// @param $type     [String] - The stacking type the element belongs to.
+// @param $modifier [Number] - The modifier to add to the $type value. Allows us to stack elements within a type group. (optional)
+// @returns A z-index declaration with the value of the stacking group plus modifier.
+@mixin z-index($type, $modifier: 0) {
+    $value: map-get($map--z-index, $type);
+
+    @if $value == null {
+        @error "No value found in $map--z-index for `#{$type}`. Please double-check the value exists in the map.";
+    }
+
+    @else {
+        @if $modifier > 9 {
+            @warn "The value of $modifier shouldn't be larger than 9. This is to prevent excessively large z-index values, and is for your own good!";
+        }
+
+        $value: $value + $modifier;
+        z-index: $value;
+    }
+}

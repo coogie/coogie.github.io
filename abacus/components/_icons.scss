@@ -1,0 +1,221 @@
+$component-name: 'icon';
+@import 'compass/css3/font-face';
+
+@include font-face(
+    $icons--font-family-name,
+    font-files(
+        'pp-icon.woff', woff,
+        'pp-icon.ttf',  ttf,
+        'pp-icon.svg',  svg
+    ),
+    'pp-icon.eot'
+);
+
+
+// Components::Icons
+//
+// Icons are a great way to add visual flair to your components in a quick and
+// easy manner. Thankfully, we've made it dead simple for you to use them,
+// purely with CSS!
+//
+// The icons used within Abacus are all provided by the PP-icon typeface. This
+// typeface allows us to use the icons as a font, providing us with the benefit
+// of a large amount of browser support, as well as graphics which scale infinitely
+// without losing quality.
+//
+// To use these icons yourself, however, all you need to do is add some classes
+// to an empty `<i>` element! Just swap out the modifying class with that of the
+// icon you want.
+//
+// markup:
+// <i class="icon icon--football"></i>
+//
+// Styleguide 2.5
+
+/**
+    [1.1] - Prevent the user from getting the "select text" cursor
+    [1.2] - Allow icons to inherit their font-size. We add this rule in here
+            because we've already used the shorthand for the rest, and want
+            to overwrite.
+    [1.3] - IE10 and lower is a bit of a spa, and will fail the shorthand `font`
+            declaration when we use `rem`, causing it to completely ignore our
+            custom icon font, so we need to define each of the rules separately.
+*/
+.#{$component-name} {
+    cursor: default;                       // [1.1]
+    display: inline-block;
+    font-family: $icons--font-family-name; // [1.3]
+    font-feature-settings: 'liga';
+    font-size: inherit;                    // [1.2]
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;                    // [1.3]
+    font-weight: normal;                   // [1.3]
+    line-height: 1;                        // [1.3]
+    text-rendering: auto;
+    text-transform: none;
+
+    &::before {
+        content: map-get($icons, 'pp');
+    }
+}
+
+
+// Using icons with other Components
+//
+// Icons are extremely robust and flexible, permitting them to be used in almost
+// any situation! This allows us to use them in a whole load of our other components.
+//
+// markup:
+// <!-- Buttons with Icons -->
+// <a class="btn btn--secondary btn--small"> Pop out <i class="icon icon--popout"></i> </a>
+// <a class="btn btn--accounts"> Settings <i class="icon icon--settings"></i> </a>
+// <a class="btn"> Continue <i class="icon icon--chevron-circle"></i> </a>
+// <a class="btn btn--secondary"> <i class="icon icon--settings"></i> </a>
+// <hr>
+// <!-- A Panel component with Icon in Title -->
+// <section class="panel">
+//     <h1 class="panel__title h5">Panel Title <i class="icon icon--football"></i></h1>
+//     <div class="panel__body">
+//         <div class="panel__header">
+//             <strong>5th November 1955</strong>
+//         </div>
+//         <div class="panel__content">
+//             <p>
+//                 Bacon ipsum dolor sit amet shank pork capicola chuck, meatloaf turducken
+//                 pastrami jerky. Turkey t-bone corned beef tail, andouille sirloin sausage.
+//                 Shoulder boudin jerky meatball brisket, kielbasa pork chop.
+//             </p>
+//         </div>
+//         <div class="panel__footer">
+//             <a class="btn btn--block">Opt-in</a>
+//         </div>
+//     </div>
+// </section>
+//
+//
+// Styleguide 2.5.1
+
+
+// Full Icon List
+//
+// All icons can be pulled in by calling their classname, each of which is
+// presented below. In cases where no modifier is present, or no icon has been
+// set for a particular modifier, the default <i class="icon"></i> icon
+// will show.
+//
+// In addition to the named aliases, icons can be referenced by their Sport ID,
+// if available. Some Sport IDs will reference the same icon. All Sport ID aliases
+// are noted beside their icon.
+//
+// Icon aliases are being added all the time. If your target Sport ID isn't alised,
+// let us know and we'll get it added right in!
+//
+// .icon--atoz                - ☼
+// .icon--americanfootball    - [17]
+// .icon--audiocommentary     - ☼
+// .icon--audiocommentary-off - ☼
+// .icon--aussierules         - [103]
+// .icon--badminton           - [151]
+// .icon--baseball            - [18]
+// .icon--basketball          - [16-BASKETBALL, 146-EUROBASKETBALL, 417-NETBALL]
+// .icon--bingo               - ☼
+// .icon--bowls               - [161]
+// .icon--boxing              - [15]
+// .icon--card                - ☼
+// .icon--changemarkets       - ☼
+// .icon--chevron-circle      - ☼
+// .icon--chevron-down        - ☼
+// .icon--chevron-left        - ☼
+// .icon--chevron-right       - ☼
+// .icon--commentary          - ☼
+// .icon--confirmtick         - ☼
+// .icon--corner              - ☼
+// .icon--cricket             - [31]
+// .icon--cup                 - ☼
+// .icon--cycling             - [70]
+// .icon--darts               - [14]
+// .icon--eurohockey          - [150]
+// .icon--eventview           - ☼
+// .icon--fightingsports      - [172-UFCMMA]
+// .icon--fishing             - [322]
+// .icon--financial           - ☼
+// .icon--football            - [49-FOOTBALL, 210-BEACHSOCCER]
+// .icon--football-invert     - ☼
+// .icon--footvisual          - ☼
+// .icon--freekick            - ☼
+// .icon--fulltime            - ☼
+// .icon--futsal              - [180]
+// .icon--gaa                 - [67]
+// .icon--gaelicgames         - ☼
+// .icon--goal                - ☼
+// .icon--golf                - [7]
+// .icon--greyhounds          - ☼
+// .icon--halftime            - ☼
+// .icon--handball            - [130]
+// .icon--home                - ☼
+// .icon--horsejump           - [81-SHOWJUMPING]
+// .icon--horseracing         - [23]
+// .icon--hurling             - [10]
+// .icon--icehockey           - [68-AMERICANICEHOCKEY, 147-EUROPEANICEHOCKEY]
+// .icon--kickoff             - ☼
+// .icon--live                - ☼
+// .icon--livebetting         - ☼
+// .icon--livestreaming       - ☼
+// .icon--locksuspend         - ☼
+// .icon--mbs                 - ☼
+// .icon--medal               - ☼
+// .icon--minigames           - ☼
+// .icon--motorracing         - [8]
+// .icon--multiview           - ☼
+// .icon--multiview-add       - ☼
+// .icon--ontv                - ☼
+// .icon--penaltymiss         - ☼
+// .icon--penalty             - ☼
+// .icon--play                - ☼
+// .icon--popout              - ☼
+// .icon--pp                  - ☼
+// .icon--redcard-large       - ☼
+// .icon--rowing              - [100]
+// .icon--rugbyleague         - [27]
+// .icon--rugbyunion          - [12]
+// .icon--sailing             - [122]
+// .icon--settings            - ☼
+// .icon--shotofftarget       - ☼
+// .icon--shotontarget        - ☼
+// .icon--skiing              - [88]
+// .icon--snooker             - [11-SNOOKER, 123-POOL]
+// .icon--squash              - [351]
+// .icon--stats               - ☼
+// .icon--surfing             - [371]
+// .icon--swim                - [205]
+// .icon--tabletennis         - [219]
+// .icon--target              - ☼
+// .icon--tennis              - [13]
+// .icon--thefield            - ☼
+// .icon--throwin             - ☼
+// .icon--virtual             - ☼
+// .icon--volleyball          - [142-VOLLEYBALL, 164-BEACHVOLLEYBALL]
+// .icon--warning             - ☼
+// .icon--waterpolo           - [211]
+// .icon--wintersports        - [152]
+//
+// markup:
+// <i class="icon {$modifiers}"></i>
+//
+// Styleguide 2.5.2.
+.#{$component-name} {
+    // Base Icon Names
+    @each $modifier, $ligature in $icons {
+        &.#{$component-name}--#{$modifier}::before {
+            content: $ligature;
+        }
+    }
+
+    // Aliases and Sport IDs
+    @each $modifier, $ligature in $icons-sportid {
+        &.#{$component-name}--#{$modifier}::before {
+            content: $ligature;
+        }
+    }
+}

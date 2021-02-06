@@ -1,0 +1,4438 @@
+@charset "UTF-8";
+/**
+    [1]   - Although we use the Design Tokens provided by the Design Tokens
+            repository, we serialise them for use in Abacus so we can reference
+            them with the use of a custom function: `design-token(map, key)`.
+*/
+/*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */ }
+
+body {
+  margin: 0; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+  display: block; }
+
+audio, canvas, progress, video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */ }
+
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+[hidden], template {
+  display: none; }
+
+a {
+  background: transparent; }
+
+a:active, a:hover {
+  outline: 0; }
+
+abbr[title] {
+  border-bottom: 1px dotted; }
+
+b, strong {
+  font-weight: bold; }
+
+dfn {
+  font-style: italic; }
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0; }
+
+mark {
+  background: #ff0;
+  color: #000; }
+
+small {
+  font-size: 80%; }
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  top: -0.5em; }
+
+sub {
+  bottom: -0.25em; }
+
+img {
+  border: 0; }
+
+svg:not(:root) {
+  overflow: hidden; }
+
+figure {
+  margin: 1em 40px; }
+
+hr {
+  box-sizing: content-box;
+  height: 0; }
+
+pre {
+  overflow: auto; }
+
+code, kbd, pre, samp {
+  font-family: monospace, monospace;
+  font-size: 1em; }
+
+button, input, optgroup, select, textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */ }
+
+button {
+  overflow: visible; }
+
+button, select {
+  text-transform: none; }
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */ }
+
+button[disabled], html input[disabled] {
+  cursor: default; }
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
+input {
+  line-height: normal; }
+
+input[type="checkbox"], input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */ }
+
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+  height: auto; }
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  /* 2 */
+  box-sizing: content-box; }
+
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em; }
+
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */ }
+
+textarea {
+  overflow: auto; }
+
+optgroup {
+  font-weight: bold; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+td, th {
+  padding: 0; }
+
+.clearfix::after {
+  clear: both;
+  content: '';
+  display: block; }
+
+.float-right {
+  float: right; }
+
+.float-left {
+  float: left; }
+
+.hide-text {
+  background-color: transparent;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+  text-shadow: none; }
+
+html, body {
+  box-sizing: border-box;
+  font-size: 100%; }
+
+*, *::before, *::after {
+  box-sizing: inherit; }
+
+/**
+    [1.1] - Set the default `font-size` and `line-height` for the entire project,
+            sourced from our default variables. The `line-height` value should
+            exist unitlessly in the variables file. You can read more about that
+            here:
+            http://meyerweb.com/eric/thoughts/2006/02/08/unitless-line-heights/
+    [1.2] - Fonts on OSX will look more consistent with other systems that do not
+            render text using sub-pixel anti-aliasing.
+    [1.3] - Ensure the page always fills at least the entire height of the viewport.
+            This also makes it easier for us to do things like `height: 100%` further
+            down the line.
+    [1.4] - Force scrollbars to always be visible to prevent awkward "jumps" when
+            navigating between pages that do/do not have enough content to produce
+            scrollbars naturally.
+    [1.5] - Prevent certain mobile browsers from automatically zooming fonts.
+*/
+html {
+  font-family: "Arial", sans-serif;
+  font-size: 14px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.42;
+  min-height: 100%;
+  overflow-y: scroll;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; }
+
+input, button, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit; }
+
+a {
+  color: #389fda;
+  text-decoration: none; }
+a:hover, a:focus {
+  color: #e76a01;
+  text-decoration: underline; }
+a img {
+  border: 0; }
+
+hr {
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  border-top: 1px solid rgba(0, 0, 0, 0.25);
+  margin: 1rem 0; }
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle; }
+
+.table {
+  background-color: #fff;
+  margin-bottom: 1rem;
+  max-width: 100%;
+  width: 100%; }
+.table th {
+  text-align: left; }
+.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+  border-top: 1px solid #ccc;
+  line-height: 1.42;
+  padding: 0.5em;
+  vertical-align: top; }
+.table > thead > tr > th {
+  border-bottom: 2px solid #ccc;
+  vertical-align: bottom; }
+.table > caption + thead > tr:first-child > th, .table > caption + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > thead:first-child > tr:first-child > th, .table > thead:first-child > tr:first-child > td {
+  border-top: 0; }
+.table > tbody + tbody {
+  border-top: 2px solid #ccc; }
+
+.table--striped > tbody > tr:nth-of-type(2n+1) {
+  background-color: whitesmoke; }
+
+.table--hover > tbody > tr:hover {
+  background-color: #f2f2f2; }
+
+.table--bordered {
+  border: 1px solid #ccc; }
+.table--bordered > thead > tr > th, .table--bordered > thead > tr > td, .table--bordered > tbody > tr > th, .table--bordered > tbody > tr > td, .table--bordered > tfoot > tr > th, .table--bordered > tfoot > tr > td {
+  border: 1px solid #ccc; }
+.table--bordered > thead > tr > th, .table--bordered > thead > tr > td {
+  border-bottom-width: 2px; }
+
+fieldset {
+  margin-bottom: 1rem; }
+
+label {
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: .2em;
+  max-width: 100%; }
+
+legend {
+  font-style: italic;
+  padding: 0 .75em; }
+
+input[type="file"] {
+  display: block; }
+input[type="search"] {
+  box-sizing: border-box; }
+input[type="file"]:focus, input[type="checkbox"]:focus, input[type="radio"]:focus {
+  outline: thin dotted;
+  outline-offset: -2px; }
+
+textarea {
+  max-width: 100%; }
+
+.form__group {
+  margin-bottom: 1rem; }
+
+.form__control {
+  background-image: none;
+  border: 1px solid #bbbbbb;
+  border-radius: 3px;
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.075);
+  display: block;
+  padding: .45em .65em;
+  -webkit-transition: border-color 250ms ease-in-out, box-shadow 250ms ease-in-out;
+          transition: border-color 250ms ease-in-out, box-shadow 250ms ease-in-out;
+  width: 100%; }
+.form__control:focus {
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 3px rgba(49, 149, 62, 0.35); }
+.form__control:not(input):not(select):not(textarea) {
+  border: 0;
+  box-shadow: none; }
+label > .form__control {
+  margin-top: .25em; }
+
+.form__message {
+  background: #fff;
+  border: 1px solid;
+  border-radius: 3px;
+  color: #004833;
+  display: block;
+  font-size: .85rem;
+  margin-top: 1em;
+  padding: .25em;
+  position: relative; }
+.form__message::after, .form__message::before {
+  border: solid transparent;
+  bottom: 100%;
+  content: ' ';
+  height: 0;
+  left: 1rem;
+  pointer-events: none;
+  position: absolute;
+  width: 0; }
+.form__message::after {
+  border-bottom-color: #fff;
+  border-width: .8em;
+  margin-left: 0; }
+.form__message::before {
+  border-bottom-color: inherit;
+  border-width: .9em;
+  margin-left: -.1em; }
+
+.form__radio, .form__checkbox {
+  font-weight: normal;
+  padding-left: 20px;
+  position: relative; }
+.form__radio input[type="radio"], .form__radio input[type="checkbox"], .form__checkbox input[type="radio"], .form__checkbox input[type="checkbox"] {
+  left: 0;
+  position: absolute;
+  top: .25em; }
+.form__radio + .form__radio, .form__checkbox + .form__radio, .form__radio + .form__checkbox, .form__checkbox + .form__checkbox {
+  margin-left: 1rem; }
+
+.form .is-valid.form__group, .form .is-valid.form__message, .form .is-valid.form__radio, .form .is-valid.form__checkbox, .form .is-valid .form__group, .form .is-valid .form__message, .form .is-valid .form__radio, .form .is-valid .form__checkbox {
+  color: #89dc6c; }
+.form .is-valid.form__control, .form .is-valid .form__control {
+  border-color: #89dc6c;
+  box-shadow: none; }
+.form .is-invalid.form__group, .form .is-invalid.form__message, .form .is-invalid.form__radio, .form .is-invalid.form__checkbox, .form .is-invalid .form__group, .form .is-invalid .form__message, .form .is-invalid .form__radio, .form .is-invalid .form__checkbox {
+  color: #db5e58; }
+.form .is-invalid.form__control, .form .is-invalid .form__control {
+  border-color: #db5e58;
+  box-shadow: none; }
+
+.form__control[disabled], fieldset[disabled] .form__control {
+  cursor: not-allowed; }
+
+@media (min-width: 40em) {
+  .form--inline .form__group {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle; }
+  .form--inline .form__control {
+    display: inline-block;
+    vertical-align: middle;
+    width: auto; }
+  .form--inline .form__checkbox {
+    display: inline-block; } }
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -.005em;
+  margin: .25em 0 .45em;
+  padding: 0; }
+
+h1, .h1 {
+  font-size: 2.6rem; }
+
+h2, .h2 {
+  font-size: 2.15rem; }
+
+h3, .h3 {
+  font-size: 1.7rem; }
+
+h4, .h4 {
+  font-size: 1.25rem; }
+
+h5, .h5 {
+  font-size: 1rem; }
+
+h6, .h6 {
+  font-size: 0.85rem; }
+
+/**
+    Displays lists inline - use case for such would be for horizontal nav
+    bars.
+        [1.1] - We set the font-size of the UL element to 0, this is because we're
+                displaying the LI as inline-block, which causes a single whitespace
+                character to be displayed if we have space between our LI elements
+                in markup.
+*/
+/**
+    Creates an unstyled list, void of any bullets or padding.
+*/
+/**
+    The divided list uses box-shadow to create a 3D-like bevel divider between
+    each list item. This is only for vertical lists, though.
+        [2.1] - We only want to apply the effect to immediate children of the
+                UL. We can't assume that nested ULs will want the effect.
+        [2.2] - We use box-shadow instead of border because borders will appear
+                outside the box model and the background color of the UL, not
+                the LI will then bleed through, negating the effect.
+        [2.3] - Remove the top box shadow from the first list item, and remove
+                the bottom box-shadow from the last list item
+*/
+/**
+    This list will have small Chevrons in place of Bullet Points, using PP Icons!
+        [3.1] - Set some left padding, we'll negate this later on to make the Icon
+                fit in. This will also make sure that text doesn't wrap UNDER the
+                Icon.
+        [3.2] - Using the Sass Map set up for the Icons, we can define that the
+                ::before element uses the pp-icon font, and then select any of the
+                icons to use as our bullet point!
+        [3.3] - Now we'll "pull" the bullet to the left equal to the amount of
+                padding we set in [3.1].
+*/
+.list--inline {
+  font-size: 0;
+  margin: 0;
+  padding: 0; }
+.list--inline > li {
+  display: inline-block;
+  font-size: 1rem; }
+
+.list--unstyled {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+
+.list--divided {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+.list--divided > li {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  padding-bottom: .4em;
+  padding-top: .4em; }
+.list--divided > li:first-child {
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15); }
+.list--divided > li:last-child {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15); }
+
+.list--arrows {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+.list--arrows > li {
+  padding-bottom: .25em;
+  padding-left: 1.4em;
+  padding-top: .2em; }
+.list--arrows > li::before {
+  content: ">";
+  float: left;
+  font-family: 'pp-icon';
+  font-size: .85em;
+  line-height: 1.8;
+  margin-left: -1.4em;
+  text-align: center;
+  width: 1.4em; }
+
+.row {
+  max-width: 87.5rem;
+  margin-left: auto;
+  margin-right: auto; }
+.row::before, .row::after {
+  content: ' ';
+  display: table; }
+.row::after {
+  clear: both; }
+.row.collapse > .column, .row.collapse > .columns {
+  padding-left: 0;
+  padding-right: 0; }
+.row .row {
+  margin-left: -0.9375rem;
+  margin-right: -0.9375rem; }
+.row .row.collapse {
+  margin-left: 0;
+  margin-right: 0; }
+.row.expanded {
+  max-width: none; }
+.row.expanded .row {
+  margin-left: auto;
+  margin-right: auto; }
+
+.column, .columns {
+  width: 100%;
+  float: left;
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem; }
+.column:last-child:not(:first-child), .columns:last-child:not(:first-child) {
+  float: right; }
+.column.end:last-child:last-child, .end.columns:last-child:last-child {
+  float: left; }
+
+.column.row.row, .row.row.columns {
+  float: none; }
+.row .column.row.row, .row .row.row.columns {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0; }
+
+.small-1 {
+  width: 8.33333%; }
+
+.small-push-1 {
+  position: relative;
+  left: 8.33333%; }
+
+.small-pull-1 {
+  position: relative;
+  left: -8.33333%; }
+
+.small-offset-0 {
+  margin-left: 0%; }
+
+.small-2 {
+  width: 16.66667%; }
+
+.small-push-2 {
+  position: relative;
+  left: 16.66667%; }
+
+.small-pull-2 {
+  position: relative;
+  left: -16.66667%; }
+
+.small-offset-1 {
+  margin-left: 8.33333%; }
+
+.small-3 {
+  width: 25%; }
+
+.small-push-3 {
+  position: relative;
+  left: 25%; }
+
+.small-pull-3 {
+  position: relative;
+  left: -25%; }
+
+.small-offset-2 {
+  margin-left: 16.66667%; }
+
+.small-4 {
+  width: 33.33333%; }
+
+.small-push-4 {
+  position: relative;
+  left: 33.33333%; }
+
+.small-pull-4 {
+  position: relative;
+  left: -33.33333%; }
+
+.small-offset-3 {
+  margin-left: 25%; }
+
+.small-5 {
+  width: 41.66667%; }
+
+.small-push-5 {
+  position: relative;
+  left: 41.66667%; }
+
+.small-pull-5 {
+  position: relative;
+  left: -41.66667%; }
+
+.small-offset-4 {
+  margin-left: 33.33333%; }
+
+.small-6 {
+  width: 50%; }
+
+.small-push-6 {
+  position: relative;
+  left: 50%; }
+
+.small-pull-6 {
+  position: relative;
+  left: -50%; }
+
+.small-offset-5 {
+  margin-left: 41.66667%; }
+
+.small-7 {
+  width: 58.33333%; }
+
+.small-push-7 {
+  position: relative;
+  left: 58.33333%; }
+
+.small-pull-7 {
+  position: relative;
+  left: -58.33333%; }
+
+.small-offset-6 {
+  margin-left: 50%; }
+
+.small-8 {
+  width: 66.66667%; }
+
+.small-push-8 {
+  position: relative;
+  left: 66.66667%; }
+
+.small-pull-8 {
+  position: relative;
+  left: -66.66667%; }
+
+.small-offset-7 {
+  margin-left: 58.33333%; }
+
+.small-9 {
+  width: 75%; }
+
+.small-push-9 {
+  position: relative;
+  left: 75%; }
+
+.small-pull-9 {
+  position: relative;
+  left: -75%; }
+
+.small-offset-8 {
+  margin-left: 66.66667%; }
+
+.small-10 {
+  width: 83.33333%; }
+
+.small-push-10 {
+  position: relative;
+  left: 83.33333%; }
+
+.small-pull-10 {
+  position: relative;
+  left: -83.33333%; }
+
+.small-offset-9 {
+  margin-left: 75%; }
+
+.small-11 {
+  width: 91.66667%; }
+
+.small-push-11 {
+  position: relative;
+  left: 91.66667%; }
+
+.small-pull-11 {
+  position: relative;
+  left: -91.66667%; }
+
+.small-offset-10 {
+  margin-left: 83.33333%; }
+
+.small-12 {
+  width: 100%; }
+
+.small-offset-11 {
+  margin-left: 91.66667%; }
+
+.small-up-1 > .column, .small-up-1 > .columns {
+  width: 100%;
+  float: left; }
+.small-up-1 > .column:nth-of-type(1n), .small-up-1 > .columns:nth-of-type(1n) {
+  clear: none; }
+.small-up-1 > .column:nth-of-type(1n+1), .small-up-1 > .columns:nth-of-type(1n+1) {
+  clear: both; }
+.small-up-1 > .column:last-child, .small-up-1 > .columns:last-child {
+  float: left; }
+
+.small-up-2 > .column, .small-up-2 > .columns {
+  width: 50%;
+  float: left; }
+.small-up-2 > .column:nth-of-type(1n), .small-up-2 > .columns:nth-of-type(1n) {
+  clear: none; }
+.small-up-2 > .column:nth-of-type(2n+1), .small-up-2 > .columns:nth-of-type(2n+1) {
+  clear: both; }
+.small-up-2 > .column:last-child, .small-up-2 > .columns:last-child {
+  float: left; }
+
+.small-up-3 > .column, .small-up-3 > .columns {
+  width: 33.33333%;
+  float: left; }
+.small-up-3 > .column:nth-of-type(1n), .small-up-3 > .columns:nth-of-type(1n) {
+  clear: none; }
+.small-up-3 > .column:nth-of-type(3n+1), .small-up-3 > .columns:nth-of-type(3n+1) {
+  clear: both; }
+.small-up-3 > .column:last-child, .small-up-3 > .columns:last-child {
+  float: left; }
+
+.small-up-4 > .column, .small-up-4 > .columns {
+  width: 25%;
+  float: left; }
+.small-up-4 > .column:nth-of-type(1n), .small-up-4 > .columns:nth-of-type(1n) {
+  clear: none; }
+.small-up-4 > .column:nth-of-type(4n+1), .small-up-4 > .columns:nth-of-type(4n+1) {
+  clear: both; }
+.small-up-4 > .column:last-child, .small-up-4 > .columns:last-child {
+  float: left; }
+
+.small-up-5 > .column, .small-up-5 > .columns {
+  width: 20%;
+  float: left; }
+.small-up-5 > .column:nth-of-type(1n), .small-up-5 > .columns:nth-of-type(1n) {
+  clear: none; }
+.small-up-5 > .column:nth-of-type(5n+1), .small-up-5 > .columns:nth-of-type(5n+1) {
+  clear: both; }
+.small-up-5 > .column:last-child, .small-up-5 > .columns:last-child {
+  float: left; }
+
+.small-up-6 > .column, .small-up-6 > .columns {
+  width: 16.66667%;
+  float: left; }
+.small-up-6 > .column:nth-of-type(1n), .small-up-6 > .columns:nth-of-type(1n) {
+  clear: none; }
+.small-up-6 > .column:nth-of-type(6n+1), .small-up-6 > .columns:nth-of-type(6n+1) {
+  clear: both; }
+.small-up-6 > .column:last-child, .small-up-6 > .columns:last-child {
+  float: left; }
+
+.small-up-7 > .column, .small-up-7 > .columns {
+  width: 14.28571%;
+  float: left; }
+.small-up-7 > .column:nth-of-type(1n), .small-up-7 > .columns:nth-of-type(1n) {
+  clear: none; }
+.small-up-7 > .column:nth-of-type(7n+1), .small-up-7 > .columns:nth-of-type(7n+1) {
+  clear: both; }
+.small-up-7 > .column:last-child, .small-up-7 > .columns:last-child {
+  float: left; }
+
+.small-up-8 > .column, .small-up-8 > .columns {
+  width: 12.5%;
+  float: left; }
+.small-up-8 > .column:nth-of-type(1n), .small-up-8 > .columns:nth-of-type(1n) {
+  clear: none; }
+.small-up-8 > .column:nth-of-type(8n+1), .small-up-8 > .columns:nth-of-type(8n+1) {
+  clear: both; }
+.small-up-8 > .column:last-child, .small-up-8 > .columns:last-child {
+  float: left; }
+
+.small-collapse > .column, .small-collapse > .columns {
+  padding-left: 0;
+  padding-right: 0; }
+.small-collapse .row {
+  margin-left: 0;
+  margin-right: 0; }
+
+.small-uncollapse > .column, .small-uncollapse > .columns {
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem; }
+
+.small-centered {
+  float: none;
+  margin-left: auto;
+  margin-right: auto; }
+
+.small-uncentered, .small-push-0, .small-pull-0 {
+  position: static;
+  margin-left: 0;
+  margin-right: 0;
+  float: left; }
+
+@media screen and (min-width: 40em) {
+  .medium-1 {
+    width: 8.33333%; }
+
+  .medium-push-1 {
+    position: relative;
+    left: 8.33333%; }
+
+  .medium-pull-1 {
+    position: relative;
+    left: -8.33333%; }
+
+  .medium-offset-0 {
+    margin-left: 0%; }
+
+  .medium-2 {
+    width: 16.66667%; }
+
+  .medium-push-2 {
+    position: relative;
+    left: 16.66667%; }
+
+  .medium-pull-2 {
+    position: relative;
+    left: -16.66667%; }
+
+  .medium-offset-1 {
+    margin-left: 8.33333%; }
+
+  .medium-3 {
+    width: 25%; }
+
+  .medium-push-3 {
+    position: relative;
+    left: 25%; }
+
+  .medium-pull-3 {
+    position: relative;
+    left: -25%; }
+
+  .medium-offset-2 {
+    margin-left: 16.66667%; }
+
+  .medium-4 {
+    width: 33.33333%; }
+
+  .medium-push-4 {
+    position: relative;
+    left: 33.33333%; }
+
+  .medium-pull-4 {
+    position: relative;
+    left: -33.33333%; }
+
+  .medium-offset-3 {
+    margin-left: 25%; }
+
+  .medium-5 {
+    width: 41.66667%; }
+
+  .medium-push-5 {
+    position: relative;
+    left: 41.66667%; }
+
+  .medium-pull-5 {
+    position: relative;
+    left: -41.66667%; }
+
+  .medium-offset-4 {
+    margin-left: 33.33333%; }
+
+  .medium-6 {
+    width: 50%; }
+
+  .medium-push-6 {
+    position: relative;
+    left: 50%; }
+
+  .medium-pull-6 {
+    position: relative;
+    left: -50%; }
+
+  .medium-offset-5 {
+    margin-left: 41.66667%; }
+
+  .medium-7 {
+    width: 58.33333%; }
+
+  .medium-push-7 {
+    position: relative;
+    left: 58.33333%; }
+
+  .medium-pull-7 {
+    position: relative;
+    left: -58.33333%; }
+
+  .medium-offset-6 {
+    margin-left: 50%; }
+
+  .medium-8 {
+    width: 66.66667%; }
+
+  .medium-push-8 {
+    position: relative;
+    left: 66.66667%; }
+
+  .medium-pull-8 {
+    position: relative;
+    left: -66.66667%; }
+
+  .medium-offset-7 {
+    margin-left: 58.33333%; }
+
+  .medium-9 {
+    width: 75%; }
+
+  .medium-push-9 {
+    position: relative;
+    left: 75%; }
+
+  .medium-pull-9 {
+    position: relative;
+    left: -75%; }
+
+  .medium-offset-8 {
+    margin-left: 66.66667%; }
+
+  .medium-10 {
+    width: 83.33333%; }
+
+  .medium-push-10 {
+    position: relative;
+    left: 83.33333%; }
+
+  .medium-pull-10 {
+    position: relative;
+    left: -83.33333%; }
+
+  .medium-offset-9 {
+    margin-left: 75%; }
+
+  .medium-11 {
+    width: 91.66667%; }
+
+  .medium-push-11 {
+    position: relative;
+    left: 91.66667%; }
+
+  .medium-pull-11 {
+    position: relative;
+    left: -91.66667%; }
+
+  .medium-offset-10 {
+    margin-left: 83.33333%; }
+
+  .medium-12 {
+    width: 100%; }
+
+  .medium-offset-11 {
+    margin-left: 91.66667%; }
+
+  .medium-up-1 > .column, .medium-up-1 > .columns {
+    width: 100%;
+    float: left; }
+  .medium-up-1 > .column:nth-of-type(1n), .medium-up-1 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .medium-up-1 > .column:nth-of-type(1n+1), .medium-up-1 > .columns:nth-of-type(1n+1) {
+    clear: both; }
+  .medium-up-1 > .column:last-child, .medium-up-1 > .columns:last-child {
+    float: left; }
+
+  .medium-up-2 > .column, .medium-up-2 > .columns {
+    width: 50%;
+    float: left; }
+  .medium-up-2 > .column:nth-of-type(1n), .medium-up-2 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .medium-up-2 > .column:nth-of-type(2n+1), .medium-up-2 > .columns:nth-of-type(2n+1) {
+    clear: both; }
+  .medium-up-2 > .column:last-child, .medium-up-2 > .columns:last-child {
+    float: left; }
+
+  .medium-up-3 > .column, .medium-up-3 > .columns {
+    width: 33.33333%;
+    float: left; }
+  .medium-up-3 > .column:nth-of-type(1n), .medium-up-3 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .medium-up-3 > .column:nth-of-type(3n+1), .medium-up-3 > .columns:nth-of-type(3n+1) {
+    clear: both; }
+  .medium-up-3 > .column:last-child, .medium-up-3 > .columns:last-child {
+    float: left; }
+
+  .medium-up-4 > .column, .medium-up-4 > .columns {
+    width: 25%;
+    float: left; }
+  .medium-up-4 > .column:nth-of-type(1n), .medium-up-4 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .medium-up-4 > .column:nth-of-type(4n+1), .medium-up-4 > .columns:nth-of-type(4n+1) {
+    clear: both; }
+  .medium-up-4 > .column:last-child, .medium-up-4 > .columns:last-child {
+    float: left; }
+
+  .medium-up-5 > .column, .medium-up-5 > .columns {
+    width: 20%;
+    float: left; }
+  .medium-up-5 > .column:nth-of-type(1n), .medium-up-5 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .medium-up-5 > .column:nth-of-type(5n+1), .medium-up-5 > .columns:nth-of-type(5n+1) {
+    clear: both; }
+  .medium-up-5 > .column:last-child, .medium-up-5 > .columns:last-child {
+    float: left; }
+
+  .medium-up-6 > .column, .medium-up-6 > .columns {
+    width: 16.66667%;
+    float: left; }
+  .medium-up-6 > .column:nth-of-type(1n), .medium-up-6 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .medium-up-6 > .column:nth-of-type(6n+1), .medium-up-6 > .columns:nth-of-type(6n+1) {
+    clear: both; }
+  .medium-up-6 > .column:last-child, .medium-up-6 > .columns:last-child {
+    float: left; }
+
+  .medium-up-7 > .column, .medium-up-7 > .columns {
+    width: 14.28571%;
+    float: left; }
+  .medium-up-7 > .column:nth-of-type(1n), .medium-up-7 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .medium-up-7 > .column:nth-of-type(7n+1), .medium-up-7 > .columns:nth-of-type(7n+1) {
+    clear: both; }
+  .medium-up-7 > .column:last-child, .medium-up-7 > .columns:last-child {
+    float: left; }
+
+  .medium-up-8 > .column, .medium-up-8 > .columns {
+    width: 12.5%;
+    float: left; }
+  .medium-up-8 > .column:nth-of-type(1n), .medium-up-8 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .medium-up-8 > .column:nth-of-type(8n+1), .medium-up-8 > .columns:nth-of-type(8n+1) {
+    clear: both; }
+  .medium-up-8 > .column:last-child, .medium-up-8 > .columns:last-child {
+    float: left; }
+
+  .medium-collapse > .column, .medium-collapse > .columns {
+    padding-left: 0;
+    padding-right: 0; }
+  .medium-collapse .row {
+    margin-left: 0;
+    margin-right: 0; }
+
+  .medium-uncollapse > .column, .medium-uncollapse > .columns {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem; }
+
+  .medium-centered {
+    float: none;
+    margin-left: auto;
+    margin-right: auto; }
+
+  .medium-uncentered, .medium-push-0, .medium-pull-0 {
+    position: static;
+    margin-left: 0;
+    margin-right: 0;
+    float: left; } }
+@media screen and (min-width: 64em) {
+  .large-1 {
+    width: 8.33333%; }
+
+  .large-push-1 {
+    position: relative;
+    left: 8.33333%; }
+
+  .large-pull-1 {
+    position: relative;
+    left: -8.33333%; }
+
+  .large-offset-0 {
+    margin-left: 0%; }
+
+  .large-2 {
+    width: 16.66667%; }
+
+  .large-push-2 {
+    position: relative;
+    left: 16.66667%; }
+
+  .large-pull-2 {
+    position: relative;
+    left: -16.66667%; }
+
+  .large-offset-1 {
+    margin-left: 8.33333%; }
+
+  .large-3 {
+    width: 25%; }
+
+  .large-push-3 {
+    position: relative;
+    left: 25%; }
+
+  .large-pull-3 {
+    position: relative;
+    left: -25%; }
+
+  .large-offset-2 {
+    margin-left: 16.66667%; }
+
+  .large-4 {
+    width: 33.33333%; }
+
+  .large-push-4 {
+    position: relative;
+    left: 33.33333%; }
+
+  .large-pull-4 {
+    position: relative;
+    left: -33.33333%; }
+
+  .large-offset-3 {
+    margin-left: 25%; }
+
+  .large-5 {
+    width: 41.66667%; }
+
+  .large-push-5 {
+    position: relative;
+    left: 41.66667%; }
+
+  .large-pull-5 {
+    position: relative;
+    left: -41.66667%; }
+
+  .large-offset-4 {
+    margin-left: 33.33333%; }
+
+  .large-6 {
+    width: 50%; }
+
+  .large-push-6 {
+    position: relative;
+    left: 50%; }
+
+  .large-pull-6 {
+    position: relative;
+    left: -50%; }
+
+  .large-offset-5 {
+    margin-left: 41.66667%; }
+
+  .large-7 {
+    width: 58.33333%; }
+
+  .large-push-7 {
+    position: relative;
+    left: 58.33333%; }
+
+  .large-pull-7 {
+    position: relative;
+    left: -58.33333%; }
+
+  .large-offset-6 {
+    margin-left: 50%; }
+
+  .large-8 {
+    width: 66.66667%; }
+
+  .large-push-8 {
+    position: relative;
+    left: 66.66667%; }
+
+  .large-pull-8 {
+    position: relative;
+    left: -66.66667%; }
+
+  .large-offset-7 {
+    margin-left: 58.33333%; }
+
+  .large-9 {
+    width: 75%; }
+
+  .large-push-9 {
+    position: relative;
+    left: 75%; }
+
+  .large-pull-9 {
+    position: relative;
+    left: -75%; }
+
+  .large-offset-8 {
+    margin-left: 66.66667%; }
+
+  .large-10 {
+    width: 83.33333%; }
+
+  .large-push-10 {
+    position: relative;
+    left: 83.33333%; }
+
+  .large-pull-10 {
+    position: relative;
+    left: -83.33333%; }
+
+  .large-offset-9 {
+    margin-left: 75%; }
+
+  .large-11 {
+    width: 91.66667%; }
+
+  .large-push-11 {
+    position: relative;
+    left: 91.66667%; }
+
+  .large-pull-11 {
+    position: relative;
+    left: -91.66667%; }
+
+  .large-offset-10 {
+    margin-left: 83.33333%; }
+
+  .large-12 {
+    width: 100%; }
+
+  .large-offset-11 {
+    margin-left: 91.66667%; }
+
+  .large-up-1 > .column, .large-up-1 > .columns {
+    width: 100%;
+    float: left; }
+  .large-up-1 > .column:nth-of-type(1n), .large-up-1 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .large-up-1 > .column:nth-of-type(1n+1), .large-up-1 > .columns:nth-of-type(1n+1) {
+    clear: both; }
+  .large-up-1 > .column:last-child, .large-up-1 > .columns:last-child {
+    float: left; }
+
+  .large-up-2 > .column, .large-up-2 > .columns {
+    width: 50%;
+    float: left; }
+  .large-up-2 > .column:nth-of-type(1n), .large-up-2 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .large-up-2 > .column:nth-of-type(2n+1), .large-up-2 > .columns:nth-of-type(2n+1) {
+    clear: both; }
+  .large-up-2 > .column:last-child, .large-up-2 > .columns:last-child {
+    float: left; }
+
+  .large-up-3 > .column, .large-up-3 > .columns {
+    width: 33.33333%;
+    float: left; }
+  .large-up-3 > .column:nth-of-type(1n), .large-up-3 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .large-up-3 > .column:nth-of-type(3n+1), .large-up-3 > .columns:nth-of-type(3n+1) {
+    clear: both; }
+  .large-up-3 > .column:last-child, .large-up-3 > .columns:last-child {
+    float: left; }
+
+  .large-up-4 > .column, .large-up-4 > .columns {
+    width: 25%;
+    float: left; }
+  .large-up-4 > .column:nth-of-type(1n), .large-up-4 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .large-up-4 > .column:nth-of-type(4n+1), .large-up-4 > .columns:nth-of-type(4n+1) {
+    clear: both; }
+  .large-up-4 > .column:last-child, .large-up-4 > .columns:last-child {
+    float: left; }
+
+  .large-up-5 > .column, .large-up-5 > .columns {
+    width: 20%;
+    float: left; }
+  .large-up-5 > .column:nth-of-type(1n), .large-up-5 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .large-up-5 > .column:nth-of-type(5n+1), .large-up-5 > .columns:nth-of-type(5n+1) {
+    clear: both; }
+  .large-up-5 > .column:last-child, .large-up-5 > .columns:last-child {
+    float: left; }
+
+  .large-up-6 > .column, .large-up-6 > .columns {
+    width: 16.66667%;
+    float: left; }
+  .large-up-6 > .column:nth-of-type(1n), .large-up-6 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .large-up-6 > .column:nth-of-type(6n+1), .large-up-6 > .columns:nth-of-type(6n+1) {
+    clear: both; }
+  .large-up-6 > .column:last-child, .large-up-6 > .columns:last-child {
+    float: left; }
+
+  .large-up-7 > .column, .large-up-7 > .columns {
+    width: 14.28571%;
+    float: left; }
+  .large-up-7 > .column:nth-of-type(1n), .large-up-7 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .large-up-7 > .column:nth-of-type(7n+1), .large-up-7 > .columns:nth-of-type(7n+1) {
+    clear: both; }
+  .large-up-7 > .column:last-child, .large-up-7 > .columns:last-child {
+    float: left; }
+
+  .large-up-8 > .column, .large-up-8 > .columns {
+    width: 12.5%;
+    float: left; }
+  .large-up-8 > .column:nth-of-type(1n), .large-up-8 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .large-up-8 > .column:nth-of-type(8n+1), .large-up-8 > .columns:nth-of-type(8n+1) {
+    clear: both; }
+  .large-up-8 > .column:last-child, .large-up-8 > .columns:last-child {
+    float: left; }
+
+  .large-collapse > .column, .large-collapse > .columns {
+    padding-left: 0;
+    padding-right: 0; }
+  .large-collapse .row {
+    margin-left: 0;
+    margin-right: 0; }
+
+  .large-uncollapse > .column, .large-uncollapse > .columns {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem; }
+
+  .large-centered {
+    float: none;
+    margin-left: auto;
+    margin-right: auto; }
+
+  .large-uncentered, .large-push-0, .large-pull-0 {
+    position: static;
+    margin-left: 0;
+    margin-right: 0;
+    float: left; } }
+@media screen and (min-width: 75em) {
+  .xlarge-1 {
+    width: 8.33333%; }
+
+  .xlarge-push-1 {
+    position: relative;
+    left: 8.33333%; }
+
+  .xlarge-pull-1 {
+    position: relative;
+    left: -8.33333%; }
+
+  .xlarge-offset-0 {
+    margin-left: 0%; }
+
+  .xlarge-2 {
+    width: 16.66667%; }
+
+  .xlarge-push-2 {
+    position: relative;
+    left: 16.66667%; }
+
+  .xlarge-pull-2 {
+    position: relative;
+    left: -16.66667%; }
+
+  .xlarge-offset-1 {
+    margin-left: 8.33333%; }
+
+  .xlarge-3 {
+    width: 25%; }
+
+  .xlarge-push-3 {
+    position: relative;
+    left: 25%; }
+
+  .xlarge-pull-3 {
+    position: relative;
+    left: -25%; }
+
+  .xlarge-offset-2 {
+    margin-left: 16.66667%; }
+
+  .xlarge-4 {
+    width: 33.33333%; }
+
+  .xlarge-push-4 {
+    position: relative;
+    left: 33.33333%; }
+
+  .xlarge-pull-4 {
+    position: relative;
+    left: -33.33333%; }
+
+  .xlarge-offset-3 {
+    margin-left: 25%; }
+
+  .xlarge-5 {
+    width: 41.66667%; }
+
+  .xlarge-push-5 {
+    position: relative;
+    left: 41.66667%; }
+
+  .xlarge-pull-5 {
+    position: relative;
+    left: -41.66667%; }
+
+  .xlarge-offset-4 {
+    margin-left: 33.33333%; }
+
+  .xlarge-6 {
+    width: 50%; }
+
+  .xlarge-push-6 {
+    position: relative;
+    left: 50%; }
+
+  .xlarge-pull-6 {
+    position: relative;
+    left: -50%; }
+
+  .xlarge-offset-5 {
+    margin-left: 41.66667%; }
+
+  .xlarge-7 {
+    width: 58.33333%; }
+
+  .xlarge-push-7 {
+    position: relative;
+    left: 58.33333%; }
+
+  .xlarge-pull-7 {
+    position: relative;
+    left: -58.33333%; }
+
+  .xlarge-offset-6 {
+    margin-left: 50%; }
+
+  .xlarge-8 {
+    width: 66.66667%; }
+
+  .xlarge-push-8 {
+    position: relative;
+    left: 66.66667%; }
+
+  .xlarge-pull-8 {
+    position: relative;
+    left: -66.66667%; }
+
+  .xlarge-offset-7 {
+    margin-left: 58.33333%; }
+
+  .xlarge-9 {
+    width: 75%; }
+
+  .xlarge-push-9 {
+    position: relative;
+    left: 75%; }
+
+  .xlarge-pull-9 {
+    position: relative;
+    left: -75%; }
+
+  .xlarge-offset-8 {
+    margin-left: 66.66667%; }
+
+  .xlarge-10 {
+    width: 83.33333%; }
+
+  .xlarge-push-10 {
+    position: relative;
+    left: 83.33333%; }
+
+  .xlarge-pull-10 {
+    position: relative;
+    left: -83.33333%; }
+
+  .xlarge-offset-9 {
+    margin-left: 75%; }
+
+  .xlarge-11 {
+    width: 91.66667%; }
+
+  .xlarge-push-11 {
+    position: relative;
+    left: 91.66667%; }
+
+  .xlarge-pull-11 {
+    position: relative;
+    left: -91.66667%; }
+
+  .xlarge-offset-10 {
+    margin-left: 83.33333%; }
+
+  .xlarge-12 {
+    width: 100%; }
+
+  .xlarge-offset-11 {
+    margin-left: 91.66667%; }
+
+  .xlarge-up-1 > .column, .xlarge-up-1 > .columns {
+    width: 100%;
+    float: left; }
+  .xlarge-up-1 > .column:nth-of-type(1n), .xlarge-up-1 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .xlarge-up-1 > .column:nth-of-type(1n+1), .xlarge-up-1 > .columns:nth-of-type(1n+1) {
+    clear: both; }
+  .xlarge-up-1 > .column:last-child, .xlarge-up-1 > .columns:last-child {
+    float: left; }
+
+  .xlarge-up-2 > .column, .xlarge-up-2 > .columns {
+    width: 50%;
+    float: left; }
+  .xlarge-up-2 > .column:nth-of-type(1n), .xlarge-up-2 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .xlarge-up-2 > .column:nth-of-type(2n+1), .xlarge-up-2 > .columns:nth-of-type(2n+1) {
+    clear: both; }
+  .xlarge-up-2 > .column:last-child, .xlarge-up-2 > .columns:last-child {
+    float: left; }
+
+  .xlarge-up-3 > .column, .xlarge-up-3 > .columns {
+    width: 33.33333%;
+    float: left; }
+  .xlarge-up-3 > .column:nth-of-type(1n), .xlarge-up-3 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .xlarge-up-3 > .column:nth-of-type(3n+1), .xlarge-up-3 > .columns:nth-of-type(3n+1) {
+    clear: both; }
+  .xlarge-up-3 > .column:last-child, .xlarge-up-3 > .columns:last-child {
+    float: left; }
+
+  .xlarge-up-4 > .column, .xlarge-up-4 > .columns {
+    width: 25%;
+    float: left; }
+  .xlarge-up-4 > .column:nth-of-type(1n), .xlarge-up-4 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .xlarge-up-4 > .column:nth-of-type(4n+1), .xlarge-up-4 > .columns:nth-of-type(4n+1) {
+    clear: both; }
+  .xlarge-up-4 > .column:last-child, .xlarge-up-4 > .columns:last-child {
+    float: left; }
+
+  .xlarge-up-5 > .column, .xlarge-up-5 > .columns {
+    width: 20%;
+    float: left; }
+  .xlarge-up-5 > .column:nth-of-type(1n), .xlarge-up-5 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .xlarge-up-5 > .column:nth-of-type(5n+1), .xlarge-up-5 > .columns:nth-of-type(5n+1) {
+    clear: both; }
+  .xlarge-up-5 > .column:last-child, .xlarge-up-5 > .columns:last-child {
+    float: left; }
+
+  .xlarge-up-6 > .column, .xlarge-up-6 > .columns {
+    width: 16.66667%;
+    float: left; }
+  .xlarge-up-6 > .column:nth-of-type(1n), .xlarge-up-6 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .xlarge-up-6 > .column:nth-of-type(6n+1), .xlarge-up-6 > .columns:nth-of-type(6n+1) {
+    clear: both; }
+  .xlarge-up-6 > .column:last-child, .xlarge-up-6 > .columns:last-child {
+    float: left; }
+
+  .xlarge-up-7 > .column, .xlarge-up-7 > .columns {
+    width: 14.28571%;
+    float: left; }
+  .xlarge-up-7 > .column:nth-of-type(1n), .xlarge-up-7 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .xlarge-up-7 > .column:nth-of-type(7n+1), .xlarge-up-7 > .columns:nth-of-type(7n+1) {
+    clear: both; }
+  .xlarge-up-7 > .column:last-child, .xlarge-up-7 > .columns:last-child {
+    float: left; }
+
+  .xlarge-up-8 > .column, .xlarge-up-8 > .columns {
+    width: 12.5%;
+    float: left; }
+  .xlarge-up-8 > .column:nth-of-type(1n), .xlarge-up-8 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .xlarge-up-8 > .column:nth-of-type(8n+1), .xlarge-up-8 > .columns:nth-of-type(8n+1) {
+    clear: both; }
+  .xlarge-up-8 > .column:last-child, .xlarge-up-8 > .columns:last-child {
+    float: left; }
+
+  .xlarge-collapse > .column, .xlarge-collapse > .columns {
+    padding-left: 0;
+    padding-right: 0; }
+  .xlarge-collapse .row {
+    margin-left: 0;
+    margin-right: 0; }
+
+  .xlarge-uncollapse > .column, .xlarge-uncollapse > .columns {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem; }
+
+  .xlarge-centered {
+    float: none;
+    margin-left: auto;
+    margin-right: auto; }
+
+  .xlarge-uncentered, .xlarge-push-0, .xlarge-pull-0 {
+    position: static;
+    margin-left: 0;
+    margin-right: 0;
+    float: left; } }
+@media screen and (min-width: 90em) {
+  .xxlarge-1 {
+    width: 8.33333%; }
+
+  .xxlarge-push-1 {
+    position: relative;
+    left: 8.33333%; }
+
+  .xxlarge-pull-1 {
+    position: relative;
+    left: -8.33333%; }
+
+  .xxlarge-offset-0 {
+    margin-left: 0%; }
+
+  .xxlarge-2 {
+    width: 16.66667%; }
+
+  .xxlarge-push-2 {
+    position: relative;
+    left: 16.66667%; }
+
+  .xxlarge-pull-2 {
+    position: relative;
+    left: -16.66667%; }
+
+  .xxlarge-offset-1 {
+    margin-left: 8.33333%; }
+
+  .xxlarge-3 {
+    width: 25%; }
+
+  .xxlarge-push-3 {
+    position: relative;
+    left: 25%; }
+
+  .xxlarge-pull-3 {
+    position: relative;
+    left: -25%; }
+
+  .xxlarge-offset-2 {
+    margin-left: 16.66667%; }
+
+  .xxlarge-4 {
+    width: 33.33333%; }
+
+  .xxlarge-push-4 {
+    position: relative;
+    left: 33.33333%; }
+
+  .xxlarge-pull-4 {
+    position: relative;
+    left: -33.33333%; }
+
+  .xxlarge-offset-3 {
+    margin-left: 25%; }
+
+  .xxlarge-5 {
+    width: 41.66667%; }
+
+  .xxlarge-push-5 {
+    position: relative;
+    left: 41.66667%; }
+
+  .xxlarge-pull-5 {
+    position: relative;
+    left: -41.66667%; }
+
+  .xxlarge-offset-4 {
+    margin-left: 33.33333%; }
+
+  .xxlarge-6 {
+    width: 50%; }
+
+  .xxlarge-push-6 {
+    position: relative;
+    left: 50%; }
+
+  .xxlarge-pull-6 {
+    position: relative;
+    left: -50%; }
+
+  .xxlarge-offset-5 {
+    margin-left: 41.66667%; }
+
+  .xxlarge-7 {
+    width: 58.33333%; }
+
+  .xxlarge-push-7 {
+    position: relative;
+    left: 58.33333%; }
+
+  .xxlarge-pull-7 {
+    position: relative;
+    left: -58.33333%; }
+
+  .xxlarge-offset-6 {
+    margin-left: 50%; }
+
+  .xxlarge-8 {
+    width: 66.66667%; }
+
+  .xxlarge-push-8 {
+    position: relative;
+    left: 66.66667%; }
+
+  .xxlarge-pull-8 {
+    position: relative;
+    left: -66.66667%; }
+
+  .xxlarge-offset-7 {
+    margin-left: 58.33333%; }
+
+  .xxlarge-9 {
+    width: 75%; }
+
+  .xxlarge-push-9 {
+    position: relative;
+    left: 75%; }
+
+  .xxlarge-pull-9 {
+    position: relative;
+    left: -75%; }
+
+  .xxlarge-offset-8 {
+    margin-left: 66.66667%; }
+
+  .xxlarge-10 {
+    width: 83.33333%; }
+
+  .xxlarge-push-10 {
+    position: relative;
+    left: 83.33333%; }
+
+  .xxlarge-pull-10 {
+    position: relative;
+    left: -83.33333%; }
+
+  .xxlarge-offset-9 {
+    margin-left: 75%; }
+
+  .xxlarge-11 {
+    width: 91.66667%; }
+
+  .xxlarge-push-11 {
+    position: relative;
+    left: 91.66667%; }
+
+  .xxlarge-pull-11 {
+    position: relative;
+    left: -91.66667%; }
+
+  .xxlarge-offset-10 {
+    margin-left: 83.33333%; }
+
+  .xxlarge-12 {
+    width: 100%; }
+
+  .xxlarge-offset-11 {
+    margin-left: 91.66667%; }
+
+  .xxlarge-up-1 > .column, .xxlarge-up-1 > .columns {
+    width: 100%;
+    float: left; }
+  .xxlarge-up-1 > .column:nth-of-type(1n), .xxlarge-up-1 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .xxlarge-up-1 > .column:nth-of-type(1n+1), .xxlarge-up-1 > .columns:nth-of-type(1n+1) {
+    clear: both; }
+  .xxlarge-up-1 > .column:last-child, .xxlarge-up-1 > .columns:last-child {
+    float: left; }
+
+  .xxlarge-up-2 > .column, .xxlarge-up-2 > .columns {
+    width: 50%;
+    float: left; }
+  .xxlarge-up-2 > .column:nth-of-type(1n), .xxlarge-up-2 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .xxlarge-up-2 > .column:nth-of-type(2n+1), .xxlarge-up-2 > .columns:nth-of-type(2n+1) {
+    clear: both; }
+  .xxlarge-up-2 > .column:last-child, .xxlarge-up-2 > .columns:last-child {
+    float: left; }
+
+  .xxlarge-up-3 > .column, .xxlarge-up-3 > .columns {
+    width: 33.33333%;
+    float: left; }
+  .xxlarge-up-3 > .column:nth-of-type(1n), .xxlarge-up-3 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .xxlarge-up-3 > .column:nth-of-type(3n+1), .xxlarge-up-3 > .columns:nth-of-type(3n+1) {
+    clear: both; }
+  .xxlarge-up-3 > .column:last-child, .xxlarge-up-3 > .columns:last-child {
+    float: left; }
+
+  .xxlarge-up-4 > .column, .xxlarge-up-4 > .columns {
+    width: 25%;
+    float: left; }
+  .xxlarge-up-4 > .column:nth-of-type(1n), .xxlarge-up-4 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .xxlarge-up-4 > .column:nth-of-type(4n+1), .xxlarge-up-4 > .columns:nth-of-type(4n+1) {
+    clear: both; }
+  .xxlarge-up-4 > .column:last-child, .xxlarge-up-4 > .columns:last-child {
+    float: left; }
+
+  .xxlarge-up-5 > .column, .xxlarge-up-5 > .columns {
+    width: 20%;
+    float: left; }
+  .xxlarge-up-5 > .column:nth-of-type(1n), .xxlarge-up-5 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .xxlarge-up-5 > .column:nth-of-type(5n+1), .xxlarge-up-5 > .columns:nth-of-type(5n+1) {
+    clear: both; }
+  .xxlarge-up-5 > .column:last-child, .xxlarge-up-5 > .columns:last-child {
+    float: left; }
+
+  .xxlarge-up-6 > .column, .xxlarge-up-6 > .columns {
+    width: 16.66667%;
+    float: left; }
+  .xxlarge-up-6 > .column:nth-of-type(1n), .xxlarge-up-6 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .xxlarge-up-6 > .column:nth-of-type(6n+1), .xxlarge-up-6 > .columns:nth-of-type(6n+1) {
+    clear: both; }
+  .xxlarge-up-6 > .column:last-child, .xxlarge-up-6 > .columns:last-child {
+    float: left; }
+
+  .xxlarge-up-7 > .column, .xxlarge-up-7 > .columns {
+    width: 14.28571%;
+    float: left; }
+  .xxlarge-up-7 > .column:nth-of-type(1n), .xxlarge-up-7 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .xxlarge-up-7 > .column:nth-of-type(7n+1), .xxlarge-up-7 > .columns:nth-of-type(7n+1) {
+    clear: both; }
+  .xxlarge-up-7 > .column:last-child, .xxlarge-up-7 > .columns:last-child {
+    float: left; }
+
+  .xxlarge-up-8 > .column, .xxlarge-up-8 > .columns {
+    width: 12.5%;
+    float: left; }
+  .xxlarge-up-8 > .column:nth-of-type(1n), .xxlarge-up-8 > .columns:nth-of-type(1n) {
+    clear: none; }
+  .xxlarge-up-8 > .column:nth-of-type(8n+1), .xxlarge-up-8 > .columns:nth-of-type(8n+1) {
+    clear: both; }
+  .xxlarge-up-8 > .column:last-child, .xxlarge-up-8 > .columns:last-child {
+    float: left; }
+
+  .xxlarge-collapse > .column, .xxlarge-collapse > .columns {
+    padding-left: 0;
+    padding-right: 0; }
+  .xxlarge-collapse .row {
+    margin-left: 0;
+    margin-right: 0; }
+
+  .xxlarge-uncollapse > .column, .xxlarge-uncollapse > .columns {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem; }
+
+  .xxlarge-centered {
+    float: none;
+    margin-left: auto;
+    margin-right: auto; }
+
+  .xxlarge-uncentered, .xxlarge-push-0, .xxlarge-pull-0 {
+    position: static;
+    margin-left: 0;
+    margin-right: 0;
+    float: left; } }
+.hide {
+  display: none !important; }
+
+.invisible {
+  visibility: hidden; }
+
+@media screen and (min-width: 0em) and (max-width: 39.9375em) {
+  .hide-for-small-only {
+    display: none !important; } }
+
+@media screen and (max-width: 0em), screen and (min-width: 40em) {
+  .show-for-small-only {
+    display: none !important; } }
+
+@media screen and (min-width: 40em) {
+  .hide-for-medium {
+    display: none !important; } }
+
+@media screen and (max-width: 39.9375em) {
+  .show-for-medium {
+    display: none !important; } }
+
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+  .hide-for-medium-only {
+    display: none !important; } }
+
+@media screen and (max-width: 39.9375em), screen and (min-width: 64em) {
+  .show-for-medium-only {
+    display: none !important; } }
+
+@media screen and (min-width: 64em) {
+  .hide-for-large {
+    display: none !important; } }
+
+@media screen and (max-width: 63.9375em) {
+  .show-for-large {
+    display: none !important; } }
+
+@media screen and (min-width: 64em) and (max-width: 74.9375em) {
+  .hide-for-large-only {
+    display: none !important; } }
+
+@media screen and (max-width: 63.9375em), screen and (min-width: 75em) {
+  .show-for-large-only {
+    display: none !important; } }
+
+@media screen and (min-width: 75em) {
+  .hide-for-xlarge {
+    display: none !important; } }
+
+@media screen and (max-width: 74.9375em) {
+  .show-for-xlarge {
+    display: none !important; } }
+
+@media screen and (min-width: 75em) and (max-width: 89.9375em) {
+  .hide-for-xlarge-only {
+    display: none !important; } }
+
+@media screen and (max-width: 74.9375em), screen and (min-width: 90em) {
+  .show-for-xlarge-only {
+    display: none !important; } }
+
+@media screen and (min-width: 90em) {
+  .hide-for-xxlarge {
+    display: none !important; } }
+
+@media screen and (max-width: 89.9375em) {
+  .show-for-xxlarge {
+    display: none !important; } }
+
+@media screen and (min-width: 90em) {
+  .hide-for-xxlarge-only {
+    display: none !important; } }
+
+@media screen and (max-width: 89.9375em) {
+  .show-for-xxlarge-only {
+    display: none !important; } }
+
+.show-for-sr, .show-on-focus {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0); }
+
+.show-on-focus:active, .show-on-focus:focus {
+  position: static !important;
+  height: auto;
+  width: auto;
+  overflow: visible;
+  clip: auto; }
+
+.show-for-landscape, .hide-for-portrait {
+  display: block !important; }
+@media screen and (orientation: landscape) {
+  .show-for-landscape, .hide-for-portrait {
+    display: block !important; } }
+@media screen and (orientation: portrait) {
+  .show-for-landscape, .hide-for-portrait {
+    display: none !important; } }
+
+.hide-for-landscape, .show-for-portrait {
+  display: none !important; }
+@media screen and (orientation: landscape) {
+  .hide-for-landscape, .show-for-portrait {
+    display: none !important; } }
+@media screen and (orientation: portrait) {
+  .hide-for-landscape, .show-for-portrait {
+    display: block !important; } }
+
+/**
+    [1.1] - Breadcrumbs are always inline, that's just how they roll.
+    [1.2] - We let users choose their own "leading" text with the data-before=""
+            attribute. If it doesn't exist, the text doesn't show.
+    [1.3] - The standard 1rem font-size is a bit large for breadcrumbs, so
+            let's shrink it a little.
+    [1.4] - This is the divider between each of the breadcrumb items. Having
+            it as an ::after pseudo-element cuts down on superfluous markup.
+    [1.5] - Let's do the spacing based on the font-size of the breadcrumb items.
+*/
+.breadcrumbs {
+  font-size: 0;
+  margin: 0;
+  padding: 0; }
+.breadcrumbs > li {
+  display: inline-block;
+  font-size: 1rem; }
+.breadcrumbs::before {
+  content: attr(data-before);
+  font-size: .85rem;
+  margin-right: .25rem; }
+.breadcrumbs > .breadcrumbs__item {
+  font-size: .85rem; }
+.breadcrumbs > .breadcrumbs__item > a {
+  color: #004833;
+  font-weight: bold; }
+.breadcrumbs > .breadcrumbs__item:not(:last-child)::after {
+  content: '\00BB';
+  margin: 0 .35em; }
+
+.breadcrumbs--accounts > .breadcrumbs__item a {
+  color: #359cd8; }
+
+.breadcrumbs--bingo > .breadcrumbs__item a {
+  color: #e06ea9; }
+
+.breadcrumbs--casino > .breadcrumbs__item a {
+  color: #8a8d8e; }
+
+.breadcrumbs--games > .breadcrumbs__item a {
+  color: #ea961c; }
+
+.breadcrumbs--livecasino > .breadcrumbs__item a {
+  color: #afa46f; }
+
+.breadcrumbs--poker > .breadcrumbs__item a {
+  color: #d63d36; }
+
+.breadcrumbs--sports > .breadcrumbs__item a {
+  color: #c9da2a; }
+
+.breadcrumbs--vegas > .breadcrumbs__item a {
+  color: #abe1fa; }
+
+/**
+    Standard button styles
+        [1.1] - We'll remove the border from any button element, most notable is
+                when the class is applied to an *actual* <button> tag.
+        [1.2] - Buttons should appear clickable regardless of whether they're a
+                click element (<a>), that's kinda the point.
+        [1.3] - Make buttons inline-block so we can properly manipulate their
+                box-model.
+        [1.4] - In order to try meet UX guideline minimum heights in a reasonable
+                fashion, we set our vertical padding as a calculation of our base
+                font-size (assumed 14px). This is how we calculate the padding:
+                ( (desiredHeight - fontSize) ├À 2 ) ├À fontSize
+        [1.5] - Prevent the User from being able to select text in the button.
+        [1.6] - Better alignment for buttons with differing sizes when used
+                beside each other.
+        [1.7] - Stop text in buttons breaking on to a newline halfway through.
+        [1.8] - The disabled button shouldn't show any visual feedback when it's
+                pressed. Otherwise, it wouldn't really be disabled.
+*/
+.btn {
+  background-color: #31953e;
+  border: 0;
+  border-radius: 2px;
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1;
+  margin: 4px;
+  padding: .785em 1em;
+  text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  vertical-align: middle;
+  white-space: nowrap; }
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 2dppx) {
+  .btn {
+    border-radius: 4px;
+    box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.2); } }
+@media only screen and (-webkit-min-device-pixel-ratio: 3), only screen and (min-resolution: 3dppx) {
+  .btn {
+    border-radius: 6px;
+    box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.2); } }
+.btn:focus, .btn:hover {
+  color: #fff;
+  text-decoration: none; }
+.btn:active:not(.btn--disabled) {
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%);
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%);
+  box-shadow: none;
+  color: rgba(0, 0, 0, 0.2);
+  text-decoration: none; }
+.btn:focus {
+  outline: 1px dotted #000; }
+
+[class*="btn--odds"] {
+  min-width: 3.5em; }
+
+.btn--odds {
+  background-color: #c9da2a;
+  color: #4c721d;
+  padding-left: 0;
+  padding-right: 0; }
+.btn--odds:hover {
+  color: #4c721d; }
+
+.btn--odds-short, .btn--odds-up {
+  background-color: #47bcff;
+  color: #fff; }
+
+.btn--odds-drift, .btn--odds-down {
+  background-color: #ff4747;
+  color: #fff; }
+
+/**
+    Channel modifiers
+*/
+.btn--accounts {
+  background-color: #359cd8; }
+
+.btn--accounts-alt {
+  background-color: #fff;
+  color: #359cd8; }
+.btn--accounts-alt:hover {
+  color: #359cd8; }
+
+.btn--accounts-outline {
+  background-color: transparent;
+  border: 1px solid;
+  box-shadow: inset 0 -2px 0 #fff; }
+.btn--accounts-outline:active {
+  border-color: transparent;
+  color: #fff; }
+
+.btn--bingo {
+  background-color: #e06ea9; }
+
+.btn--bingo-alt {
+  background-color: #fff;
+  color: #e06ea9; }
+.btn--bingo-alt:hover {
+  color: #e06ea9; }
+
+.btn--bingo-outline {
+  background-color: transparent;
+  border: 1px solid;
+  box-shadow: inset 0 -2px 0 #fff; }
+.btn--bingo-outline:active {
+  border-color: transparent;
+  color: #fff; }
+
+.btn--casino {
+  background-color: #8a8d8e; }
+
+.btn--casino-alt {
+  background-color: #fff;
+  color: #8a8d8e; }
+.btn--casino-alt:hover {
+  color: #8a8d8e; }
+
+.btn--casino-outline {
+  background-color: transparent;
+  border: 1px solid;
+  box-shadow: inset 0 -2px 0 #fff; }
+.btn--casino-outline:active {
+  border-color: transparent;
+  color: #fff; }
+
+.btn--games {
+  background-color: #ea961c; }
+
+.btn--games-alt {
+  background-color: #fff;
+  color: #ea961c; }
+.btn--games-alt:hover {
+  color: #ea961c; }
+
+.btn--games-outline {
+  background-color: transparent;
+  border: 1px solid;
+  box-shadow: inset 0 -2px 0 #fff; }
+.btn--games-outline:active {
+  border-color: transparent;
+  color: #fff; }
+
+.btn--livecasino {
+  background-color: #afa46f; }
+
+.btn--livecasino-alt {
+  background-color: #fff;
+  color: #afa46f; }
+.btn--livecasino-alt:hover {
+  color: #afa46f; }
+
+.btn--livecasino-outline {
+  background-color: transparent;
+  border: 1px solid;
+  box-shadow: inset 0 -2px 0 #fff; }
+.btn--livecasino-outline:active {
+  border-color: transparent;
+  color: #fff; }
+
+.btn--poker {
+  background-color: #d63d36; }
+
+.btn--poker-alt {
+  background-color: #fff;
+  color: #d63d36; }
+.btn--poker-alt:hover {
+  color: #d63d36; }
+
+.btn--poker-outline {
+  background-color: transparent;
+  border: 1px solid;
+  box-shadow: inset 0 -2px 0 #fff; }
+.btn--poker-outline:active {
+  border-color: transparent;
+  color: #fff; }
+
+.btn--sports {
+  background-color: #c9da2a; }
+
+.btn--sports-alt {
+  background-color: #fff;
+  color: #c9da2a; }
+.btn--sports-alt:hover {
+  color: #c9da2a; }
+
+.btn--sports-outline {
+  background-color: transparent;
+  border: 1px solid;
+  box-shadow: inset 0 -2px 0 #fff; }
+.btn--sports-outline:active {
+  border-color: transparent;
+  color: #fff; }
+
+.btn--vegas {
+  background-color: #abe1fa; }
+
+.btn--vegas-alt {
+  background-color: #fff;
+  color: #abe1fa; }
+.btn--vegas-alt:hover {
+  color: #abe1fa; }
+
+.btn--vegas-outline {
+  background-color: transparent;
+  border: 1px solid;
+  box-shadow: inset 0 -2px 0 #fff; }
+.btn--vegas-outline:active {
+  border-color: transparent;
+  color: #fff; }
+
+.btn--positive {
+  background-color: #89dc6c; }
+
+.btn--negative {
+  background-color: #db5e58; }
+
+/**
+    [1.1] - We're able to use em units here because the base .btn elements use
+            100% font-size of their parent elements for scalability.
+*/
+.btn--small {
+  font-size: .8em;
+  padding: .5em; }
+
+.btn--large {
+  font-size: 1.5em;
+  padding: .5em 1em; }
+
+.btn--block {
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%; }
+
+.btn--secondary {
+  background-color: #389fda; }
+
+.btn--tertiary {
+  background-color: #aaaaaa; }
+
+.btn--disabled {
+  background-color: #eaeaea;
+  color: #cbcbcb;
+  cursor: not-allowed; }
+.btn--disabled:hover {
+  color: #cbcbcb; }
+.btn--disabled:active {
+  pointer-events: none; }
+
+/**
+    [1.1] - This is to targt any buttons that are placed in the Channelnav.
+            There should really only be one button in there, though. The
+            "Open An Account" button.
+*/
+.channelnav {
+  background: -webkit-linear-gradient(top, #474747, #151515);
+  background: linear-gradient(to bottom, #474747, #151515);
+  border-bottom: 3px solid #c9da2a;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#474747', endColorstr='#151515', GradientType=0 );
+  font-size: 0.7142rem;
+  line-height: 2.5; }
+.channelnav .channelnav__item.active a {
+  color: #c9da2a; }
+.channelnav [class*="btn"] {
+  font-weight: bold;
+  margin-right: 1em;
+  text-transform: uppercase;
+  vertical-align: baseline; }
+
+/**
+    The Channelnav Trigger is an element that is only visible on medium-sized
+    screens and down. It's responsible for displaying the Channelnav List on
+    smaller screens via hover and focus.
+        [2.1] - This is the CSS responsible for displaying the Channlenav List.
+*/
+.channelnav__trigger {
+  color: #fff;
+  float: right;
+  margin-right: 1em; }
+.channelnav__trigger:hover, .channelnav__trigger:focus {
+  color: #fff; }
+.channelnav__trigger:hover + .channelnav__list, .channelnav__trigger:focus + .channelnav__list {
+  display: block; }
+
+.channelnav__time {
+  color: #fff;
+  font-size: .75rem; }
+
+/**
+    [3.1] - We don't want a background color on the Channelnav List because it
+            will appear above the page on small screens. Instead, we'll set
+            gradient on the individual items later on, and then further change
+            them using media queries.
+    [3.2] - Because these are mobile-first styles, the Channelnav List is hidden
+            by default, and will display when the appropriate conditions are met
+            on the Channelnav Trigger in [2.1].
+*/
+.channelnav__list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  z-index: 30;
+  background-color: transparent;
+  display: none;
+  margin: 0;
+  min-width: 50%;
+  padding-top: 3em;
+  position: absolute;
+  right: 0;
+  top: 0; }
+.channelnav__list:hover {
+  display: block; }
+.channelnav__list::after {
+  border: solid transparent;
+  border-color: rgba(71, 71, 71, 0);
+  border-bottom-color: #474747;
+  border-width: 10px;
+  content: ' ';
+  height: 0;
+  margin-top: -19px;
+  pointer-events: none;
+  position: absolute;
+  right: 2.5em;
+  top: 3em;
+  width: 0; }
+
+.channelnav__item {
+  background: -webkit-linear-gradient(top, #474747, #151515);
+  background: linear-gradient(to bottom, #474747, #151515);
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#474747', endColorstr='#151515', GradientType=0 ); }
+.channelnav__item a {
+  color: #fff;
+  display: block;
+  font-weight: bold;
+  padding-left: .8em;
+  padding-right: .8em;
+  text-decoration: none; }
+.channelnav__item a:hover {
+  text-decoration: underline; }
+
+.channelnav--accounts {
+  border-bottom-color: #359cd8; }
+.channelnav--accounts .channelnav__item.active a {
+  color: #359cd8; }
+
+.channelnav--bingo {
+  border-bottom-color: #e06ea9; }
+.channelnav--bingo .channelnav__item.active a {
+  color: #e06ea9; }
+
+.channelnav--casino {
+  border-bottom-color: #8a8d8e; }
+.channelnav--casino .channelnav__item.active a {
+  color: #8a8d8e; }
+
+.channelnav--games {
+  border-bottom-color: #ea961c; }
+.channelnav--games .channelnav__item.active a {
+  color: #ea961c; }
+
+.channelnav--livecasino {
+  border-bottom-color: #afa46f; }
+.channelnav--livecasino .channelnav__item.active a {
+  color: #afa46f; }
+
+.channelnav--poker {
+  border-bottom-color: #d63d36; }
+.channelnav--poker .channelnav__item.active a {
+  color: #d63d36; }
+
+.channelnav--sports {
+  border-bottom-color: #c9da2a; }
+.channelnav--sports .channelnav__item.active a {
+  color: #c9da2a; }
+
+.channelnav--vegas {
+  border-bottom-color: #abe1fa; }
+.channelnav--vegas .channelnav__item.active a {
+  color: #abe1fa; }
+
+@media screen and (min-width: 64em) {
+  .channelnav__list {
+    display: inline-block;
+    float: right;
+    min-width: auto;
+    padding: 0;
+    position: relative; }
+  .channelnav__list::after {
+    display: none; }
+
+  .channelnav__item {
+    background-color: transparent;
+    border-left: 1px solid rgba(0, 0, 0, 0.25);
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
+    border-top: 0;
+    float: left; }
+  .channelnav__item:first-child {
+    border-left: 0; }
+  .channelnav__item:last-child {
+    border-right: 0; } }
+.flash {
+  background-color: #fff;
+  border: 1px solid #bbbbbb;
+  border-left: 5px solid #004833;
+  border-radius: 3px;
+  color: #aaaaaa;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.4;
+  margin: 2rem auto;
+  padding: 1.25em 1em; }
+
+.flash__title {
+  color: #004833;
+  display: block;
+  font-weight: bold;
+  margin-bottom: .5em;
+  margin-top: 0; }
+.flash__title .icon {
+  font-size: 1em;
+  vertical-align: middle; }
+
+.flash__content p {
+  margin: 0; }
+
+.flash--accounts {
+  border-left-color: #359cd8; }
+.flash--accounts .flash__title {
+  color: #359cd8; }
+
+.flash--bingo {
+  border-left-color: #e06ea9; }
+.flash--bingo .flash__title {
+  color: #e06ea9; }
+
+.flash--casino {
+  border-left-color: #8a8d8e; }
+.flash--casino .flash__title {
+  color: #8a8d8e; }
+
+.flash--games {
+  border-left-color: #ea961c; }
+.flash--games .flash__title {
+  color: #ea961c; }
+
+.flash--livecasino {
+  border-left-color: #afa46f; }
+.flash--livecasino .flash__title {
+  color: #afa46f; }
+
+.flash--poker {
+  border-left-color: #d63d36; }
+.flash--poker .flash__title {
+  color: #d63d36; }
+
+.flash--sports {
+  border-left-color: #c9da2a; }
+.flash--sports .flash__title {
+  color: #c9da2a; }
+
+.flash--vegas {
+  border-left-color: #abe1fa; }
+.flash--vegas .flash__title {
+  color: #abe1fa; }
+
+.flash--positive, .flash--success {
+  border-left-color: #89dc6c; }
+.flash--positive .flash__title, .flash--success .flash__title {
+  color: #89dc6c; }
+
+.flash--negative, .flash--error {
+  border-left-color: #db5e58; }
+.flash--negative .flash__title, .flash--error .flash__title {
+  color: #db5e58; }
+
+/**
+    [1.1] - We want Gems to be inline, but also want to manipulate their box
+            model.
+    [1.2] - Gems should be 55% font size of their direct parent, otherwise they
+            might look too small in larger elements.
+    [1.3] - Gems are angry! Not really, but they should always be in upper case,
+            best not to depend on the content being uppercase, though.
+    [1.4] - Prevent the user from copying the content of Gems. They're not
+            actually "content", but more attention grabbers than anything.
+    [1.5] - Get better vertical alignment on Gems when used in other elements.
+*/
+.gem {
+  background-color: #aaa;
+  border-radius: 2px;
+  color: #fff;
+  display: inline-block;
+  font-size: .75em;
+  font-weight: bold;
+  line-height: 1;
+  padding: .25em .35em;
+  text-transform: uppercase;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  vertical-align: middle; }
+
+.gem--brand {
+  background-color: #31953e; }
+
+.gem--offer {
+  background-color: #ea961c; }
+
+.gem--mbs {
+  background-color: #f00; }
+
+.gem--priced {
+  background-color: #fff;
+  border: 2px solid;
+  border-radius: 4px;
+  color: #31953e; }
+
+.gem--old {
+  background-color: #ff0;
+  border: 1px solid;
+  color: #004833;
+  font-size: .55rem;
+  padding: .25em; }
+
+.globalnav {
+  background-color: #ededed;
+  border-bottom: 1px solid #aeacac;
+  border-top: 1px solid #aeacac;
+  position: relative; }
+
+.globalnav__trigger {
+  color: #004833;
+  display: inline-block;
+  font-weight: bold;
+  padding: .35em; }
+.globalnav__trigger:focus + .globalnav__list, .globalnav__trigger:hover + .globalnav__list {
+  display: block; }
+
+/**
+    [1.1] - We'll also use padding-top in conjunction with a transparent
+            background to create a small, invisible "shim" that will give the
+            list a little extra hover space on top, to make mouse movement
+            from the trigger to the list a little better.
+    [1.2] - By default, the list is hidden, and we trigger its display when a
+            user hovers over the trigger element above.
+    [1.3] - We want to "push" the left and right of the list in as much as the
+            gutter size in the grid. This gives the element a little breathing
+            room from the edges of small devices.
+    [1.4] - We also want the list to stay displayed while a user is hovering
+            over it. Otherwise it would disappear when they leave the trigger.
+    [1.5] - If the Globalnav List is (most likely) a child of a Foundation
+            grid column, then let's negate the column padding so it sits flush
+            with the sides.
+*/
+.globalnav__list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  z-index: 30;
+  background-color: transparent;
+  display: none;
+  left: 1.875rem;
+  margin-top: -1em;
+  padding-top: 2em;
+  position: absolute;
+  right: 1.875rem;
+  top: 100%; }
+.globalnav__list:hover {
+  display: block; }
+.globalnav__list::after {
+  border: solid transparent;
+  border-color: rgba(237, 237, 237, 0);
+  border-bottom-color: #ededed;
+  border-width: 10px;
+  content: ' ';
+  height: 0;
+  left: 1.5em;
+  margin-top: -19px;
+  pointer-events: none;
+  position: absolute;
+  top: 2em;
+  width: 0; }
+.row .columns > .globalnav__list {
+  margin-left: -0.9375rem;
+  margin-right: -0.9375rem; }
+
+/**
+    [2.1] - We set the Globalnav's background color on the Items instead.
+            This allows us to use our transparent shim technique in [1.4].
+*/
+.globalnav__item {
+  background-color: #ededed;
+  border-bottom: 1px solid #aeacac; }
+.globalnav__item:last-child {
+  border-bottom: 0; }
+
+.globalnav__link {
+  color: #004833;
+  display: block;
+  font-size: .8rem;
+  font-weight: bold;
+  line-height: 2.5rem;
+  padding: 0 .5rem;
+  text-decoration: none; }
+.globalnav__link:hover {
+  text-decoration: underline; }
+
+/**
+    [3.1] - Having the list take up the full width of a medium-sized screen
+            would be a bit too much. So we make it take up 50% instead.
+*/
+@media screen and (min-width: 40em) {
+  .globalnav__list {
+    min-width: 50%;
+    right: auto; } }
+/**
+    [4.1] - On large screens, we don't want the trigger to exist as the list
+            will be displayed in all its glory.
+    [4.2] - FLEXBOX, BABY!
+    [4.3] - We don't want the List to be position absolute any more, as it
+            will display in full on large screens. We also want to reset any
+            positions we set above.
+    [4.4] - We'll also remove the padding we set to create the small shim that
+            we put in place in [1.4].
+    [4.5] - Remove the arrow we created above.
+    [4.6] - We also need to epxlicitly set display:flex; when a user hovers on
+            the list element, otherwise it will apply the display:block; that
+            we set in [1.3].
+    [4.7] - Because all the List Items have a right border by default and no
+            left border, the very first right-aligned looks a bit strange.
+            To target this, we'll apply a left border to any elements that are
+            an immediate sibling of a globalnav item that DOES NOT have a .right
+            class, and it itself DOES have a .right class. This will only target
+            the first .right item in our list.
+    [4.8] - This is our hocus pocus that lets us use Flexbox, and also right-align
+            elements within the flex container.
+    [4.9] - Here, we set the margin-left:auto; to kick in the flexbox spacing for
+            the right-aligned elements, and then we remove the margin-right so
+            the elements fall as far right as possible.
+            Next, we'll remove the margin-left from siblings so that they will
+            all clump together. This leaves is with the first .right element
+            only having margin-left:auto;
+*/
+@media screen and (min-width: 64em) {
+  .globalnav__trigger {
+    display: none; }
+
+  .globalnav__list {
+    -webkit-align-content: flex-start;
+        -ms-flex-line-pack: start;
+            align-content: flex-start;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    background-color: transparent;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: row nowrap;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+    height: auto;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    left: auto;
+    margin-top: 0;
+    padding-top: 0;
+    position: relative;
+    right: auto;
+    top: auto; }
+  .globalnav__list::after {
+    display: none; }
+  .globalnav__list:hover {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
+
+  .globalnav__item {
+    -webkit-align-self: auto;
+        -ms-flex-item-align: auto;
+            align-self: auto;
+    border-bottom: 0;
+    border-right: 1px solid #aeacac;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto; }
+  .globalnav__item:first-child {
+    border-left: 1px solid #aeacac; }
+  .globalnav__item:not(.right) + .globalnav__item.right {
+    border-left: 1px solid #aeacac; }
+  .globalnav__item.right {
+    margin-left: auto;
+    margin-right: 0; }
+  .globalnav__item.right + .globalnav__item.right {
+    margin-left: 0; } }
+@font-face {
+  font-family: "pp-icon";
+  src: url('assets/fonts/pp-icon.eot');
+  src: url('assets/fonts/pp-icon.eot?#iefix') format('embedded-opentype'), url('assets/fonts/pp-icon.woff') format('woff'), url('assets/fonts/pp-icon.ttf') format('truetype'), url('assets/fonts/pp-icon.svg') format('svg'); }
+/**
+    [1.1] - Prevent the user from getting the "select text" cursor
+    [1.2] - Allow icons to inherit their font-size. We add this rule in here
+            because we've already used the shorthand for the rest, and want
+            to overwrite.
+    [1.3] - IE10 and lower is a bit of a spa, and will fail the shorthand `font`
+            declaration when we use `rem`, causing it to completely ignore our
+            custom icon font, so we need to define each of the rules separately.
+*/
+.icon {
+  cursor: default;
+  display: inline-block;
+  font-family: "pp-icon";
+  -webkit-font-feature-settings: 'liga';
+          font-feature-settings: 'liga';
+  font-size: inherit;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  text-rendering: auto;
+  text-transform: none; }
+.icon::before {
+  content: "P"; }
+
+.icon.icon--atoz::before {
+  content: "o"; }
+.icon.icon--americanfootball::before {
+  content: "@"; }
+.icon.icon--audiocommentary::before {
+  content: "&"; }
+.icon.icon--audiocommentary-off::before {
+  content: "%"; }
+.icon.icon--aussierules::before {
+  content: "a"; }
+.icon.icon--badminton::before {
+  content: "b"; }
+.icon.icon--baseball::before {
+  content: "E"; }
+.icon.icon--basketball::before {
+  content: "k"; }
+.icon.icon--bingo::before {
+  content: "B"; }
+.icon.icon--bowls::before {
+  content: ")"; }
+.icon.icon--boxing::before {
+  content: "X"; }
+.icon.icon--card::before {
+  content: '"'; }
+.icon.icon--changemarkets::before {
+  content: "="; }
+.icon.icon--chevron-circle::before {
+  content: "/"; }
+.icon.icon--chevron-down::before {
+  content: "^"; }
+.icon.icon--chevron-left::before {
+  content: "<"; }
+.icon.icon--chevron-right::before {
+  content: ">"; }
+.icon.icon--commentary::before {
+  content: "]"; }
+.icon.icon--confirmtick::before {
+  content: "`"; }
+.icon.icon--corner::before {
+  content: "U"; }
+.icon.icon--cricket::before {
+  content: ""; }
+.icon.icon--cup::before {
+  content: "z"; }
+.icon.icon--cycling::before {
+  content: "c"; }
+.icon.icon--darts::before {
+  content: "d"; }
+.icon.icon--eurohockey::before {
+  content: "e"; }
+.icon.icon--eventview::before {
+  content: "K"; }
+.icon.icon--fightingsports::before {
+  content: "Y"; }
+.icon.icon--fishing::before {
+  content: "("; }
+.icon.icon--financial::before {
+  content: "N"; }
+.icon.icon--football::before {
+  content: "f"; }
+.icon.icon--football-invert::before {
+  content: "F"; }
+.icon.icon--footvisual::before {
+  content: "J"; }
+.icon.icon--freekick::before {
+  content: "0"; }
+.icon.icon--fulltime::before {
+  content: "9"; }
+.icon.icon--futsal::before {
+  content: "$"; }
+.icon.icon--gaa::before {
+  content: "A"; }
+.icon.icon--gaelicgames::before {
+  content: "I"; }
+.icon.icon--goal::before {
+  content: "8"; }
+.icon.icon--golf::before {
+  content: "G"; }
+.icon.icon--greyhounds::before {
+  content: "g"; }
+.icon.icon--halftime::before {
+  content: "7"; }
+.icon.icon--handball::before {
+  content: "_"; }
+.icon.icon--home::before {
+  content: "y"; }
+.icon.icon--horsejump::before {
+  content: "H"; }
+.icon.icon--horseracing::before {
+  content: "h"; }
+.icon.icon--hurling::before {
+  content: "L"; }
+.icon.icon--icehockey::before {
+  content: "i"; }
+.icon.icon--kickoff::before {
+  content: "6"; }
+.icon.icon--live::before {
+  content: "~"; }
+.icon.icon--livebetting::before {
+  content: "l"; }
+.icon.icon--livestreaming::before {
+  content: ""; }
+.icon.icon--locksuspend::before {
+  content: "#"; }
+.icon.icon--mbs::before {
+  content: "£"; }
+.icon.icon--medal::before {
+  content: "m"; }
+.icon.icon--minigames::before {
+  content: "x"; }
+.icon.icon--motorracing::before {
+  content: "M"; }
+.icon.icon--multiview::before {
+  content: "-"; }
+.icon.icon--multiview-add::before {
+  content: "+"; }
+.icon.icon--ontv::before {
+  content: "n"; }
+.icon.icon--penaltymiss::before {
+  content: "4"; }
+.icon.icon--penalty::before {
+  content: "5"; }
+.icon.icon--play::before {
+  content: "*"; }
+.icon.icon--popout::before {
+  content: "O"; }
+.icon.icon--pp::before {
+  content: "P"; }
+.icon.icon--redcard-large::before {
+  content: "j"; }
+.icon.icon--rowing::before {
+  content: "W"; }
+.icon.icon--rugbyleague::before {
+  content: "r"; }
+.icon.icon--rugbyunion::before {
+  content: "R"; }
+.icon.icon--sailing::before {
+  content: "{"; }
+.icon.icon--settings::before {
+  content: "q"; }
+.icon.icon--shotofftarget::before {
+  content: "3"; }
+.icon.icon--shotontarget::before {
+  content: "2"; }
+.icon.icon--skiing::before {
+  content: "Q"; }
+.icon.icon--snooker::before {
+  content: "S"; }
+.icon.icon--squash::before {
+  content: "}"; }
+.icon.icon--stats::before {
+  content: "["; }
+.icon.icon--surfing::before {
+  content: ";"; }
+.icon.icon--swim::before {
+  content: "s"; }
+.icon.icon--tabletennis::before {
+  content: "T"; }
+.icon.icon--target::before {
+  content: "p"; }
+.icon.icon--tennis::before {
+  content: "t"; }
+.icon.icon--thefield::before {
+  content: "€"; }
+.icon.icon--throwin::before {
+  content: "1"; }
+.icon.icon--virtual::before {
+  content: "V"; }
+.icon.icon--volleyball::before {
+  content: "v"; }
+.icon.icon--warning::before {
+  content: "!"; }
+.icon.icon--waterpolo::before {
+  content: ":"; }
+.icon.icon--wintersports::before {
+  content: "w"; }
+.icon.icon--17::before {
+  content: "@"; }
+.icon.icon--103::before {
+  content: "a"; }
+.icon.icon--151::before {
+  content: "b"; }
+.icon.icon--18::before {
+  content: "E"; }
+.icon.icon--16::before {
+  content: "k"; }
+.icon.icon--146::before {
+  content: "k"; }
+.icon.icon--417::before {
+  content: "k"; }
+.icon.icon--161::before {
+  content: ")"; }
+.icon.icon--15::before {
+  content: "X"; }
+.icon.icon--31::before {
+  content: ""; }
+.icon.icon--70::before {
+  content: "c"; }
+.icon.icon--14::before {
+  content: "d"; }
+.icon.icon--150::before {
+  content: "e"; }
+.icon.icon--172::before {
+  content: "Y"; }
+.icon.icon--322::before {
+  content: "("; }
+.icon.icon--49::before {
+  content: "f"; }
+.icon.icon--210::before {
+  content: "f"; }
+.icon.icon--180::before {
+  content: "$"; }
+.icon.icon--67::before {
+  content: "A"; }
+.icon.icon--7::before {
+  content: "G"; }
+.icon.icon--130::before {
+  content: "_"; }
+.icon.icon--81::before {
+  content: "H"; }
+.icon.icon--23::before {
+  content: "h"; }
+.icon.icon--10::before {
+  content: "L"; }
+.icon.icon--68::before {
+  content: "i"; }
+.icon.icon--147::before {
+  content: "i"; }
+.icon.icon--8::before {
+  content: "M"; }
+.icon.icon--100::before {
+  content: "W"; }
+.icon.icon--27::before {
+  content: "r"; }
+.icon.icon--12::before {
+  content: "R"; }
+.icon.icon--122::before {
+  content: "{"; }
+.icon.icon--88::before {
+  content: "Q"; }
+.icon.icon--11::before {
+  content: "S"; }
+.icon.icon--123::before {
+  content: "S"; }
+.icon.icon--351::before {
+  content: "}"; }
+.icon.icon--371::before {
+  content: ";"; }
+.icon.icon--205::before {
+  content: "s"; }
+.icon.icon--219::before {
+  content: "T"; }
+.icon.icon--13::before {
+  content: "t"; }
+.icon.icon--142::before {
+  content: "v"; }
+.icon.icon--164::before {
+  content: "v"; }
+.icon.icon--211::before {
+  content: ":"; }
+.icon.icon--152::before {
+  content: "w"; }
+
+/**
+    [1.1] - This lets us use actual content in the Logo elements, and thus,
+            have better SEO and semantics. Screen readers will read the
+            element as normal, but regular users will only see the Logo.
+            Brill.
+*/
+.logo {
+  background-color: transparent;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+  text-shadow: none;
+  background: url('assets/images/logos-s853167551b.png');
+  border: 0;
+  display: inline-block;
+  vertical-align: middle; }
+
+.logo--bingo {
+  height: 85px;
+  width: 257px;
+  background-position: 0 0; }
+
+.logo--casino {
+  height: 84px;
+  width: 259px;
+  background-position: 0 -85px; }
+
+.logo--games {
+  height: 83px;
+  width: 260px;
+  background-position: 0 -169px; }
+
+.logo--livecasino {
+  height: 80px;
+  width: 252px;
+  background-position: 0 -252px; }
+
+.logo--poker {
+  height: 81px;
+  width: 263px;
+  background-position: 0 -332px; }
+
+.logo--primary {
+  height: 74px;
+  width: 257px;
+  background-position: 0 -413px; }
+
+.logo--sport {
+  height: 84px;
+  width: 260px;
+  background-position: 0 -487px; }
+
+.masthead {
+  background-color: #004833;
+  background-image: -webkit-linear-gradient(135deg, #00573e 25%, transparent 25%, transparent 50%, #00573e 50%, #00573e 75%, transparent 75%, transparent);
+  background-image: linear-gradient(-45deg, #00573e 25%, transparent 25%, transparent 50%, #00573e 50%, #00573e 75%, transparent 75%, transparent);
+  background-size: 70px 70px;
+  min-height: 80px;
+  padding: 10px; }
+
+.masthead .logo {
+  float: right; }
+
+.masthead--mobile {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.35em;
+  min-height: 0;
+  padding: .5em; }
+.masthead--mobile .btn--back {
+  background-color: transparent;
+  box-shadow: none;
+  font-size: inherit;
+  margin: auto 0;
+  padding: .25em .35em; }
+.masthead--mobile .masthead__title {
+  color: #fff;
+  margin: auto;
+  text-align: center; }
+
+.panel {
+  display: block;
+  margin: 0;
+  margin-bottom: 1rem; }
+
+/**
+    [1.1] - Force-remove margin, in case a <h[1-6]> tag is used
+*/
+.panel__title {
+  background-color: #004833;
+  background-image: -webkit-linear-gradient(left, rgba(0, 72, 51, 0), #004833 75%), -webkit-linear-gradient(135deg, #006245 25%, transparent 25%, transparent 50%, #006245 50%, #006245 75%, transparent 75%, transparent);
+  background-image: linear-gradient(to right, rgba(0, 72, 51, 0), #004833 75%), linear-gradient(-45deg, #006245 25%, transparent 25%, transparent 50%, #006245 50%, #006245 75%, transparent 75%, transparent);
+  background-size: cover, 40px 40px;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006245', endColorstr='#004833',GradientType=1 );
+  border-radius: 3px 3px 0 0;
+  border-top: 1px solid #004833;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  color: #fff;
+  line-height: 2;
+  margin: 0;
+  overflow: hidden;
+  padding-left: 1rem;
+  padding-right: 2rem;
+  position: relative;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.25); }
+
+/**
+    [2.1] - Remove the top border, as we'll have the panel__title sitting on top.
+    [2.2] - The Collapse plugin will apply style="height: n;" (where n is px value)
+            to the element, but doesn't animate the value. This allows us to use
+            CSS animation instead!
+    [2.3] - We apply overflow: hidden; to any panel__body elements that can collapse.
+            This is so all of its contents "clip" and hide as the element is collapsing.
+    [2.4] - If a panel__body can collapse, and is NOT in its open state, then we can
+            go ahead and hide it completely.
+*/
+.panel__body {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0 0 3px 3px;
+  -webkit-transition: height 250ms;
+          transition: height 250ms; }
+.panel__body.is-collapsing {
+  overflow: hidden; }
+.panel__body.can-collapse:not(.is-open) {
+  display: none; }
+
+/**
+    [3.1] - If .panel__content isn't the :last-child, we must assume a
+            .panel__footer exists in the .panel element. If so, we need to
+            square off the bottom of the element and remove the bottom border.
+    [3.2] - We'll make the evil assumption that .panel__content will contain
+            <p> elements and, if so, strip their margin and padding.
+*/
+.panel__content {
+  padding: 1rem; }
+.panel__content:not(:last-child) {
+  border-bottom: 0;
+  border-radius: 0; }
+.panel__content p {
+  margin: 0;
+  padding: 0; }
+
+/**
+    [4.1] - .panel__header and .panel__footer elements should, typically, be
+            darker than the background-color of the .panel element, so we use
+            rgba black to let the background-color bleed through and darken.
+*/
+.panel__header, .panel__footer {
+  background-color: rgba(0, 0, 0, 0.1); }
+
+.panel__header {
+  border-bottom: 1px solid #ccc;
+  font-size: .8rem;
+  line-height: 2.5;
+  padding-left: 1rem;
+  padding-right: 1rem; }
+
+.panel__footer {
+  border-top: 1px solid #ccc;
+  padding: 1rem; }
+
+/**
+    [5.1] - Make the element "clickable" to the user by displaying the correct
+            cursor, regardless of whether an <a> tag is used or not.
+    [5.2] - This value should match whatever the padding-left value of the
+            .panel__title is in order to offset it and place the element to
+            the left-most of the .panel__title.
+    [5.3] - The value of these should be half of whatever the line-height value
+            of .panel__title is (and in em). This is so we have even spacing
+            all around the collapse element regardless of font-size.
+    [5.4] - Set a value for the rotate so that the CSS has a reference value
+            to animate to/from.
+    [5.5] - We don't want to mess around with changing classes and showing/hiding
+            elements. So instead, we'll just take the chevron icons (assuming they're
+            the actual icons being used) and rotate them so that they face the
+            correct direction. We'll use the details from [5.4] to animate them!
+*/
+.panel__collapse {
+  background-color: rgba(0, 0, 0, 0.35);
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  color: #c9da2a;
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+  margin-left: -1rem;
+  margin-right: .5em;
+  padding-left: .5em;
+  padding-right: .5em; }
+.panel__collapse .icon {
+  cursor: pointer;
+  -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 250ms;
+          transition: transform 250ms; }
+.panel__collapse.is-collapsed .icon--chevron-right {
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg); }
+.panel__collapse.is-collapsed .icon--chevron-down {
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg); }
+
+.panel--flat .panel__title {
+  background-color: #004833;
+  background-image: none;
+  border-top: 0;
+  box-shadow: none; }
+.panel--flat .panel__collapse {
+  background-color: transparent;
+  border-right: 0;
+  color: #fff; }
+
+/**
+    [6.1] - In order to align the icon vertically within the Panel Title, we
+            need to override the .icon's default line height with that of its
+            parent.
+    [6.2] - Typically, icons that are immediate children of the Panel Title
+            are positioned to the far right of the element. To save the
+            hassle of developers having to apply their own floats and positionins
+            for this, we just take care of it here.
+*/
+.panel__title > .icon {
+  line-height: inherit;
+  position: absolute;
+  right: .5em;
+  top: 0; }
+
+/**
+    [1.1] - We want a perfect circle (Pip's should be equal in width and height)
+            so we apply a radius of 50% so the browser doesn't need to do any
+            additional calculation for overlap scaling and whatnot.
+    [1.2] - We want Pips to be inline, but also want to manipulate their box
+            model.
+    [1.3] - By using `em` as our padding value, we can scale the size of the
+            Pip by only needing to edit the `font-size` of the element (or its
+            parent).
+    [1.4] - Get better vertical alignment on Pips when used in other elements.
+    [1.5] - Pips shouldn't contain any text, as they're only supposed to be used
+            to provide additional meaning to their surrounding elements. Because
+            we use `em` for scalable padding and sizing, we can't set `font-size`
+            to 0. So, instead, we hide the element entirely to prevent this no-no.
+*/
+.pip {
+  background-color: #31953e;
+  border-radius: .5em;
+  color: #fff;
+  display: inline-block;
+  padding: .25em;
+  vertical-align: middle; }
+.pip:not(:empty) {
+  display: none; }
+
+.pip--secondary {
+  background-color: #359cd8; }
+
+.pip--bright {
+  background-color: #c9da2a; }
+
+.pip--positive {
+  background-color: #89dc6c; }
+
+.pip--negative {
+  background-color: #db5e58; }
+
+@-webkit-keyframes spinner__rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+@keyframes spinner__rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+@-webkit-keyframes spinner__dash {
+  0% {
+    stroke-dasharray: 1,200;
+    stroke-dashoffset: 0; }
+  50% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -35px; }
+  100% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -124px; } }
+@keyframes spinner__dash {
+  0% {
+    stroke-dasharray: 1,200;
+    stroke-dashoffset: 0; }
+  50% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -35px; }
+  100% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -124px; } }
+@-webkit-keyframes spinner__cycle {
+  100%, 0% {
+    color: #4285F4; }
+  40% {
+    color: #EA4335; }
+  66% {
+    color: #34A853; }
+  80%, 90% {
+    color: #FBBC05; } }
+@keyframes spinner__cycle {
+  100%, 0% {
+    color: #4285F4; }
+  40% {
+    color: #EA4335; }
+  66% {
+    color: #34A853; }
+  80%, 90% {
+    color: #FBBC05; } }
+.spinner {
+  color: #31953e;
+  display: inline-block;
+  font-size: 1.5rem;
+  height: 1em;
+  width: 1em; }
+
+.spinner__svg {
+  -webkit-animation: spinner__rotate 2s linear infinite;
+          animation: spinner__rotate 2s linear infinite; }
+
+.spinner__path {
+  -webkit-animation: spinner__dash 1.5s ease-in-out infinite;
+          animation: spinner__dash 1.5s ease-in-out infinite;
+  stroke: currentColor;
+  stroke-dasharray: 1,200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round; }
+
+.spinner--accounts {
+  color: #359cd8; }
+
+.spinner--bingo {
+  color: #e06ea9; }
+
+.spinner--casino {
+  color: #8a8d8e; }
+
+.spinner--games {
+  color: #ea961c; }
+
+.spinner--livecasino {
+  color: #afa46f; }
+
+.spinner--poker {
+  color: #d63d36; }
+
+.spinner--sports {
+  color: #c9da2a; }
+
+.spinner--vegas {
+  color: #abe1fa; }
+
+.spinner--cycle {
+  -webkit-animation: spinner__cycle 6s ease-in-out infinite;
+          animation: spinner__cycle 6s ease-in-out infinite; }
+
+.switch {
+  border: 0;
+  font-size: 2rem;
+  outline: 0;
+  padding: 0;
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
+
+.switch__label {
+  background: #db5e58;
+  border-radius: 1em;
+  color: transparent;
+  cursor: pointer;
+  display: block;
+  height: 1em;
+  margin-bottom: 1em;
+  position: relative;
+  text-indent: 100%;
+  -webkit-transition: background-color 150ms, margin-left 150ms;
+          transition: background-color 150ms, margin-left 150ms;
+  width: 2em; }
+.switch__label::after {
+  background: #fff;
+  border-radius: 1em;
+  bottom: 1px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  content: '';
+  display: block;
+  left: 1px;
+  margin-left: 0;
+  position: absolute;
+  top: 1px;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  -webkit-transition: background-color 150ms, margin-left 150ms;
+          transition: background-color 150ms, margin-left 150ms;
+  width: 1em; }
+
+.switch__toggle {
+  opacity: 0;
+  padding: 0;
+  position: absolute; }
+.switch__toggle:checked + .switch__label {
+  background: #89dc6c; }
+.switch__toggle:checked + .switch__label::after {
+  margin-left: 1em; }
+
+.switch--inside .switch__label::after {
+  height: 0.8em;
+  left: 0.1em;
+  top: 0.1em;
+  width: 0.8em; }
+.switch--inside .switch__toggle:checked + .switch__label {
+  background: #89dc6c; }
+
+.switch--outline {
+  z-index: 1; }
+.switch--outline .switch__label {
+  background-color: #fff; }
+.switch--outline .switch__label::before {
+  background-color: #db5e58;
+  border-radius: 1em;
+  bottom: -.075em;
+  content: '';
+  display: block;
+  left: -.075em;
+  position: absolute;
+  right: -.075em;
+  top: -.075em;
+  z-index: -1; }
+.switch--outline .switch__label::after {
+  background-color: #db5e58;
+  box-shadow: none;
+  height: 0.8em;
+  left: 0.1em;
+  top: 0.1em;
+  width: 0.8em; }
+.switch--outline .switch__toggle:checked + .switch__label {
+  background: #fff;
+  border-color: #89dc6c; }
+.switch--outline .switch__toggle:checked + .switch__label::before, .switch--outline .switch__toggle:checked + .switch__label::after {
+  background-color: #89dc6c; }
+
+.switch--small {
+  font-size: 1.25rem; }
+
+.switch--large {
+  font-size: 2.75rem; }
+
+.accordion {
+  background-color: #fff;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.25); }
+
+/**
+    [1.1] - We want the Header to look and feel clickable, even if it's not
+            an anchor tag.
+    [1.2] - Because Icons are a font, they usually get the text-select cursor
+            when they're hovered. Force them to be "clickable"!
+    [1.3] - Let's set a value for our rotate, so that the CSS has a value to
+            transition to/from.
+    [1.4] - When the Accordion Header is collapsed (the plugin will place a
+            class on it for us), rotate the chevron icons so that they point
+            in the appropriate direction.
+            NOTE: This is restrictive, and forces us to target specific icon
+                  classes. :(
+*/
+.accordion__header {
+  background-color: #004833;
+  background-image: -webkit-linear-gradient(top, #266352, #004833);
+  background-image: linear-gradient(to bottom, #266352, #004833);
+  border-top: 1px solid #59887a;
+  color: #fff;
+  cursor: pointer;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#266352', endColorstr='#004833', GradientType=0 );
+  font-weight: bold;
+  line-height: 2;
+  padding-left: .5em;
+  padding-right: .5em;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.25);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
+.accordion__header .icon {
+  cursor: pointer;
+  font-size: .85em;
+  margin-right: .25em;
+  -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 250ms;
+          transition: transform 250ms; }
+.accordion__header.is-collapsed .icon--chevron-right {
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg); }
+.accordion__header.is-collapsed .icon--chevron-down {
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg); }
+
+/**
+    [2.1] - The collapse plugin will apply a static height value when the
+            element expands and collapses. All we need to do is make CSS
+            transition magic!
+    [2.2] - If we don't apply overflow: hidden; to the element while it's in
+            the process of expanding/collapsing, then its contents will display
+            above it as it's transitioning. Uuuuuuugly.
+    [2.3] - The plugin won't set a 0 height to collpsed panels on page
+            load, so we'll do it here!
+*/
+.accordion__body {
+  -webkit-transition: height 250ms;
+          transition: height 250ms; }
+.accordion__body.is-collapsing {
+  overflow: hidden; }
+.accordion__body.can-collapse:not(.is-open) {
+  height: 0;
+  overflow: hidden; }
+
+.accordion__content {
+  padding: .25em .5em; }
+
+/**
+    [3.1] - We don't want the Primary Color gradient appearing on nested
+            Accordion Headers, so let's remove the gradient and apply the flat
+            color for nested Accordion Headers.
+*/
+.accordion__content .accordion {
+  box-shadow: none;
+  margin: -.25em -.5em; }
+
+.accordion__content .accordion__header {
+  background-color: #bbbbbb;
+  background-image: none;
+  border-bottom: 1px solid #a2a2a2;
+  border-top-color: #cccccc;
+  color: #000;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  text-shadow: none; }
+
+.accordion__content .accordion__content .accordion__header {
+  background-color: #959595;
+  border-bottom: 1px solid #7b7b7b;
+  border-top-color: #b0b0b0; }
+
+.accordion--flat .accordion__header {
+  background-image: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.25); }
+.accordion--flat .accordion__content .accordion__header {
+  border-bottom: 0;
+  border-top-color: rgba(0, 0, 0, 0.1); }
+
+/* Slider */
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent; }
+
+.slick-list {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 0;
+  padding: 0; }
+.slick-list:focus {
+  outline: none; }
+.slick-list.dragging {
+  cursor: pointer;
+  cursor: hand; }
+
+.slick-slider .slick-track, .slick-slider .slick-list {
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+
+.slick-track {
+  position: relative;
+  left: 0;
+  top: 0;
+  display: block; }
+.slick-track:before, .slick-track:after {
+  content: "";
+  display: table; }
+.slick-track:after {
+  clear: both; }
+.slick-loading .slick-track {
+  visibility: hidden; }
+
+.slick-slide {
+  float: left;
+  height: 100%;
+  min-height: 1px;
+  display: none; }
+[dir="rtl"] .slick-slide {
+  float: right; }
+.slick-slide img {
+  display: block; }
+.slick-slide.slick-loading img {
+  display: none; }
+.slick-slide.dragging img {
+  pointer-events: none; }
+.slick-initialized .slick-slide {
+  display: block; }
+.slick-loading .slick-slide {
+  visibility: hidden; }
+.slick-vertical .slick-slide {
+  display: block;
+  height: auto;
+  border: 1px solid transparent; }
+
+.slick-arrow.slick-hidden {
+  display: none; }
+
+/* Slider */
+.slick-loading .slick-list {
+  background: #fff url('../../src/abacus/assets/images/source/ajax-loader.gif') center center no-repeat; }
+
+/* Icons */
+/* Arrows */
+.slick-prev, .slick-next {
+  position: absolute;
+  display: block;
+  height: 20px;
+  width: 20px;
+  line-height: 0px;
+  font-size: 0px;
+  cursor: pointer;
+  background: transparent;
+  color: transparent;
+  top: 50%;
+  margin-top: -10px\9;
+  /*lte IE 8*/
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  padding: 0;
+  border: none;
+  outline: none; }
+.slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
+  outline: none;
+  background: transparent;
+  color: transparent; }
+.slick-prev:hover:before, .slick-prev:focus:before, .slick-next:hover:before, .slick-next:focus:before {
+  opacity: 1; }
+.slick-prev.slick-disabled:before, .slick-next.slick-disabled:before {
+  opacity: 0.25; }
+
+.slick-prev:before, .slick-next:before {
+  font-family: "pp-icon";
+  font-size: 20px;
+  line-height: 1;
+  color: #004833;
+  opacity: 0.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.slick-prev {
+  left: -25px; }
+[dir="rtl"] .slick-prev {
+  left: auto;
+  right: -25px; }
+.slick-prev:before {
+  content: "<"; }
+[dir="rtl"] .slick-prev:before {
+  content: ">"; }
+
+.slick-next {
+  right: -25px; }
+[dir="rtl"] .slick-next {
+  left: -25px;
+  right: auto; }
+.slick-next:before {
+  content: ">"; }
+[dir="rtl"] .slick-next:before {
+  content: "<"; }
+
+/* Dots */
+.slick-slider {
+  margin-bottom: 30px; }
+
+.slick-dots {
+  position: absolute;
+  bottom: -45px;
+  list-style: none;
+  display: block;
+  text-align: center;
+  padding: 0;
+  width: 100%; }
+.slick-dots li {
+  position: relative;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  margin: 0 5px;
+  padding: 0;
+  cursor: pointer; }
+.slick-dots li button {
+  border: 0;
+  background: transparent;
+  display: block;
+  height: 20px;
+  width: 20px;
+  outline: none;
+  line-height: 0px;
+  font-size: 0px;
+  color: transparent;
+  padding: 5px;
+  cursor: pointer; }
+.slick-dots li button:hover, .slick-dots li button:focus {
+  outline: none; }
+.slick-dots li button:hover:before, .slick-dots li button:focus:before {
+  opacity: 1; }
+.slick-dots li button:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "•";
+  width: 20px;
+  height: 20px;
+  font-family: "pp-icon";
+  font-size: 6px;
+  line-height: 20px;
+  text-align: center;
+  color: black;
+  opacity: 0.25;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+.slick-dots li.slick-active button:before {
+  color: black;
+  opacity: 0.75; }
+
+/**
+    [1.1] - We set relative position here so we can precisely manipulate any
+            child .carousel__content elements.
+    [1.2] - Let's also strip any margins from paragraphs in our items so we
+            have more reliable spacing.
+*/
+.carousel__item {
+  position: relative; }
+.carousel__item p {
+  margin: 0; }
+
+/**
+    [2.1] - We'll use a lage negative bottom value to "hide" the content below
+            the slide. We'll then set the value to 0 when the slide is active
+            and use CSS transitions to animate it.
+    [2.2] - We delay the CSS transition here by 400ms. This allows the old slide
+            time to disappear, and the new slide time to appear.
+*/
+.carousel__content {
+  background-color: rgba(0, 0, 0, 0.75);
+  bottom: -100%;
+  color: #fff;
+  padding: .35em .75em;
+  position: absolute;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.25);
+  -webkit-transition: bottom 450ms 400ms;
+          transition: bottom 450ms 400ms;
+  width: 100%; }
+.slick-active .carousel__content {
+  bottom: 0; }
+
+/**
+    [3.1] - Only the "slide image" should be 100% width of the slide, which is
+            why we bind that to a class here.
+*/
+.carousel__image {
+  width: 100%; }
+
+/**
+    [4.1] - Flexbox, baby! This allows us to have multiple items display inline
+            in our carousel preview, but also have them all be equal width.
+            There are some downfalls to this, and mobile is not supported yet,
+            but it's a good option at the moment.
+    [4.2] - Our carousels have 30px margin-bottom on them. If the carousel preview
+            immediately follows a carousel window, let's pull it up 30px.
+*/
+.carousel__preview {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+.carousel__window + .carousel__preview {
+  margin-top: -30px; }
+
+/**
+    [5.1]   - Using the flex value that we set in [4.1], we can now create a
+              list of items that all have equal width, and scale accordingly!
+    [5.2]   - This is our small little thumbnail! We're not going to restrict
+              its dimensions with CSS. If the dev implementing them wants to
+              use an image greater than 45├ù45, that's their problem.
+    [5.2.1] - We will, however, undo the width: 100%; we set above.
+*/
+.carousel__preview-item {
+  background: #31953e;
+  background-image: -webkit-linear-gradient(top, #246f2e, #31953e);
+  background-image: linear-gradient(to bottom, #246f2e, #31953e);
+  border: 1px solid #1e5b26;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  color: #fff;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-size: .85rem;
+  padding: .5em .25em;
+  -webkit-transition: all 300ms;
+          transition: all 300ms; }
+.carousel__preview-item:not(.is-active) {
+  cursor: pointer; }
+.carousel__preview-item.is-active {
+  background-color: #fff;
+  background-image: none;
+  color: #333; }
+.carousel__preview-item + .carousel__preview-item {
+  border-left: 0; }
+.carousel__preview-item p {
+  margin: 0; }
+.carousel__preview-item .carousel__title {
+  margin-bottom: 0; }
+.carousel__preview-item .carousel__image {
+  border: 2px solid #fff;
+  float: left;
+  margin-right: 5px;
+  width: auto; }
+
+.slick-prev, .slick-next, .slick-prev:hover, .slick-next:hover, .slick-prev:focus, .slick-next:focus {
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+  color: #004833;
+  height: 40px;
+  margin-top: -20px;
+  opacity: .5;
+  width: 40px;
+  z-index: 1; }
+
+.slick-prev:hover, .slick-next:hover {
+  opacity: 1; }
+
+.slick-prev {
+  left: 25px; }
+
+.slick-next {
+  right: 25px; }
+
+.slick-dots {
+  display: none; }
+
+/**
+    [1.1] - We want to prevent the user from scrolling when a modal is open.
+*/
+body.modal-open {
+  overflow-y: hidden; }
+
+/**
+    [2.1] - We want the entire modal component to fill the full size of the viewport
+            which will make it easy peasy for us to centre the actual modal dialog.
+    [2.2] - We'll hide the entire modal component by default and, using the JS
+            plugin, we'll apply display: block; to it when it's triggered.
+*/
+.modal {
+  z-index: 41;
+  bottom: 0;
+  display: none;
+  left: 0;
+  outline: 0 none;
+  overflow: hidden;
+  position: fixed;
+  right: 0;
+  top: 0; }
+
+/**
+    The .modal__backdrop element is created when a modal is triggered, and it is
+    injected just before </body>
+        [3.1] - We want it to fill 100% of the viewport and to scroll with the user.
+*/
+.modal__backdrop {
+  z-index: 40;
+  background-color: rgba(0, 0, 0, 0.65);
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  -webkit-transition: opacity 150ms linear;
+          transition: opacity 150ms linear; }
+.modal__backdrop.is-visible {
+  opacity: 1; }
+
+/**
+    [4.1] - We'll force the top left corner of the dialog to appear at the centre
+            of the screen, and then use CSS transform to pull it back 50% of its
+            width - making it truly centred on the screen at all times.
+    [4.2] - We want the modal's dialog to be flexible, and to not look broken.
+            By allowing it to be 80% screen width, we can make it appear well on
+            mobile devices, but restrict it to being a maximum of 600px wide to
+            prevent it stretching on desktop.
+*/
+.modal__dialog {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  left: 50%;
+  max-width: 600px;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%, -100%);
+      -ms-transform: translate(-50%, -100%);
+          transform: translate(-50%, -100%);
+  -webkit-transition: opacity 150ms linear, -webkit-transform 150ms linear;
+          transition: opacity 150ms linear, transform 150ms linear;
+  width: 80%; }
+.is-visible .modal__dialog {
+  opacity: 1;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%); }
+
+/**
+    [5.1] - We need to apply a clearfix here because both the .modal__title and
+            .modal__close elements (the two elements in the header) are floated,
+            causing the header to collapse.
+    [5.2] - We apply 3em padding-right here to force long titles to break onto
+            the next line, and then use negative margin in [6.1] to pull the
+            Modal Close element into the padding so that any text up until the
+            break appears alongside the Modal Close.
+*/
+.modal__header {
+  background-color: #004833;
+  background-image: -webkit-linear-gradient(left, rgba(0, 72, 51, 0), #004833 75%), -webkit-linear-gradient(135deg, #006245 25%, transparent 25%, transparent 50%, #006245 50%, #006245 75%, transparent 75%, transparent);
+  background-image: linear-gradient(to right, rgba(0, 72, 51, 0), #004833 75%), linear-gradient(-45deg, #006245 25%, transparent 25%, transparent 50%, #006245 50%, #006245 75%, transparent 75%, transparent);
+  background-size: cover, 40px 40px;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006245', endColorstr='#004833',GradientType=1 );
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.75;
+  padding: .5em 3em .5em 1em;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.25); }
+.modal__header::before, .modal__header::after {
+  content: ' ';
+  display: table; }
+.modal__header::after {
+  clear: both; }
+
+.modal__title {
+  float: left;
+  margin: 0; }
+
+/**
+    [6.1] - We use this negative margin to pull the Modal Close button into the
+            large padding-right we set in [5.2].
+*/
+.modal__close {
+  background: -webkit-linear-gradient(top, #f40000 0%, #c00 100%);
+  background: linear-gradient(to bottom, #f40000 0%, #c00 100%);
+  border: 1px solid #990000;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f40000', endColorstr='#c00', GradientType=0 );
+  float: right;
+  height: 2em;
+  margin-right: -2.5em;
+  width: 2em; }
+
+.modal__body {
+  padding: 1.5rem 1rem; }
+
+.modal__footer {
+  border-top: 1px solid #bbbbbb;
+  padding: 1rem; }
+
+.tab {
+  margin-bottom: 1rem; }
+
+/**
+    [1.1] - All tabs should be displayed inline, so let's extend the silent class.
+*/
+.tab__list {
+  font-size: 0;
+  margin: 0;
+  padding: 0; }
+.tab__list > li {
+  display: inline-block;
+  font-size: 1rem; }
+
+/**
+    [2.1] - Remove the bottom border to prevent the hiddeous double-width border
+            appearing below Tab Items. Later on, we'll pull the content pane
+            up one pixel to hide the border beneath the tabs.
+    [2.2] - We remove the left margin from the first List Item to allow the
+            tabs to sit flush with the left of the content panel.
+    [2.3] - Make the links appear as inline-block to allow us better control
+            over their box model.
+*/
+.tab__item {
+  background-image: -webkit-linear-gradient(top, #51a339, #3c782a);
+  background-image: linear-gradient(to bottom, #51a339, #3c782a);
+  border: 1px solid #51a339;
+  border-bottom: 0;
+  border-radius: 3px 3px 0 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  color: #fff;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#51a339', endColorstr='#3c782a', GradientType=0 );
+  margin: 0 .25rem;
+  text-transform: uppercase; }
+.tab__item:first-child {
+  margin-left: 0; }
+.tab__item.is-active {
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #bbbbbb;
+  border-bottom: 0;
+  box-shadow: none;
+  color: #000;
+  filter: progid:DXImageTransform.Microsoft.gradient( enabled = false ); }
+.tab__item a {
+  color: currentColor;
+  display: inline-block;
+  padding: .35em .75em;
+  text-decoration: none; }
+
+/**
+    [3.1] - Pull the content pane upwards 1 pixel to hide its top border under
+            each of the Tabs Items.
+*/
+.tab__content {
+  background-color: #fff;
+  border: 1px solid #bbbbbb;
+  color: #000;
+  margin-top: -1px;
+  padding: 1rem; }
+
+/**
+    [4.1] - We'll hide the panes by default, and only show them when the modifier
+            classes (.is-active, .is-visible) are applied. The application of
+            these classes are staggered in the JS, allowing us to use CSS
+            animation to make them appear.
+*/
+.tab__pane {
+  display: none;
+  opacity: 0;
+  -webkit-transform: translateY(-10px);
+      -ms-transform: translateY(-10px);
+          transform: translateY(-10px);
+  -webkit-transition: opacity 150ms linear, -webkit-transform 150ms linear;
+          transition: opacity 150ms linear, transform 150ms linear; }
+.tab__pane.is-active {
+  display: block; }
+.tab__pane.is-visible {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+          transform: translateY(0); }
+
+/**
+    [5.1] - CSS Arrow. This psuedo element will appear as a small chevron beneath
+            the element it's attached to. We use margin-top as a way of animating
+            the chevron's position, and we use opacity for some tricksy hiding and
+            showing of the chevron.
+*/
+.tab--filter .tab__list {
+  margin-bottom: .75rem; }
+.tab--filter .tab__item {
+  background-image: -webkit-linear-gradient(top, #adb2b9, #8c929e);
+  background-image: linear-gradient(to bottom, #adb2b9, #8c929e);
+  border: 0;
+  border-radius: 3px;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#adb2b9', endColorstr='#8c929e', GradientType=0 );
+  font-size: .85rem;
+  position: relative;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.25);
+  z-index: 1; }
+.tab--filter .tab__item::after {
+  border: solid transparent;
+  border-color: rgba(136, 183, 213, 0);
+  border-top-color: #70767e;
+  border-width: 5px;
+  content: ' ';
+  height: 0;
+  left: 50%;
+  margin-left: -5px;
+  margin-top: -5px;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 100%;
+  -webkit-transition: 150ms linear;
+          transition: 150ms linear;
+  width: 0;
+  z-index: -1; }
+.tab--filter .tab__item.is-active {
+  background-image: -webkit-linear-gradient(top, #444a54, #70767e);
+  background-image: linear-gradient(to bottom, #444a54, #70767e);
+  color: #fff;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#444a54', endColorstr='#70767e', GradientType=0 ); }
+.tab--filter .tab__item.is-active::after {
+  margin-top: 0;
+  opacity: 1; }
+
+/**
+    [6.1] - We define `color: #hex;` on the `.tab--switch` modifier class.
+            While this may seem strange, the decision was made as it allows
+            us to then use the `currentColor` keyword throughout the modifier.
+            This gives us a vastly more powerful color cascade and allows for
+            "theming" of the `.tab--switch` modifier by requiring that developers
+            only need to overwrite this value with their desired color:
+            E.g.: `.tab--switch {color: #E06EA9;}` would result in a bingo-themed
+            tab component with minimal overrides required.
+*/
+.tab--switch {
+  color: #004833; }
+.tab--switch .tab__list {
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  color: currentColor;
+  display: inline-block;
+  margin-bottom: .75rem; }
+.tab--switch .tab__item {
+  background-color: transparent;
+  background-image: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: currentColor;
+  margin: 0; }
+.tab--switch .tab__item:not(:last-child) {
+  border-right: 1px solid; }
+.tab--switch .tab__item a {
+  color: currentColor; }
+.tab--switch .tab__item.is-active {
+  background-color: currentColor;
+  color: currentColor; }
+.tab--switch .tab__item.is-active a {
+  color: #fff; }
+.tab--switch .tab__content {
+  border: 0; }
+
+.tab--flex .tab__list {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: auto; }
+.tab--flex .tab__item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 0;
+      -ms-flex: 1 1 0;
+          flex: 1 1 0; }
+.tab--flex .tab__item:last-child {
+  margin-right: 0; }
+.tab--flex .tab__item a {
+  width: 100%; }
+
+/**
+    [1.1] - We'll set an absolute position here on the base class, and then
+            apply the actual positions with modifying classes (tooltip--left)
+    [1.2] - Set our properties so that our CSS transitions have values to
+            transition to/from.
+*/
+.tooltip {
+  z-index: 20;
+  color: #aaaaaa;
+  display: block;
+  font-size: .85rem;
+  font-weight: normal;
+  line-height: 1.2;
+  opacity: 0;
+  position: absolute;
+  -webkit-transition: opacity 100ms linear, -webkit-transform 100ms linear;
+          transition: opacity 100ms linear, transform 100ms linear; }
+.tooltip.is-visible {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+          transform: translateY(0); }
+
+.tooltip__inner {
+  background-color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  display: inline-block;
+  max-width: 230px;
+  padding: .35em .65em; }
+
+/**
+    The Tooltip Arrow is an empty element used to create exactly what you think
+    it does.
+        [2.1] - We set its position to absolute, and will position it according
+                to the tooltip's modifying class.
+*/
+.tooltip__arrow {
+  border-color: transparent;
+  border-style: solid;
+  height: 0;
+  position: absolute;
+  width: 0; }
+
+.tooltip--top {
+  padding: 5px 0;
+  -webkit-transform: translateY(5px);
+      -ms-transform: translateY(5px);
+          transform: translateY(5px); }
+.tooltip--top .tooltip__arrow {
+  border-top-color: white;
+  border-width: 5px 5px 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -5px; }
+
+.tooltip--right {
+  padding: 0 5px;
+  -webkit-transform: translateX(-5px);
+      -ms-transform: translateX(-5px);
+          transform: translateX(-5px); }
+.tooltip--right .tooltip__arrow {
+  border-right-color: white;
+  border-width: 5px 5px 5px 0;
+  left: 0;
+  margin-top: -5px;
+  top: 50%; }
+
+.tooltip--bottom {
+  padding: 5px 0;
+  -webkit-transform: translateY(-5px);
+      -ms-transform: translateY(-5px);
+          transform: translateY(-5px); }
+.tooltip--bottom .tooltip__arrow {
+  border-bottom-color: white;
+  border-width: 0 5px 5px;
+  left: 50%;
+  margin-left: -5px;
+  top: 0; }
+
+.tooltip--left {
+  padding: 0 5px;
+  -webkit-transform: translateX(5px);
+      -ms-transform: translateX(5px);
+          transform: translateX(5px); }
+.tooltip--left .tooltip__arrow {
+  border-left-color: white;
+  border-width: 5px 0 5px 5px;
+  margin-top: -5px;
+  right: 0;
+  top: 50%; }
+
+/* http://prismjs.com/download.html?themes=prism-okaidia&languages=markup+css+clike+javascript */
+/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+code[class*="language-"], pre[class*="language-"] {
+  color: #f8f8f2;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none; }
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto;
+  border-radius: 0.3em; }
+
+:not(pre) > code[class*="language-"], pre[class*="language-"] {
+  background: #272822; }
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal; }
+
+.token.comment, .token.prolog, .token.doctype, .token.cdata {
+  color: slategray; }
+
+.token.punctuation {
+  color: #f8f8f2; }
+
+.namespace {
+  opacity: .7; }
+
+.token.property, .token.tag, .token.constant, .token.symbol, .token.deleted {
+  color: #f92672; }
+
+.token.boolean, .token.number {
+  color: #ae81ff; }
+
+.token.selector, .token.attr-name, .token.string, .token.char, .token.builtin, .token.inserted {
+  color: #a6e22e; }
+
+.token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string, .token.variable {
+  color: #f8f8f2; }
+
+.token.atrule, .token.attr-value, .token.function {
+  color: #e6db74; }
+
+.token.keyword {
+  color: #66d9ef; }
+
+.token.regex, .token.important {
+  color: #fd971f; }
+
+.token.important, .token.bold {
+  font-weight: bold; }
+
+.token.italic {
+  font-style: italic; }
+
+.token.entity {
+  cursor: help; }
+
+.contrast {
+  margin: -1em;
+  padding: 1em; }
+.contrast.btn--accounts-alt, .contrast.btn--accounts-outline {
+  background-color: #359cd8;
+  border: 0;
+  box-shadow: none; }
+.contrast.btn--bingo-alt, .contrast.btn--bingo-outline {
+  background-color: #e06ea9;
+  border: 0;
+  box-shadow: none; }
+.contrast.btn--casino-alt, .contrast.btn--casino-outline {
+  background-color: #8a8d8e;
+  border: 0;
+  box-shadow: none; }
+.contrast.btn--games-alt, .contrast.btn--games-outline {
+  background-color: #ea961c;
+  border: 0;
+  box-shadow: none; }
+.contrast.btn--livecasino-alt, .contrast.btn--livecasino-outline {
+  background-color: #afa46f;
+  border: 0;
+  box-shadow: none; }
+.contrast.btn--poker-alt, .contrast.btn--poker-outline {
+  background-color: #d63d36;
+  border: 0;
+  box-shadow: none; }
+.contrast.btn--sports-alt, .contrast.btn--sports-outline {
+  background-color: #c9da2a;
+  border: 0;
+  box-shadow: none; }
+.contrast.btn--vegas-alt, .contrast.btn--vegas-outline {
+  background-color: #abe1fa;
+  border: 0;
+  box-shadow: none; }
+
+p.sg code, li.sg code, li.sg-item code {
+  background-color: #fff;
+  border: 1px solid #D6D6D2;
+  border-radius: 3px;
+  color: #004833;
+  font-size: 0.85em;
+  padding: 0.1em 0.25em;
+  vertical-align: middle; }
+
+p.sg {
+  line-height: inherit !important; }
+
+.demo.demo--typeface * {
+  font-weight: normal; }
+.demo.demo--typeface h2 {
+  margin: .25em 0 0; }
+.demo.demo--typeface h2 ~ p {
+  margin-top: 0; }
+.demo.demo--typeface-bold p {
+  font-weight: bold; }
+
+.sg.sg-label {
+  z-index: 31 !important; }
+
+.sg.tooltip-wrapper {
+  padding: 40px;
+  text-align: center; }
+
+.sg.sg-design {
+  display: none !important; }
+
+#exampleModal {
+  display: block;
+  padding: 1rem 0;
+  position: relative;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  z-index: 1; }
+
+#exampleModal .modal__dialog {
+  margin: auto;
+  opacity: 1;
+  position: relative;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+          transform: translate(0, 0);
+  z-index: 1; }
+
+footer.sg-footer {
+  display: none; }
+
+/* TEMP FIX */
+.sg.sg-top-nav-menu > li > a.sub-active {
+  line-height: 37px !important; }
