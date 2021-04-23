@@ -3,32 +3,43 @@
 
 @import "oscailte";
 
+@import "component/lablinks.scss";
 @import "component/preview.scss";
 @import "component/tags.scss";
 
 @import "pages/blog.scss";
 @import "pages/cv.scss";
 @import "pages/home.scss";
+@import "pages/post.scss";
 
 @include breakpoint("medium") {
   .Site--contact,
   .Site--cv,
   .Site--blog,
   .Site--post {
-    .Site__main > .Container  {
-      --site-container-width: 75%
+    .Site__main > .Container {
+      --site-container-width: 75%;
     }
   }
- }
+}
 
- @include breakpoint("large") {
+@include breakpoint("large") {
   .Site--contact,
   .Site--cv,
   .Site--blog,
   .Site--post {
-    .Site__main > .Container  {
+    .Site__main > .Container {
       --site-container-width: auto;
-      --site-content-max-width: 60rem
+      --site-content-max-width: 60rem;
     }
   }
- }
+}
+
+@keyframes flash-target {
+  0%, 50%, 100% {
+    background-color: rgba(#fff3d9, 1);
+  }
+  25%, 75% {
+    background-color: rgba(#fff3d9, 0);
+  }
+}
