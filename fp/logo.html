@@ -4,133 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Freak Pointing Logo</title>
-    <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      body {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        font-family: system-ui, -apple-system, sans-serif;
-        background: #f5f5f5;
-      }
-
-      .logo-container {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem;
-      }
-
-      .logo-container svg {
-        max-width: 100%;
-        max-height: 70vh;
-        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
-      }
-
-      .controls {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        display: flex;
-        align-items: center;
-        padding: 1.25rem;
-        gap: 1rem;
-        background: white;
-        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
-      }
-
-      .control-group {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .controls label {
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: #333;
-      }
-
-      .controls input[type="color"] {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 44px;
-        height: 44px;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-      }
-
-      .controls input[type="color"]::-webkit-color-swatch-wrapper {
-        padding: 0;
-      }
-
-      .controls input[type="color"]::-webkit-color-swatch {
-        border: 3px solid white;
-        border-radius: 50%;
-      }
-
-      .controls input[type="range"] {
-        width: 80px;
-        cursor: pointer;
-      }
-
-      .controls span {
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: #333;
-        min-width: 1.5rem;
-      }
-
-      .controls button {
-        padding: 0.75rem 1.5rem;
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: white;
-        background: #333;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background 0.2s, transform 0.1s;
-        margin-inline-start: auto;
-      }
-
-      .controls button:hover {
-        background: #555;
-      }
-
-      .controls button:active {
-        transform: scale(0.98);
-      }
-
-      @media (max-width: 600px) {
-        .controls {
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 1rem;
-        }
-
-        .control-group {
-          justify-content: center;
-        }
-
-        .controls button {
-          width: 100%;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="logo.css" />
   </head>
   <body>
+    <div class="mode-toggle">
+      <button class="mode-btn active" data-mode="svg">Clean</button>
+      <button class="mode-btn" data-mode="png">Grunge</button>
+    </div>
+
     <div class="logo-container">
+      <canvas id="png-canvas" style="display: none;"></canvas>
       <svg
       xmlns="http://www.w3.org/2000/svg"
       data-name="Freak Pointing Logo"
@@ -150,7 +33,7 @@
     </div>
 
     <div class="controls">
-      <div class="control-group">
+      <div class="control-group svg-controls">
         <label for="fill-picker">Fill:</label>
         <input type="color" id="fill-picker" value="#f49de3" />
 
@@ -158,10 +41,15 @@
         <input type="color" id="stroke-picker" value="#000000" />
       </div>
 
-      <div class="control-group">
+      <div class="control-group svg-controls">
         <label for="stroke-width">Width:</label>
         <input type="range" id="stroke-width" min="0" max="20" value="0" />
         <span id="stroke-width-value">0</span>
+      </div>
+
+      <div class="control-group png-controls" style="display: none;">
+        <label for="png-color-picker">Color:</label>
+        <input type="color" id="png-color-picker" value="#f49de3" />
       </div>
 
       <button id="download-btn">Download PNG</button>
@@ -169,7 +57,73 @@
 
     <script>
       const target = document.getElementById("color-target");
+      const svg = document.querySelector("svg");
+      const pngCanvas = document.getElementById("png-canvas");
+      const pngCtx = pngCanvas.getContext("2d");
+      const svgControls = document.querySelectorAll(".svg-controls");
+      const pngControls = document.querySelectorAll(".png-controls");
+      const modeBtns = document.querySelectorAll(".mode-btn");
 
+      let currentMode = "svg";
+      let pngImage = null;
+      let pngColor = "#f49de3";
+
+      // Load PNG image
+      const loadPngImage = () => {
+        pngImage = new Image();
+        pngImage.onload = () => {
+          pngCanvas.width = pngImage.width;
+          pngCanvas.height = pngImage.height;
+          drawColoredPng();
+        };
+        pngImage.src = "grunge.png";
+      };
+      loadPngImage();
+
+      // Draw PNG with color overlay
+      const drawColoredPng = () => {
+        if (!pngImage) return;
+
+        pngCtx.clearRect(0, 0, pngCanvas.width, pngCanvas.height);
+
+        // Draw original image
+        pngCtx.drawImage(pngImage, 0, 0);
+
+        // Apply color using multiply blend mode
+        pngCtx.globalCompositeOperation = "source-in";
+        pngCtx.fillStyle = pngColor;
+        pngCtx.fillRect(0, 0, pngCanvas.width, pngCanvas.height);
+
+        // Reset composite operation
+        pngCtx.globalCompositeOperation = "source-over";
+      };
+
+      // Mode toggle
+      modeBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const mode = btn.dataset.mode;
+          if (mode === currentMode) return;
+
+          currentMode = mode;
+          modeBtns.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          if (mode === "svg") {
+            svg.style.display = "";
+            pngCanvas.style.display = "none";
+            svgControls.forEach((el) => (el.style.display = ""));
+            pngControls.forEach((el) => (el.style.display = "none"));
+          } else {
+            svg.style.display = "none";
+            pngCanvas.style.display = "";
+            svgControls.forEach((el) => (el.style.display = "none"));
+            pngControls.forEach((el) => (el.style.display = ""));
+            drawColoredPng();
+          }
+        });
+      });
+
+      // SVG controls
       document.getElementById("fill-picker").addEventListener("input", (e) => {
         target.setAttribute("fill", e.target.value);
       });
@@ -184,8 +138,23 @@
         document.getElementById("stroke-width-value").textContent = value;
       });
 
+      // PNG controls
+      document.getElementById("png-color-picker").addEventListener("input", (e) => {
+        pngColor = e.target.value;
+        drawColoredPng();
+      });
+
+      // Download
       document.getElementById("download-btn").addEventListener("click", () => {
-        const svg = document.querySelector("svg");
+        if (currentMode === "png") {
+          const pngUrl = pngCanvas.toDataURL("image/png");
+          const link = document.createElement("a");
+          link.download = "freak-pointing-logo.png";
+          link.href = pngUrl;
+          link.click();
+          return;
+        }
+
         const vb = svg.viewBox.baseVal;
         const strokeWidth = parseInt(target.getAttribute("stroke-width")) || 0;
         const padding = 40 + strokeWidth;

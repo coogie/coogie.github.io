@@ -1,0 +1,161 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f5f5f5;
+}
+
+.mode-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  padding: 1rem;
+}
+
+.mode-btn {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #666;
+  background: #e0e0e0;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.mode-btn:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.mode-btn:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+.mode-btn.active {
+  background: #333;
+  color: white;
+}
+
+.mode-btn:hover:not(.active) {
+  background: #ccc;
+}
+
+.logo-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.logo-container svg,
+.logo-container canvas {
+  max-width: 100%;
+  max-height: 70vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+}
+
+.controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  padding: 1.25rem;
+  gap: 1rem;
+  background: white;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.controls label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.controls input[type="color"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.controls input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.controls input[type="color"]::-webkit-color-swatch {
+  border: 3px solid white;
+  border-radius: 50%;
+}
+
+.controls input[type="range"] {
+  width: 80px;
+  cursor: pointer;
+}
+
+.controls span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+  min-width: 1.5rem;
+}
+
+.controls button {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  background: #333;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  margin-inline-start: auto;
+}
+
+.controls button:hover {
+  background: #555;
+}
+
+.controls button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 600px) {
+  .controls {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .control-group {
+    justify-content: center;
+  }
+
+  .controls button {
+    width: 100%;
+  }
+}
