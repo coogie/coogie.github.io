@@ -34,25 +34,84 @@
 
     <div class="controls">
       <div class="control-group svg-controls">
-        <label for="fill-picker">Fill:</label>
-        <input type="color" id="fill-picker" value="#f49de3" />
+        <label>Fill:</label>
+        <div class="color-picker-wrapper">
+          <button type="button" class="color-swatch" id="fill-swatch" style="background: #f49de3;"></button>
+          <div class="color-popover" id="fill-popover">
+            <button type="button" class="color-option" data-color="#000000">
+              <span class="color-preview" style="background: #000000;"></span>
+              Black
+            </button>
+            <button type="button" class="color-option" data-color="#ffffff">
+              <span class="color-preview" style="background: #ffffff;"></span>
+              White
+            </button>
+            <button type="button" class="color-option" data-color="#f49de3">
+              <span class="color-preview" style="background: #f49de3;"></span>
+              Pink
+            </button>
+            <button type="button" class="color-option color-option-custom">
+              <span class="color-preview" id="fill-custom-preview" style="background: #f49de3;"></span>
+              Custom
+            </button>
+            <input type="color" class="color-input-hidden" id="fill-picker" value="#f49de3" />
+          </div>
+        </div>
 
-        <label for="stroke-picker">Stroke:</label>
-        <input type="color" id="stroke-picker" value="#000000" />
+        <label>Stroke:</label>
+        <div class="color-picker-wrapper">
+          <button type="button" class="color-swatch" id="stroke-swatch" style="background: #000000;"></button>
+          <div class="color-popover" id="stroke-popover">
+            <button type="button" class="color-option" data-color="#000000">
+              <span class="color-preview" style="background: #000000;"></span>
+              Black
+            </button>
+            <button type="button" class="color-option" data-color="#ffffff">
+              <span class="color-preview" style="background: #ffffff;"></span>
+              White
+            </button>
+            <button type="button" class="color-option color-option-custom">
+              <span class="color-preview" id="stroke-custom-preview" style="background: #000000;"></span>
+              Custom
+            </button>
+            <input type="color" class="color-input-hidden" id="stroke-picker" value="#000000" />
+          </div>
+        </div>
       </div>
 
       <div class="control-group svg-controls">
         <label for="stroke-width">Width:</label>
         <input type="range" id="stroke-width" min="0" max="20" value="0" />
-        <span id="stroke-width-value">0</span>
+        <span class="stroke-width-value" id="stroke-width-value">0</span>
       </div>
 
       <div class="control-group png-controls" style="display: none;">
-        <label for="png-color-picker">Color:</label>
-        <input type="color" id="png-color-picker" value="#f49de3" />
+        <label>Color:</label>
+        <div class="color-picker-wrapper">
+          <button type="button" class="color-swatch" id="png-swatch" style="background: #f49de3;"></button>
+          <div class="color-popover" id="png-popover">
+            <button type="button" class="color-option" data-color="#000000">
+              <span class="color-preview" style="background: #000000;"></span>
+              Black
+            </button>
+            <button type="button" class="color-option" data-color="#ffffff">
+              <span class="color-preview" style="background: #ffffff;"></span>
+              White
+            </button>
+            <button type="button" class="color-option" data-color="#f49de3">
+              <span class="color-preview" style="background: #f49de3;"></span>
+              Pink
+            </button>
+            <button type="button" class="color-option color-option-custom">
+              <span class="color-preview" id="png-custom-preview" style="background: #f49de3;"></span>
+              Custom
+            </button>
+            <input type="color" class="color-input-hidden" id="png-color-picker" value="#f49de3" />
+          </div>
+        </div>
       </div>
 
-      <button id="download-btn">Download PNG</button>
+      <button class="download-btn" id="download-btn">Download PNG</button>
     </div>
 
     <script>
@@ -123,13 +182,70 @@
         });
       });
 
-      // SVG controls
-      document.getElementById("fill-picker").addEventListener("input", (e) => {
-        target.setAttribute("fill", e.target.value);
+      // Color picker popover logic
+      const setupColorPicker = (swatchId, popoverId, pickerId, customPreviewId, onChange) => {
+        const swatch = document.getElementById(swatchId);
+        const popover = document.getElementById(popoverId);
+        const picker = document.getElementById(pickerId);
+        const customPreview = document.getElementById(customPreviewId);
+
+        const updateColor = (color) => {
+          swatch.style.background = color;
+          customPreview.style.background = color;
+          onChange(color);
+        };
+
+        // Toggle popover on swatch click
+        swatch.addEventListener("click", (e) => {
+          e.stopPropagation();
+          // Close other popovers
+          document.querySelectorAll(".color-popover.open").forEach((p) => {
+            if (p !== popover) p.classList.remove("open");
+          });
+          popover.classList.toggle("open");
+        });
+
+        // Handle preset color selection
+        popover.querySelectorAll(".color-option[data-color]").forEach((option) => {
+          option.addEventListener("click", () => {
+            const color = option.dataset.color;
+            picker.value = color;
+            updateColor(color);
+            popover.classList.remove("open");
+          });
+        });
+
+        // Handle custom color button
+        popover.querySelector(".color-option-custom").addEventListener("click", () => {
+          picker.click();
+        });
+
+        // Handle custom color picker change
+        picker.addEventListener("input", (e) => {
+          updateColor(e.target.value);
+        });
+
+        picker.addEventListener("change", () => {
+          popover.classList.remove("open");
+        });
+      };
+
+      // Close popovers when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".color-picker-wrapper")) {
+          document.querySelectorAll(".color-popover.open").forEach((p) => {
+            p.classList.remove("open");
+          });
+        }
       });
 
-      document.getElementById("stroke-picker").addEventListener("input", (e) => {
-        target.setAttribute("stroke", e.target.value);
+      // SVG controls
+      setupColorPicker("fill-swatch", "fill-popover", "fill-picker", "fill-custom-preview", (color) => {
+        target.setAttribute("fill", color);
+      });
+
+      setupColorPicker("stroke-swatch", "stroke-popover", "stroke-picker", "stroke-custom-preview", (color) => {
+        target.setAttribute("stroke", color);
       });
 
       document.getElementById("stroke-width").addEventListener("input", (e) => {
@@ -139,8 +255,8 @@
       });
 
       // PNG controls
-      document.getElementById("png-color-picker").addEventListener("input", (e) => {
-        pngColor = e.target.value;
+      setupColorPicker("png-swatch", "png-popover", "png-color-picker", "png-custom-preview", (color) => {
+        pngColor = color;
         drawColoredPng();
       });
 

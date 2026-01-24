@@ -90,25 +90,100 @@ body {
   color: #333;
 }
 
-.controls input[type="color"] {
-  -webkit-appearance: none;
-  appearance: none;
+.color-picker-wrapper {
+  position: relative;
+}
+
+.color-swatch {
   width: 44px;
   height: 44px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.controls input[type="color"]::-webkit-color-swatch-wrapper {
-  padding: 0;
-}
-
-.controls input[type="color"]::-webkit-color-swatch {
   border: 3px solid white;
   border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.1s;
+}
+
+.color-swatch:hover {
+  transform: scale(1.05);
+}
+
+.color-popover {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  padding: 0.5rem;
+  min-width: 140px;
+  z-index: 100;
+}
+
+.color-popover.open {
+  display: block;
+}
+
+.color-popover::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: white;
+}
+
+.color-option {
+  -webkit-appearance: none;
+  appearance: none;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #666;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.15s;
+  text-align: left;
+}
+
+.color-option:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #333;
+}
+
+.color-option:focus-visible {
+  outline: 2px solid #666;
+  outline-offset: -2px;
+}
+
+.color-preview {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  flex: none;
+}
+
+.color-input-hidden {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
 }
 
 .controls input[type="range"] {
@@ -116,14 +191,14 @@ body {
   cursor: pointer;
 }
 
-.controls span {
+.stroke-width-value {
   font-size: 0.9rem;
   font-weight: 500;
   color: #333;
   min-width: 1.5rem;
 }
 
-.controls button {
+.download-btn {
   padding: 0.75rem 1.5rem;
   font-size: 0.9rem;
   font-weight: 600;
@@ -136,11 +211,11 @@ body {
   margin-inline-start: auto;
 }
 
-.controls button:hover {
+.download-btn:hover {
   background: #555;
 }
 
-.controls button:active {
+.download-btn:active {
   transform: scale(0.98);
 }
 
@@ -155,7 +230,7 @@ body {
     justify-content: center;
   }
 
-  .controls button {
+  .download-btn {
     width: 100%;
   }
 }
