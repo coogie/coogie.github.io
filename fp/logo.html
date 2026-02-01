@@ -50,11 +50,11 @@
               <span class="color-preview" style="background: #f49de3;"></span>
               Pink
             </button>
-            <button type="button" class="color-option color-option-custom">
+            <label class="color-option color-option-custom">
               <span class="color-preview" id="fill-custom-preview" style="background: #f49de3;"></span>
               Custom
-            </button>
-            <input type="color" class="color-input-hidden" id="fill-picker" value="#f49de3" />
+              <input type="color" class="color-input-hidden" id="fill-picker" value="#f49de3" />
+            </label>
           </div>
         </div>
 
@@ -70,11 +70,11 @@
               <span class="color-preview" style="background: #ffffff;"></span>
               White
             </button>
-            <button type="button" class="color-option color-option-custom">
+            <label class="color-option color-option-custom">
               <span class="color-preview" id="stroke-custom-preview" style="background: #000000;"></span>
               Custom
-            </button>
-            <input type="color" class="color-input-hidden" id="stroke-picker" value="#000000" />
+              <input type="color" class="color-input-hidden" id="stroke-picker" value="#000000" />
+            </label>
           </div>
         </div>
       </div>
@@ -102,11 +102,11 @@
               <span class="color-preview" style="background: #f49de3;"></span>
               Pink
             </button>
-            <button type="button" class="color-option color-option-custom">
+            <label class="color-option color-option-custom">
               <span class="color-preview" id="png-custom-preview" style="background: #f49de3;"></span>
               Custom
-            </button>
-            <input type="color" class="color-input-hidden" id="png-color-picker" value="#f49de3" />
+              <input type="color" class="color-input-hidden" id="png-color-picker" value="#f49de3" />
+            </label>
           </div>
         </div>
       </div>
@@ -213,11 +213,6 @@
             updateColor(color);
             popover.classList.remove("open");
           });
-        });
-
-        // Handle custom color button
-        popover.querySelector(".color-option-custom").addEventListener("click", () => {
-          picker.click();
         });
 
         // Handle custom color picker change
