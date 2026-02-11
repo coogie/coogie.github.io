@@ -1,0 +1,404 @@
+- id: john-kavanagh-the-gravediggers
+  name: John Kavanagh The Gravediggers
+  pluscode: "9P9H+V6"
+  address: 1-2 Prospect Square, Dublin 9
+
+- id: oneills
+  name: O'Neills Pub & Kitchen
+  pluscode: "8PVQ+GP"
+  address: 2 Suffolk Street, Dublin 2
+
+- id: bowes-lounge-bar
+  name: Bowe's Lounge Bar
+  pluscode: "8PWR+8R"
+  address: 30 Fleet Street, Dublin 2
+
+- id: the-hacienda-bar
+  name: The Hacienda Bar
+  pluscode: "8PXH+7V"
+  address: 15 Mary Street Little, Grangegorman, Dublin 7
+
+- id: the-dawson-lounge
+  name: The Dawson Lounge
+  pluscode: "8PQR+WF"
+  address: 26 Dawson Street, Dublin 2
+
+- id: the-long-hall
+  name: The Long Hall
+  pluscode: "8PRM+PV"
+  address: 53/54 South Great George's Street, Dublin 2
+
+- id: thomas-house
+  name: Thomas House
+  pluscode: "8PVF+66"
+  address: 86-87 Thomas Street, Dublin 8
+
+- id: arthurs-pub
+  name: Arthur's Pub
+  pluscode: "8PV9+78"
+  address: 28 Thomas Street, Dublin 8
+
+- id: foggy-dew
+  name: Foggy Dew
+  pluscode: "8PVP+QJ"
+  address: 1 Fownes Street Upper, Temple Bar, Dublin 2
+
+- id: toners
+  name: Toners
+  pluscode: "8PQX+32"
+  address: Baggot Street Lower, Dublin 2
+
+- id: odonoghues-bar
+  name: O'Donoghues Bar
+  pluscode: "8PQW+78"
+  address: 15 Merrion Row, Dublin 2
+
+- id: peruke-and-periwig
+  name: Peruke & Periwig
+  pluscode: "8PRR+2F"
+  address: 29 Dawson Street, Dublin 2
+
+- id: fidelity-bar
+  name: Fidelity Bar & Studio
+  pluscode: "8PW9+RV"
+  address: 79 Queen Street, Dublin 7
+
+- id: frank-ryans
+  name: Frank Ryan's
+  pluscode: "8PW9+RX"
+  address: 6 Queen Street, Dublin 7
+
+- id: the-cobblestone
+  name: The Cobblestone
+  pluscode: "8PXC+WV"
+  address: 77 North King Street, Dublin 7
+
+- id: mcneills
+  name: McNeill's Pub
+  pluscode: "8PXJ+4G"
+  address: 139 Capel Street, Dublin 1
+
+- id: the-black-sheep
+  name: The Black Sheep
+  pluscode: "8PXJ+W9"
+  address: 61-63 Capel Street, Dublin 1
+
+- id: whelans
+  name: Whelan's
+  pluscode: "8PPM+JM"
+  address: 25 Wexford Street, Dublin 2
+
+- id: anseo
+  name: Anseo
+  pluscode: "8PPP+42"
+  address: 18 Camden Street Lower, Dublin 2
+
+- id: mccaffertys-at-the-barge
+  name: McCaffertys at the Barge
+  pluscode: "8PJQ+6Q"
+  address: 42 Charlemont Street, Dublin 2
+
+- id: blackbird
+  name: Blackbird
+  pluscode: "8PGP+P5"
+  address: 82-84 Rathmines Road Lower, Rathmines, Dublin 6
+
+- id: fibber-magees
+  name: Fibber Magees
+  pluscode: "9P3Q+4Q"
+  address: 80 Parnell Street, Dublin 1
+
+- id: kehoes
+  name: Kehoes Pub
+  pluscode: "8PRR+F6"
+  address: 9 Anne Street South, Dublin 2
+
+- id: grogans
+  name: Grogan's
+  pluscode: "8PRP+VX"
+  address: 15 William Street South, Dublin 2
+
+- id: the-big-romance
+  name: The Big Romance
+  pluscode: "9P3R+98"
+  address: 98 Parnell Street, Dublin 1
+
+- id: cassidys
+  name: Cassidy's
+  pluscode: "8PWR+GG"
+  address: Westmoreland Street, Dublin 2
+
+- id: riot
+  name: r.i.o.t.
+  pluscode: "8PWQ+G9"
+  address: 3-4 Aston Quay, Dublin 2
+
+- id: the-workmans-club
+  name: The Workman's Club
+  pluscode: "8PWM+5C"
+  address: Wellington Quay, Dublin 2
+
+- id: the-grand-social
+  name: The Grand Social
+  pluscode: "8PWP+PH"
+  address: 35 Liffey Street Lower, Dublin 1
+
+- id: sin-e
+  name: Sin é Dublin
+  pluscode: "8PWJ+95"
+  address: 14 Ormond Quay Upper, Dublin 7
+
+- id: the-oval-bar
+  name: The Oval Bar
+  pluscode: "8PXQ+9V"
+  address: Middle Abbey Street, Dublin 1
+
+- id: memas
+  name: Mema's
+  pluscode: "9P3Q+7R"
+  address: 155 Parnell Street, Dublin 1
+
+- id: kimchi-hophouse
+  name: Kimchi Hophouse
+  pluscode: "9P3Q+6J"
+  address: 161 Parnell Street, Dublin 1
+
+- id: the-flowing-tide
+  name: The Flowing Tide
+  pluscode: "8PXR+GV"
+  address: 9 Abbey Street Lower, Dublin 1
+
+- id: mulligans
+  name: Mulligan's
+  pluscode: "8PWV+QQ"
+  address: 8-9 Poolbeg Street, Dublin 2
+
+- id: doyles
+  name: Doyle's
+  pluscode: "8PWV+82"
+  address: 8 College Street, Dublin 2
+
+- id: the-palace-bar
+  name: The Palace Bar
+  pluscode: "8PWR+95"
+  address: 21 Fleet Street, Temple Bar, Dublin 2
+
+- id: the-stags-head
+  name: The Stag's Head
+  pluscode: "8PVP+GG"
+  address: Dame Lane, Dublin 2
+
+- id: international-bar
+  name: International Bar
+  pluscode: "8PVQ+77"
+  address: 7 Saint Andrew Street, Dublin 2
+
+- id: the-hairy-lemon
+  name: The Hairy Lemon
+  pluscode: "8PRP+GF"
+  address: Stephen Street Lower, Dublin 2
+
+- id: bruxelles
+  name: Bruxelles
+  pluscode: "8PRQ+GM"
+  address: 7-8 Harry Street, Dublin 2
+
+- id: the-dame-tavern
+  name: The Dame Tavern
+  pluscode: "8PVP+GF"
+  address: Dame Court, Dublin 2
+
+- id: disndat
+  name: disndat
+  pluscode: "8PVP+FH"
+  address: Dame Court, Dublin 2
+
+- id: pawn-shop
+  name: Pawn Shop
+  pluscode: "8PVM+JV"
+  address: 14 Dame Street, Dublin 2
+
+- id: the-bull-and-castle
+  name: The Bull & Castle
+  pluscode: "8PVJ+93"
+  address: 5-7 Christchurch Place, Dublin 2
+
+- id: the-belfry-stoneybatter
+  name: The Belfry Stoneybatter
+  pluscode: "9P29+55"
+  address: 37 Stoneybatter, Stoneybatter, Dublin 7
+
+- id: the-glimmer-man
+  name: The Glimmer Man
+  pluscode: "9P29+85"
+  address: 14-15 Stoneybatter, Stoneybatter, Dublin 7
+
+- id: nancy-hands
+  name: Nancy Hands
+  pluscode: "8PX4+7C"
+  address: 30-32 Parkgate Street, Islandbridge, Dublin 8
+
+- id: ryans-parkgate-street
+  name: Ryan's Parkgate Street
+  pluscode: "8PX4+7H"
+  address: 28 Parkgate Street, Islandbridge, Dublin 8
+
+- id: guinness-open-gate-brewery
+  name: Guinness Open Gate Brewery
+  pluscode: "8PV7+86"
+  address: James's Street, Dublin 8
+
+- id: devitts
+  name: Devitt's
+  pluscode: "8PPM+6R"
+  address: Pleasants Street, The Liberties, Dublin 2
+
+- id: sheehans
+  name: Sheehans
+  pluscode: "8PRQ+97"
+  address: 17 Chatham Street, Dublin 2
+
+- id: mcdaids
+  name: McDaids
+  pluscode: "8PRQ+GH"
+  address: 4 Harry Street, Dublin 2
+
+- id: ciss-maddens
+  name: Ciss Maddens
+  pluscode: "8PRP+WP"
+  address: Castle Market, Dublin 2
+
+- id: the-bar-with-no-name
+  name: The Bar With No Name
+  pluscode: "8PRP+Q8"
+  address: 3 Fade Street, Dublin 2
+
+- id: hogans
+  name: Hogan's
+  pluscode: "8PRP+Q5"
+  address: 35-37 South Great George's Street, Dublin 2
+
+- id: oregans
+  name: O'Regan's
+  pluscode: "8PRP+V6"
+  address: 26-27 South Great George's Street, Dublin 2
+
+- id: the-globe
+  name: The Globe
+  pluscode: "8PVP+87"
+  address: 12-13 South Great George's Street, Dublin 2
+
+- id: bonobo
+  name: Bonobo
+  pluscode: "9P2G+55"
+  address: Church Street Upper, Dublin 7
+
+- id: the-barbers
+  name: The Barbers
+  pluscode: "9P2C+V3"
+  address: 20-25 Grangegorman Lower, Grangegorman, Dublin 7
+
+- id: the-ferryman
+  name: The Ferryman
+  pluscode: "8QW5+CP"
+  address: 35-36 Sir John Rogerson's Quay, Dublin 2
+
+- id: the-lincolns-inn
+  name: The Lincoln's Inn
+  pluscode: "8PRW+QX"
+  address: Leinster Street South, Dublin 2
+
+- id: dougs-bar
+  name: Doug's Bar
+  pluscode: "8PRR+J6"
+  address: Lemon Street, Dublin 2
+
+- id: marys-bar-and-hardware
+  name: Mary's Bar & Hardware
+  pluscode: "8PVQ+4V"
+  address: 6-8 Wicklow Street, Dublin 2
+
+- id: dv8
+  name: DV8
+  pluscode: "8PV5+9R"
+  address: 131 James's Street, Dublin 8
+
+- id: the-back-page
+  name: The Back Page
+  pluscode: "9P5G+CQ"
+  address: Phibsborough Road, Dublin 7
+
+- id: the-bernard-shaw
+  name: The Bernard Shaw
+  pluscode: "9P7H+VG"
+  address: Cross Guns Bridge, Phibsborough, Dublin 9
+
+- id: tp-smiths
+  name: TP Smith's
+  pluscode: "8PWM+XJ"
+  address: 9-10 Jervis Street, Dublin 1
+
+- id: gin-palace
+  name: Gin Palace
+  pluscode: "8PXP+4M"
+  address: 43/45 Middle Abbey Street, Dublin 1
+
+- id: the-wiley-fox
+  name: The Wiley Fox
+  pluscode: "8PXV+8J"
+  address: 28 Eden Quay, Dublin 1
+
+- id: the-brew-dock
+  name: The Brew Dock
+  pluscode: "9P2X+3H"
+  address: 1 Amiens Street, Dublin 1
+
+- id: the-bottle-boy
+  name: The Bottle Boy
+  pluscode: "8QW9+V2"
+  address: North Wall Quay, North Wall, Dublin 1
+
+- id: madigan-square-garden
+  name: Madigan Square Garden
+  pluscode: "8QHC+FF"
+  address: Merrion Road, Ballsbridge, Dublin 4
+
+- id: mary-macs
+  name: Mary Mac's
+  pluscode: "8QH9+JR"
+  address: 10 Merrion Road, Ballsbridge, Dublin 4
+
+- id: the-lower-deck
+  name: The Lower Deck
+  pluscode: "8PJM+7V"
+  address: 3 Portobello Harbour, Portobello, Dublin 8
+
+- id: sinotts
+  name: Sinotts
+  pluscode: "8PRQ+29"
+  address: King Street South, Dublin 2
+
+- id: pavillion
+  name: Pavillion
+  pluscode: "8PVW+3R"
+  address: College Green, Dublin 2
+
+- id: doyles-corner
+  name: Doyle's Corner
+  pluscode: "9P6G+9X"
+  address: 160 Phibsborough Road, Phibsborough, Dublin 7
+
+- id: the-big-tree
+  name: The Big Tree
+  pluscode: "9P5Q+WM"
+  address: 39-41 Dorset Street Lower, Dublin 1
+
+- id: the-auld-triangle
+  name: The Auld Triangle
+  pluscode: "9P5Q+J9"
+  address: 28 Dorset Street Lower, Dublin 1
+
+- id: joxers
+  name: Joxers
+  pluscode: "9P4M+4G"
+  address: 107 Dorset Street Upper, Dublin 1

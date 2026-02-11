@@ -1,0 +1,99 @@
+---
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pub Crawler - Dublin</title>
+
+  <meta property="og:title" content="Pub Crawler - Dublin" />
+  <meta property="og:description" content="Plan your pub crawl. Pick your own stops or let luck decide." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://coog.ie/lab/pub-crawler/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pub Crawl - Dublin" />
+  <meta name="twitter:description" content="Plan your pub crawl. Pick your own stops or let luck decide." />
+  <meta property="og:image" content="https://coog.ie/lab/pub-crawler/og.png" />
+  <meta name="twitter:image" content="https://coog.ie/lab/pub-crawler/og.png" />
+
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
+  <link rel="stylesheet" href="pub-crawler.css" />
+</head>
+<body>
+  <div id="app">
+    <aside id="sidebar" class="sidebar">
+      <header class="sidebar__header">
+        <h1 class="sidebar__title">Pub Crawler</h1>
+        <p class="sidebar__subtitle">Dublin City Centre</p>
+        <button id="sidebar-toggle" class="sidebar__toggle" aria-label="Toggle sidebar"></button>
+      </header>
+
+      <div class="start-point">
+        <label class="start-point__label" for="start-input">Starting from</label>
+        <div class="start-point__field">
+          <input id="start-input" class="start-point__input" type="text" placeholder="e.g. Personio, Dublin" />
+          <button id="start-reset" class="start-point__reset" aria-label="Reset to default" hidden>&times;</button>
+        </div>
+      </div>
+
+      <div class="mode-toggle">
+        <button class="mode-btn active" data-mode="manual">Pick Your Own</button>
+        <button class="mode-btn" data-mode="final">Lucky Dip</button>
+      </div>
+
+      <div id="instructions-manual" class="instructions">
+        <p>Tap up to <strong>4 pubs</strong> on the map to build your crawl.</p>
+      </div>
+
+      <div id="instructions-final" class="instructions" hidden>
+        <p>Pick your <strong>final destination</strong> pub. We'll pick 3 random stops along the way.</p>
+      </div>
+
+      <div id="pick-list-section" class="pick-list-section" hidden>
+        <ol id="pick-list" class="pick-list"></ol>
+        <div id="pick-summary" class="route-summary" hidden>
+          <div class="route-summary__item">
+            <span class="route-summary__label">Total distance</span>
+            <span id="pick-total-distance" class="route-summary__value">--</span>
+          </div>
+          <div class="route-summary__item">
+            <span class="route-summary__label">Walking time</span>
+            <span id="pick-total-time" class="route-summary__value">--</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="route-info" class="route-info" hidden>
+        <h2 class="route-info__heading">Your Route</h2>
+        <ol id="route-list" class="route-list"></ol>
+        <div class="route-summary">
+          <div class="route-summary__item">
+            <span class="route-summary__label">Total distance</span>
+            <span id="total-distance" class="route-summary__value">--</span>
+          </div>
+          <div class="route-summary__item">
+            <span class="route-summary__label">Walking time</span>
+            <span id="total-time" class="route-summary__value">--</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar__actions">
+        <button id="btn-route" class="btn btn--primary" disabled>Calculate Route</button>
+        <button id="btn-clear" class="btn btn--secondary">Clear All</button>
+      </div>
+    </aside>
+
+    
+    <main id="map" class="map"></main>
+  </div>
+
+  <script>
+    window.PUB_DATA = {{ site.data.pubs | jsonify }};
+    window.START_POINT = { name: "Personio", lat: 53.3459, lng: -6.2524 };
+  </script>
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="pub-crawler.js"></script>
+</body>
+</html>
